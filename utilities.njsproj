@@ -22,6 +22,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="dist\index.debug.js.map" />
     <Content Include="LICENSE" />
     <Content Include="package.json" />
     <Content Include="tsconfig.json">
@@ -34,17 +35,38 @@
     <Folder Include="lib\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dist\index.debug.js" />
+    <Compile Include="dist\index.js" />
     <Compile Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="lib\AsyncWrapper.ts" />
+    <TypeScriptCompile Include="lib\ConsoleLogger.ts" />
+    <TypeScriptCompile Include="lib\ErrorHelper.ts" />
+    <TypeScriptCompile Include="lib\Event.ts" />
     <TypeScriptCompile Include="lib\Exceptions.ts">
       <Publish>True</Publish>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="lib\IDisposable.ts" />
+    <TypeScriptCompile Include="lib\ILogger.ts" />
     <TypeScriptCompile Include="lib\index.ts">
       <Publish>True</Publish>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="lib\Lazy.ts" />
+    <TypeScriptCompile Include="lib\LazyAsync.ts" />
+    <TypeScriptCompile Include="lib\Path.ts" />
+    <TypeScriptCompile Include="lib\ScopedLogger.ts" />
+    <TypeScriptCompile Include="lib\SingleInvokeEvent.ts" />
+    <TypeScriptCompile Include="lib\String.ts" />
+    <TypeScriptCompile Include="lib\StringBuilder.ts" />
     <TypeScriptCompile Include="lib\Utilities.ts">
       <Publish>True</Publish>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="tests\Exceptions.spec.ts">
+      <TestFramework>Mocha</TestFramework>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="tests\String.spec.ts">
+      <TestFramework>Mocha</TestFramework>
     </TypeScriptCompile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />

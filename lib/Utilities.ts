@@ -1,16 +1,26 @@
 ﻿import { ArgumentException } from './Exceptions';
+import * as Strings from './String';
 
+const KEYVALUESEPARATOR = ":";
+
+/**
+ * helper type for representing constructors
+ */
 export type ConstructorFor<T> =
     {
-        new(value?: any): T;
+        new(...value: any[]): T;
     }
 
-// returns true if the two objects are equal but not the same object. (compares public keys)
-export function equals<T>(obj1: T, obj2: T, forceJSON?: boolean): boolean
+/**
+ * returns true if the two objects are equal but not the same object. (compares public keys)
+ * @param obj1
+ * @param obj2
+ * @param forceJSON converts the objects to JSON and compares the two strings.
+ * @param deep Does a deep compare. forceJSON must be false
+ */
+export function equals<T>(obj1: T, obj2: T, forceJSON: boolean = false, deep: boolean = false): boolean
 {
-    var state = false;
-
-    forceJSON = forceJSON || false;
+    let state = false;
 
     if (!forceJSON)
     {
@@ -18,7 +28,14 @@ export function equals<T>(obj1: T, obj2: T, forceJSON?: boolean): boolean
         {
             if (obj1.hasOwnProperty(key))
             {
-                state = obj1[key] == obj2[key];
+                if (deep)
+                {
+                    state = equals(obj1[key], obj2[key], forceJSON, deep);
+                }
+                else
+                {
+                    state = obj1[key] == obj2[key];
+                }
 
                 if (!state)
                 {
@@ -35,16 +52,23 @@ export function equals<T>(obj1: T, obj2: T, forceJSON?: boolean): boolean
     return state;
 }
 
-// returns true if the two objects are equal but not the same object. (compares the JSON equilient of each object) .. should be faster.. should..
+/**
+ * returns true if the two objects are equal but not the same object. (compares the JSON equilient of each object).. should be faster.. should..
+ * @param obj1
+ * @param obj2
+ */
 export function equivilentToByJSON<T>(obj1: T, obj2: T): boolean
 {
     return JSON.stringify(obj1) == JSON.stringify(obj2);
 }
 
-// returns a hash of the object
+/**
+ * returns a hash of the object
+ * @param o
+ */
 export function getHash(o: any): string
 {
-    let hash: string = "";
+    let hash: string = Strings.empty;
 
     if (!!JSON && !!JSON.stringify)
     {
@@ -52,7 +76,7 @@ export function getHash(o: any): string
         {
             if (o.hasOwnProperty(key))
             {
-                hash += key + ":" + o[key];
+                hash += `${key}${KEYVALUESEPARATOR}${o[key]}`;
             }
         }
     }
@@ -64,8 +88,11 @@ export function getHash(o: any): string
     return hashString(hash).toString();
 }
 
-// Returns the type of the object as a string
-export function getType(o: any)
+/**
+ * Returns the type of the object as a string
+ * @param o
+ */
+export function getType(o: any): string
 {
     // null
     if (o === null)
@@ -95,14 +122,14 @@ export function getType(o: any)
     if (o.constructor.name === undefined)
     {
         var name = o.constructor.toString().match(/^[\n\r\s]*function\s*([^\s(]+)/)[1]
-        if (name != "")
+        if (!Strings.isNullOrEmpty(name))
         {
             return name;
         }
     }
-    else
+    else if (!Strings.isNullOrEmpty(o.constructor.name))
     {
-        if (o.constructor.name != "") return o.constructor.name;
+        return o.constructor.name;
     }
 
     // fallback
@@ -129,7 +156,7 @@ function hashString(str: string): number
     }
     else
     {
-        return str.split('')
+        return str.split(Strings.empty)
             .map(chr => chr.charCodeAt(0))
             .reduce((hash, chr) => (((hash << 5) - hash) + chr) | 0);
     }
