@@ -1,0 +1,47 @@
+{
+  "name": "@michaelcoxon/utilities",
+  "version": "1.0.2",
+  "description": "utilities for JS and TypeScript",
+  "main": "dist/index.js",
+  "scripts": {
+    "run-tests": "mocha -r ts-node/register tests/**/*.spec.ts",
+    "test": "npm-run-all -s build-dev build-prod -p run-tests",
+    "build-dev": "SET NODE_ENV=development&& webpack --no-color",
+    "build-prod": "SET NODE_ENV=production&& webpack --no-color",
+    "prepack": "npm-run-all -s test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelcoxon/utilities.git"
+  },
+  "keywords": [
+    "utilities",
+    "typescript"
+  ],
+  "author": "Michael Coxon",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/michaelcoxon/utilities/issues"
+  },
+  "homepage": "https://github.com/michaelcoxon/utilities#readme",
+  "devDependencies": {
+    "@types/chai": "^4.0.10",
+    "@types/mocha": "^2.2.44",
+    "@types/prop-types": "^15.5.2",
+    "@types/webpack-env": "1.13.0",
+    "awesome-typescript-loader": "3.2.1",
+    "chai": "^4.1.2",
+    "file-loader": "0.11.2",
+    "json-loader": "0.5.4",
+    "mocha": "^4.0.1",
+    "npm-run-all": "4.0.2",
+    "ts-node": "^4.0.2",
+    "typescript": "2.4.1",
+    "webpack": "2.5.1"
+  },
+  "-vs-binding": {
+    "ProjectOpened": [
+      "test"
+    ]
+  }
+}
