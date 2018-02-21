@@ -65,6 +65,9 @@
     <TypeScriptCompile Include="tests\Exceptions.spec.ts">
       <TestFramework>Mocha</TestFramework>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="tests\Logger.spec.ts">
+      <TestFramework>Mocha</TestFramework>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="tests\Path.spec.ts">
       <TestFramework>Mocha</TestFramework>
     </TypeScriptCompile>
