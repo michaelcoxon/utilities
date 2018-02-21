@@ -57,12 +57,15 @@
     <TypeScriptCompile Include="lib\Path.ts" />
     <TypeScriptCompile Include="lib\ScopedLogger.ts" />
     <TypeScriptCompile Include="lib\SingleInvokeEvent.ts" />
-    <TypeScriptCompile Include="lib\String.ts" />
+    <TypeScriptCompile Include="lib\Strings.ts" />
     <TypeScriptCompile Include="lib\StringBuilder.ts" />
     <TypeScriptCompile Include="lib\Utilities.ts">
       <Publish>True</Publish>
     </TypeScriptCompile>
     <TypeScriptCompile Include="tests\Exceptions.spec.ts">
+      <TestFramework>Mocha</TestFramework>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="tests\Path.spec.ts">
       <TestFramework>Mocha</TestFramework>
     </TypeScriptCompile>
     <TypeScriptCompile Include="tests\String.spec.ts">

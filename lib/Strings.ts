@@ -45,8 +45,16 @@ export function trim(str: string): string;
  *              specific string from the start/end.
  */
 export function trim(str: string, chars: string): string;
-export function trim(str: string, chars: string = WHITESPACE): string
+export function trim(str: string, chars?: string): string
 {
+    if (chars !== undefined)
+    {
+        chars = escapeRegExp(chars)
+    }
+    else
+    {
+        chars = WHITESPACE
+    }
     var regex = new RegExp(`^[${chars}]+|[${chars}]+$`, 'g');
     return str.replace(regex, empty);
 }
@@ -64,8 +72,16 @@ export function trimStart(str: string): string;
  *              specific string from the start/end.
  */
 export function trimStart(str: string, chars: string): string;
-export function trimStart(str: string, chars: string = WHITESPACE): string
+export function trimStart(str: string, chars?: string): string
 {
+    if (chars !== undefined)
+    {
+        chars = escapeRegExp(chars)
+    }
+    else
+    {
+        chars = WHITESPACE
+    }
     var regex = new RegExp(`^[${chars}]+`, 'g');
     return str.replace(regex, empty);
 }
@@ -83,8 +99,16 @@ export function trimEnd(str: string): string;
  *              specific string from the start/end.
  */
 export function trimEnd(str: string, chars: string): string;
-export function trimEnd(str: string, chars: string = WHITESPACE): string
+export function trimEnd(str: string, chars?: string): string
 {
+    if (chars !== undefined)
+    {
+        chars = escapeRegExp(chars)
+    }
+    else
+    {
+        chars = WHITESPACE
+    }
     var regex = new RegExp(`[${chars}]+$`, 'g');
     return str.replace(regex, empty);
 }
@@ -115,6 +139,11 @@ export function isNullOrWhitespace(str?: string | null): boolean
 export function toCharArray(str: string): string[]
 {
     return str.split(empty);
+}
+
+function escapeRegExp(str)
+{
+    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 }
 
 

@@ -1,5 +1,5 @@
 ﻿import { ArgumentException } from './Exceptions';
-import * as Strings from './String';
+import * as Strings from './Strings';
 
 const KEYVALUESEPARATOR = ":";
 
