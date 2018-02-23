@@ -11,7 +11,7 @@ module.exports = () =>
 
     return [{
         entry: { 'index': "./lib/index.ts" },
-        resolve: { extensions: ['.js', '.ts'] },
+        resolve: { extensions: ['.ts'] },
         output: {
             path: path.join(__dirname, bundleOutputDir),
             filename: `[name]${isDevBuild ? ".debug" : ""}.js`,
@@ -19,7 +19,11 @@ module.exports = () =>
         },
         module: {
             rules: [
-                { test: /\.ts$/, include: /src/, use: 'awesome-typescript-loader?silent=true' }
+                {
+                    test: /\.ts$/,
+                    include: /lib/,
+                    use: 'awesome-typescript-loader'
+                }
             ]
         },
         plugins: [
