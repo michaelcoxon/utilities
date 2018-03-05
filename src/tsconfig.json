@@ -1,0 +1,9 @@
+{
+  "extends": "../base-tsconfig",
+  "compileOnSave": true,
+
+  "compilerOptions": {
+    "outDir": "../lib",
+    "declaration": true
+  }
+}

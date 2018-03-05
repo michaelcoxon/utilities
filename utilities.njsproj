@@ -22,44 +22,43 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include="dist\index.debug.js.map" />
+    <Content Include=".npmignore" />
     <Content Include="LICENSE" />
     <Content Include="package.json" />
+    <Content Include="src\tsconfig.json" />
+    <Content Include="base-tsconfig.json" />
     <Content Include="tsconfig.json">
       <SubType>Code</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="dist\" />
     <Folder Include="tests\" />
-    <Folder Include="lib\" />
+    <Folder Include="src\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dist\index.debug.js" />
-    <Compile Include="dist\index.js" />
     <Compile Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="lib\AsyncWrapper.ts" />
-    <TypeScriptCompile Include="lib\ConsoleLogger.ts" />
-    <TypeScriptCompile Include="lib\ErrorHelper.ts" />
-    <TypeScriptCompile Include="lib\Event.ts" />
-    <TypeScriptCompile Include="lib\Exceptions.ts">
+    <TypeScriptCompile Include="src\AsyncWrapper.ts" />
+    <TypeScriptCompile Include="src\ConsoleLogger.ts" />
+    <TypeScriptCompile Include="src\ErrorHelper.ts" />
+    <TypeScriptCompile Include="src\Event.ts" />
+    <TypeScriptCompile Include="src\Exceptions.ts">
       <Publish>True</Publish>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="lib\IDisposable.ts" />
-    <TypeScriptCompile Include="lib\ILogger.ts" />
-    <TypeScriptCompile Include="lib\index.ts">
+    <TypeScriptCompile Include="src\IDisposable.ts" />
+    <TypeScriptCompile Include="src\ILogger.ts" />
+    <TypeScriptCompile Include="src\index.ts">
       <Publish>True</Publish>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="lib\Lazy.ts" />
-    <TypeScriptCompile Include="lib\LazyAsync.ts" />
-    <TypeScriptCompile Include="lib\Path.ts" />
-    <TypeScriptCompile Include="lib\ScopedLogger.ts" />
-    <TypeScriptCompile Include="lib\SingleInvokeEvent.ts" />
-    <TypeScriptCompile Include="lib\Strings.ts" />
-    <TypeScriptCompile Include="lib\StringBuilder.ts" />
-    <TypeScriptCompile Include="lib\Utilities.ts">
+    <TypeScriptCompile Include="src\Lazy.ts" />
+    <TypeScriptCompile Include="src\LazyAsync.ts" />
+    <TypeScriptCompile Include="src\Path.ts" />
+    <TypeScriptCompile Include="src\ScopedLogger.ts" />
+    <TypeScriptCompile Include="src\SingleInvokeEvent.ts" />
+    <TypeScriptCompile Include="src\Strings.ts" />
+    <TypeScriptCompile Include="src\StringBuilder.ts" />
+    <TypeScriptCompile Include="src\Utilities.ts">
       <Publish>True</Publish>
     </TypeScriptCompile>
     <TypeScriptCompile Include="tests\Exceptions.spec.ts">

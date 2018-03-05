@@ -141,7 +141,7 @@ export function toCharArray(str: string): string[]
     return str.split(empty);
 }
 
-function escapeRegExp(str)
+function escapeRegExp(str: string): string
 {
     return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 }
