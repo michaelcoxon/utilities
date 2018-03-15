@@ -1,4 +1,4 @@
-﻿import * as Strings from './String';
+﻿import { Strings } from './Strings';
 
 /**
  * Represents errors that occur during application execution.
@@ -268,5 +268,27 @@ export class KeyAlreadyDefinedException<TKey> extends Exception
             super(_message);
         }
         this.name = 'KeyAlreadyDefinedException';
+    }
+}
+
+export class NullReferenceException extends Exception
+{
+    constructor(message?: string, innerException?: Exception)
+    {
+        if (innerException)
+        {
+            super(message!, innerException);
+        }
+        else
+        {
+            if (message)
+            {
+                super(message);
+            } else
+            {
+                super();
+            }
+        }
+        this.name = 'NullReferenceException';
     }
 }

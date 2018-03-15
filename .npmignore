@@ -67,9 +67,11 @@ bin/
 _NCrunch_collections/
 
 dts/
-dist/
-lib/
-lib.es6/
-lib.es2015/
-tests/*.js
-tests/*.js.map
+src/
+tests/
+
+.npmignore
+*.sln
+*.njsproj
+*tsconfig.json
+*config.js

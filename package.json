@@ -1,8 +1,10 @@
 {
   "name": "@michaelcoxon/utilities",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "utilities for JS and TypeScript",
   "main": "dist/index.js",
+  "module": "lib.2015/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "run-tests": "mocha -r ts-node/register tests/**/*.spec.ts",
     "test": "npm-run-all -s build-dev build-prod -p run-tests",
@@ -31,6 +33,7 @@
     "@types/webpack-env": "^1.13.5",
     "awesome-typescript-loader": "^3.4.1",
     "chai": "^4.1.2",
+    "dts-bundle": "^0.7.3",
     "file-loader": "^0.11.2",
     "json-loader": "^0.5.7",
     "mocha": "^4.0.1",
