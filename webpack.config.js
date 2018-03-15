@@ -3,6 +3,9 @@ const path = require('path');
 const webpack = require('webpack');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const bundleOutputDir = './dist';
+const libDir = 'lib';
+const srcDir = 'src';
+const libraryName = 'utilities';
 
 function DtsBundlePlugin() { }
 DtsBundlePlugin.prototype.apply = function (compiler)
@@ -12,9 +15,9 @@ DtsBundlePlugin.prototype.apply = function (compiler)
         var dts = require('dts-bundle');
 
         dts.bundle({
-            name: 'utilities',
-            main: 'lib/index.d.ts',
-            out: '../dist/index.d.ts',
+            name: libraryName,
+            main: `dts/index.d.ts`,
+            out: `.${bundleOutputDir}/index.d.ts`,
             outputAsModuleFolder: true // to use npm in-package typings
         });
     });
@@ -26,12 +29,14 @@ module.exports = () =>
     const isDevBuild = !(env && env === 'production');
 
     return [{
-        entry: { 'index': "./src/index.ts" },
+        entry: { 'index': `./${srcDir}/index.ts` },
         resolve: { extensions: ['.ts'] },
         output: {
             path: path.join(__dirname, bundleOutputDir),
             filename: `[name]${isDevBuild ? ".debug" : ""}.js`,
-            publicPath: 'dist/'
+            publicPath: 'dist/',
+            library: libraryName,
+            libraryTarget: 'umd'
         },
         module: {
             rules: [
@@ -43,17 +48,23 @@ module.exports = () =>
             ]
         },
         plugins: [
-            new CheckerPlugin()
-        ].concat(isDevBuild ? [
-            // Plugins that apply in development builds only
-            new webpack.SourceMapDevToolPlugin({
-                filename: '[file].map', // Remove this line if you prefer inline source maps
-                moduleFilenameTemplate: path.relative(bundleOutputDir, '[resourcePath]') // Point sourcemap entries to the original file locations on disk
-            })
-        ] : [
-                // Plugins that apply in production builds only
-                new DtsBundlePlugin(),
-                new webpack.optimize.UglifyJsPlugin(),
-            ])
+            new CheckerPlugin(),
+
+            ...(isDevBuild
+                ?
+                [
+                    // Plugins that apply in development builds only
+                    new webpack.SourceMapDevToolPlugin({
+                        filename: '[file].map', // Remove this line if you prefer inline source maps
+                        moduleFilenameTemplate: path.relative(bundleOutputDir, '[resourcePath]') // Point sourcemap entries to the original file locations on disk
+                    })
+                ]
+                :
+                [
+                    // Plugins that apply in production builds only
+                    new DtsBundlePlugin(),
+                    //new webpack.optimize.UglifyJsPlugin(),
+                ])
+        ]
     }];
 }

@@ -1,4 +1,4 @@
-﻿import * as Strings from './Strings';
+﻿import { Strings } from './Strings';
 
 /**
  * Class for building strings that will only concatenate them upon calling toString().

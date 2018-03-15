@@ -25,13 +25,19 @@
     <Content Include=".npmignore" />
     <Content Include="LICENSE" />
     <Content Include="package.json" />
-    <Content Include="src\tsconfig.json" />
+    <Content Include="src\config\es2015\tsconfig.json" />
+    <Content Include="src\config\es6\tsconfig.json" />
+    <Content Include="src\config\es5\tsconfig.json" />
     <Content Include="base-tsconfig.json" />
     <Content Include="tsconfig.json">
       <SubType>Code</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="src\config\" />
+    <Folder Include="src\config\es5\" />
+    <Folder Include="src\config\es6\" />
+    <Folder Include="src\config\es2015\" />
     <Folder Include="tests\" />
     <Folder Include="src\" />
   </ItemGroup>

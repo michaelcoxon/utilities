@@ -1,4 +1,4 @@
-﻿import * as Strings from './Strings';
+﻿import { Strings } from './Strings';
 
 /**
  * Represents errors that occur during application execution.

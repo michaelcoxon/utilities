@@ -1,4 +1,4 @@
-﻿import * as Strings from '../lib/Strings';
+﻿import { Strings } from '../lib/Strings';
 import { expect, assert } from 'chai';
 import 'mocha';
 

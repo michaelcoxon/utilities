@@ -1,5 +1,5 @@
 ﻿import { ArgumentException } from "./Exceptions";
-import * as Strings from './Strings';
+import { Strings } from './Strings';
 
 var URI_REGEX = /^(([^:]+:\\)|([^:/?#]+:)?(\/\/([^/?#]*)[\\/])?)(([^\\/]+[\\/])*)([^/?#]*)(\?[^#]*)?(#.*)?$/gi;
 
@@ -45,7 +45,7 @@ export class Path
      * @param noTrim if true, it will leave hyphens (-) on the
      *               start and end of the url. You probably will
      *               never want this.
-     */ 
+     */
     public static toFriendlyUrl(str: string, noTrim: boolean = false): string
     {
         let out = str.toLowerCase();
