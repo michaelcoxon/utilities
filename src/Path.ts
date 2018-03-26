@@ -3,19 +3,19 @@ import { Strings } from './Strings';
 
 var URI_REGEX = /^(([^:]+:\\)|([^:/?#]+:)?(\/\/([^/?#]*)[\\/])?)(([^\\/]+[\\/])*)([^/?#]*)(\?[^#]*)?(#.*)?$/gi;
 
-export class Path
+export namespace Path
 {
-    public static getFileName(path: string): string
+    export function getFileName(path: string): string
     {
         return path.replace(URI_REGEX, "$8");
     }
 
-    public static getDirectory(path: string): string
+    export function getDirectory(path: string): string
     {
         return path.replace(URI_REGEX, "$6");
     }
 
-    public static getExtension(path: string): string
+    export function getExtension(path: string): string
     {
         let fileName = Path.getFileName(path);
 
@@ -27,7 +27,7 @@ export class Path
         return fileName.substring(fileName.lastIndexOf('.'));
     }
 
-    public static getFileNameWithoutExtension(path: string): string
+    export function getFileNameWithoutExtension(path: string): string
     {
         let fileName = Path.getFileName(path);
 
@@ -46,7 +46,7 @@ export class Path
      *               start and end of the url. You probably will
      *               never want this.
      */
-    public static toFriendlyUrl(str: string, noTrim: boolean = false): string
+    export function toFriendlyUrl(str: string, noTrim: boolean = false): string
     {
         let out = str.toLowerCase();
         out = out.replace(/&/g, " and ");
@@ -63,7 +63,7 @@ export class Path
         return out;
     }
 
-    public static combine(...args: string[]): string
+   export function combine(...args: string[]): string
     {
         if (args.length == 0)
         {

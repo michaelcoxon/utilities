@@ -1,5 +1,5 @@
-﻿import * as Exceptions from '../lib/Exceptions';
-import { Utilities } from "../lib/Utilities";
+﻿import * as Exceptions from '../src/Exceptions';
+import { Utilities } from "../src/Utilities";
 import { expect, assert } from 'chai';
 import 'mocha';
 

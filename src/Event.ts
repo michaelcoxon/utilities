@@ -1,7 +1,5 @@
 ﻿import { ArgumentException, ArgumentUndefinedException } from "./Exceptions";
-
-/** The event handler type */
-export type EventHandler<TEventArgs> = (sender: any, args: TEventArgs) => void;
+import { EventHandler } from ".";
 
 /**
  * Class to represent an event.

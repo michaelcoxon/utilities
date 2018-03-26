@@ -1,16 +1,10 @@
 ﻿import { ArgumentException } from './Exceptions';
 import { Strings } from './Strings';
+
+const KEYVALUESEPARATOR = ":";
+
 export namespace Utilities
 {
-    const KEYVALUESEPARATOR = ":";
-
-    /**
-     * helper type for representing constructors
-     */
-    export type ConstructorFor<T> =
-        {
-            new(...args: any[]): T;
-        }
 
     /**
      * returns true if the two objects are equal but not the same object. (compares public keys)
@@ -137,29 +131,29 @@ export namespace Utilities
         return typeof o;
     }
 
-
-    function hashString(str: string): number
-    {
-        if (str.length === 0)
-        {
-            return 0;
-        }
-        else if (Array.prototype.reduce === undefined)
-        {
-            var hash = 0, i, chr;
-            for (i = 0; i < str.length; i++)
-            {
-                chr = str.charCodeAt(i);
-                hash = ((hash << 5) - hash) + chr;
-                hash |= 0; // Convert to 32bit integer
-            }
-            return hash;
-        }
-        else
-        {
-            return str.split(Strings.empty)
-                .map(chr => chr.charCodeAt(0))
-                .reduce((hash, chr) => (((hash << 5) - hash) + chr) | 0);
-        }
-    };
 }
+
+function hashString(str: string): number
+{
+    if (str.length === 0)
+    {
+        return 0;
+    }
+    else if (Array.prototype.reduce === undefined)
+    {
+        var hash = 0, i, chr;
+        for (i = 0; i < str.length; i++)
+        {
+            chr = str.charCodeAt(i);
+            hash = ((hash << 5) - hash) + chr;
+            hash |= 0; // Convert to 32bit integer
+        }
+        return hash;
+    }
+    else
+    {
+        return str.split(Strings.empty)
+            .map(chr => chr.charCodeAt(0))
+            .reduce((hash, chr) => (((hash << 5) - hash) + chr) | 0);
+    }
+};

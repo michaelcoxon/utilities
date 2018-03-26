@@ -1,4 +1,5 @@
 ﻿import { Strings } from './Strings';
+import { Undefinable } from './Types';
 
 /**
  * Class for building strings that will only concatenate them upon calling toString().
@@ -7,7 +8,7 @@ export class StringBuilder
 {
     private readonly _strings: string[];
 
-    private _lastValue?: string;
+    private _lastValue: Undefinable<string>;
     private _invalidateLastValue: boolean;
     /**
      * Create a new StringBuilder.

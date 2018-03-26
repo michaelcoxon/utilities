@@ -1,8 +1,9 @@
-﻿
+﻿import { Undefinable } from "./Types";
+
 export class LazyAsync<T>
 {
     private readonly _factory: () => Promise<T>;
-    private _value?: T;
+    private _value: Undefinable<T>;
 
     constructor(factory: () => Promise<T>)
     {
@@ -29,5 +30,10 @@ export class LazyAsync<T>
                 }
             }
         });
+    }
+
+    public get isValueCreated(): boolean
+    {
+        return this._value !== undefined;
     }
 }

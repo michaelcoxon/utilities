@@ -1,15 +1,20 @@
-﻿/**
+﻿import { SingleInvokeEvent } from ".";
+import { Undefinable, Promisable } from "./Types";
+
+/**
  * The AsyncWrapper is provided to monitor the state of a promise.
  * You can use this to provide state feedback to the user of an awaitable
  * method.
  */
 export class AsyncWrapper<T>
 {
+    private readonly _completeEvent: SingleInvokeEvent<Undefinable<T>>;
+
     private _promise: Promise<this>;
     private _complete: boolean;
     private _success: boolean;
     private _error: any;
-    private _value?: T;
+    private _value: Undefinable<T>;
 
     /**
     * Creates a new unresolved AsyncWrapper
@@ -19,17 +24,19 @@ export class AsyncWrapper<T>
     * Creates a new AsyncWrapper
     * @param promiseOrValue can be a promise or a value
     */
-    constructor(promiseOrValue: T | PromiseLike<T>);
+    constructor(promiseOrValue: Promisable<T>);
     /**
       * Creates a new AsyncWrapper
       * @param promiseOrValue can be a promise or a value
       * @param callback the callback that should be applied after the promise is resolved
       */
-    constructor(promiseOrValue: T | PromiseLike<T>, callback: (asyncWrapper: AsyncWrapper<T>) => void);
-    constructor(promiseOrValue?: T | PromiseLike<T>, callback?: (asyncWrapper: AsyncWrapper<T>) => void)
+    constructor(promiseOrValue: Promisable<T>, callback: (asyncWrapper: AsyncWrapper<T>) => void);
+    constructor(promiseOrValue?: Promisable<T>, callback?: (asyncWrapper: AsyncWrapper<T>) => void)
     {
         this._complete = false;
         this._success = false;
+        this._completeEvent = new SingleInvokeEvent();
+
         this._promise = new Promise<this>(async (resolve, reject) =>
         {
             if (promiseOrValue !== undefined)
@@ -39,7 +46,12 @@ export class AsyncWrapper<T>
         });
     }
 
-    /** Return the internal promise that is waiting for the orginal one to complete */ 
+    public get completeEvent(): SingleInvokeEvent<Undefinable<T>>
+    {
+        return this._completeEvent;
+    }
+
+    /** Return the internal promise that is waiting for the orginal one to complete */
     public get promise(): Promise<this>
     {
         return this._promise;
@@ -70,9 +82,9 @@ export class AsyncWrapper<T>
     }
 
     private async doWork(
-        resolve: (value?: this | PromiseLike<this>) => void,
+        resolve: (value?: Promisable<this>) => void,
         reject: (reason?: any) => void,
-        promiseOrValue?: T | PromiseLike<T>,
+        promiseOrValue?: Promisable<T>,
         callback?: (property: AsyncWrapper<T>) => void): Promise<void>
     {
         try
@@ -90,6 +102,8 @@ export class AsyncWrapper<T>
         finally
         {
             this._complete = true;
+            this._completeEvent.invoke(this, this._value);
+
             if (callback !== undefined)
             {
                 callback(this);

@@ -1,9 +1,9 @@
 ﻿import { StringBuilder } from "./StringBuilder";
 import { Exception } from "./Exceptions";
 
-export class ErrorHelper
+export namespace ErrorHelper
 {
-    public static errorToLogMessage(error: Error | Exception): string
+    export function errorToLogMessage(error: Error | Exception): string
     {
         const sb = new StringBuilder();
 
@@ -22,7 +22,7 @@ export class ErrorHelper
         return sb.toString();
     }
 
-    public static serialize(error: Error): string
+    export function serialize(error: Error): string
     {
         return JSON.stringify(Object.assign({}, error));
     }

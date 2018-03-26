@@ -1,7 +1,8 @@
-﻿export namespace Strings
-{
-    const WHITESPACE = "\\s\\uFEFF\\xA0";
+﻿
+const WHITESPACE = "\\s\\uFEFF\\xA0";
 
+export namespace Strings
+{
     /**
      * An empty string.
      */
@@ -143,55 +144,56 @@
         return str.split(empty);
     }
 
-    function escapeRegExp(str: string): string
+}
+
+function escapeRegExp(str: string): string
+{
+    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+}
+
+
+function convertToString(match: string, arg: any): string
+{
+    if (typeof arg === 'string')
     {
-        return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+        return formatString(match, arg);
+    }
+    if (typeof arg === 'number')
+    {
+        return formatNumber(match, arg);
     }
 
+    // default
+    return formatString(match, empty + arg);
+}
 
-    function convertToString(match: string, arg: any): string
+function formatString(match: string, arg: string): string
+{
+    switch (match)
     {
-        if (typeof arg === 'string')
-        {
-            return formatString(match, arg);
-        }
-        if (typeof arg === 'number')
-        {
-            return formatNumber(match, arg);
-        }
-
-        // default
-        return formatString(match, empty + arg);
+        case 'L':
+            arg = arg.toLowerCase();
+            break;
+        case 'U':
+            arg = arg.toUpperCase();
+            break;
+        default:
+            break;
     }
 
-    function formatString(match: string, arg: string): string
-    {
-        switch (match)
-        {
-            case 'L':
-                arg = arg.toLowerCase();
-                break;
-            case 'U':
-                arg = arg.toUpperCase();
-                break;
-            default:
-                break;
-        }
+    return arg;
+}
 
-        return arg;
+function formatNumber(match: string, arg: number): string
+{
+    switch (match.toLowerCase())
+    {
+        case 'f0':
+            arg = parseInt(arg.toString());
+            break;
+        default:
+            break;
     }
 
-    function formatNumber(match: string, arg: number): string
-    {
-        switch (match.toLowerCase())
-        {
-            case 'f0':
-                arg = parseInt(arg.toString());
-                break;
-            default:
-                break;
-        }
-
-        return arg.toString();
-    }
+    return arg.toString();
 }
