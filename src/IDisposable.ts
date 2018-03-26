@@ -28,16 +28,34 @@ export function using<T extends IDisposable, TResult>(disposableObjectFactory: (
  * @param disposableObjectFactory
  * @param inner
  */
-export async function usingAsync<T extends IDisposable, TResult>(disposableObjectFactory: () => T, inner: (disposableObject: T) => Promise<TResult>): Promise<TResult>
+export function usingAsync<T extends IDisposable, TResult>(disposableObjectFactory: () => T, inner: (disposableObject: T) => Promise<TResult>): Promise<TResult>
 {
-    const disposableObject = disposableObjectFactory();
+    return new Promise<TResult>((resolve, reject) =>
+    {
+        let disposableObject: T | undefined;
+        try
+        {
+            const dO = disposableObject = disposableObjectFactory();
 
-    try
-    {
-        return await inner(disposableObject);
-    }
-    finally
-    {
-        disposableObject.dispose()
-    }
+            inner(dO)
+                .then(result =>
+                {
+                    dO.dispose();
+                    resolve(result);
+                })
+                .catch(error =>
+                {
+                    dO.dispose();
+                    reject(error);
+                });
+        }
+        catch (error)
+        {
+            if (disposableObject)
+            {
+                disposableObject.dispose();
+            }
+            reject(error);
+        }
+    });
 }
