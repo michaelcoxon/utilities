@@ -1,4 +1,5 @@
-﻿import { Event, EventHandler } from "./Event";
+﻿import { Event } from "./Event";
+import { EventHandler } from "./Types";
 
 /**
  * An event type that can only be invoked once. Once the event

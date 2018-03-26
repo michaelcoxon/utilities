@@ -4,7 +4,7 @@ export type Nullable<T> = T | null;
 
 export type Undefinable<T> = T | undefined;
 
-export type Promisable<T> = t | PromiseLike<T>;
+export type Promisable<T> = T | PromiseLike<T>;
 /** The event handler type */
 export type EventHandler<TEventArgs> = (sender: any, args: TEventArgs) => void;
 

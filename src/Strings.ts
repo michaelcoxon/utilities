@@ -164,7 +164,7 @@ function convertToString(match: string, arg: any): string
     }
 
     // default
-    return formatString(match, empty + arg);
+    return formatString(match, Strings.empty + arg);
 }
 
 function formatString(match: string, arg: string): string
