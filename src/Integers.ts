@@ -24,7 +24,7 @@ export class Byte implements INumberValue
 
     public valueOf(): number
     {
-        return this._value.valueOf();
+        return this._value.valueOf() & 0xFF;
     }
 
     public toString(): string
@@ -51,7 +51,7 @@ export class Int16 implements INumberValue
 
     public valueOf(): number
     {
-        return this._value.valueOf();
+        return this._value.valueOf() & 0xFFFF;
     }
 
     public toString(): string
@@ -78,7 +78,7 @@ export class Int32 implements INumberValue
 
     public valueOf(): number
     {
-        return this._value.valueOf();
+        return this._value.valueOf() & 0xFFFFFFFF;
     }
 
     public toString(): string
