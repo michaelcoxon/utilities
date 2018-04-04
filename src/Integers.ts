@@ -18,7 +18,7 @@ export class Byte implements INumberValue
 
     constructor(value: number)
     {
-        ensureInt(value, 'Byte', Byte.minValue, Byte.maxValue);
+        ensureInt(value, Byte.minValue, Byte.maxValue);
         this._value = value;
     }
 
@@ -45,7 +45,7 @@ export class Int16 implements INumberValue
 
     constructor(value: number)
     {
-        ensureInt(value, 'Int16', Int16.minValue, Int16.maxValue);
+        ensureInt(value, Int16.minValue, Int16.maxValue);
         this._value = value;
     }
 
@@ -72,7 +72,7 @@ export class Int32 implements INumberValue
 
     constructor(value: number)
     {
-        ensureInt(value, 'Int32', Int32.minValue, Int32.maxValue);
+        ensureInt(value, Int32.minValue, Int32.maxValue);
         this._value = value;
     }
 
@@ -87,11 +87,11 @@ export class Int32 implements INumberValue
     }
 }
 
-function ensureInt(value: number, name: string, minValue: number, maxValue: number): void
+function ensureInt(value: number, minValue: number, maxValue: number): void
 {
     if (!Number.isInteger(value))
     {
-        throw new ArgumentException('value', `Value is not an ${name}`);
+        throw new ArgumentException('value', 'Value is not a whole number');
     }
     try
     {
