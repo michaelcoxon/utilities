@@ -1,4 +1,4 @@
-﻿import { ILogger } from ".";
+﻿import { ILogger } from "./ILogger";
 import { IDisposable } from "src/IDisposable";
 import { AggregateDisposable } from "./AggregateDisposable";
 

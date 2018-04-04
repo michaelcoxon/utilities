@@ -35,6 +35,16 @@ export namespace Strings
         }
     }
 
+    export function padLeft(str: string, length:number, padding: string): string
+    {
+        let output = str;
+        while (output.length < length)
+        {
+            output = padding + output;
+        }
+        return output;
+    }
+
     /**
      * Trims the whitespace from the start and end of a string
      * @param str The string to trim

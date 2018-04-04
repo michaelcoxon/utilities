@@ -1,10 +1,10 @@
 ﻿import * as Exceptions from '../src/Exceptions';
-import { Utilities } from "../src/Utilities";
+import * as Types from "../src/Types";
 import { expect, assert } from 'chai';
 import 'mocha';
 
 
-function test<T>(exceptionType: Utilities.ConstructorFor<T>, exception: () => T): void
+function test<T>(exceptionType: Types.ConstructorFor<T>, exception: () => T): void
 {
     describe(`Exceptions.${exceptionType.name}`, () =>
     {

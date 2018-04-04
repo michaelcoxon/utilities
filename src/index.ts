@@ -1,13 +1,15 @@
-export * from "./AggregateLogger";
+
 export * from "./AggregateDisposable";
+export * from "./AggregateLogger";
 export * from "./AsyncWrapper";
 export * from "./ConsoleLogger";
 export * from "./ErrorHelper";
 export * from "./Event";
 export * from "./Exceptions";
+export * from "./Guid";
 export * from "./IDisposable";
 export * from "./ILogger";
-export * from "./Int32";
+export * from "./Integers";
 export * from "./Lazy";
 export * from "./LazyAsync";
 export * from "./Path";

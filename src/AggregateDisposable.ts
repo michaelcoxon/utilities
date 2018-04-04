@@ -1,4 +1,4 @@
-﻿import { IDisposable } from ".";
+﻿import { IDisposable } from "./IDisposable";
 
 export class AggregateDisposable implements IDisposable
 {

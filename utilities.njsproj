@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{89925f06-dee7-4218-ac9c-f28824a53276}</ProjectGuid>
     <ProjectHome />
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <StartupFile />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -55,12 +55,13 @@
     <TypeScriptCompile Include="src\Exceptions.ts">
       <Publish>True</Publish>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\Guid.ts" />
     <TypeScriptCompile Include="src\IDisposable.ts" />
     <TypeScriptCompile Include="src\ILogger.ts" />
     <TypeScriptCompile Include="src\index.ts">
       <Publish>True</Publish>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\Int32.ts" />
+    <TypeScriptCompile Include="src\Integers.ts" />
     <TypeScriptCompile Include="src\Lazy.ts" />
     <TypeScriptCompile Include="src\LazyAsync.ts" />
     <TypeScriptCompile Include="src\Path.ts" />
@@ -76,6 +77,9 @@
       <TestFramework>Mocha</TestFramework>
     </TypeScriptCompile>
     <TypeScriptCompile Include="tests\Logger.spec.ts">
+      <TestFramework>Mocha</TestFramework>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="tests\Guid.spec.ts">
       <TestFramework>Mocha</TestFramework>
     </TypeScriptCompile>
     <TypeScriptCompile Include="tests\Path.spec.ts">

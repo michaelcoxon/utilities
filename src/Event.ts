@@ -1,5 +1,5 @@
 ﻿import { ArgumentException, ArgumentUndefinedException } from "./Exceptions";
-import { EventHandler } from ".";
+import { EventHandler } from "./Types";
 
 /**
  * Class to represent an event.

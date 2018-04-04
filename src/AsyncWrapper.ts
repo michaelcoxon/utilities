@@ -1,4 +1,4 @@
-﻿import { SingleInvokeEvent } from ".";
+﻿import { SingleInvokeEvent } from "./SingleInvokeEvent";
 import { Undefinable, Promisable } from "./Types";
 
 /**
