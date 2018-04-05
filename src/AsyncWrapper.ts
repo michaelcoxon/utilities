@@ -46,6 +46,7 @@ export class AsyncWrapper<T>
         });
     }
 
+    /** Event to be fired when the internal promise has completed */
     public get completeEvent(): SingleInvokeEvent<Undefinable<T>>
     {
         return this._completeEvent;
