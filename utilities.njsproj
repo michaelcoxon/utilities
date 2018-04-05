@@ -23,6 +23,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include=".nojekyll" />
     <Content Include="docs\.nojekyll" />
     <Content Include=".npmignore" />
     <Content Include="LICENSE" />
