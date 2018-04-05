@@ -66,76 +66,8 @@
 			<div class="tsd-panel tsd-typography">
 				<h1 id="utilities">utilities</h1>
 				<p>Simple utility classes and function for JS and TypeScript</p>
-				<p>Check out the tests for a more comprehesive doco.</p>
-				<h3 id="note-for-typescript">Note for TypeScript</h3>
-				<p>If you are using TypeScript, the classes herein are generics. This means
-				you <em>should</em> construct them with a type parameter to use them.</p>
-				<p>For example:</p>
-				<pre><code class="lang-js"><span class="hljs-keyword">let</span> myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
-<span class="hljs-keyword">let</span> myCollection = <span class="hljs-keyword">new</span> Collection&lt;number&gt;(myArray);
-</code></pre>
-				<p>If the type can be determined by the compiler (as in the example above) it
-					is not neccessary to explicitly define the type - doing it will just make
-				the code more readable.</p>
-				<p>All examples given in the documentation are JavaScript examples so that no-one
-				gets confused.</p>
-				<p>Just use this as you need to - sometimes it wont be neccessary - the examples
-				below will still work fine.</p>
-				<h1 id="asyncwrapper">AsyncWrapper</h1>
-				<p>The AsyncWrapper is provided to monitor the state of a promise.
-					You can use this to provide state feedback to the user of an awaitable
-				method.</p>
-				<h2 id="constructors">Constructors</h2>
-				<h3 id="default-constructor">Default constructor</h3>
-				<blockquote>
-					<p>Creates a new unresolved AsyncWrapper</p>
-					<pre><code class="lang-js"><span class="hljs-keyword">let</span> myAsyncWrapper = <span class="hljs-keyword">new</span> AsyncWrapper();
-</code></pre>
-				</blockquote>
-				<h3 id="promise-constructor">Promise constructor</h3>
-				<blockquote>
-					<p>Creates a new AsyncWrapper from a promise</p>
-					<pre><code class="lang-js"><span class="hljs-keyword">let</span> myAsyncWrapper = <span class="hljs-keyword">new</span> AsyncWrapper(myPromise);
-</code></pre>
-				</blockquote>
-				<h3 id="value-constructor">Value constructor</h3>
-				<blockquote>
-					<p>Creates a new AsyncWrapper from a value</p>
-					<pre><code class="lang-js"><span class="hljs-keyword">let</span> myAsyncWrapper = <span class="hljs-keyword">new</span> AsyncWrapper(myValue);
-</code></pre>
-				</blockquote>
-				<h2 id="properties">Properties</h2>
-				<h3 id="count-number">count: number</h3>
-				<blockquote>
-					<p>Returns to number of items in the Collection.</p>
-				</blockquote>
-				<p>This will return a number greater than or equal to 0.</p>
-				<p><code>myCollection.count;</code></p>
-				<h2 id="methods">Methods</h2>
-				<h3 id="copyto-into-collection-void">copyTo(into: Collection): void</h3>
-				<blockquote>
-					<p>Copies the items from the current collection into another one.</p>
-				</blockquote>
-				<p>This appends the items from one collection into another.</p>
-				<pre><code class="lang-js"><span class="hljs-keyword">let</span> myCollection = <span class="hljs-keyword">new</span> Collection([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]);
-<span class="hljs-keyword">let</span> myCollection2 = <span class="hljs-keyword">new</span> Collection([<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>]);
-
-<span class="hljs-comment">// copy the items from myCollection into myCollection2</span>
-myCollection.copyTo(myCollection2);
-
-<span class="hljs-comment">// the contents of myCollection2 will now be: [-1, 0, 1, 2, 3, 4]</span>
-</code></pre>
-				<h2 id="extension-methods">Extension methods</h2>
-				<p>These methods will only work if you have included the module that they are in.
-					The module is the first part and the method is the second part in the docs
-				below using the pattern <code>{module}::{method}</code></p>
-				<h3 id="enumerator-getenumerator-enumerator">Enumerator::getEnumerator(): Enumerator</h3>
-				<blockquote>
-					<p>Returns an Enumerator for a collection.</p>
-				</blockquote>
-				<pre><code class="lang-js"><span class="hljs-keyword">let</span> myCollection = <span class="hljs-keyword">new</span> Collection([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]);
-<span class="hljs-keyword">let</span> myCollectionEnumerator = myCollection.getEnumerator();
-</code></pre>
+				<p>Check out the tests for a more doco too.</p>
+				<p>Also check out the <a href="">project site for the api docs</a></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">

@@ -11,7 +11,7 @@
     "build-dev": "SET NODE_ENV=development&& webpack --no-color",
     "build-prod": "SET NODE_ENV=production&& webpack --no-color",
     "prepack": "npm-run-all -s test",
-    "build-doc": "jsdoc2md --no-cache --files 'src/**/*.ts' --configure jsdoc2md.json > docs/api.md"
+    "build-doc": "typedoc src --out docs"
   },
   "repository": {
     "type": "git",
