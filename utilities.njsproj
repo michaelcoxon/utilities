@@ -53,6 +53,7 @@
     <TypeScriptCompile Include="src\AggregateDisposable.ts" />
     <TypeScriptCompile Include="src\AggregateLogger.ts" />
     <TypeScriptCompile Include="src\AsyncWrapper.ts" />
+    <TypeScriptCompile Include="src\Booleans.ts" />
     <TypeScriptCompile Include="src\ConsoleLogger.ts" />
     <TypeScriptCompile Include="src\ErrorHelper.ts" />
     <TypeScriptCompile Include="src\Event.ts" />

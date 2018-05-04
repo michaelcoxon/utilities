@@ -2,6 +2,7 @@
 export * from "./AggregateDisposable";
 export * from "./AggregateLogger";
 export * from "./AsyncWrapper";
+export * from "./Booleans";
 export * from "./ConsoleLogger";
 export * from "./ErrorHelper";
 export * from "./Event";
@@ -13,6 +14,7 @@ export * from "./Integers";
 export * from "./Lazy";
 export * from "./LazyAsync";
 export * from "./Path";
+export * from "./Result";
 export * from "./ScopedLogger";
 export * from "./SingleInvokeEvent";
 export * from "./StringBuilder";
