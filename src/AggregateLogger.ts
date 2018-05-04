@@ -1,5 +1,5 @@
 ﻿import { ILogger } from "./ILogger";
-import { IDisposable } from "src/IDisposable";
+import { IDisposable } from "./IDisposable";
 import { AggregateDisposable } from "./AggregateDisposable";
 
 

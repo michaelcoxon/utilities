@@ -11,4 +11,30 @@ describe("Guid.newGuid", () =>
 
         assert.isNotNull(actual);
     });
+
+    it("should return a new guid every time", () =>
+    {
+        const guids: string[] = [];
+
+        for (let i = 0; i < 10000; i++)
+        {
+            guids.push(Guid.newGuid().toString());
+        }
+
+        const uniqueValues: { [key: string]: boolean } = {};
+
+        for (let guid of guids)
+        {
+            if (uniqueValues[guid] === undefined)
+            {
+                uniqueValues[guid] = true;
+            }
+            else
+            {
+                assert.fail(guid, "", `guid ${guid} not unique`);
+            }            
+        }
+
+        assert.equal(guids.length, Object.keys(uniqueValues).length);
+    });
 });

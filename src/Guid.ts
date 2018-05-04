@@ -68,7 +68,7 @@ export class Guid
         new Byte(0),
         new Byte(0));
 
-    /** Creates a new v4 GUID */
+    /** Creates a new v4 GUID (its random except for the version nibble)*/
     public static newGuid(): Guid
     {
         return new Guid(
@@ -105,15 +105,22 @@ export class Guid
 
 function randomByte(): Byte
 {
-    return new Byte(Math.floor(Math.random() * Byte.maxValue.valueOf()) + Byte.minValue.valueOf())
+    return new Byte(randomNumber(Byte.minValue.valueOf(), Byte.maxValue.valueOf()));
 }
 
 function randomInt16(): Int16
 {
-    return new Int16(Math.floor(Math.random() * Int16.maxValue.valueOf()) + Int16.minValue.valueOf())
+    return new Int16(randomNumber(Int16.minValue.valueOf(), Int16.maxValue.valueOf()));
 }
 
 function randomInt32(): Int32
 {
-    return new Int32(Math.floor(Math.random() * Int32.maxValue.valueOf()) + Int32.minValue.valueOf())
+    return new Int32(randomNumber(Int32.minValue.valueOf(), Int32.maxValue.valueOf()));
+}
+
+function randomNumber(min: number, max: number): number
+{
+    let rand = Math.random();
+    const num = Math.floor(rand * (max + 1)) + min;
+    return num > max ? max : num;
 }
