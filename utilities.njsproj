@@ -69,6 +69,7 @@
     <TypeScriptCompile Include="src\Lazy.ts" />
     <TypeScriptCompile Include="src\LazyAsync.ts" />
     <TypeScriptCompile Include="src\Path.ts" />
+    <TypeScriptCompile Include="src\Result.ts" />
     <TypeScriptCompile Include="src\ScopedLogger.ts" />
     <TypeScriptCompile Include="src\SingleInvokeEvent.ts" />
     <TypeScriptCompile Include="src\Strings.ts" />
