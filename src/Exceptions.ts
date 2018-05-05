@@ -48,6 +48,17 @@ export class Exception extends Error
     }
 }
 
+export class ErrorException extends Exception
+{
+    constructor(error: Error)
+    {
+        super();
+        this.name = error.name;
+        this.message = error.message;
+        this.stack = error.stack;
+    }
+}
+
 /**
  * The exception that is thrown when one of the arguments provided to a method is not valid.
  */
@@ -290,5 +301,27 @@ export class NullReferenceException extends Exception
             }
         }
         this.name = 'NullReferenceException';
+    }
+}
+
+export class AlreadyDisposedException extends Exception
+{
+    constructor(message?: string, innerException?: Exception)
+    {
+        if (innerException)
+        {
+            super(message!, innerException);
+        }
+        else
+        {
+            if (message)
+            {
+                super(message);
+            } else
+            {
+                super();
+            }
+        }
+        this.name = 'AlreadyDisposedException';
     }
 }
