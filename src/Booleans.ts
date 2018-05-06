@@ -11,12 +11,11 @@ export namespace Booleans
 
     export function parse(value: string): boolean
     {
-        const trimmedValue = Strings.trim(value);
-        if (trimmedValue.startsWith(trueString))
+        if (value.startsWith(trueString))
         {
             return true;
         }
-        else if (trimmedValue.startsWith(falseString))
+        else if (value.startsWith(falseString))
         {
             return false;
         }

@@ -2,7 +2,7 @@
 import { IDisposable } from './IDisposable';
 import { ErrorHelper } from "./ErrorHelper";
 import { ScopedLogger } from "./ScopedLogger";
-import { IndentedStringBuilder } from '.';
+import { IndentedStringBuilder } from './StringBuilder';
 
 const defaultConfig: IConsoleLoggerConfig = {
     loggingVerbosity: LogLevel.Info,

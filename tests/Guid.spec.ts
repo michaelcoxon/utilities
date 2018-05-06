@@ -12,11 +12,11 @@ describe("Guid.newGuid", () =>
         assert.isNotNull(actual);
     });
 
-    it("should return a new guid every time", () =>
-    {
+    it("should return a new guid every time", (done) =>
+    {        
         const guids: string[] = [];
 
-        for (let i = 0; i < 10000; i++)
+        for (let i = 0; i < 1000000; i++)
         {
             guids.push(Guid.newGuid().toString());
         }
@@ -36,5 +36,8 @@ describe("Guid.newGuid", () =>
         }
 
         assert.equal(guids.length, Object.keys(uniqueValues).length);
-    });
+
+        done();
+    })
+        .timeout(0);
 });
