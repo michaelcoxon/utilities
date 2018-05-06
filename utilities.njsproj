@@ -71,6 +71,7 @@
     <TypeScriptCompile Include="src\LazyAsync.ts" />
     <TypeScriptCompile Include="src\Numbers.ts" />
     <TypeScriptCompile Include="src\Path.ts" />
+    <TypeScriptCompile Include="src\Promises.ts" />
     <TypeScriptCompile Include="src\Result.ts" />
     <TypeScriptCompile Include="src\ScopedLogger.ts" />
     <TypeScriptCompile Include="src\SingleInvokeEvent.ts" />
