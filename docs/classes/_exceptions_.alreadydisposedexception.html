@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IndexOutOfRangeException | @michaelcoxon/utilities</title>
+	<title>AlreadyDisposedException | @michaelcoxon/utilities</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -59,10 +59,10 @@
 					<a href="../modules/_exceptions_.html">&quot;Exceptions&quot;</a>
 				</li>
 				<li>
-					<a href="_exceptions_.indexoutofrangeexception.html">IndexOutOfRangeException</a>
+					<a href="_exceptions_.alreadydisposedexception.html">AlreadyDisposedException</a>
 				</li>
 			</ul>
-			<h1>Class IndexOutOfRangeException</h1>
+			<h1>Class AlreadyDisposedException</h1>
 		</div>
 	</div>
 </header>
@@ -76,7 +76,7 @@
 						<a href="_exceptions_.exception.html" class="tsd-signature-type">Exception</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">IndexOutOfRangeException</span>
+								<span class="target">AlreadyDisposedException</span>
 							</li>
 						</ul>
 					</li>
@@ -89,28 +89,28 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_exceptions_.indexoutofrangeexception.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_exceptions_.alreadydisposedexception.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_exceptions_.indexoutofrangeexception.html#__proto__" class="tsd-kind-icon">__proto__</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_exceptions_.indexoutofrangeexception.html#message" class="tsd-kind-icon">message</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_exceptions_.indexoutofrangeexception.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static"><a href="_exceptions_.indexoutofrangeexception.html#stack" class="tsd-kind-icon">stack</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_exceptions_.alreadydisposedexception.html#__proto__" class="tsd-kind-icon">__proto__</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_exceptions_.alreadydisposedexception.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_exceptions_.alreadydisposedexception.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static"><a href="_exceptions_.alreadydisposedexception.html#stack" class="tsd-kind-icon">stack</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_exceptions_.indexoutofrangeexception.html#innerexception" class="tsd-kind-icon">inner<wbr>Exception</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_exceptions_.alreadydisposedexception.html#innerexception" class="tsd-kind-icon">inner<wbr>Exception</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_exceptions_.indexoutofrangeexception.html#isexception" class="tsd-kind-icon">is<wbr>Exception</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_exceptions_.alreadydisposedexception.html#isexception" class="tsd-kind-icon">is<wbr>Exception</a></li>
 							</ul>
 						</section>
 					</div>
@@ -122,35 +122,26 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Index<wbr>Out<wbr>OfRange<wbr>Exception<span class="tsd-signature-symbol">(</span>variableName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, minBound<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, maxBound<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, innerException<span class="tsd-signature-symbol">?: </span><a href="_exceptions_.exception.html" class="tsd-signature-type">Exception</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_exceptions_.indexoutofrangeexception.html" class="tsd-signature-type">IndexOutOfRangeException</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Already<wbr>Disposed<wbr>Exception<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, innerException<span class="tsd-signature-symbol">?: </span><a href="_exceptions_.exception.html" class="tsd-signature-type">Exception</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_exceptions_.alreadydisposedexception.html" class="tsd-signature-type">AlreadyDisposedException</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_exceptions_.exception.html">Exception</a>.<a href="_exceptions_.exception.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Exceptions.ts#L218">Exceptions.ts:218</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Exceptions.ts#L308">Exceptions.ts:308</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>variableName: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>index: <span class="tsd-signature-type">number</span></h5>
-								</li>
-								<li>
-									<h5>minBound: <span class="tsd-signature-type">number</span></h5>
-								</li>
-								<li>
-									<h5>maxBound: <span class="tsd-signature-type">number</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> message: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> innerException: <a href="_exceptions_.exception.html" class="tsd-signature-type">Exception</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_exceptions_.indexoutofrangeexception.html" class="tsd-signature-type">IndexOutOfRangeException</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_exceptions_.alreadydisposedexception.html" class="tsd-signature-type">AlreadyDisposedException</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -345,9 +336,36 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
 						<a href="_exceptions_.alreadydisposedexception.html" class="tsd-kind-icon">Already<wbr>Disposed<wbr>Exception</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_exceptions_.alreadydisposedexception.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_exceptions_.alreadydisposedexception.html#__proto__" class="tsd-kind-icon">__proto__</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="_exceptions_.alreadydisposedexception.html#message" class="tsd-kind-icon">message</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="_exceptions_.alreadydisposedexception.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static">
+								<a href="_exceptions_.alreadydisposedexception.html#stack" class="tsd-kind-icon">stack</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="_exceptions_.alreadydisposedexception.html#innerexception" class="tsd-kind-icon">inner<wbr>Exception</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="_exceptions_.alreadydisposedexception.html#isexception" class="tsd-kind-icon">is<wbr>Exception</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
 						<a href="_exceptions_.argumentexception.html" class="tsd-kind-icon">Argument<wbr>Exception</a>
 					</li>
@@ -366,36 +384,9 @@
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
 						<a href="_exceptions_.filenotfoundexception.html" class="tsd-kind-icon">File<wbr>Not<wbr>Found<wbr>Exception</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
 						<a href="_exceptions_.indexoutofrangeexception.html" class="tsd-kind-icon">Index<wbr>Out<wbr>OfRange<wbr>Exception</a>
-						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-								<a href="_exceptions_.indexoutofrangeexception.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_exceptions_.indexoutofrangeexception.html#__proto__" class="tsd-kind-icon">__proto__</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-								<a href="_exceptions_.indexoutofrangeexception.html#message" class="tsd-kind-icon">message</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-								<a href="_exceptions_.indexoutofrangeexception.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static">
-								<a href="_exceptions_.indexoutofrangeexception.html#stack" class="tsd-kind-icon">stack</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
-								<a href="_exceptions_.indexoutofrangeexception.html#innerexception" class="tsd-kind-icon">inner<wbr>Exception</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-								<a href="_exceptions_.indexoutofrangeexception.html#isexception" class="tsd-kind-icon">is<wbr>Exception</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
 						<a href="_exceptions_.invalidtypeexception.html" class="tsd-kind-icon">Invalid<wbr>Type<wbr>Exception</a>
 					</li>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Event | @michaelcoxon/utilities</title>
+	<title>SignedByte | @michaelcoxon/utilities</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,45 +56,31 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_event_.html">&quot;Event&quot;</a>
+					<a href="../modules/_integers_.html">&quot;Integers&quot;</a>
 				</li>
 				<li>
-					<a href="_event_.event.html">Event</a>
+					<a href="_integers_.signedbyte.html">SignedByte</a>
 				</li>
 			</ul>
-			<h1>Class Event&lt;TEventArgs&gt;</h1>
+			<h1>Class SignedByte</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Class to represent an event.</p>
-					</div>
-				</div>
-			</section>
-			<section class="tsd-panel tsd-type-parameters">
-				<h3>Type parameters</h3>
-				<ul class="tsd-type-parameters">
-					<li>
-						<h4>TEventArgs</h4>
-					</li>
-				</ul>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Event</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="_singleinvokeevent_.singleinvokeevent.html" class="tsd-signature-type">SingleInvokeEvent</a>
-							</li>
-						</ul>
+						<span class="target">SignedByte</span>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/_integers_.inumbervalue.html" class="tsd-signature-type">INumberValue</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -104,21 +90,24 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_event_.event.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_integers_.signedbyte.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_event_.event.html#_eventhandlers" class="tsd-kind-icon">_event<wbr>Handlers</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_integers_.signedbyte.html#_value" class="tsd-kind-icon">_value</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_integers_.signedbyte.html#maxvalue" class="tsd-kind-icon">max<wbr>Value</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_integers_.signedbyte.html#minvalue" class="tsd-kind-icon">min<wbr>Value</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_event_.event.html#addhandler" class="tsd-kind-icon">add<wbr>Handler</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_event_.event.html#invoke" class="tsd-kind-icon">invoke</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_event_.event.html#removehandler" class="tsd-kind-icon">remove<wbr>Handler</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_integers_.signedbyte.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_integers_.signedbyte.html#valueof" class="tsd-kind-icon">value<wbr>Of</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_integers_.signedbyte.html#parse" class="tsd-kind-icon">parse</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_integers_.signedbyte.html#tryparse" class="tsd-kind-icon">try<wbr>Parse</a></li>
 							</ul>
 						</section>
 					</div>
@@ -130,134 +119,150 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Event<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_event_.event.html" class="tsd-signature-type">Event</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Signed<wbr>Byte<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_integers_.signedbyte.html" class="tsd-signature-type">SignedByte</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Event.ts#L9">Event.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Integers.ts#L192">Integers.ts:192</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Creates a new event</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <a href="_event_.event.html" class="tsd-signature-type">Event</a></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_integers_.signedbyte.html" class="tsd-signature-type">SignedByte</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_eventhandlers" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _event<wbr>Handlers</h3>
-					<div class="tsd-signature tsd-kind-icon">_event<wbr>Handlers<span class="tsd-signature-symbol">:</span> <a href="../modules/_types_.html#eventhandler" class="tsd-signature-type">EventHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TEventArgs</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></div>
+					<a name="_value" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _value</h3>
+					<div class="tsd-signature tsd-kind-icon">_value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Event.ts#L9">Event.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Integers.ts#L192">Integers.ts:192</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a name="maxvalue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> max<wbr>Value</h3>
+					<div class="tsd-signature tsd-kind-icon">max<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;127</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Integers.ts#L187">Integers.ts:187</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The largest number that can be represented. Equal to 127.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a name="minvalue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> min<wbr>Value</h3>
+					<div class="tsd-signature tsd-kind-icon">min<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;-127</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Integers.ts#L190">Integers.ts:190</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The lowest number that can be represented. Equal to -127.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="addhandler" class="tsd-anchor"></a>
-					<h3>add<wbr>Handler</h3>
+					<a name="tostring" class="tsd-anchor"></a>
+					<h3>to<wbr>String</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Handler<span class="tsd-signature-symbol">(</span>eventHandler<span class="tsd-signature-symbol">: </span><a href="../modules/_types_.html#eventhandler" class="tsd-signature-type">EventHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TEventArgs</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_types_.html#eventhandler" class="tsd-signature-type">EventHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TEventArgs</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">to<wbr>String<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_integers_.inumbervalue.html">INumberValue</a>.<a href="../interfaces/_integers_.inumbervalue.html#tostring">toString</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Event.ts#L36">Event.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Integers.ts#L205">Integers.ts:205</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Adds a handler to the event</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>eventHandler: <a href="../modules/_types_.html#eventhandler" class="tsd-signature-type">EventHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TEventArgs</span><span class="tsd-signature-symbol">&gt;</span></h5>
-									<div class="tsd-comment tsd-typography">
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../modules/_types_.html#eventhandler" class="tsd-signature-type">EventHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TEventArgs</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="invoke" class="tsd-anchor"></a>
-					<h3>invoke</h3>
+					<a name="valueof" class="tsd-anchor"></a>
+					<h3>value<wbr>Of</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">invoke<span class="tsd-signature-symbol">(</span>sender<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TEventArgs</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">value<wbr>Of<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_integers_.inumbervalue.html">INumberValue</a>.<a href="../interfaces/_integers_.inumbervalue.html#valueof">valueOf</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Event.ts#L24">Event.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Integers.ts#L200">Integers.ts:200</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Invokes the event</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>sender: <span class="tsd-signature-type">any</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>the object that is calling invoke</p>
-									</div>
-								</li>
-								<li>
-									<h5>args: <span class="tsd-signature-type">TEventArgs</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>the arguments to send along with the event.</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="removehandler" class="tsd-anchor"></a>
-					<h3>remove<wbr>Handler</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">remove<wbr>Handler<span class="tsd-signature-symbol">(</span>eventHandler<span class="tsd-signature-symbol">: </span><a href="../modules/_types_.html#eventhandler" class="tsd-signature-type">EventHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TEventArgs</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="parse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> parse</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">parse<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_integers_.signedbyte.html" class="tsd-signature-type">SignedByte</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Event.ts#L46">Event.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Integers.ts#L210">Integers.ts:210</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>removes a handler from the event.</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>eventHandler: <a href="../modules/_types_.html#eventhandler" class="tsd-signature-type">EventHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TEventArgs</span><span class="tsd-signature-symbol">&gt;</span></h5>
-									<div class="tsd-comment tsd-typography">
-									</div>
+									<h5>value: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_integers_.signedbyte.html" class="tsd-signature-type">SignedByte</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="tryparse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> try<wbr>Parse</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">try<wbr>Parse<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_result_.iresult.html" class="tsd-signature-type">IResult</a><span class="tsd-signature-symbol">&lt;</span><a href="_integers_.signedbyte.html" class="tsd-signature-type">SignedByte</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Integers.ts#L216">Integers.ts:216</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_result_.iresult.html" class="tsd-signature-type">IResult</a><span class="tsd-signature-symbol">&lt;</span><a href="_integers_.signedbyte.html" class="tsd-signature-type">SignedByte</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -287,7 +292,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_errorhelper_.html">"<wbr>Error<wbr>Helper"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_event_.html">"<wbr>Event"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -302,7 +307,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_ilogger_.html">"ILogger"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_integers_.html">"<wbr>Integers"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -348,30 +353,60 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_integers_.byte.html" class="tsd-kind-icon">Byte</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_integers_.int16.html" class="tsd-kind-icon">Int16</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_integers_.int32.html" class="tsd-kind-icon">Int32</a>
+					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_event_.event.html" class="tsd-kind-icon">Event</a>
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_integers_.signedbyte.html" class="tsd-kind-icon">Signed<wbr>Byte</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_event_.event.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_integers_.signedbyte.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_event_.event.html#_eventhandlers" class="tsd-kind-icon">_event<wbr>Handlers</a>
+								<a href="_integers_.signedbyte.html#_value" class="tsd-kind-icon">_value</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+								<a href="_integers_.signedbyte.html#maxvalue" class="tsd-kind-icon">max<wbr>Value</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+								<a href="_integers_.signedbyte.html#minvalue" class="tsd-kind-icon">min<wbr>Value</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_event_.event.html#addhandler" class="tsd-kind-icon">add<wbr>Handler</a>
+								<a href="_integers_.signedbyte.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_event_.event.html#invoke" class="tsd-kind-icon">invoke</a>
+								<a href="_integers_.signedbyte.html#valueof" class="tsd-kind-icon">value<wbr>Of</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_event_.event.html#removehandler" class="tsd-kind-icon">remove<wbr>Handler</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_integers_.signedbyte.html#parse" class="tsd-kind-icon">parse</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_integers_.signedbyte.html#tryparse" class="tsd-kind-icon">try<wbr>Parse</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_integers_.unsignedint16.html" class="tsd-kind-icon">Unsigned<wbr>Int16</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_integers_.unsignedint32.html" class="tsd-kind-icon">Unsigned<wbr>Int32</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_integers_.inumbervalue.html" class="tsd-kind-icon">INumber<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_integers_.html#ensureint" class="tsd-kind-icon">ensure<wbr>Int</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

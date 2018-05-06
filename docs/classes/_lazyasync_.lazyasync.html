@@ -69,6 +69,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Lazy value provider for promises</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-type-parameters">
 				<h3>Type parameters</h3>
 				<ul class="tsd-type-parameters">
@@ -124,13 +131,23 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa528b0/src/LazyAsync.ts#L6">LazyAsync.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/LazyAsync.ts#L7">LazyAsync.ts:7</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new instance of the LazyAsync</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>factory: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The factory that creates the promise to be resolved</p>
+										</div>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -158,7 +175,7 @@
 					<div class="tsd-signature tsd-kind-icon">_factory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa528b0/src/LazyAsync.ts#L5">LazyAsync.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/LazyAsync.ts#L6">LazyAsync.ts:6</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -180,10 +197,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_value" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _value</h3>
-					<div class="tsd-signature tsd-kind-icon">_value<span class="tsd-signature-symbol">:</span> <a href="../modules/_types_.html#undefinable" class="tsd-signature-type">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">_value<span class="tsd-signature-symbol">:</span> <a href="../modules/_types_.html#undefinable" class="tsd-signature-type">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa528b0/src/LazyAsync.ts#L6">LazyAsync.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/LazyAsync.ts#L7">LazyAsync.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -200,9 +217,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa528b0/src/LazyAsync.ts#L35">LazyAsync.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/LazyAsync.ts#L32">LazyAsync.ts:32</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns true if the promise has been created</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -217,9 +239,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa528b0/src/LazyAsync.ts#L13">LazyAsync.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/LazyAsync.ts#L19">LazyAsync.ts:19</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the promise if it is already constructed or constructs the promise and returns it</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
@@ -240,6 +267,9 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_asyncwrapper_.html">"<wbr>Async<wbr>Wrapper"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_booleans_.html">"<wbr>Booleans"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_consolelogger_.html">"<wbr>Console<wbr>Logger"</a>
@@ -272,7 +302,16 @@
 						<a href="../modules/_lazyasync_.html">"<wbr>Lazy<wbr>Async"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_numbers_.html">"<wbr>Numbers"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_path_.html">"<wbr>Path"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_promises_.html">"<wbr>Promises"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_result_.html">"<wbr>Result"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_scopedlogger_.html">"<wbr>Scoped<wbr>Logger"</a>
