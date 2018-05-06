@@ -12,6 +12,24 @@ describe("LazyAsync.constructor", () =>
         const actual = new LazyAsync<Guid>(promiseFactory);
         assert.isNotNull(actual);
     });
+
+    it("should not call the factory until it has been asked for", () =>
+    {
+        let wasCalled = false;
+
+        const promiseFactory = () =>
+        {
+            const promise = new Promise<Guid>((resolve, reject) => resolve(Guid.newGuid()));
+            wasCalled = true;
+            return promise;
+        }
+
+        const actual = new LazyAsync<Guid>(promiseFactory);
+
+        assert.isFalse(wasCalled);
+        const promise = actual.value;
+        assert.isTrue(wasCalled);
+    });
 });
 
 describe("LazyAsync.value", () =>

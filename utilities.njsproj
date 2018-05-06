@@ -84,6 +84,9 @@
     <TypeScriptCompile Include="tests\Exceptions.spec.ts">
       <TestFramework>Mocha</TestFramework>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="tests\Lazy.spec.ts">
+      <TestFramework>Mocha</TestFramework>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="tests\LazyAsync.spec.ts">
       <TestFramework>Mocha</TestFramework>
     </TypeScriptCompile>
