@@ -122,6 +122,6 @@ export class AggregateLogger implements ILogger
         const disposable = new AggregateDisposable(...scopedLoggers);
         const aggLogger = new AggregateLogger(...scopedLoggers);
 
-        return Object.assign({}, aggLogger, disposable);
+        return Object.assign(aggLogger, disposable);
     }
 }
