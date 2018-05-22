@@ -150,7 +150,7 @@ export class IndentedStringBuilder
             this._invalidateLastValue = false;
             return this._lastValue = this._strings
                 .map(sv => [this.indentationString.repeat(sv.indent), sv.value])
-                .reduce((p, c) => [p, ...c].join(), Strings.empty);
+                .reduce((p, c) => [p, ...c].join(Strings.empty), Strings.empty);
         }
         else
         {

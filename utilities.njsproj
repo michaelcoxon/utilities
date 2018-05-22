@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{89925f06-dee7-4218-ac9c-f28824a53276}</ProjectGuid>
     <ProjectHome />
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <StartupFile />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -80,6 +80,9 @@
     <TypeScriptCompile Include="src\Types.ts" />
     <TypeScriptCompile Include="src\Utilities.ts">
       <Publish>True</Publish>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="tests\AggregateLogger.spec.ts">
+      <TestFramework>Mocha</TestFramework>
     </TypeScriptCompile>
     <TypeScriptCompile Include="tests\Exceptions.spec.ts">
       <TestFramework>Mocha</TestFramework>

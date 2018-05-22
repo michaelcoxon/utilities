@@ -1,38 +1,38 @@
-﻿import * as Integers from "./Integers";
+﻿import { Byte, Int16, Int32, SignedByte, UnsignedInt16, UnsignedInt32 } from "./Integers";
 
 
 
 
 export namespace Numbers
 {
-    export function toByte(value: number): Integers.Byte
+    export function toByte(value: number): Byte
     {
-        return new Integers.Byte(value);
+        return new Byte(value);
     }
 
-    export function toInt16(value: number): Integers.Int16
+    export function toInt16(value: number): Int16
     {
-        return new Integers.Int16(value);
+        return new Int16(value);
     }
 
-    export function toInt32(value: number): Integers.Int32
+    export function toInt32(value: number): Int32
     {
-        return new Integers.Int32(value);
+        return new Int32(value);
     }
 
-    export function toSignedByte(value: number): Integers.SignedByte
+    export function toSignedByte(value: number): SignedByte
     {
-        return new Integers.SignedByte(value);
+        return new SignedByte(value);
     }
 
-    export function toUnsignedInt16(value: number): Integers.UnsignedInt16
+    export function toUnsignedInt16(value: number): UnsignedInt16
     {
-        return new Integers.UnsignedInt16(value);
+        return new UnsignedInt16(value);
     }
 
-    export function toUnsignedInt32(value: number): Integers.UnsignedInt32
+    export function toUnsignedInt32(value: number): UnsignedInt32
     {
-        return new Integers.UnsignedInt32(value);
+        return new UnsignedInt32(value);
     }
 
     export function isMultipleOf(value: number, multiple: number): boolean
