@@ -42,16 +42,16 @@ export class ConsoleLogger implements ILogger
     {
         this._config = config;
 
-        this._logMethod = console.log;
-        this._errorMethod = console.error || this._logMethod;
-        this._infoMethod = console.info || this._logMethod;
+        this._logMethod = console.log.bind(console);
+        this._errorMethod = (console.error || console.log).bind(console);
+        this._infoMethod = (console.info || console.log).bind(console);
 
         // sometimes the trace method is wayyyy too verbose....
         this._traceMethod = this._config.useTraceMethodForTraceLogLevel
-            ? console.trace || this._logMethod
+            ? (console.trace || console.log).bind(console)
             : this._logMethod;
 
-        this._warnMethod = console.warn || this._logMethod;
+        this._warnMethod = (console.warn || console.log).bind(console);
     }
 
     debug(msg: string): void
