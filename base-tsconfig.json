@@ -5,6 +5,8 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "noEmitOnError": true,
+    "noEmitHelpers": true,
+    "importHelpers": true,
     "removeComments": false,
     "sourceMap": true,
     "skipDefaultLibCheck": true,

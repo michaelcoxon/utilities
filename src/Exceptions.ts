@@ -1,4 +1,5 @@
-﻿import { Strings } from './Strings';
+﻿import * as SR from './i18n/en.exceptions.strings.json';
+import { Strings } from './Strings';
 
 /**
  * Represents errors that occur during application execution.
@@ -103,7 +104,7 @@ export class ArgumentUndefinedException extends ArgumentException
 {
     constructor(argumentName: string, innerException?: Exception)
     {
-        const _message = argumentName + ' is undefined';
+        const _message = Strings.format(SR.ArgumentUndefinedException_message, argumentName);
         if (innerException)
         {
             super(argumentName, _message, innerException);
@@ -121,7 +122,7 @@ export class ArgumentNullException extends ArgumentException
 {
     constructor(argumentName: string, innerException?: Exception)
     {
-        const _message = argumentName + ' is null';
+        const _message = Strings.format(SR.ArgumentNullException_message, argumentName);
         if (innerException)
         {
             super(argumentName, _message, innerException);
@@ -139,7 +140,7 @@ export class InvalidTypeException extends Exception
 {
     constructor(variableName: string, expectedTypeName: string, message?: string, innerException?: Exception)
     {
-        const _message = `Type of '${variableName}' is not supported. Expected: '${expectedTypeName}'` + (message !== undefined ? message : Strings.empty);
+        const _message = Strings.format(SR.InvalidTypeException_message, variableName, expectedTypeName, message !== undefined ? message : Strings.empty);
         if (innerException)
         {
             super(_message, innerException);
@@ -201,7 +202,7 @@ export class OutOfBoundsException extends Exception
 {
     constructor(variableName: string, minBound: number, maxBound: number, innerException?: Exception)
     {
-        const _message = `The value of '${variableName}' is out of bounds. min: '${minBound}', max: '${maxBound}'`;
+        const _message = Strings.format(SR.OutOfBoundsException_message, variableName, minBound, maxBound);
         if (innerException)
         {
             super(_message, innerException);
@@ -218,7 +219,7 @@ export class IndexOutOfRangeException extends Exception
 {
     constructor(variableName: string, index: number, minBound: number, maxBound: number, innerException?: Exception)
     {
-        const _message = `The index of '${index}' on '${variableName}' is out of bounds. min: '${minBound}', max: '${maxBound}'`;
+        const _message = Strings.format(SR.IndexOutOfRangeException_message, index, variableName, minBound, maxBound);
         if (innerException)
         {
             super(_message, innerException);
@@ -235,7 +236,7 @@ export class FileNotFoundException extends Exception
 {
     constructor(filename: string, innerException?: Exception)
     {
-        const _message = `File '${filename}' is not found`;
+        const _message = Strings.format(SR.FileNotFoundException_message, filename);
         if (innerException)
         {
             super(_message, innerException);
@@ -252,7 +253,7 @@ export class KeyNotFoundException<TKey> extends Exception
 {
     constructor(key: TKey, innerException?: Exception)
     {
-        const _message = `Key '${key}' is not found`;
+        const _message = Strings.format(SR.KeyNotFoundException_message, key);
         if (innerException)
         {
             super(_message, innerException);
@@ -269,7 +270,7 @@ export class KeyAlreadyDefinedException<TKey> extends Exception
 {
     constructor(key: TKey, innerException?: Exception)
     {
-        const _message = `Key '${key}' is already defined`;
+        const _message = Strings.format(SR.KeyAlreadyDefinedException_message, key);
         if (innerException)
         {
             super(_message, innerException);

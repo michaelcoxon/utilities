@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{89925f06-dee7-4218-ac9c-f28824a53276}</ProjectGuid>
     <ProjectHome />
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <StartupFile />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -17,7 +17,7 @@
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
     <ToolsVersionPromptShown>0.0</ToolsVersionPromptShown>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
-    <LastActiveSolutionConfig>Release|Any CPU</LastActiveSolutionConfig>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -33,6 +33,7 @@
     <Content Include="src\config\es6\tsconfig.json" />
     <Content Include="src\config\es5\tsconfig.json" />
     <Content Include="base-tsconfig.json" />
+    <TypeScriptCompile Include="src\i18n\en.exceptions.strings.json" />
     <Content Include="tsconfig.json">
       <SubType>Code</SubType>
     </Content>
@@ -43,6 +44,7 @@
     <Folder Include="src\config\es5\" />
     <Folder Include="src\config\es6\" />
     <Folder Include="src\config\es2015\" />
+    <Folder Include="src\i18n\" />
     <Folder Include="tests\" />
     <Folder Include="src\" />
   </ItemGroup>
@@ -61,6 +63,7 @@
       <Publish>True</Publish>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\Guid.ts" />
+    <TypeScriptCompile Include="src\i18n\exceptions.strings.d.ts" />
     <TypeScriptCompile Include="src\IDisposable.ts" />
     <TypeScriptCompile Include="src\ILogger.ts" />
     <TypeScriptCompile Include="src\index.ts">
