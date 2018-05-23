@@ -1,4 +1,6 @@
 
+
+
 export * from "./AggregateDisposable";
 export * from "./AggregateLogger";
 export * from "./AsyncWrapper";
@@ -13,6 +15,7 @@ export * from "./ILogger";
 export * from "./Integers";
 export * from "./Lazy";
 export * from "./LazyAsync";
+export * from "./ModelState";
 export * from "./Numbers";
 export * from "./Path";
 export * from "./Promises";

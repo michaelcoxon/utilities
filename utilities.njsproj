@@ -99,6 +99,7 @@
     <TypeScriptCompile Include="tests\Guid.spec.ts">
       <TestFramework>Mocha</TestFramework>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\ModelState.ts" />
     <TypeScriptCompile Include="tests\Path.spec.ts">
       <TestFramework>Mocha</TestFramework>
     </TypeScriptCompile>

@@ -31,7 +31,18 @@ export class AsyncWrapper<T>
       * @param callback the callback that should be applied after the promise is resolved
       */
     constructor(promiseOrValue: Promisable<T>, callback: (asyncWrapper: AsyncWrapper<T>) => void);
-    constructor(promiseOrValue?: Promisable<T>, callback?: (asyncWrapper: AsyncWrapper<T>) => void)
+    /**
+    * Creates a new AsyncWrapper
+    * @param promiseFactory can be a promise or a value factory that will be invoked immediately
+    */
+    constructor(promiseFactory: () => Promisable<T>);
+    /**
+      * Creates a new AsyncWrapper
+      * @param promiseFactory can be a promise or a value factory that will be invoked immediately
+      * @param callback the callback that should be applied after the promise is resolved
+      */
+    constructor(promiseFactory: () => Promisable<T>, callback: (asyncWrapper: AsyncWrapper<T>) => void);
+    constructor(promiseOrValueOrFactory?: Promisable<T> | (() => Promisable<T>), callback?: (asyncWrapper: AsyncWrapper<T>) => void)
     {
         this._complete = false;
         this._success = false;
@@ -39,9 +50,16 @@ export class AsyncWrapper<T>
 
         this._promise = new Promise<this>(async (resolve, reject) =>
         {
-            if (promiseOrValue !== undefined)
+            if (promiseOrValueOrFactory !== undefined)
             {
-                await this.doWork(resolve, reject, promiseOrValue, callback);
+                if (typeof promiseOrValueOrFactory === "function")
+                {
+                    await this.doWork(resolve, reject, promiseOrValueOrFactory(), callback);
+                }
+                else
+                {
+                    await this.doWork(resolve, reject, promiseOrValueOrFactory, callback);
+                }
             }
         });
     }
