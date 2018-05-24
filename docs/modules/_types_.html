@@ -74,6 +74,7 @@
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_types_.html#action" class="tsd-kind-icon">Action</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_types_.html#comparison" class="tsd-kind-icon">Comparison</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_types_.html#constructorfor" class="tsd-kind-icon">Constructor<wbr>For</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_types_.html#eventhandler" class="tsd-kind-icon">Event<wbr>Handler</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_types_.html#func1" class="tsd-kind-icon">Func1</a></li>
@@ -83,7 +84,9 @@
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_types_.html#func5" class="tsd-kind-icon">Func5</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_types_.html#func6" class="tsd-kind-icon">Func6</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_types_.html#nullable" class="tsd-kind-icon">Nullable</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_types_.html#predicate" class="tsd-kind-icon">Predicate</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_types_.html#promisable" class="tsd-kind-icon">Promisable</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_types_.html#selector" class="tsd-kind-icon">Selector</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_types_.html#undefinable" class="tsd-kind-icon">Undefinable</a></li>
 							</ul>
 						</section>
@@ -98,9 +101,14 @@
 					<div class="tsd-signature tsd-kind-icon">Action<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Types.ts#L16">Types.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Types.ts#L18">Types.ts:18</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Shortcut for () =&gt; T</p>
+						</div>
+					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -118,17 +126,56 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="comparison" class="tsd-anchor"></a>
+					<h3>Comparison</h3>
+					<div class="tsd-signature tsd-kind-icon">Comparison<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Types.ts#L45">Types.ts:45</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Represents a comparision between two items of the same type. Should return 0 if they are the same, &gt;0 if a &gt; b, &lt;0 if a &lt; b.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>a: <span class="tsd-signature-type">T</span></h5>
+											</li>
+											<li>
+												<h5>y: <span class="tsd-signature-type">T</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
 					<a name="constructorfor" class="tsd-anchor"></a>
 					<h3>Constructor<wbr>For</h3>
 					<div class="tsd-signature tsd-kind-icon">Constructor<wbr>For<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Types.ts#L14">Types.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Types.ts#L15">Types.ts:15</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>helper type for representing constructors</p>
+							<p>Helper type for representing constructors</p>
 						</div>
 					</div>
 					<div class="tsd-type-declaration">
@@ -143,7 +190,7 @@
 									<li class="tsd-description">
 										<aside class="tsd-sources">
 											<ul>
-												<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Types.ts#L14">Types.ts:14</a></li>
+												<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Types.ts#L15">Types.ts:15</a></li>
 											</ul>
 										</aside>
 										<h4 class="tsd-parameters-title">Parameters</h4>
@@ -164,7 +211,7 @@
 					<div class="tsd-signature tsd-kind-icon">Event<wbr>Handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Types.ts#L9">Types.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Types.ts#L12">Types.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -203,9 +250,14 @@
 					<div class="tsd-signature tsd-kind-icon">Func1<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Types.ts#L18">Types.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Types.ts#L21">Types.ts:21</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Shortcut for (arg1: Tin) =&gt; Tout</p>
+						</div>
+					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -234,9 +286,14 @@
 					<div class="tsd-signature tsd-kind-icon">Func2<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Types.ts#L20">Types.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Types.ts#L24">Types.ts:24</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Shortcut for (arg1: Tin1, arg2: Tin2) =&gt; Tout</p>
+						</div>
+					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -268,9 +325,14 @@
 					<div class="tsd-signature tsd-kind-icon">Func3<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Types.ts#L22">Types.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Types.ts#L27">Types.ts:27</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Shortcut for (arg1: Tin1, arg2: Tin2, arg3: Tin3) =&gt; Tout</p>
+						</div>
+					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -305,9 +367,14 @@
 					<div class="tsd-signature tsd-kind-icon">Func4<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Types.ts#L24">Types.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Types.ts#L30">Types.ts:30</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Shortcut for (arg1: Tin1, arg2: Tin2, arg3: Tin3, arg4: Tin4) =&gt; Tout</p>
+						</div>
+					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -345,9 +412,14 @@
 					<div class="tsd-signature tsd-kind-icon">Func5<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Types.ts#L26">Types.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Types.ts#L33">Types.ts:33</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Shortcut for (arg1: Tin1, arg2: Tin2, arg3: Tin3, arg4: Tin4, arg5: Tin5) =&gt; Tout</p>
+						</div>
+					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -388,9 +460,14 @@
 					<div class="tsd-signature tsd-kind-icon">Func6<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Types.ts#L28">Types.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Types.ts#L36">Types.ts:36</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Shortcut for (arg1: Tin1, arg2: Tin2, arg3: Tin3, arg4: Tin4, arg5: Tin5, arg6: Tin6) =&gt; Tout</p>
+						</div>
+					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -434,9 +511,50 @@
 					<div class="tsd-signature tsd-kind-icon">Nullable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Types.ts#L3">Types.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Types.ts#L3">Types.ts:3</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Shortcut for T | null</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="predicate" class="tsd-anchor"></a>
+					<h3>Predicate</h3>
+					<div class="tsd-signature tsd-kind-icon">Predicate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Types.ts#L39">Types.ts:39</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Takes an item and return a boolean value from an assertion on the item</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>item: <span class="tsd-signature-type">T</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
 					<a name="promisable" class="tsd-anchor"></a>
@@ -444,9 +562,50 @@
 					<div class="tsd-signature tsd-kind-icon">Promisable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PromiseLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Types.ts#L7">Types.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Types.ts#L9">Types.ts:9</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Shortcut for T | PromiseLike<T></p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="selector" class="tsd-anchor"></a>
+					<h3>Selector</h3>
+					<div class="tsd-signature tsd-kind-icon">Selector<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Types.ts#L42">Types.ts:42</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Takes an item and maps it to TReturn</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TReturn</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>item: <span class="tsd-signature-type">T</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TReturn</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
 					<a name="undefinable" class="tsd-anchor"></a>
@@ -454,9 +613,14 @@
 					<div class="tsd-signature tsd-kind-icon">Undefinable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b402128/src/Types.ts#L5">Types.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Types.ts#L6">Types.ts:6</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Shortcut for T | undefined</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -466,80 +630,8 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_aggregatedisposable_.html">"<wbr>Aggregate<wbr>Disposable"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_aggregatelogger_.html">"<wbr>Aggregate<wbr>Logger"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_asyncwrapper_.html">"<wbr>Async<wbr>Wrapper"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_booleans_.html">"<wbr>Booleans"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_consolelogger_.html">"<wbr>Console<wbr>Logger"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_errorhelper_.html">"<wbr>Error<wbr>Helper"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_event_.html">"<wbr>Event"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_exceptions_.html">"<wbr>Exceptions"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_guid_.html">"<wbr>Guid"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_idisposable_.html">"IDisposable"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_ilogger_.html">"ILogger"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_integers_.html">"<wbr>Integers"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_lazy_.html">"<wbr>Lazy"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_lazyasync_.html">"<wbr>Lazy<wbr>Async"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_numbers_.html">"<wbr>Numbers"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_path_.html">"<wbr>Path"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_promises_.html">"<wbr>Promises"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_result_.html">"<wbr>Result"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_scopedlogger_.html">"<wbr>Scoped<wbr>Logger"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_singleinvokeevent_.html">"<wbr>Single<wbr>Invoke<wbr>Event"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_stringbuilder_.html">"<wbr>String<wbr>Builder"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_strings_.html">"<wbr>Strings"</a>
-					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="_types_.html">"<wbr>Types"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_utilities_.html">"<wbr>Utilities"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_index_.html">"index"</a>
 					</li>
 				</ul>
 			</nav>
@@ -547,6 +639,9 @@
 				<ul class="before-current">
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="_types_.html#action" class="tsd-kind-icon">Action</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="_types_.html#comparison" class="tsd-kind-icon">Comparison</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="_types_.html#constructorfor" class="tsd-kind-icon">Constructor<wbr>For</a>
@@ -576,7 +671,13 @@
 						<a href="_types_.html#nullable" class="tsd-kind-icon">Nullable</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="_types_.html#predicate" class="tsd-kind-icon">Predicate</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="_types_.html#promisable" class="tsd-kind-icon">Promisable</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="_types_.html#selector" class="tsd-kind-icon">Selector</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="_types_.html#undefinable" class="tsd-kind-icon">Undefinable</a>

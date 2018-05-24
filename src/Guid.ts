@@ -1,4 +1,4 @@
-﻿import { Int16, Int32, Byte } from "./Integers";
+﻿import { UnsignedInt16, UnsignedInt32, Byte } from "./Integers";
 import { Strings } from "./Strings";
 
 
@@ -8,9 +8,9 @@ import { Strings } from "./Strings";
  */
 export class Guid
 {
-    private readonly _a: Int32;
-    private readonly _b: Int16;
-    private readonly _c: Int16;
+    private readonly _a: UnsignedInt32;
+    private readonly _b: UnsignedInt16;
+    private readonly _c: UnsignedInt16;
     private readonly _d: Byte;
     private readonly _e: Byte;
     private readonly _f: Byte;
@@ -20,7 +20,7 @@ export class Guid
     private readonly _j: Byte;
     private readonly _k: Byte;
 
-    constructor(a: Int32, b: Int16, c: Int16, d: Byte, e: Byte, f: Byte, g: Byte, h: Byte, i: Byte, j: Byte, k: Byte)
+    constructor(a: UnsignedInt32, b: UnsignedInt16, c: UnsignedInt16, d: Byte, e: Byte, f: Byte, g: Byte, h: Byte, i: Byte, j: Byte, k: Byte)
     {
         this._a = a;
         this._b = b;
@@ -56,9 +56,9 @@ export class Guid
     }
 
     public static readonly empty: Guid = new Guid(
-        new Int32(0),
-        new Int16(0),
-        new Int16(0),
+        new UnsignedInt32(0),
+        new UnsignedInt16(0),
+        new UnsignedInt16(0),
         new Byte(0),
         new Byte(0),
         new Byte(0),
@@ -74,7 +74,7 @@ export class Guid
         return new Guid(
             randomInt32(),
             randomInt16(),
-            new Int16((randomInt16().valueOf() & 0x0FFF) | 0x4000),
+            new UnsignedInt16((randomInt16().valueOf() & 0x0FFF) | 0x4000),
             new Byte(randomByte().valueOf() | 0xA),
             randomByte(),
             randomByte(),
@@ -89,17 +89,17 @@ export class Guid
     {
         const guid = str.replace(/[-\{\}\[\]]/gi, '');
         return new Guid(
-            new Int32(parseInt(guid.slice(0, 8), 16)),
-            new Int16(parseInt(guid.slice(8, 4), 16)),
-            new Int16(parseInt(guid.slice(12, 4), 16)),
-            new Byte(parseInt(guid.slice(16, 2), 16)),
-            new Byte(parseInt(guid.slice(18, 2), 16)),
-            new Byte(parseInt(guid.slice(20, 2), 16)),
-            new Byte(parseInt(guid.slice(22, 2), 16)),
-            new Byte(parseInt(guid.slice(24, 2), 16)),
-            new Byte(parseInt(guid.slice(26, 2), 16)),
-            new Byte(parseInt(guid.slice(28, 2), 16)),
-            new Byte(parseInt(guid.slice(30, 2), 16)));
+            new UnsignedInt32(parseInt(guid.substr(0, 8), 16)),
+            new UnsignedInt16(parseInt(guid.substr(8, 4), 16)),
+            new UnsignedInt16(parseInt(guid.substr(12, 4), 16)),
+            new Byte(parseInt(guid.substr(16, 2), 16)),
+            new Byte(parseInt(guid.substr(18, 2), 16)),
+            new Byte(parseInt(guid.substr(20, 2), 16)),
+            new Byte(parseInt(guid.substr(22, 2), 16)),
+            new Byte(parseInt(guid.substr(24, 2), 16)),
+            new Byte(parseInt(guid.substr(26, 2), 16)),
+            new Byte(parseInt(guid.substr(28, 2), 16)),
+            new Byte(parseInt(guid.substr(30, 2), 16)));
     }
 }
 
@@ -108,14 +108,14 @@ function randomByte(): Byte
     return new Byte(randomNumber(Byte.minValue.valueOf(), Byte.maxValue.valueOf()));
 }
 
-function randomInt16(): Int16
+function randomInt16(): UnsignedInt16
 {
-    return new Int16(randomNumber(Int16.minValue.valueOf(), Int16.maxValue.valueOf()));
+    return new UnsignedInt16(randomNumber(UnsignedInt16.minValue.valueOf(), UnsignedInt16.maxValue.valueOf()));
 }
 
-function randomInt32(): Int32
+function randomInt32(): UnsignedInt32
 {
-    return new Int32(randomNumber(Int32.minValue.valueOf(), Int32.maxValue.valueOf()));
+    return new UnsignedInt32(randomNumber(UnsignedInt32.minValue.valueOf(), UnsignedInt32.maxValue.valueOf()));
 }
 
 function randomNumber(min: number, max: number): number
