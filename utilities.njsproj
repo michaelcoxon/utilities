@@ -37,6 +37,9 @@
     <Content Include="tsconfig.json">
       <SubType>Code</SubType>
     </Content>
+    <TypeScriptCompile Include="tests\Timer.spec.ts">
+      <TestFramework>Mocha</TestFramework>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="docs\" />
@@ -80,6 +83,7 @@
     <TypeScriptCompile Include="src\SingleInvokeEvent.ts" />
     <TypeScriptCompile Include="src\Strings.ts" />
     <TypeScriptCompile Include="src\StringBuilder.ts" />
+    <TypeScriptCompile Include="src\Timer.ts" />
     <TypeScriptCompile Include="src\Types.ts" />
     <TypeScriptCompile Include="src\Utilities.ts">
       <Publish>True</Publish>

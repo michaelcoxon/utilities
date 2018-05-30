@@ -1,10 +1,16 @@
 ﻿import { ArgumentException, ArgumentUndefinedException } from "./Exceptions";
 import { EventHandler } from "./Types";
 
+export interface IEvent<TEventArgs>
+{
+    addHandler(eventHandler: EventHandler<TEventArgs>): EventHandler<TEventArgs>;
+    removeHandler(eventHandler: EventHandler<TEventArgs>): void;
+}
+
 /**
  * Class to represent an event.
  */
-export class Event<TEventArgs>
+export class Event<TEventArgs> implements IEvent<TEventArgs>
 {
     private readonly _eventHandlers: EventHandler<TEventArgs>[];
 
