@@ -1,5 +1,34 @@
 ﻿import { IDisposable } from "./IDisposable";
 
+const noop = (...args: any[]) => { };
+
+let _defaultLogger: ILogger
+
+_defaultLogger = {
+    debug: noop,
+    debugError: noop,
+    error: noop,
+    errorError: noop,
+    info: noop,
+    infoError: noop,
+    trace: noop,
+    traceError: noop,
+    warn: noop,
+    warnError: noop,
+    scope: (name) => Object.assign({ dispose: noop }, _defaultLogger),
+};
+
+
+export function getDefaultLogger(): ILogger
+{
+    return _defaultLogger;
+}
+
+export function setDefaultLogger(logger: ILogger): void
+{
+    _defaultLogger = logger;
+}
+
 /** The log level. Used for filtering and tagging logging events */
 export enum LogLevel
 {

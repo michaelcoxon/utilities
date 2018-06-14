@@ -1,4 +1,4 @@
-﻿import { Event } from "./Event";
+﻿import { Event, IEvent } from "./Event";
 import { EventHandler } from "./Types";
 
 /**
@@ -6,7 +6,7 @@ import { EventHandler } from "./Types";
  * is invoked, and handler that is added to it will be immediately
  * executed.
  */
-export class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs>
+export class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> implements IEvent<TEventArgs>
 {
     /** event has been fired */
     private _fired: boolean;

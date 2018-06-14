@@ -8,9 +8,10 @@ import { Undefinable, Promisable } from "./Types";
  */
 export class AsyncWrapper<T>
 {
+    private readonly _callback: ((asyncWrapper: AsyncWrapper<T>) => void) | undefined;
     private readonly _completeEvent: SingleInvokeEvent<Undefinable<T>>;
 
-    private _promise: Promise<this>;
+    private _promise?: Promise<T>;
     private _complete: boolean;
     private _success: boolean;
     private _error: any;
@@ -25,6 +26,11 @@ export class AsyncWrapper<T>
     * @param promiseOrValue can be a promise or a value
     */
     constructor(promiseOrValue: Promisable<T>);
+    /**
+      * Creates a new AsyncWrapper
+      * @param callback the callback that should be applied after the promise is resolved
+      */
+    constructor(callback: (asyncWrapper: AsyncWrapper<T>) => void);
     /**
       * Creates a new AsyncWrapper
       * @param promiseOrValue can be a promise or a value
@@ -42,26 +48,81 @@ export class AsyncWrapper<T>
       * @param callback the callback that should be applied after the promise is resolved
       */
     constructor(promiseFactory: () => Promisable<T>, callback: (asyncWrapper: AsyncWrapper<T>) => void);
+    /**
+    * Creates a new AsyncWrapper
+    * @param promiseOrValueOrFactory can be a promise or a value factory, a value or a promise that will be invoked immediately
+    * @param callback the callback that should be applied after the promise is resolved
+    */
+    constructor(promiseOrValueOrFactory?: Promisable<T> | (() => Promisable<T>), callback?: (asyncWrapper: AsyncWrapper<T>) => void);
     constructor(promiseOrValueOrFactory?: Promisable<T> | (() => Promisable<T>), callback?: (asyncWrapper: AsyncWrapper<T>) => void)
     {
         this._complete = false;
         this._success = false;
         this._completeEvent = new SingleInvokeEvent();
+        this._callback = callback;
 
-        this._promise = new Promise<this>(async (resolve, reject) =>
+        this.update(promiseOrValueOrFactory);
+    }
+
+    public update(promiseOrValueOrFactory?: Promisable<T> | (() => Promisable<T>)): void
+    {
+        if (promiseOrValueOrFactory !== undefined)
         {
-            if (promiseOrValueOrFactory !== undefined)
+            this._success = false;
+            this._complete = false;
+
+            if (typeof promiseOrValueOrFactory === "function")
             {
-                if (typeof promiseOrValueOrFactory === "function")
-                {
-                    await this.doWork(resolve, reject, promiseOrValueOrFactory(), callback);
-                }
-                else
-                {
-                    await this.doWork(resolve, reject, promiseOrValueOrFactory, callback);
-                }
+                this._promise = Promise.resolve(promiseOrValueOrFactory());
             }
-        });
+            else
+            {
+                this._promise = Promise.resolve(promiseOrValueOrFactory);
+            }
+
+            new Promise<T>(async (resolve, reject) =>
+            {
+                let cancelled = false;
+                const promise = this._promise;
+
+                try
+                {
+                    const value = await promise;
+                    if (this._promise !== promise)
+                    {
+                        cancelled = true;
+                        return;
+                    }
+                    this._value = value;
+                    resolve(this.value);
+                    this._success = true;
+                }
+                catch (error)
+                {
+                    if (this._promise !== promise)
+                    {
+                        cancelled = true;
+                        return;
+                    }
+                    this._error = error;
+                    reject(error);
+                    this._success = false;
+                }
+                finally
+                {
+                    if (!cancelled)
+                    {
+                        this._complete = true;
+                        this._completeEvent.invoke(this, this._value);
+
+                        if (this._callback !== undefined)
+                        {
+                            this._callback(this);
+                        }
+                    }
+                }
+            });
+        }
     }
 
     /** Event to be fired when the internal promise has completed */
@@ -71,7 +132,7 @@ export class AsyncWrapper<T>
     }
 
     /** Return the internal promise that is waiting for the orginal one to complete */
-    public get promise(): Promise<this>
+    public get promise(): Undefinable<Promise<T>>
     {
         return this._promise;
     }
@@ -98,35 +159,5 @@ export class AsyncWrapper<T>
     public get error(): any
     {
         return this._error;
-    }
-
-    private async doWork(
-        resolve: (value?: Promisable<this>) => void,
-        reject: (reason?: any) => void,
-        promiseOrValue?: Promisable<T>,
-        callback?: (property: AsyncWrapper<T>) => void): Promise<void>
-    {
-        try
-        {
-            this._value = await promiseOrValue;
-            resolve(this);
-            this._success = true;
-        }
-        catch (error)
-        {
-            this._error = error;
-            reject(error);
-            this._success = false;
-        }
-        finally
-        {
-            this._complete = true;
-            this._completeEvent.invoke(this, this._value);
-
-            if (callback !== undefined)
-            {
-                callback(this);
-            }
-        }
     }
 }

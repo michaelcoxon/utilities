@@ -1,10 +1,10 @@
 {
   "name": "@michaelcoxon/utilities",
-  "version": "1.4.0",
+  "version": "1.5.3-alpha",
   "description": "utilities for JS and TypeScript",
   "main": "dist/index.js",
-  "module": "lib.2015/index.js",
   "types": "dist/index.d.ts",
+  "module": "lib.2015/index.js",
   "scripts": {
     "run-tests": "mocha -r ts-node/register tests/**/*.spec.ts",
     "test": "npm-run-all -s build-dev build-prod -p run-tests",
