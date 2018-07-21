@@ -1,25 +1,33 @@
 ﻿import { Undefinable } from "./Types";
 
+export interface IResultBase<TPreviousResult extends IResultBase | undefined = undefined>
+{
+    readonly success: boolean;
+    readonly error?: string;
+    readonly previousResult?: TPreviousResult;
+}
 
 
-export interface IResult<T={}>
+export interface IResult<T, TPreviousResult extends IResultBase | undefined = undefined> extends IResultBase<TPreviousResult>
 {
     readonly value?: T;
     readonly success: boolean;
     readonly error?: string;
 }
 
-export class Result<T={}> implements IResult<T>
+export class Result<T={}, TPreviousResult extends IResultBase | undefined = undefined> implements IResult<T, TPreviousResult>
 {
     private readonly _value?: T;
     private readonly _success: boolean;
     private readonly _error?: string;
+    private readonly _previousResult?: TPreviousResult;
 
-    constructor(success: boolean, value?: T, error?: string)
+    constructor(success: boolean, value?: T, error?: string, previousResult?: TPreviousResult)
     {
         this._success = success;
         this._value = value;
         this._error = error;
+        this._previousResult = previousResult;
     }
 
     public get value(): Undefinable<T>
@@ -37,13 +45,18 @@ export class Result<T={}> implements IResult<T>
         return this._error;
     }
 
-    public static ok<T>(value?: T)
+    public get previousResult(): TPreviousResult
     {
-        return new Result<T>(true, value);
+        return this.previousResult;
     }
 
-    public static fail(error?: string)
+    public static ok<T, TPreviousResult extends IResultBase | undefined = undefined>(value?: T, previousResult?: TPreviousResult)
     {
-        return new Result(false, undefined, error);
+        return new Result(true, value, undefined, previousResult);
+    }
+
+    public static fail<TPreviousResult extends IResultBase | undefined = undefined>(error?: string, previousResult?: TPreviousResult)
+    {
+        return new Result(false, undefined, error, previousResult);
     }
 }

@@ -1,10 +1,12 @@
 
 
-
 export * from "./AggregateDisposable";
 export * from "./AggregateLogger";
+export * from "./Arrays";
 export * from "./AsyncWrapper";
 export * from "./Booleans";
+export * from "./Cache";
+export * from "./CancellablePromise";
 export * from "./ConsoleLogger";
 export * from "./ErrorHelper";
 export * from "./Event";
@@ -24,6 +26,7 @@ export * from "./ScopedLogger";
 export * from "./SingleInvokeEvent";
 export * from "./StringBuilder";
 export * from "./Strings";
+export * from "./Timer";
 export * from "./Types";
 export * from "./Utilities";
 

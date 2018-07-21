@@ -1,4 +1,6 @@
-﻿import { Undefinable } from "./Types";
+﻿import 'tslib';
+
+import { Undefinable } from "./Types";
 
 /** Lazy value provider for promises */
 export class LazyAsync<T>

@@ -6,8 +6,8 @@ import { IResult, Result } from "./Result";
 
 export namespace Booleans
 {
-    export const trueString = "true";
-    export const falseString = "false";
+    export const trueString: string = (true).toString();
+    export const falseString: string = (false).toString();
 
     export function parse(value: string): boolean
     {

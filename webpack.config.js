@@ -1,4 +1,5 @@
 ﻿/// <binding ProjectOpened='Run - Development, Run - Production' />
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const path = require('path');
 const webpack = require('webpack');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
@@ -29,6 +30,7 @@ module.exports = () =>
     const isDevBuild = !(env && env === 'production');
 
     return [{
+        mode: isDevBuild ? 'development' : 'production',
         entry: { 'index': `./${srcDir}/index.ts` },
         resolve: { extensions: ['.ts'] },
         output: {
@@ -50,12 +52,28 @@ module.exports = () =>
                 }
             ]
         },
+        optimization: {
+            minimizer: [
+                new UglifyJsPlugin({
+                    parallel: true,
+                    sourceMap: true,
+                    uglifyOptions: {
+                        ecma: 5,
+                        output: {
+                            beautify: false,
+                            comments: /^!/
+                        },
+                        /*mangle: {
+                            properties: {
+                                regex: /^_/
+                            }
+                        }*/
+                    }
+                })
+            ]
+        },
         plugins: [
-            new CheckerPlugin(),
-            new webpack.SourceMapDevToolPlugin({
-                filename: '[file].map', // Remove this line if you prefer inline source maps
-                moduleFilenameTemplate: path.relative(bundleOutputDir, '[resourcePath]') // Point sourcemap entries to the original file locations on disk
-            }),
+            new CheckerPlugin(),           
 
             ...(isDevBuild
                 ?
@@ -66,7 +84,6 @@ module.exports = () =>
                 [
                     // Plugins that apply in production builds only
                     new DtsBundlePlugin(),
-                    new webpack.optimize.UglifyJsPlugin(),
                 ])
         ]
     }];

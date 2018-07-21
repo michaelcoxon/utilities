@@ -1,10 +1,11 @@
 ﻿import { Event, IEvent } from './Event';
-import { ArgumentException } from '.';
+import { ArgumentException } from './Exceptions';
+import { IDisposable } from './IDisposable';
 
 declare function clearInterval(intervalId: any): void;
 declare function setInterval(callback: (...args: any[]) => void, ms: number, ...args: any[]): any;
 
-export class Timer
+export class Timer implements IDisposable
 {
     private _autoReset: boolean;
     private _enabled: boolean;
@@ -109,4 +110,10 @@ export class Timer
     {
         this.enabled = false;
     }
+
+    public dispose()
+    {
+        this.stop();
+    }
+
 }

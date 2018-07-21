@@ -30,7 +30,7 @@ export class Byte implements INumberValue
 
     public toString(): string
     {
-        return this._value.toString();
+        return this.valueOf().toString();
     }
 
     public static parse(value: string): Byte
@@ -88,7 +88,7 @@ export class Int16 implements INumberValue
 
     public toString(): string
     {
-        return this._value.toString();
+        return this.valueOf().toString();
     }
 
     public static parse(value: string): Int16
@@ -146,7 +146,7 @@ export class Int32 implements INumberValue
 
     public toString(): string
     {
-        return this._value.toString();
+        return this.valueOf().toString();
     }
 
     public static parse(value: string): Int32
@@ -204,7 +204,7 @@ export class SignedByte implements INumberValue
 
     public toString(): string
     {
-        return this._value.toString();
+        return this.valueOf().toString();
     }
 
     public static parse(value: string): SignedByte
@@ -262,7 +262,7 @@ export class UnsignedInt16 implements INumberValue
 
     public toString(): string
     {
-        return this._value.toString();
+        return this.valueOf().toString();
     }
 
     public static parse(value: string): UnsignedInt16
@@ -320,7 +320,7 @@ export class UnsignedInt32 implements INumberValue
 
     public toString(): string
     {
-        return this._value.toString();
+        return this.valueOf().toString();
     }
 
     public static parse(value: string): UnsignedInt32

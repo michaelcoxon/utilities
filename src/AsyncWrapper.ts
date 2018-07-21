@@ -1,4 +1,6 @@
-﻿import { SingleInvokeEvent } from "./SingleInvokeEvent";
+﻿import 'tslib';
+
+import { SingleInvokeEvent } from "./SingleInvokeEvent";
 import { Undefinable, Promisable } from "./Types";
 
 /**
@@ -26,11 +28,6 @@ export class AsyncWrapper<T>
     * @param promiseOrValue can be a promise or a value
     */
     constructor(promiseOrValue: Promisable<T>);
-    /**
-      * Creates a new AsyncWrapper
-      * @param callback the callback that should be applied after the promise is resolved
-      */
-    constructor(callback: (asyncWrapper: AsyncWrapper<T>) => void);
     /**
       * Creates a new AsyncWrapper
       * @param promiseOrValue can be a promise or a value

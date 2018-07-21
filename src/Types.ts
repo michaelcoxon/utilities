@@ -5,8 +5,8 @@ export type Nullable<T> = T | null;
 /** Shortcut for T | undefined */
 export type Undefinable<T> = T | undefined;
 
-/** Shortcut for T | PromiseLike<T> */
-export type Promisable<T> = T | PromiseLike<T>;
+/** Shortcut for T | Promise<T> */
+export type Promisable<T> = T | Promise<T>;
 
 /** The event handler type */
 export type EventHandler<TEventArgs> = (sender: any, args: TEventArgs) => void;

@@ -33,10 +33,22 @@
     <Content Include="src\config\es6\tsconfig.json" />
     <Content Include="src\config\es5\tsconfig.json" />
     <Content Include="base-tsconfig.json" />
+    <TypeScriptCompile Include="src\Arrays.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\Cache.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\CancellablePromise.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\i18n\en.exceptions.strings.json" />
     <Content Include="tsconfig.json">
       <SubType>Code</SubType>
     </Content>
+    <TypeScriptCompile Include="tests\AsyncWrapper.spec.ts">
+      <TestFramework>Mocha</TestFramework>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="tests\Timer.spec.ts">
       <TestFramework>Mocha</TestFramework>
     </TypeScriptCompile>
