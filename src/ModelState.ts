@@ -304,6 +304,11 @@ export class FactoryModelState<T>
         return this._value;
     }
 
+    public set value(value: Undefinable<T>)
+    {
+        this._value = value;
+    }
+
     /** Returns the current value of the ModelState */
     public valueOf(): Undefinable<T>
     {
