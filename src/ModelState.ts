@@ -206,8 +206,10 @@ export class PollingModelState<T> implements IDisposable
 export class FactoryModelState<T>
 {
     private readonly _updater: () => Promise<void>;
-    private readonly _handlers: { [key: string]: EventHandler<Undefinable<T>> }
-    private readonly _updateEvent: Event<Undefinable<T>>;
+    private readonly _postHandlers: { [key: string]: EventHandler<Undefinable<T>> }
+    private readonly _preHandlers: { [key: string]: EventHandler<Undefinable<T>> }
+    private readonly _updatedEvent: Event<Undefinable<T>>;
+    private readonly _updatingEvent: Event<Undefinable<T>>;
     private readonly _promiseOrValueFactory: (() => Promisable<T>);
 
     private _value: Undefinable<T>;
@@ -216,30 +218,35 @@ export class FactoryModelState<T>
     * Creates a new PollingModelState
     * @param valueFactory can be a value factory
     */
-    constructor(valueFactory: () => T, timeout: number);
+    constructor(valueFactory: () => T);
     /**
       * Creates a new PollingModelState
       * @param promiseFactory can be a promise factory
       */
-    constructor(promiseFactory: () => Promise<T>, timeout: number);
+    constructor(promiseFactory: () => Promise<T>);
     /**
     * Creates a new PollingModelState
     * @param promiseOrValueFactory can be a promise or a value factory, a value or a promise that will be invoked immediately
     */
-    constructor(promiseOrValueFactory: (() => Promisable<T>), timeout: number);
-    constructor(promiseOrValueFactory: (() => Promisable<T>), timeout: number)
+    constructor(promiseOrValueFactory: (() => Promisable<T>));
+    constructor(promiseOrValueFactory: (() => Promisable<T>))
     {
         this._promiseOrValueFactory = promiseOrValueFactory;
-        this._handlers = {};
-        this._updateEvent = new Event();
+        this._postHandlers = {};
+        this._preHandlers = {};
+        this._updatedEvent = new Event();
+        this._updatingEvent = new Event();
 
         this._updater = async () =>
         {
+            this._onUpdating();
+
             this._value = await promiseOrValueFactory();
-            this._updateEvent.invoke(this, this._value);
+
+            this._onUpdated();
         }
 
-        this._updater ();
+        this._updater();
     }
 
     /**
@@ -249,15 +256,22 @@ export class FactoryModelState<T>
      * @param callback The callback to be invoked when the state is updated
      * @returns A symbol that must saved to unsubscribe from the ModelState
      */
-    public subscribe(callback: (value: Undefinable<T>) => void): symbol
+    public subscribe(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void): symbol
     {
         const key: symbol = Symbol();
-        const handler: EventHandler<Undefinable<T>> = (s, e) => callback(e);
 
-        this._handlers[Symbol.keyFor(key)!] = handler;
-        this._updateEvent.addHandler(handler);
+        const postHandler: EventHandler<Undefinable<T>> = (s, e) => postCallback(e);
+        this._postHandlers[Symbol.keyFor(key)!] = postHandler;
+        this._updatedEvent.addHandler(postHandler);
 
-        callback(this.value);
+        if (preCallback)
+        {
+            const preHandler: EventHandler<Undefinable<T>> = (s, e) => preCallback(e);
+            this._preHandlers[Symbol.keyFor(key)!] = preHandler;
+            this._updatingEvent.addHandler(preHandler);
+        }
+
+        postCallback(this.value);
 
         return key;
     }
@@ -269,17 +283,30 @@ export class FactoryModelState<T>
      */
     public unsubscribe(key: symbol): void
     {
-        const handler = this._handlers[Symbol.keyFor(key)!];
+        const postHandler = this._postHandlers[Symbol.keyFor(key)!];
+        if (postHandler)
+        {
+            this._updatedEvent.removeHandler(postHandler);
+            delete this._postHandlers[Symbol.keyFor(key)!];
+        }
 
-        this._updateEvent.removeHandler(handler);
-
-        delete this._handlers[Symbol.keyFor(key)!];
+        const preHandler = this._preHandlers[Symbol.keyFor(key)!];
+        if (preHandler)
+        {
+            this._updatingEvent.removeHandler(preHandler);
+            delete this._preHandlers[Symbol.keyFor(key)!];
+        }
     }
 
     /** Gets the current value of the ModelState */
     public get value(): Undefinable<T>
     {
         return this._value;
+    }
+
+    public set value(value: Undefinable<T>)
+    {
+        this._value = value;
     }
 
     /** Returns the current value of the ModelState */
@@ -302,6 +329,11 @@ export class FactoryModelState<T>
     /** Invokes the subscriptions with the current value */
     protected _onUpdated()
     {
-        this._updateEvent.invoke(this, this.value);
+        this._updatedEvent.invoke(this, this.value);
+    }
+
+    protected _onUpdating()
+    {
+        this._updatingEvent.invoke(this, this.value);
     }
 }
