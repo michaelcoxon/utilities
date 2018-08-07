@@ -1,16 +1,7 @@
-﻿const WHITESPACE = "\\s\\uFEFF\\xA0";
+﻿import { isString, isNumber, isDate, isUndefinedOrNull } from './TypeHelpers';
+import { FormatException } from './Exceptions';
 
-export interface DateConfiguration
-{
-    am: string,
-    pm: string;
-    timeSeparator: string;
-    dateSeparator: string;
-    months_Long: string[];
-    months_Short: string[];
-    daysOfWeek_Long: string[];
-    daysOfWeek_Short: string[];
-}
+const WHITESPACE = "\\s\\uFEFF\\xA0";
 
 export namespace Strings
 {
@@ -35,26 +26,23 @@ export namespace Strings
 
     export function format(format: string, ...args: any[]): string
     {
-        try
+        return format.replace(/{(\d+):?([^}]+)?}/g, (match: string, index: string, format: string) =>
         {
-            return format.replace(/{(\d+):?([^}]+)?}/g, (match, index, pattern) =>
+            if (!Strings.isNullOrEmpty(format))
             {
-                if (pattern !== undefined)
-                {
-                    var arg = convertToString(pattern, args[parseInt(index)]);
-                    return arg !== undefined && arg !== null ? arg : empty;
-                }
-                else
-                {
-                    var arg = convertToString(match, args[parseInt(index)]);
-                    return arg !== undefined && arg !== null ? arg : empty;
-                }
-            });
-        }
-        catch (e)
-        {
-            return empty;
-        }
+                const arg = convertToString(args[parseInt(index)], format);
+                return !isUndefinedOrNull(arg)
+                    ? arg
+                    : empty;
+            }
+            else
+            {
+                const arg = convertToString(args[parseInt(index)]);
+                return !isUndefinedOrNull(arg)
+                    ? arg
+                    : empty;
+            }
+        });
     }
 
     export function padLeft(str: string, length: number, padding: string): string
@@ -181,60 +169,182 @@ export namespace Strings
         return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
     }
 
-    function convertToString(match: string, arg: any): string
+    function convertToString(subject: {}, format: string = empty): string
     {
-        if (typeof arg === 'string')
+        if (isNumber(subject))
         {
-            return formatString(match, arg);
+            return new NumberFormatter().format(subject, format);
         }
-        if (typeof arg === 'number')
+        if (isDate(subject))
         {
-            return formatNumber(match, arg);
-        }
-        if (arg instanceof Date)
-        {
-            return Dates.format(match, arg);
+            return new DateFormatter().format(subject, format);
         }
 
-        // default
-        return formatString(match, Strings.empty + arg);
-    }
-
-    function formatString(match: string, arg: string): string
-    {
-        switch (match)
-        {
-            case 'L':
-                arg = arg.toLowerCase();
-                break;
-            case 'U':
-                arg = arg.toUpperCase();
-                break;
-            default:
-                break;
-        }
-
-        return arg;
-    }
-
-    function formatNumber(match: string, arg: number): string
-    {
-        switch (match.toLowerCase())
-        {
-            case 'f0':
-                arg = parseInt(arg.toString());
-                break;
-            default:
-                break;
-        }
-
-        return arg.toString();
+        // default and string
+        return new StringFormatter().format(subject.toString(), format);
     }
 }
 
-export namespace Dates
+export interface IDateFormatterConfiguration
 {
-    const DefaultConfiguration: DateConfiguration = {
+    am: string,
+    pm: string;
+    timeSeparator: string;
+    dateSeparator: string;
+    months_Long: string[];
+    months_Short: string[];
+    daysOfWeek_Long: string[];
+    daysOfWeek_Short: string[];
+}
+
+export interface INumberFormatterConfiguration
+{
+    currencyFormat: string;
+    currencyDecimalDigits: number;
+    numberDecimalDigits: number;
+    percentDecimalDigits: number;
+}
+
+export interface IFormatter<T>
+{
+    format(subject: T, format: string): string;
+}
+
+/** Formats strings */
+export class StringFormatter implements IFormatter<string>
+{
+    public format(subject: string, format: string): string
+    {
+        if (Strings.isNullOrEmpty(format))
+        {
+            return subject;
+        }
+        else
+        {
+            switch (format)
+            {
+                case 'L': return subject.toLowerCase();
+                case 'U': return subject.toUpperCase();
+
+                default: throw new FormatException(`The format '${format}' is not implemented`);
+            }
+        }
+    }
+}
+
+/** Formats numbers */
+export class NumberFormatter implements IFormatter<number>
+{
+    private static readonly DefaultConfiguration: INumberFormatterConfiguration = {
+        currencyFormat: "${0}",
+        currencyDecimalDigits: 2,
+        numberDecimalDigits: 2,
+        percentDecimalDigits: 2,
+    };
+
+    private readonly _delegates: NumberFormatterDelegates;
+
+    constructor(numberFormatterDelegates: NumberFormatterDelegates = new NumberFormatterDelegates(NumberFormatter.DefaultConfiguration))
+    {
+        this._delegates = numberFormatterDelegates;
+    }
+
+    public format(subject: number, format: string): string
+    {
+        if (Strings.isNullOrEmpty(format))
+        {
+            return subject.toString();
+        }
+        else
+        {
+            const [specifier, precision] = [format.charAt(0), parseInt(format.slice(1)) || undefined];
+            return this._getFormatter(specifier).call(this._delegates, subject, precision);
+        }
+    }
+
+    private _getFormatter(specifier): (subject: number, precision?: number) => string
+    {
+        switch (specifier.toLowerCase())
+        {
+            case 'c': return this._delegates.formatCurrency;
+            case 'd': return this._delegates.formatDecimal;
+            case 'e': return this._delegates.formatExponential;
+            case 'f': return this._delegates.formatFixed;
+            case 'g': return this._delegates.formatGeneral;
+            case 'n': return this._delegates.formatNumber;
+            case 'p': return this._delegates.formatPercent;
+            case 'x': return this._delegates.formatHexadecimal;
+
+            default: throw new FormatException(`The format specifier '${specifier}' is not implemented`);
+        }
+    }
+}
+
+export class NumberFormatterDelegates
+{
+    private readonly _config: INumberFormatterConfiguration;
+
+    constructor(numberFormatterConfiguration: INumberFormatterConfiguration)
+    {
+        this._config = numberFormatterConfiguration;
+    }
+
+    public formatCurrency(subject: number, precision: number = this._config.currencyDecimalDigits): string
+    {
+        return Strings.format(this._config.currencyFormat, this.formatFixed(subject, precision));
+    }
+
+    public formatDecimal(subject: number, minDigits: number = 0): string
+    {
+        if (subject < 0)
+        {
+            return `-${Strings.padLeft(Math.abs(subject).toFixed(0), minDigits, "0")}`;
+        }
+        else
+        {
+            return Strings.padLeft(subject.toFixed(0), minDigits, "0");
+        }
+    }
+
+    public formatExponential(subject: number, precision: number = 6): string
+    {
+        return subject.toExponential(precision);
+    }
+
+    public formatFixed(subject: number, precision: number = this._config.numberDecimalDigits): string
+    {
+        return subject.toFixed(precision);
+    }
+
+    public formatGeneral(subject: number, precision?: number): string
+    {
+        const fixed = this.formatFixed(subject, precision);
+        const expon = this.formatExponential(subject, precision);
+
+        return fixed.length <= expon.length
+            ? fixed
+            : expon;
+    }
+
+    public formatNumber(subject: number, precision: number = this._config.numberDecimalDigits): string
+    {
+        return this.formatFixed(subject, precision);
+    }
+
+    public formatPercent(subject: number, precision: number = this._config.percentDecimalDigits): string
+    {
+        return `${this.formatFixed(subject, precision)} %`;
+    }
+
+    public formatHexadecimal(subject: number, precision: number = 0): string
+    {
+        return Strings.padLeft(subject.toString(16), precision, "0");
+    }
+}
+
+export class DateFormatter implements IFormatter<Date>
+{
+    private static readonly DefaultConfiguration: IDateFormatterConfiguration = {
         am: "AM",
         pm: "PM",
         timeSeparator: ':',
@@ -287,7 +397,7 @@ export namespace Dates
         ],
     };
 
-    const TOKEN_TO_STRING_DELEGATES: { [key: string]: (d: Date, config: DateConfiguration) => string } = {
+    private static readonly TOKEN_TO_STRING_DELEGATES: { [key: string]: (d: Date, config: IDateFormatterConfiguration) => string } = {
         "d": d => d.getDate().toString(),
         "dd": d => Strings.padLeft(d.getDate().toString(), 2, '0'),
         "ddd": (d, c) => c.daysOfWeek_Short[d.getDay()],
@@ -314,7 +424,7 @@ export namespace Dates
         "hh": d => Strings.padLeft((d.getHours() % 12 || 12).toString(), 2, '0'),
         "H": d => d.getHours().toString(),
         "HH": d => Strings.padLeft(d.getHours().toString(), 2, '0'),
-        "K": (d, c) => getTimezoneHoursAndMinutesString(d.getTimezoneOffset(), c),
+        "K": (d, c) => DateFormatter._getTimezoneHoursAndMinutesString(d.getTimezoneOffset(), c),
         "m": d => d.getMinutes().toString(),
         "mm": d => Strings.padLeft(d.getMinutes().toString(), 2, '0'),
         "M": d => (d.getMonth() + 1).toString(),
@@ -330,12 +440,44 @@ export namespace Dates
         "yyy": d => Strings.padLeft(parseInt(d.getFullYear().toString().substr(-3)).toString(), 3, '0'),
         "yyyy": d => Strings.padLeft(parseInt(d.getFullYear().toString().substr(-4)).toString(), 4, '0'),
         "yyyyy": d => Strings.padLeft(parseInt(d.getFullYear().toString().substr(-5)).toString(), 5, '0'),
-        "z": (d, c) => getTimezoneHoursString(d.getTimezoneOffset(), c),
-        "zz": (d, c) => Strings.padLeft(getTimezoneHoursString(d.getTimezoneOffset(), c), 2, '0'),
-        "zzz": (d, c) => getTimezoneHoursAndMinutesString(d.getTimezoneOffset(), c),
+        "z": (d, c) => DateFormatter._getTimezoneHoursString(d.getTimezoneOffset(), c),
+        "zz": (d, c) => Strings.padLeft(DateFormatter._getTimezoneHoursString(d.getTimezoneOffset(), c), 2, '0'),
+        "zzz": (d, c) => DateFormatter._getTimezoneHoursAndMinutesString(d.getTimezoneOffset(), c),
     };
 
-    export function getTimezoneHoursAndMinutesString(minutes: number, config: DateConfiguration): string
+    private readonly _config: IDateFormatterConfiguration;
+
+    constructor(dateFormatterConfiguration: IDateFormatterConfiguration = DateFormatter.DefaultConfiguration)
+    {
+        this._config = dateFormatterConfiguration;
+    }
+
+    public format(subject: Date, format: string): string
+    {
+        const tokens = Object.keys(DateFormatter.TOKEN_TO_STRING_DELEGATES);
+        tokens.sort((a, b) => b.length - a.length);
+
+        let result = format;
+
+        for (let token of tokens)
+        {
+            try
+            {
+                if (DateFormatter.TOKEN_TO_STRING_DELEGATES[token] !== undefined)
+                {
+                    result = result.replace(token, DateFormatter.TOKEN_TO_STRING_DELEGATES[token](subject, this._config))
+                }
+            }
+            catch
+            {
+                continue;
+            }
+        }
+
+        return result;
+    }
+
+    private static _getTimezoneHoursAndMinutesString(minutes: number, config: IDateFormatterConfiguration): string
     {
         let result = Strings.empty;
 
@@ -357,7 +499,7 @@ export namespace Dates
         return result;
     }
 
-    export function getTimezoneHoursString(minutes: number, config: DateConfiguration): string
+    private static _getTimezoneHoursString(minutes: number, config: IDateFormatterConfiguration): string
     {
         let result = Strings.empty;
 
@@ -376,29 +518,5 @@ export namespace Dates
 
         return result;
     }
-
-    export function format(format: string, date: Date): string
-    {
-        const tokens = Object.keys(TOKEN_TO_STRING_DELEGATES);
-        tokens.sort((a, b) => b.length - a.length);
-
-        let result = format;
-
-        for (let token of tokens)
-        {
-            try
-            {
-                if (TOKEN_TO_STRING_DELEGATES[token] !== undefined)
-                {
-                    result = result.replace(token, TOKEN_TO_STRING_DELEGATES[token](date, DefaultConfiguration))
-                }
-            }
-            catch
-            {
-                continue;
-            }
-        }
-
-        return result;
-    }
 }
+

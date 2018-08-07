@@ -1,6 +1,6 @@
 {
   "name": "@michaelcoxon/utilities",
-  "version": "1.6.2",
+  "version": "1.7.1",
   "description": "utilities for JS and TypeScript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

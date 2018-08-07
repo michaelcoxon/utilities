@@ -14,6 +14,17 @@ describe("String.empty", () =>
 
 describe("String.format", () =>
 {
+    it("should format the string", () =>
+    {
+        const format = "The subject was '{0}'";
+        const subject = "sample";
+
+        let expect = "The subject was 'sample'";
+        let actual = Strings.format(format, subject);
+
+        assert.equal(actual, expect);
+    });
+
     it("should format the string in order", () =>
     {
         const format = "{0}, {1}, {2} and {3}";
@@ -45,6 +56,39 @@ describe("String.format", () =>
 
         const expect = "1972-07-20 02:20:18.000";
         const actual = Strings.format(format, date);
+
+        assert.equal(actual, expect);
+    });
+
+    it("should format the number as currency", () =>
+    {
+        const format = "{0:c}";
+        const subject = 123.456;
+
+        let expect = "$123.46";
+        let actual = Strings.format(format, subject);
+
+        assert.equal(actual, expect);
+    });
+
+    it("should format the number as decimal", () =>
+    {
+        const format = "{0:d}";
+        const subject = 123.456;
+
+        let expect = "123";
+        let actual = Strings.format(format, subject);
+
+        assert.equal(actual, expect);
+    });
+
+    it("should format the number as decimal negative", () =>
+    {
+        const format = "{0:d}";
+        const subject = -123.456;
+
+        let expect = "-123";
+        let actual = Strings.format(format, subject);
 
         assert.equal(actual, expect);
     });
