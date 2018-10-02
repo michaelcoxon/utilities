@@ -38,7 +38,8 @@ module.exports = () =>
             filename: `[name]${isDevBuild ? "" : ".min"}.js`,
             publicPath: 'dist/',
             library: libraryName,
-            libraryTarget: 'umd'
+            libraryTarget: 'umd',
+            globalObject:'this'
         },
         externals: [
             /^tslib.*$/

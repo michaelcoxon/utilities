@@ -17,6 +17,7 @@ export * from "./ILogger";
 
 export * from "./Exceptions";
 
+export * from "./Logger";
 export * from "./AggregateDisposable";
 export * from "./AggregateLogger";
 export * from "./AsyncWrapper";

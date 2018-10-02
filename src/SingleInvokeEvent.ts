@@ -4,7 +4,7 @@ import { EventHandler } from "./Types";
 /**
  * An event type that can only be invoked once. Once the event
  * is invoked, and handler that is added to it will be immediately
- * executed.
+ * executed. All subsequent invocations are ignored
  */
 export class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> implements IEvent<TEventArgs>
 {

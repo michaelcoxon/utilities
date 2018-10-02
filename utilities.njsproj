@@ -17,7 +17,7 @@
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
     <ToolsVersionPromptShown>0.0</ToolsVersionPromptShown>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
-    <LastActiveSolutionConfig>Release|Any CPU</LastActiveSolutionConfig>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -42,6 +42,7 @@
     <TypeScriptCompile Include="src\CancellablePromise.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\Logger.ts" />
     <TypeScriptCompile Include="src\i18n\en.exceptions.strings.json" />
     <Content Include="tsconfig.json">
       <SubType>Code</SubType>

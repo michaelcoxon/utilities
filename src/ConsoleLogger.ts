@@ -3,13 +3,14 @@ import { IDisposable } from './IDisposable';
 import { ErrorHelper } from "./ErrorHelper";
 import { ScopedLogger } from "./ScopedLogger";
 import { IndentedStringBuilder } from './StringBuilder';
+import { Logger, ILoggerConfig } from './Logger';
 
 const defaultConfig: IConsoleLoggerConfig = {
     loggingVerbosity: LogLevel.Info,
     useTraceMethodForTraceLogLevel: false
 };
 
-export interface IConsoleLoggerConfig
+export interface IConsoleLoggerConfig extends ILoggerConfig
 {
     /** the logging verbosity to filter on */
     loggingVerbosity: LogLevel;
@@ -28,186 +29,32 @@ export interface IConsole
     error?: (message?: any, ...optionalParams: any[]) => void;
 }
 
-export class ConsoleLogger implements ILogger
+export class ConsoleLogger extends Logger implements ILogger
 {
-    private readonly _config: IConsoleLoggerConfig
+    private readonly _consoleLoggerConfig: IConsoleLoggerConfig
 
-    private readonly _warnMethod: (message?: any, ...optionalParams: any[]) => void;
-    private readonly _traceMethod: (message?: any, ...optionalParams: any[]) => void;
-    private readonly _infoMethod: (message?: any, ...optionalParams: any[]) => void;
-    private readonly _errorMethod: (message?: any, ...optionalParams: any[]) => void;
-    private readonly _logMethod: (message?: any, ...optionalParams: any[]) => void;
+    protected _warnMethod: (message?: any, ...optionalParams: any[]) => void;
+    protected _traceMethod: (message?: any, ...optionalParams: any[]) => void;
+    protected _infoMethod: (message?: any, ...optionalParams: any[]) => void;
+    protected _errorMethod: (message?: any, ...optionalParams: any[]) => void;
+    protected _debugMethod: (message?: any, ...optionalParams: any[]) => void;
+    protected _defaultMethod: (message?: any, ...optionalParams: any[]) => void;
 
     constructor(console: IConsole, config: IConsoleLoggerConfig = defaultConfig)
     {
-        this._config = config;
+        super(config)
+        this._consoleLoggerConfig = config;
 
-        this._logMethod = console.log.bind(console);
+        this._debugMethod = console.log.bind(console);
+        this._defaultMethod = console.log.bind(console);
         this._errorMethod = (console.error || console.log).bind(console);
         this._infoMethod = (console.info || console.log).bind(console);
 
         // sometimes the trace method is wayyyy too verbose....
-        this._traceMethod = this._config.useTraceMethodForTraceLogLevel
+        this._traceMethod = this._consoleLoggerConfig.useTraceMethodForTraceLogLevel
             ? (console.trace || console.log).bind(console)
-            : this._logMethod;
+            : this._defaultMethod;
 
         this._warnMethod = (console.warn || console.log).bind(console);
-    }
-
-    debug(msg: string): void
-    {
-        this.log(LogLevel.Debug, new IndentedStringBuilder(0, msg));
-    }
-
-    debugError(err: Error): void;
-    debugError(err: Error, msg: string): void
-    debugError(err: Error, msg?: string): void
-    {
-        const sb = new IndentedStringBuilder(0);
-        if (msg !== undefined)
-        {
-            sb.appendLine(msg);
-            sb.indent();
-            ErrorHelper.errorToLogMessage(err, sb);
-            sb.unindent();
-        }
-        else
-        {
-            ErrorHelper.errorToLogMessage(err, sb);
-        }
-        this.log(LogLevel.Debug, sb);
-    }
-
-    error(msg: string): void
-    {
-        this.log(LogLevel.Error, new IndentedStringBuilder(0, msg));
-    }
-
-    errorError(err: Error): void;
-    errorError(err: Error, msg: string): void;
-    errorError(err: Error, msg?: string): void
-    {
-        const sb = new IndentedStringBuilder(0);
-        if (msg !== undefined)
-        {
-            sb.appendLine(msg);
-            sb.indent();
-            ErrorHelper.errorToLogMessage(err, sb);
-            sb.unindent();
-        }
-        else
-        {
-            ErrorHelper.errorToLogMessage(err, sb);
-        }
-        this.log(LogLevel.Error, sb);
-    }
-
-    info(msg: string): void
-    {
-        this.log(LogLevel.Info, new IndentedStringBuilder(0, msg));
-    }
-
-    infoError(err: Error): void;
-    infoError(err: Error, msg: string): void;
-    infoError(err: Error, msg?: string): void
-    {
-        const sb = new IndentedStringBuilder(0);
-        if (msg !== undefined)
-        {
-            sb.appendLine(msg);
-            sb.indent();
-            ErrorHelper.errorToLogMessage(err, sb);
-            sb.unindent();
-        }
-        else
-        {
-            ErrorHelper.errorToLogMessage(err, sb);
-        }
-        this.log(LogLevel.Info, sb);
-    }
-
-    trace(msg: string): void
-    {
-        this.log(LogLevel.Trace, new IndentedStringBuilder(0, msg));
-    }
-
-    traceError(err: Error): void;
-    traceError(err: Error, msg: string): void;
-    traceError(err: Error, msg?: string): void
-    {
-        const sb = new IndentedStringBuilder(0);
-        if (msg !== undefined)
-        {
-            sb.appendLine(msg);
-            sb.indent();
-            ErrorHelper.errorToLogMessage(err, sb);
-            sb.unindent();
-        }
-        else
-        {
-            ErrorHelper.errorToLogMessage(err, sb);
-        }
-        this.log(LogLevel.Trace, sb);
-    }
-
-    warn(msg: string): void
-    {
-        this.log(LogLevel.Warn, new IndentedStringBuilder(0, msg));
-    }
-
-    warnError(err: Error): void;
-    warnError(err: Error, msg: string): void;
-    warnError(err: Error, msg?: string): void
-    {
-        const sb = new IndentedStringBuilder(0);
-        if (msg !== undefined)
-        {
-            sb.appendLine(msg);
-            sb.indent();
-            ErrorHelper.errorToLogMessage(err, sb);
-            sb.unindent();
-        }
-        else
-        {
-            ErrorHelper.errorToLogMessage(err, sb);
-        }
-        this.log(LogLevel.Warn, sb);
-    }
-
-    scope(name: string): ILogger & IDisposable
-    {
-        return new ScopedLogger(this, name);
-    }
-
-    private log(level: LogLevel, sb: IndentedStringBuilder): void
-    {
-        if (testLogVerbosity(level, this._config.loggingVerbosity))
-        {
-            const message = `[${level}] ${sb.toString()}`;
-
-            switch (level)
-            {
-                case LogLevel.Error:
-                    this._errorMethod(message);
-                    break;
-
-                case LogLevel.Warn:
-                    this._warnMethod(message);
-                    break;
-
-                case LogLevel.Info:
-                    this._infoMethod(message);
-                    break;
-
-                case LogLevel.Trace:
-                    this._traceMethod(message);
-                    break;
-
-                case LogLevel.Debug:
-                default:
-                    this._logMethod(message);
-                    break;
-            }
-        }
     }
 }
