@@ -126,11 +126,13 @@ export class IndentedStringBuilder
         this._invalidateLastValue = true;
     }
 
+    /** adds an indent level */
     public indent(): void
     {
         this._indentationLevel++;
     }
 
+    /** Removes the current indent */
     public unindent(): void
     {
         this._indentationLevel--;
