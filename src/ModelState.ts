@@ -191,18 +191,18 @@ export class FactoryModelState<T> extends BaseModelState<T> implements IModelSta
     * Creates a new PollingModelState
     * @param valueFactory can be a value factory
     */
-    constructor(valueFactory: () => T);
+    constructor(valueFactory: () => T, updateNow?: boolean);
     /**
       * Creates a new PollingModelState
       * @param promiseFactory can be a promise factory
       */
-    constructor(promiseFactory: () => Promise<T>);
+    constructor(promiseFactory: () => Promise<T>, updateNow?: boolean);
     /**
     * Creates a new PollingModelState
     * @param promiseOrValueFactory can be a promise or a value factory, a value or a promise that will be invoked immediately
     */
-    constructor(promiseOrValueFactory: (() => Promisable<T>));
-    constructor(promiseOrValueFactory: (() => Promisable<T>))
+    constructor(promiseOrValueFactory: (() => Promisable<T>), updateNow?: boolean);
+    constructor(promiseOrValueFactory: (() => Promisable<T>), updateNow: boolean = true)
     {
         super();
 
@@ -215,7 +215,10 @@ export class FactoryModelState<T> extends BaseModelState<T> implements IModelSta
             this._onUpdated();
         }
 
-        this._updater();
+        if (updateNow)
+        {
+            this._updater();
+        }
     }
 
     public set value(value: Undefinable<T>)
