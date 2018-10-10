@@ -36,6 +36,7 @@
     <TypeScriptCompile Include="src\Arrays.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\AsyncProperty.ts" />
     <TypeScriptCompile Include="src\Cache.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>

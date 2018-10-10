@@ -33,13 +33,6 @@ export class ConsoleLogger extends Logger implements ILogger
 {
     private readonly _consoleLoggerConfig: IConsoleLoggerConfig
 
-    protected _warnMethod: (message?: any, ...optionalParams: any[]) => void;
-    protected _traceMethod: (message?: any, ...optionalParams: any[]) => void;
-    protected _infoMethod: (message?: any, ...optionalParams: any[]) => void;
-    protected _errorMethod: (message?: any, ...optionalParams: any[]) => void;
-    protected _debugMethod: (message?: any, ...optionalParams: any[]) => void;
-    protected _defaultMethod: (message?: any, ...optionalParams: any[]) => void;
-
     constructor(console: IConsole, config: IConsoleLoggerConfig = defaultConfig)
     {
         super(config)
@@ -56,5 +49,30 @@ export class ConsoleLogger extends Logger implements ILogger
             : this._defaultMethod;
 
         this._warnMethod = (console.warn || console.log).bind(console);
+    }
+
+    protected _errorMethod(message: string): void
+    {
+        throw new Error("Method not implemented.");
+    }
+    protected _warnMethod(message: string): void
+    {
+        throw new Error("Method not implemented.");
+    }
+    protected _infoMethod(message: string): void
+    {
+        throw new Error("Method not implemented.");
+    }
+    protected _traceMethod(message: string): void
+    {
+        throw new Error("Method not implemented.");
+    }
+    protected _debugMethod(message: string): void
+    {
+        throw new Error("Method not implemented.");
+    }
+    protected _defaultMethod(message: string): void
+    {
+        throw new Error("Method not implemented.");
     }
 }

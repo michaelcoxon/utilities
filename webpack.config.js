@@ -1,5 +1,5 @@
-﻿/// <binding ProjectOpened='Run - Development, Run - Production' />
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+/// <binding />
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
@@ -17,7 +17,7 @@ DtsBundlePlugin.prototype.apply = function (compiler)
 
         dts.bundle({
             name: libraryName,
-            main: `dts/index.d.ts`,
+            main: `lib/index.d.ts`,
             out: `.${bundleOutputDir}/index.d.ts`,
             outputAsModuleFolder: true // to use npm in-package typings
         });
@@ -35,7 +35,7 @@ module.exports = () =>
         resolve: { extensions: ['.ts'] },
         output: {
             path: path.join(__dirname, bundleOutputDir),
-            filename: `[name]${isDevBuild ? "" : ".min"}.js`,
+            filename: `[name].js`,
             publicPath: 'dist/',
             library: libraryName,
             libraryTarget: 'umd',
