@@ -74,7 +74,7 @@
 					<div class="lead">
 						<p>An event type that can only be invoked once. Once the event
 							is invoked, and handler that is added to it will be immediately
-						executed.</p>
+						executed. All subsequent invocations are ignored</p>
 					</div>
 				</div>
 			</section>
@@ -97,6 +97,13 @@
 							</li>
 						</ul>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/_event_.ievent.html" class="tsd-signature-type">IEvent</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TEventArgs</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li><a href="../interfaces/_event_.ievent.html" class="tsd-signature-type">IEvent</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TEventArgs</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -141,7 +148,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_event_.event.html">Event</a>.<a href="_event_.event.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/SingleInvokeEvent.ts#L16">SingleInvokeEvent.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/SingleInvokeEvent.ts#L16">SingleInvokeEvent.ts:16</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -162,7 +169,7 @@
 					<div class="tsd-signature tsd-kind-icon">_args<span class="tsd-signature-symbol">:</span> <a href="" class="tsd-signature-type">TEventArgs</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/SingleInvokeEvent.ts#L16">SingleInvokeEvent.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/SingleInvokeEvent.ts#L16">SingleInvokeEvent.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -177,7 +184,7 @@
 					<div class="tsd-signature tsd-kind-icon">_fired<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/SingleInvokeEvent.ts#L12">SingleInvokeEvent.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/SingleInvokeEvent.ts#L12">SingleInvokeEvent.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -192,7 +199,7 @@
 					<div class="tsd-signature tsd-kind-icon">_sender<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/SingleInvokeEvent.ts#L14">SingleInvokeEvent.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/SingleInvokeEvent.ts#L14">SingleInvokeEvent.ts:14</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -213,9 +220,10 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_event_.ievent.html">IEvent</a>.<a href="../interfaces/_event_.ievent.html#addhandler">addHandler</a></p>
 								<p>Overrides <a href="_event_.event.html">Event</a>.<a href="_event_.event.html#addhandler">addHandler</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/SingleInvokeEvent.ts#L28">SingleInvokeEvent.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/SingleInvokeEvent.ts#L28">SingleInvokeEvent.ts:28</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -239,7 +247,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_event_.event.html">Event</a>.<a href="_event_.event.html#invoke">invoke</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/SingleInvokeEvent.ts#L41">SingleInvokeEvent.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/SingleInvokeEvent.ts#L41">SingleInvokeEvent.ts:41</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -264,9 +272,10 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_event_.ievent.html">IEvent</a>.<a href="../interfaces/_event_.ievent.html#removehandler">removeHandler</a></p>
 								<p>Inherited from <a href="_event_.event.html">Event</a>.<a href="_event_.event.html#removehandler">removeHandler</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Event.ts#L46">Event.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/Event.ts#L52">Event.ts:52</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

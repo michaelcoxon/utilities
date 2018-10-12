@@ -13,7 +13,7 @@ interface IModelState<T>
     valueOf(): Undefinable<T>
 }
 
-abstract class BaseModelState<T> implements IModelState<T>
+export abstract class BaseModelState<T> implements IModelState<T>
 {
     private readonly _postHandlers: { [key: string]: EventHandler<Undefinable<T>> }
     private readonly _preHandlers: { [key: string]: EventHandler<Undefinable<T>> }
@@ -110,7 +110,6 @@ abstract class BaseModelState<T> implements IModelState<T>
         this._updatingEvent.invoke(this, this.value);
     }
 }
-
 
 /** Provides a mutatable state that can update registered components to the state */
 export class ModelState<T> extends BaseModelState<T> implements IModelState<T>

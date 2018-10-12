@@ -1,6 +1,6 @@
 {
   "name": "@michaelcoxon/utilities",
-  "version": "1.7.3",
+  "version": "1.7.5",
   "description": "utilities for JS and TypeScript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,8 +11,8 @@
     "test": "npm-run-all -s build-prod -p run-tests",
     "build-dev": "SET NODE_ENV=development&& webpack --no-color",
     "build-prod": "SET NODE_ENV=production&& webpack --no-color",
-    "prepack": "npm-run-all -s test",
-    "build-doc": "typedoc --out docs src"
+    "prepack": "npm-run-all -s test build-doc",
+    "build-doc": "typedoc --out docs src&& copy .nojekyll docs\\.nojekyll"
   },
   "repository": {
     "type": "git",

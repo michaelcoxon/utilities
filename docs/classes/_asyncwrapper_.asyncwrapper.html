@@ -107,6 +107,7 @@
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_asyncwrapper_.asyncwrapper.html#_callback" class="tsd-kind-icon">_callback</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_asyncwrapper_.asyncwrapper.html#_complete" class="tsd-kind-icon">_complete</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_asyncwrapper_.asyncwrapper.html#_completeevent" class="tsd-kind-icon">_complete<wbr>Event</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_asyncwrapper_.asyncwrapper.html#_error" class="tsd-kind-icon">_error</a></li>
@@ -126,10 +127,10 @@
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_asyncwrapper_.asyncwrapper.html#value" class="tsd-kind-icon">value</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_asyncwrapper_.asyncwrapper.html#dowork" class="tsd-kind-icon">do<wbr>Work</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_asyncwrapper_.asyncwrapper.html#update" class="tsd-kind-icon">update</a></li>
 							</ul>
 						</section>
 					</div>
@@ -146,12 +147,13 @@
 						<li class="tsd-signature tsd-kind-icon">new <wbr>Async<wbr>Wrapper<span class="tsd-signature-symbol">(</span>promiseOrValue<span class="tsd-signature-symbol">: </span><a href="../modules/_types_.html#promisable" class="tsd-signature-type">Promisable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_asyncwrapper_.asyncwrapper.html" class="tsd-signature-type">AsyncWrapper</a></li>
 						<li class="tsd-signature tsd-kind-icon">new <wbr>Async<wbr>Wrapper<span class="tsd-signature-symbol">(</span>promiseFactory<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_asyncwrapper_.asyncwrapper.html" class="tsd-signature-type">AsyncWrapper</a></li>
 						<li class="tsd-signature tsd-kind-icon">new <wbr>Async<wbr>Wrapper<span class="tsd-signature-symbol">(</span>promiseFactory<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_asyncwrapper_.asyncwrapper.html" class="tsd-signature-type">AsyncWrapper</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Async<wbr>Wrapper<span class="tsd-signature-symbol">(</span>promiseOrValueOrFactory<span class="tsd-signature-symbol">?: </span><a href="../modules/_types_.html#promisable" class="tsd-signature-type">Promisable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span>, callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_asyncwrapper_.asyncwrapper.html" class="tsd-signature-type">AsyncWrapper</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L17">AsyncWrapper.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L20">AsyncWrapper.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -164,7 +166,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L22">AsyncWrapper.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L25">AsyncWrapper.ts:25</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -188,7 +190,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L27">AsyncWrapper.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L30">AsyncWrapper.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -238,7 +240,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L33">AsyncWrapper.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L36">AsyncWrapper.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -274,7 +276,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L38">AsyncWrapper.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L41">AsyncWrapper.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -329,6 +331,38 @@
 											</ul>
 										</li>
 									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_asyncwrapper_.asyncwrapper.html" class="tsd-signature-type">AsyncWrapper</a></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L47">AsyncWrapper.ts:47</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new AsyncWrapper</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> promiseOrValueOrFactory: <a href="../modules/_types_.html#promisable" class="tsd-signature-type">Promisable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>can be a promise or a value factory, a value or a promise that will be invoked immediately</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>the callback that should be applied after the promise is resolved</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_asyncwrapper_.asyncwrapper.html" class="tsd-signature-type">AsyncWrapper</a></h4>
@@ -339,12 +373,22 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_callback" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _callback</h3>
+					<div class="tsd-signature tsd-kind-icon">_callback<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L13">AsyncWrapper.ts:13</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_complete" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _complete</h3>
 					<div class="tsd-signature tsd-kind-icon">_complete<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L14">AsyncWrapper.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L17">AsyncWrapper.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -354,7 +398,7 @@
 					<div class="tsd-signature tsd-kind-icon">_complete<wbr>Event<span class="tsd-signature-symbol">:</span> <a href="_singleinvokeevent_.singleinvokeevent.html" class="tsd-signature-type">SingleInvokeEvent</a><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_types_.html#undefinable" class="tsd-signature-type">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L11">AsyncWrapper.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L14">AsyncWrapper.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -364,17 +408,17 @@
 					<div class="tsd-signature tsd-kind-icon">_error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L16">AsyncWrapper.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L19">AsyncWrapper.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_promise" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _promise</h3>
-					<div class="tsd-signature tsd-kind-icon">_promise<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">this</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagOptional">Optional</span> _promise</h3>
+					<div class="tsd-signature tsd-kind-icon">_promise<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L13">AsyncWrapper.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L16">AsyncWrapper.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -384,7 +428,7 @@
 					<div class="tsd-signature tsd-kind-icon">_success<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L15">AsyncWrapper.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L18">AsyncWrapper.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -394,7 +438,7 @@
 					<div class="tsd-signature tsd-kind-icon">_value<span class="tsd-signature-symbol">:</span> <a href="../modules/_types_.html#undefinable" class="tsd-signature-type">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L17">AsyncWrapper.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L20">AsyncWrapper.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -411,7 +455,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L80">AsyncWrapper.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L138">AsyncWrapper.ts:138</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -433,7 +477,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L68">AsyncWrapper.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L126">AsyncWrapper.ts:126</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -455,7 +499,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L98">AsyncWrapper.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L156">AsyncWrapper.ts:156</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -471,13 +515,13 @@
 					<a name="promise" class="tsd-anchor"></a>
 					<h3>promise</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> promise<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">this</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> promise<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_types_.html#undefinable" class="tsd-signature-type">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L74">AsyncWrapper.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L132">AsyncWrapper.ts:132</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -485,7 +529,7 @@
 									<p>Return the internal promise that is waiting for the orginal one to complete</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">this</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_types_.html#undefinable" class="tsd-signature-type">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -499,7 +543,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L86">AsyncWrapper.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L144">AsyncWrapper.ts:144</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -521,7 +565,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L92">AsyncWrapper.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L150">AsyncWrapper.ts:150</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -534,73 +578,28 @@
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="dowork" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> do<wbr>Work</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">do<wbr>Work<span class="tsd-signature-symbol">(</span>resolve<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, reject<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, promiseOrValue<span class="tsd-signature-symbol">?: </span><a href="../modules/_types_.html#promisable" class="tsd-signature-type">Promisable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="update" class="tsd-anchor"></a>
+					<h3>update</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">(</span>promiseOrValueOrFactory<span class="tsd-signature-symbol">?: </span><a href="../modules/_types_.html#promisable" class="tsd-signature-type">Promisable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/AsyncWrapper.ts#L103">AsyncWrapper.ts:103</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/AsyncWrapper.ts#L64">AsyncWrapper.ts:64</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>resolve: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">?: </span><a href="../modules/_types_.html#promisable" class="tsd-signature-type">Promisable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">this</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5><span class="tsd-flag ts-flagOptional">Optional</span> value: <a href="../modules/_types_.html#promisable" class="tsd-signature-type">Promisable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">this</span><span class="tsd-signature-symbol">&gt;</span></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<h5>reject: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>reason<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5><span class="tsd-flag ts-flagOptional">Optional</span> reason: <span class="tsd-signature-type">any</span></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> promiseOrValue: <a href="../modules/_types_.html#promisable" class="tsd-signature-type">Promisable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> promiseOrValueOrFactory: <a href="../modules/_types_.html#promisable" class="tsd-signature-type">Promisable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -626,6 +625,9 @@
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
 								<a href="_asyncwrapper_.asyncwrapper.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_asyncwrapper_.asyncwrapper.html#_callback" class="tsd-kind-icon">_callback</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="_asyncwrapper_.asyncwrapper.html#_complete" class="tsd-kind-icon">_complete</a>
@@ -663,8 +665,8 @@
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="_asyncwrapper_.asyncwrapper.html#value" class="tsd-kind-icon">value</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="_asyncwrapper_.asyncwrapper.html#dowork" class="tsd-kind-icon">do<wbr>Work</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_asyncwrapper_.asyncwrapper.html#update" class="tsd-kind-icon">update</a>
 							</li>
 						</ul>
 					</li>

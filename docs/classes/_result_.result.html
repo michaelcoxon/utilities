@@ -62,7 +62,7 @@
 					<a href="_result_.result.html">Result</a>
 				</li>
 			</ul>
-			<h1>Class Result&lt;T&gt;</h1>
+			<h1>Class Result&lt;T, TPreviousResult&gt;</h1>
 		</div>
 	</div>
 </header>
@@ -74,6 +74,9 @@
 				<ul class="tsd-type-parameters">
 					<li>
 						<h4>T</h4>
+					</li>
+					<li>
+						<h4>TPreviousResult<span class="tsd-signature-symbol">: </span><a href="../interfaces/_result_.iresultbase.html" class="tsd-signature-type">IResultBase</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -88,7 +91,7 @@
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/_result_.iresult.html" class="tsd-signature-type">IResult</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li><a href="../interfaces/_result_.iresult.html" class="tsd-signature-type">IResult</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TPreviousResult</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -105,6 +108,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_result_.result.html#_error" class="tsd-kind-icon">_error</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_result_.result.html#_previousresult" class="tsd-kind-icon">_previous<wbr>Result</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_result_.result.html#_success" class="tsd-kind-icon">_success</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_result_.result.html#_value" class="tsd-kind-icon">_value</a></li>
 							</ul>
@@ -113,6 +117,7 @@
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_result_.result.html#error" class="tsd-kind-icon">error</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_result_.result.html#previousresult" class="tsd-kind-icon">previous<wbr>Result</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_result_.result.html#success" class="tsd-kind-icon">success</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_result_.result.html#value" class="tsd-kind-icon">value</a></li>
 							</ul>
@@ -120,7 +125,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_result_.result.html#fail" class="tsd-kind-icon">fail</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_result_.result.html#fail" class="tsd-kind-icon">fail</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_result_.result.html#ok" class="tsd-kind-icon">ok</a></li>
 							</ul>
 						</section>
@@ -133,13 +138,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Result<span class="tsd-signature-symbol">(</span>success<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, value<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">T</a>, error<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_result_.result.html" class="tsd-signature-type">Result</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Result<span class="tsd-signature-symbol">(</span>success<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, value<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">T</a>, error<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, previousResult<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">TPreviousResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_result_.result.html" class="tsd-signature-type">Result</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Result.ts#L16">Result.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/Result.ts#L23">Result.ts:23</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -152,6 +157,9 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> error: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> previousResult: <a href="" class="tsd-signature-type">TPreviousResult</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_result_.result.html" class="tsd-signature-type">Result</a></h4>
@@ -167,7 +175,17 @@
 					<div class="tsd-signature tsd-kind-icon">_error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Result.ts#L16">Result.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/Result.ts#L22">Result.ts:22</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_previousresult" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagOptional">Optional</span> _previous<wbr>Result</h3>
+					<div class="tsd-signature tsd-kind-icon">_previous<wbr>Result<span class="tsd-signature-symbol">:</span> <a href="" class="tsd-signature-type">TPreviousResult</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/Result.ts#L23">Result.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -177,7 +195,7 @@
 					<div class="tsd-signature tsd-kind-icon">_success<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Result.ts#L15">Result.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/Result.ts#L21">Result.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -187,7 +205,7 @@
 					<div class="tsd-signature tsd-kind-icon">_value<span class="tsd-signature-symbol">:</span> <a href="" class="tsd-signature-type">T</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Result.ts#L14">Result.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/Result.ts#L20">Result.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -204,10 +222,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Result.ts#L35">Result.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/Result.ts#L43">Result.ts:43</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../modules/_types_.html#undefinable" class="tsd-signature-type">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="previousresult" class="tsd-anchor"></a>
+					<h3>previous<wbr>Result</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> previousResult<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TPreviousResult</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/Result.ts#L48">Result.ts:48</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TPreviousResult</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -221,7 +256,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Result.ts#L30">Result.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/Result.ts#L38">Result.ts:38</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -238,7 +273,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Result.ts#L25">Result.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/Result.ts#L33">Result.ts:33</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../modules/_types_.html#undefinable" class="tsd-signature-type">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -248,26 +283,35 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
 					<a name="fail" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> fail</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">fail<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_result_.result.html" class="tsd-signature-type">Result</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">fail&lt;TPreviousResult&gt;<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, previousResult<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">TPreviousResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_result_.result.html" class="tsd-signature-type">Result</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TPreviousResult</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Result.ts#L45">Result.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/Result.ts#L58">Result.ts:58</a></li>
 								</ul>
 							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>TPreviousResult<span class="tsd-signature-symbol">: </span><a href="../interfaces/_result_.iresultbase.html" class="tsd-signature-type">IResultBase</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+								</li>
+							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> error: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> previousResult: <a href="" class="tsd-signature-type">TPreviousResult</a></h5>
+								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_result_.result.html" class="tsd-signature-type">Result</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_result_.result.html" class="tsd-signature-type">Result</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TPreviousResult</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -275,13 +319,13 @@
 					<a name="ok" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> ok</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">ok&lt;T&gt;<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">T</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_result_.result.html" class="tsd-signature-type">Result</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">ok&lt;T, TPreviousResult&gt;<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">T</a>, previousResult<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">TPreviousResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_result_.result.html" class="tsd-signature-type">Result</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TPreviousResult</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/cd9e2f8/src/Result.ts#L40">Result.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/aa91d84/src/Result.ts#L53">Result.ts:53</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -289,14 +333,20 @@
 								<li>
 									<h4>T</h4>
 								</li>
+								<li>
+									<h4>TPreviousResult<span class="tsd-signature-symbol">: </span><a href="../interfaces/_result_.iresultbase.html" class="tsd-signature-type">IResultBase</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+								</li>
 							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> value: <a href="" class="tsd-signature-type">T</a></h5>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> previousResult: <a href="" class="tsd-signature-type">TPreviousResult</a></h5>
+								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_result_.result.html" class="tsd-signature-type">Result</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_result_.result.html" class="tsd-signature-type">Result</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TPreviousResult</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -327,6 +377,9 @@
 								<a href="_result_.result.html#_error" class="tsd-kind-icon">_error</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_result_.result.html#_previousresult" class="tsd-kind-icon">_previous<wbr>Result</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="_result_.result.html#_success" class="tsd-kind-icon">_success</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
@@ -336,12 +389,15 @@
 								<a href="_result_.result.html#error" class="tsd-kind-icon">error</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_result_.result.html#previousresult" class="tsd-kind-icon">previous<wbr>Result</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="_result_.result.html#success" class="tsd-kind-icon">success</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="_result_.result.html#value" class="tsd-kind-icon">value</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
 								<a href="_result_.result.html#fail" class="tsd-kind-icon">fail</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
@@ -353,6 +409,9 @@
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="../interfaces/_result_.iresult.html" class="tsd-kind-icon">IResult</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../interfaces/_result_.iresultbase.html" class="tsd-kind-icon">IResult<wbr>Base</a>
 					</li>
 				</ul>
 			</nav>
