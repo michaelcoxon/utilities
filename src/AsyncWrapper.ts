@@ -2,6 +2,7 @@
 
 import { SingleInvokeEvent } from "./SingleInvokeEvent";
 import { Undefinable, Promisable } from "./Types";
+import { isFunction } from './TypeHelpers';
 
 /**
  * The AsyncWrapper is provided to monitor the state of a promise.
@@ -68,7 +69,7 @@ export class AsyncWrapper<T>
             this._success = false;
             this._complete = false;
 
-            if (typeof promiseOrValueOrFactory === "function")
+            if (isFunction(promiseOrValueOrFactory))
             {
                 this._promise = Promise.resolve(promiseOrValueOrFactory());
             }

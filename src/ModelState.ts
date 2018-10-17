@@ -20,11 +20,11 @@ export abstract class BaseModelState<T> implements IModelState<T>
     private readonly _updatedEvent: Event<Undefinable<T>>;
     private readonly _updatingEvent: Event<Undefinable<T>>;
 
-    protected _value: Undefinable<T>;
+    private _value: Undefinable<T>;
 
-    constructor()
+    constructor(value?: T)
     {
-        this._value = undefined;
+        this._value = value;
 
         this._preHandlers = {};
         this._postHandlers = {};
@@ -54,7 +54,7 @@ export abstract class BaseModelState<T> implements IModelState<T>
             this._updatingEvent.addHandler(preHandler);
         }
 
-        postCallback(this.value);
+        postCallback(this._value);
 
         return key;
     }
@@ -90,24 +90,31 @@ export abstract class BaseModelState<T> implements IModelState<T>
     /** Returns the current value of the ModelState */
     public valueOf(): Undefinable<T>
     {
-        return this.value;
+        return this._value;
     }
 
     /** Returns the string version of the ModelState value */
     public toString(): string
     {
-        return this.value!.toString();
+        return this._value!.toString();
+    }
+
+    protected setValue(value: Undefinable<T>): void
+    {
+        this._onUpdating();
+        this._value = value;
+        this._onUpdated();
     }
 
     /** Invokes the subscriptions with the current value */
-    protected _onUpdated()
+    private _onUpdated()
     {
-        this._updatedEvent.invoke(this, this.value);
+        this._updatedEvent.invoke(this, this._value);
     }
 
-    protected _onUpdating()
+    private _onUpdating()
     {
-        this._updatingEvent.invoke(this, this.value);
+        this._updatingEvent.invoke(this, this._value);
     }
 }
 
@@ -124,17 +131,14 @@ export class ModelState<T> extends BaseModelState<T> implements IModelState<T>
     constructor(initialValue: T);
     constructor(initialValue?: T)
     {
-        super();
-        this._value = initialValue;
+        super(initialValue);
     }
 
 
     /** Sets the current value of the ModelState and invokes all subscriptions */
     public set value(value: Undefinable<T>)
     {
-        this._onUpdating();
-        this._value = value;
-        this._onUpdated();
+        this.setValue(value);
     }
 }
 
@@ -161,13 +165,11 @@ export class PollingModelState<T> extends BaseModelState<T> implements IDisposab
     {
         super();
 
-        const worker = async () =>
+        const worker = (async () =>
         {
-            this._onUpdating();
-            this._value = await promiseOrValueFactory();
-            this._onUpdated();
+            this.setValue(await promiseOrValueFactory());
             this._timeout = setTimeout(worker, timeout);
-        }
+        }).bind(this);
 
         worker();
     }
@@ -181,8 +183,7 @@ export class PollingModelState<T> extends BaseModelState<T> implements IDisposab
     }
 }
 
-
-export class FactoryModelState<T> extends BaseModelState<T> implements IModelState<T>
+export class FactoryModelState<T> extends BaseModelState<T>
 {
     private readonly _updater: () => Promise<void>;
 
@@ -205,14 +206,10 @@ export class FactoryModelState<T> extends BaseModelState<T> implements IModelSta
     {
         super();
 
-        this._updater = async () =>
+        this._updater = (async () =>
         {
-            this._onUpdating();
-
-            this._value = await promiseOrValueFactory();
-
-            this._onUpdated();
-        }
+            this.setValue(await promiseOrValueFactory());
+        }).bind(this);
 
         if (updateNow)
         {
@@ -222,7 +219,7 @@ export class FactoryModelState<T> extends BaseModelState<T> implements IModelSta
 
     public set value(value: Undefinable<T>)
     {
-        this._value = value;
+        this.setValue(value);
     }
 
     public update(): void

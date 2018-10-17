@@ -8,5 +8,7 @@
   "include": [
     "../../../src/**/*"
   ],
+  "exclude": [ "../../../src/**/index.ts" ],
+
   "extends": "../../../base-tsconfig"
 }
