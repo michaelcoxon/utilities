@@ -3,6 +3,7 @@
 import { Undefinable, EventHandler, Promisable } from "./Types";
 import { Event } from "./Event";
 import { IDisposable } from './IDisposable';
+import { CancellablePromise } from './CancellablePromise';
 
 interface IModelState<T>
 {
@@ -41,22 +42,7 @@ export abstract class BaseModelState<T> implements IModelState<T>
      */
     public subscribe(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void): symbol
     {
-        const key: symbol = Symbol();
-
-        const postHandler: EventHandler<Undefinable<T>> = (s, e) => postCallback(e);
-        this._postHandlers[Symbol.keyFor(key)!] = postHandler;
-        this._updatedEvent.addHandler(postHandler);
-
-        if (preCallback)
-        {
-            const preHandler: EventHandler<Undefinable<T>> = (s, e) => preCallback(e);
-            this._preHandlers[Symbol.keyFor(key)!] = preHandler;
-            this._updatingEvent.addHandler(preHandler);
-        }
-
-        postCallback(this._value);
-
-        return key;
+        return this.subscribeCore(postCallback, preCallback, true);
     }
 
     /**
@@ -99,6 +85,34 @@ export abstract class BaseModelState<T> implements IModelState<T>
         return this._value!.toString();
     }
 
+    protected subscribeCore(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void, publishCurrentValue: boolean = true): symbol
+    {
+        const key: symbol = Symbol();
+
+        const postHandler: EventHandler<Undefinable<T>> = (s, e) => postCallback(e);
+        this._postHandlers[Symbol.keyFor(key)!] = postHandler;
+        this._updatedEvent.addHandler(postHandler);
+
+        if (preCallback)
+        {
+            const preHandler: EventHandler<Undefinable<T>> = (s, e) => preCallback(e);
+            this._preHandlers[Symbol.keyFor(key)!] = preHandler;
+            this._updatingEvent.addHandler(preHandler);
+        }
+
+        if (publishCurrentValue)
+        {
+            postCallback(this._value);
+        }
+
+        return key;
+    }
+
+    protected getValue(): Undefinable<T>
+    {
+        return this._value;
+    }
+
     protected setValue(value: Undefinable<T>): void
     {
         this._onUpdating();
@@ -134,6 +148,11 @@ export class ModelState<T> extends BaseModelState<T> implements IModelState<T>
         super(initialValue);
     }
 
+    /** Gets the current value of the ModelState */
+    public get value(): Undefinable<T>
+    {
+        return this.getValue();
+    }
 
     /** Sets the current value of the ModelState and invokes all subscriptions */
     public set value(value: Undefinable<T>)
@@ -186,7 +205,7 @@ export class PollingModelState<T> extends BaseModelState<T> implements IDisposab
 export class FactoryModelState<T> extends BaseModelState<T>
 {
     private readonly _updater: () => Promise<void>;
-
+    private _currentPromise?: CancellablePromise<void>;
     /**
     * Creates a new PollingModelState
     * @param valueFactory can be a value factory
@@ -213,8 +232,31 @@ export class FactoryModelState<T> extends BaseModelState<T>
 
         if (updateNow)
         {
-            this._updater();
+            this.update();
         }
+    }
+
+    public subscribe(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void): symbol
+    {
+        const key = super.subscribeCore(postCallback, preCallback, false);
+
+        if (this._currentPromise)
+        {
+            this._waitForPromise(() => postCallback(this.value));
+        }
+        else
+        {
+            postCallback(this.value);
+        }
+
+        return key;
+    }
+
+
+    /** Gets the current value of the ModelState */
+    public get value(): Undefinable<T>
+    {
+        return this.getValue();
     }
 
     public set value(value: Undefinable<T>)
@@ -224,6 +266,23 @@ export class FactoryModelState<T> extends BaseModelState<T>
 
     public update(): void
     {
-        this._updater();
+        if (this._currentPromise)
+        {
+            this._currentPromise.cancel();
+        }
+        this._currentPromise = new CancellablePromise(this._updater());
+    }
+
+    private _waitForPromise(then: () => void): void
+    {
+        this._currentPromise!
+            .then(then)
+            .finally((promise, cancelled) =>
+            {
+                if (cancelled)
+                {
+                    this._waitForPromise(then);
+                }
+            });
     }
 }

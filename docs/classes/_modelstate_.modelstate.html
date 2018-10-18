@@ -117,14 +117,16 @@
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-set-signature tsd-parent-kind-class tsd-is-overwrite"><a href="_modelstate_.modelstate.html#value" class="tsd-kind-icon">value</a></li>
+								<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-overwrite"><a href="_modelstate_.modelstate.html#value" class="tsd-kind-icon">value</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_modelstate_.modelstate.html#getvalue" class="tsd-kind-icon">get<wbr>Value</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_modelstate_.modelstate.html#setvalue" class="tsd-kind-icon">set<wbr>Value</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_modelstate_.modelstate.html#subscribe" class="tsd-kind-icon">subscribe</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_modelstate_.modelstate.html#subscribecore" class="tsd-kind-icon">subscribe<wbr>Core</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_modelstate_.modelstate.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_modelstate_.modelstate.html#unsubscribe" class="tsd-kind-icon">unsubscribe</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_modelstate_.modelstate.html#valueof" class="tsd-kind-icon">value<wbr>Of</a></li>
@@ -147,7 +149,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_modelstate_.basemodelstate.html">BaseModelState</a>.<a href="_modelstate_.basemodelstate.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/a556572/src/ModelState.ts#L123">ModelState.ts:123</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/298413d/src/ModelState.ts#L137">ModelState.ts:137</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -161,7 +163,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_modelstate_.basemodelstate.html">BaseModelState</a>.<a href="_modelstate_.basemodelstate.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/a556572/src/ModelState.ts#L125">ModelState.ts:125</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/298413d/src/ModelState.ts#L139">ModelState.ts:139</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -187,10 +189,11 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Accessors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-set-signature tsd-parent-kind-class tsd-is-overwrite">
+				<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-overwrite">
 					<a name="value" class="tsd-anchor"></a>
 					<h3>value</h3>
-					<ul class="tsd-signatures tsd-kind-set-signature tsd-parent-kind-class tsd-is-overwrite">
+					<ul class="tsd-signatures tsd-kind-accessor tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> value<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_types_.html#undefinable" class="tsd-signature-type">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> value<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="../modules/_types_.html#undefinable" class="tsd-signature-type">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
@@ -198,7 +201,21 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_modelstate_.basemodelstate.html">BaseModelState</a>.<a href="_modelstate_.basemodelstate.html#value">value</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/a556572/src/ModelState.ts#L139">ModelState.ts:139</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/298413d/src/ModelState.ts#L152">ModelState.ts:152</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the current value of the ModelState</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_types_.html#undefinable" class="tsd-signature-type">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_modelstate_.basemodelstate.html">BaseModelState</a>.<a href="_modelstate_.basemodelstate.html#value">value</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/298413d/src/ModelState.ts#L158">ModelState.ts:158</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -220,6 +237,24 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="getvalue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> get<wbr>Value</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Value<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_types_.html#undefinable" class="tsd-signature-type">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_modelstate_.basemodelstate.html">BaseModelState</a>.<a href="_modelstate_.basemodelstate.html#getvalue">getValue</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/298413d/src/ModelState.ts#L111">ModelState.ts:111</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_types_.html#undefinable" class="tsd-signature-type">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="setvalue" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> set<wbr>Value</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
@@ -230,7 +265,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_modelstate_.basemodelstate.html">BaseModelState</a>.<a href="_modelstate_.basemodelstate.html#setvalue">setValue</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/a556572/src/ModelState.ts#L102">ModelState.ts:102</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/298413d/src/ModelState.ts#L116">ModelState.ts:116</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -254,7 +289,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_modelstate_.basemodelstate.html">BaseModelState</a>.<a href="_modelstate_.basemodelstate.html#subscribe">subscribe</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/a556572/src/ModelState.ts#L42">ModelState.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/298413d/src/ModelState.ts#L43">ModelState.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -295,6 +330,54 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="subscribecore" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> subscribe<wbr>Core</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">subscribe<wbr>Core<span class="tsd-signature-symbol">(</span>postCallback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, preCallback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span>, publishCurrentValue<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">symbol</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_modelstate_.basemodelstate.html">BaseModelState</a>.<a href="_modelstate_.basemodelstate.html#subscribecore">subscribeCore</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/298413d/src/ModelState.ts#L88">ModelState.ts:88</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>postCallback: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="../modules/_types_.html#undefinable" class="tsd-signature-type">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>value: <a href="../modules/_types_.html#undefinable" class="tsd-signature-type">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> preCallback: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> publishCurrentValue: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">symbol</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="tostring" class="tsd-anchor"></a>
 					<h3>to<wbr>String</h3>
@@ -307,7 +390,7 @@
 								<p>Implementation of <a href="../interfaces/_modelstate_.imodelstate.html">IModelState</a>.<a href="../interfaces/_modelstate_.imodelstate.html#tostring">toString</a></p>
 								<p>Inherited from <a href="_modelstate_.basemodelstate.html">BaseModelState</a>.<a href="_modelstate_.basemodelstate.html#tostring">toString</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/a556572/src/ModelState.ts#L97">ModelState.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/298413d/src/ModelState.ts#L83">ModelState.ts:83</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -331,7 +414,7 @@
 								<p>Implementation of <a href="../interfaces/_modelstate_.imodelstate.html">IModelState</a>.<a href="../interfaces/_modelstate_.imodelstate.html#unsubscribe">unsubscribe</a></p>
 								<p>Inherited from <a href="_modelstate_.basemodelstate.html">BaseModelState</a>.<a href="_modelstate_.basemodelstate.html#unsubscribe">unsubscribe</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/a556572/src/ModelState.ts#L67">ModelState.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/298413d/src/ModelState.ts#L53">ModelState.ts:53</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -364,7 +447,7 @@
 								<p>Implementation of <a href="../interfaces/_modelstate_.imodelstate.html">IModelState</a>.<a href="../interfaces/_modelstate_.imodelstate.html#valueof">valueOf</a></p>
 								<p>Inherited from <a href="_modelstate_.basemodelstate.html">BaseModelState</a>.<a href="_modelstate_.basemodelstate.html#valueof">valueOf</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/a556572/src/ModelState.ts#L91">ModelState.ts:91</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/298413d/src/ModelState.ts#L77">ModelState.ts:77</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -405,14 +488,20 @@
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
 								<a href="_modelstate_.modelstate.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-set-signature tsd-parent-kind-class tsd-is-overwrite">
+							<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-overwrite">
 								<a href="_modelstate_.modelstate.html#value" class="tsd-kind-icon">value</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_modelstate_.modelstate.html#getvalue" class="tsd-kind-icon">get<wbr>Value</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 								<a href="_modelstate_.modelstate.html#setvalue" class="tsd-kind-icon">set<wbr>Value</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="_modelstate_.modelstate.html#subscribe" class="tsd-kind-icon">subscribe</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="_modelstate_.modelstate.html#subscribecore" class="tsd-kind-icon">subscribe<wbr>Core</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="_modelstate_.modelstate.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
