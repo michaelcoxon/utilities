@@ -4,14 +4,15 @@ import { Undefinable, EventHandler, Promisable } from "./Types";
 import { Event } from "./Event";
 import { IDisposable } from './IDisposable';
 import { CancellablePromise } from './CancellablePromise';
+import { Guid } from './Guid';
 
-interface IModelState<T>
+export interface IModelState<T>
 {
-    subscribe(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void): symbol
-    unsubscribe(key: symbol): void
-    toString(): string
-    readonly value: Undefinable<T>
-    valueOf(): Undefinable<T>
+    subscribe(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void): string;
+    unsubscribe(key: string): void;
+    toString(): string;
+    readonly value: Undefinable<T>;
+    valueOf(): Undefinable<T>;
 }
 
 export abstract class BaseModelState<T> implements IModelState<T>
@@ -40,7 +41,7 @@ export abstract class BaseModelState<T> implements IModelState<T>
      * @param callback The callback to be invoked when the state is updated
      * @returns A symbol that must saved to unsubscribe from the ModelState
      */
-    public subscribe(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void): symbol
+    public subscribe(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void): string
     {
         return this.subscribeCore(postCallback, preCallback, true);
     }
@@ -50,20 +51,20 @@ export abstract class BaseModelState<T> implements IModelState<T>
      * 
      * @param key The symbol that was returned from the subscribe method.
      */
-    public unsubscribe(key: symbol): void
+    public unsubscribe(key: string): void
     {
-        const postHandler = this._postHandlers[Symbol.keyFor(key)!];
+        const postHandler = this._postHandlers[key];
         if (postHandler)
         {
             this._updatedEvent.removeHandler(postHandler);
-            delete this._postHandlers[Symbol.keyFor(key)!];
+            delete this._postHandlers[key];
         }
 
-        const preHandler = this._preHandlers[Symbol.keyFor(key)!];
+        const preHandler = this._preHandlers[key];
         if (preHandler)
         {
             this._updatingEvent.removeHandler(preHandler);
-            delete this._preHandlers[Symbol.keyFor(key)!];
+            delete this._preHandlers[key];
         }
     }
 
@@ -85,18 +86,18 @@ export abstract class BaseModelState<T> implements IModelState<T>
         return this._value!.toString();
     }
 
-    protected subscribeCore(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void, publishCurrentValue: boolean = true): symbol
+    protected subscribeCore(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void, publishCurrentValue: boolean = true): string
     {
-        const key: symbol = Symbol();
+        const key = Guid.newGuid().toString();
 
         const postHandler: EventHandler<Undefinable<T>> = (s, e) => postCallback(e);
-        this._postHandlers[Symbol.keyFor(key)!] = postHandler;
+        this._postHandlers[key] = postHandler;
         this._updatedEvent.addHandler(postHandler);
 
         if (preCallback)
         {
             const preHandler: EventHandler<Undefinable<T>> = (s, e) => preCallback(e);
-            this._preHandlers[Symbol.keyFor(key)!] = preHandler;
+            this._preHandlers[key] = preHandler;
             this._updatingEvent.addHandler(preHandler);
         }
 
@@ -236,7 +237,7 @@ export class FactoryModelState<T> extends BaseModelState<T>
         }
     }
 
-    public subscribe(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void): symbol
+    public subscribe(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void): string
     {
         const key = super.subscribeCore(postCallback, preCallback, false);
 
