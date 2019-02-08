@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IEvent | @michaelcoxon/utilities</title>
+	<title>&quot;Pipeline&quot; | @michaelcoxon/utilities</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,104 +56,33 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_event_.html">&quot;Event&quot;</a>
-				</li>
-				<li>
-					<a href="_event_.ievent.html">IEvent</a>
+					<a href="_pipeline_.html">&quot;Pipeline&quot;</a>
 				</li>
 			</ul>
-			<h1>Interface IEvent&lt;TEventArgs&gt;</h1>
+			<h1>External module &quot;Pipeline&quot;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-type-parameters">
-				<h3>Type parameters</h3>
-				<ul class="tsd-type-parameters">
-					<li>
-						<h4>TEventArgs</h4>
-					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel tsd-hierarchy">
-				<h3>Hierarchy</h3>
-				<ul class="tsd-hierarchy">
-					<li>
-						<span class="target">IEvent</span>
-					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implemented by</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../classes/_event_.event.html" class="tsd-signature-type">Event</a></li>
-					<li><a href="../classes/_singleinvokeevent_.singleinvokeevent.html" class="tsd-signature-type">SingleInvokeEvent</a></li>
-					<li><a href="../classes/_singleinvokeevent_.singleinvokeevent.html" class="tsd-signature-type">SingleInvokeEvent</a></li>
-				</ul>
-			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Methods</h3>
+							<h3>Classes</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_event_.ievent.html#addhandler" class="tsd-kind-icon">add<wbr>Handler</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_event_.ievent.html#removehandler" class="tsd-kind-icon">remove<wbr>Handler</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter"><a href="../classes/_pipeline_.pipeline.html" class="tsd-kind-icon">Pipeline</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_pipeline_.ipipelinetask.html" class="tsd-kind-icon">IPipeline<wbr>Task</a></li>
 							</ul>
 						</section>
 					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="addhandler" class="tsd-anchor"></a>
-					<h3>add<wbr>Handler</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Handler<span class="tsd-signature-symbol">(</span>eventHandler<span class="tsd-signature-symbol">: </span><a href="../modules/_types_.html#eventhandler" class="tsd-signature-type">EventHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TEventArgs</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_types_.html#eventhandler" class="tsd-signature-type">EventHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TEventArgs</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/fe748d1/src/Event.ts#L6">Event.ts:6</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>eventHandler: <a href="../modules/_types_.html#eventhandler" class="tsd-signature-type">EventHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TEventArgs</span><span class="tsd-signature-symbol">&gt;</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../modules/_types_.html#eventhandler" class="tsd-signature-type">EventHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TEventArgs</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="removehandler" class="tsd-anchor"></a>
-					<h3>remove<wbr>Handler</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">remove<wbr>Handler<span class="tsd-signature-symbol">(</span>eventHandler<span class="tsd-signature-symbol">: </span><a href="../modules/_types_.html#eventhandler" class="tsd-signature-type">EventHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TEventArgs</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/fe748d1/src/Event.ts#L7">Event.ts:7</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>eventHandler: <a href="../modules/_types_.html#eventhandler" class="tsd-signature-type">EventHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TEventArgs</span><span class="tsd-signature-symbol">&gt;</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
 				</section>
 			</section>
 		</div>
@@ -164,30 +93,18 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_event_.html">"<wbr>Event"</a>
+						<a href="_pipeline_.html">"<wbr>Pipeline"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../classes/_event_.event.html" class="tsd-kind-icon">Event</a>
+						<a href="../classes/_pipeline_.pipeline.html" class="tsd-kind-icon">Pipeline</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_event_.ievent.html" class="tsd-kind-icon">IEvent</a>
-						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_event_.ievent.html#addhandler" class="tsd-kind-icon">add<wbr>Handler</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_event_.ievent.html#removehandler" class="tsd-kind-icon">remove<wbr>Handler</a>
-							</li>
-						</ul>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_pipeline_.ipipelinetask.html" class="tsd-kind-icon">IPipeline<wbr>Task</a>
 					</li>
-				</ul>
-				<ul class="after-current">
 				</ul>
 			</nav>
 		</div>
