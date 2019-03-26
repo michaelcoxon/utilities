@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>LazyAsync | @michaelcoxon/utilities</title>
+	<title>Url | @michaelcoxon/utilities</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,39 +56,24 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_lazyasync_.html">&quot;LazyAsync&quot;</a>
+					<a href="../modules/_url_.html">&quot;Url&quot;</a>
 				</li>
 				<li>
-					<a href="_lazyasync_.lazyasync.html">LazyAsync</a>
+					<a href="_url_.url.html">Url</a>
 				</li>
 			</ul>
-			<h1>Class LazyAsync&lt;T&gt;</h1>
+			<h1>Class Url</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Lazy value provider for promises</p>
-					</div>
-				</div>
-			</section>
-			<section class="tsd-panel tsd-type-parameters">
-				<h3>Type parameters</h3>
-				<ul class="tsd-type-parameters">
-					<li>
-						<h4>T</h4>
-					</li>
-				</ul>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">LazyAsync</span>
+						<span class="target">Url</span>
 					</li>
 				</ul>
 			</section>
@@ -99,21 +84,27 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_lazyasync_.lazyasync.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_url_.url.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_lazyasync_.lazyasync.html#_factory" class="tsd-kind-icon">_factory</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_lazyasync_.lazyasync.html#_value" class="tsd-kind-icon">_value</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_url_.url.html#_query" class="tsd-kind-icon">_query</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_url_.url.html#_url" class="tsd-kind-icon">_url</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_lazyasync_.lazyasync.html#isvaluecreated" class="tsd-kind-icon">is<wbr>Value<wbr>Created</a></li>
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_lazyasync_.lazyasync.html#value" class="tsd-kind-icon">value</a></li>
+								<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="_url_.url.html#query" class="tsd-kind-icon">query</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_url_.url.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_url_.url.html#valueof" class="tsd-kind-icon">value<wbr>Of</a></li>
 							</ul>
 						</section>
 					</div>
@@ -125,44 +116,25 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Lazy<wbr>Async<span class="tsd-signature-symbol">(</span>factory<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lazyasync_.lazyasync.html" class="tsd-signature-type">LazyAsync</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Url<span class="tsd-signature-symbol">(</span>baseUrl<span class="tsd-signature-symbol">: </span><a href="../modules/_url_.html#stringorurl" class="tsd-signature-type">StringOrUrl</a>, queryStringObject<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_url_.url.html" class="tsd-signature-type">Url</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/17073bb/src/LazyAsync.ts#L9">LazyAsync.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/17073bb/src/Url.ts#L34">Url.ts:34</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Creates a new instance of the LazyAsync</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>factory: <span class="tsd-signature-type">function</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>The factory that creates the promise to be resolved</p>
-										</div>
-									</div>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
+									<h5>baseUrl: <a href="../modules/_url_.html#stringorurl" class="tsd-signature-type">StringOrUrl</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> queryStringObject: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_lazyasync_.lazyasync.html" class="tsd-signature-type">LazyAsync</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_url_.url.html" class="tsd-signature-type">Url</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -170,84 +142,94 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_factory" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _factory</h3>
-					<div class="tsd-signature tsd-kind-icon">_factory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<a name="_query" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _query</h3>
+					<div class="tsd-signature tsd-kind-icon">_query<span class="tsd-signature-symbol">:</span> <a href="_url_.querystringcollection.html" class="tsd-signature-type">QueryStringCollection</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/17073bb/src/LazyAsync.ts#L8">LazyAsync.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/17073bb/src/Url.ts#L34">Url.ts:34</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_value" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _value</h3>
-					<div class="tsd-signature tsd-kind-icon">_value<span class="tsd-signature-symbol">:</span> <a href="../modules/_types_.html#undefinable" class="tsd-signature-type">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="_url" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _url</h3>
+					<div class="tsd-signature tsd-kind-icon">_url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/17073bb/src/LazyAsync.ts#L9">LazyAsync.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/17073bb/src/Url.ts#L33">Url.ts:33</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Accessors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="isvaluecreated" class="tsd-anchor"></a>
-					<h3>is<wbr>Value<wbr>Created</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> isValueCreated<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class">
+					<a name="query" class="tsd-anchor"></a>
+					<h3>query</h3>
+					<ul class="tsd-signatures tsd-kind-accessor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> query<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_url_.querystringcollection.html" class="tsd-signature-type">QueryStringCollection</a></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> query<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="_url_.querystringcollection.html" class="tsd-signature-type">QueryStringCollection</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/17073bb/src/LazyAsync.ts#L34">LazyAsync.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/17073bb/src/Url.ts#L56">Url.ts:56</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Returns true if the promise has been created</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_url_.querystringcollection.html" class="tsd-signature-type">QueryStringCollection</a></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/17073bb/src/Url.ts#L61">Url.ts:61</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <a href="_url_.querystringcollection.html" class="tsd-signature-type">QueryStringCollection</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="value" class="tsd-anchor"></a>
-					<h3>value</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> value<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="tostring" class="tsd-anchor"></a>
+					<h3>to<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>String<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/17073bb/src/LazyAsync.ts#L21">LazyAsync.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/17073bb/src/Url.ts#L66">Url.ts:66</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Returns the promise if it is already constructed or constructs the promise and returns it</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="valueof" class="tsd-anchor"></a>
+					<h3>value<wbr>Of</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">value<wbr>Of<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/17073bb/src/Url.ts#L71">Url.ts:71</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -260,36 +242,59 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_lazyasync_.html">"<wbr>Lazy<wbr>Async"</a>
+						<a href="../modules/_url_.html">"<wbr>Url"</a>
+						<ul>
+							<li class=" tsd-kind-module tsd-parent-kind-external-module">
+								<a href="../modules/_url_.querystringhelper.html">Query<wbr>String<wbr>Helper</a>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_url_.querystringcollection.html" class="tsd-kind-icon">Query<wbr>String<wbr>Collection</a>
+					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_lazyasync_.lazyasync.html" class="tsd-kind-icon">Lazy<wbr>Async</a>
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_url_.url.html" class="tsd-kind-icon">Url</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_lazyasync_.lazyasync.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_url_.url.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_lazyasync_.lazyasync.html#_factory" class="tsd-kind-icon">_factory</a>
+								<a href="_url_.url.html#_query" class="tsd-kind-icon">_query</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_lazyasync_.lazyasync.html#_value" class="tsd-kind-icon">_value</a>
+								<a href="_url_.url.html#_url" class="tsd-kind-icon">_url</a>
 							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="_lazyasync_.lazyasync.html#isvaluecreated" class="tsd-kind-icon">is<wbr>Value<wbr>Created</a>
+							<li class=" tsd-kind-accessor tsd-parent-kind-class">
+								<a href="_url_.url.html#query" class="tsd-kind-icon">query</a>
 							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="_lazyasync_.lazyasync.html#value" class="tsd-kind-icon">value</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_url_.url.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_url_.url.html#valueof" class="tsd-kind-icon">value<wbr>Of</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_url_.html#querystringitem" class="tsd-kind-icon">Query<wbr>String<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_url_.html#stringorurl" class="tsd-kind-icon">String<wbr>OrUrl</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_url_.html#stringorurltostring" class="tsd-kind-icon">string<wbr>OrUrl<wbr>ToString</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_url_.html#stringorurltourl" class="tsd-kind-icon">string<wbr>OrUrl<wbr>ToUrl</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
