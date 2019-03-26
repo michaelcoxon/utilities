@@ -49,6 +49,7 @@
     </Content>
     <TypeScriptCompile Include="src\Pipeline.ts" />
     <TypeScriptCompile Include="src\TypeHelpers.ts" />
+    <TypeScriptCompile Include="src\Url.ts" />
     <TypeScriptCompile Include="tests\AsyncWrapper.spec.ts">
       <TestFramework>Mocha</TestFramework>
     </TypeScriptCompile>
