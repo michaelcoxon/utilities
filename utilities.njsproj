@@ -42,6 +42,7 @@
     <TypeScriptCompile Include="src\CancellablePromise.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\Mutex.ts" />
     <TypeScriptCompile Include="src\Logger.ts" />
     <TypeScriptCompile Include="src\i18n\en.exceptions.strings.json" />
     <Content Include="tsconfig.json">

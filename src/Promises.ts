@@ -1,5 +1,4 @@
 ﻿import { Promisable } from "./Types";
-import { resolve } from "url";
 
 declare function clearTimeout(intervalId: any): void;
 declare function setTimeout(callback: (...args: any[]) => void, ms: number, ...args: any[]): any;
@@ -26,16 +25,22 @@ export namespace Promises
         });
     }
 
-    /** Returns a new resolved Promise */
+    /** 
+     *  Returns a new resolved Promise 
+     *  @deprecated Use Promise.resolve
+     */
     export function resolved(): Promise<void>
     {
-        return new Promise<void>(resolve => resolve());
+        return Promise.resolve();
     }
 
-    /** Returns a new rejected Promise */
+    /** 
+     *  Returns a new rejected Promise 
+     *  @deprecated Use Promise.reject
+     */
     export function rejected(reason?: any): Promise<void>
     {
-        return new Promise<void>((resolve, reject) => reject(reason));
+        return Promise.reject(reason);
     }
 
     /**

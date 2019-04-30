@@ -8,7 +8,8 @@ const SR = {
     "IndexOutOfRangeException_message": "The index of '{0}' on '{1}' is out of bounds. min: '{2}', max: '{3}'",
     "FileNotFoundException_message": "File '{0}' is not found",
     "KeyNotFoundException_message": "Key '{0}' is not found",
-    "KeyAlreadyDefinedException_message": "Key '{0}' is already defined"
+    "KeyAlreadyDefinedException_message": "Key '{0}' is already defined",
+    "MutexAlreadyAquiredException_message": "Mutex is already aquired. Release before aquiring again or wait",
 }
 
 /**
@@ -375,6 +376,28 @@ export class InvalidOperationException extends Exception
             } else
             {
                 super();
+            }
+        }
+        this.name = 'InvalidOperationException';
+    }
+}
+
+export class MutexAlreadyAquiredException extends Exception
+{
+    constructor(message?: string, innerException?: Exception)
+    {
+        if (innerException)
+        {
+            super(message!, innerException);
+        }
+        else
+        {
+            if (message)
+            {
+                super(message);
+            } else
+            {
+                super(SR.MutexAlreadyAquiredException_message);
             }
         }
         this.name = 'InvalidOperationException';
