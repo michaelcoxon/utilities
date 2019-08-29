@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{89925f06-dee7-4218-ac9c-f28824a53276}</ProjectGuid>
     <ProjectHome />
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <StartupFile />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -25,10 +25,11 @@
     <Content Include=".gitignore" />
     <Content Include=".nojekyll" />
     <Content Include=".npmignore" />
+    <Content Include="babel.config.js" />
     <Content Include="LICENSE" />
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <Content Include="src\config\es2015\tsconfig.json" />
+    <Content Include="src\config\esnext\tsconfig.json" />
     <Content Include="src\config\es6\tsconfig.json" />
     <Content Include="src\config\es5\tsconfig.json" />
     <Content Include="base-tsconfig.json" />
@@ -57,16 +58,20 @@
     <TypeScriptCompile Include="tests\ModelState.spec.ts">
       <TestFramework>Mocha</TestFramework>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="tests\Mutex.spec.ts">
+      <TestFramework>Mocha</TestFramework>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="tests\QueryStringCollection.spec.ts" />
     <TypeScriptCompile Include="tests\Timer.spec.ts">
       <TestFramework>Mocha</TestFramework>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="tests\Utilities.spec.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\config\" />
     <Folder Include="src\config\es5\" />
     <Folder Include="src\config\es6\" />
-    <Folder Include="src\config\es2015\" />
+    <Folder Include="src\config\esnext\" />
     <Folder Include="src\i18n\" />
     <Folder Include="tests\" />
     <Folder Include="src\" />

@@ -13,6 +13,7 @@ export interface IResult<T, TPreviousResult extends IResultBase | undefined = un
     readonly value?: T;
     readonly success: boolean;
     readonly error?: string;
+    readonly previousResult: TPreviousResult;
 }
 
 export class Result<T={}, TPreviousResult extends IResultBase | undefined = undefined> implements IResult<T, TPreviousResult>
@@ -50,12 +51,12 @@ export class Result<T={}, TPreviousResult extends IResultBase | undefined = unde
         return this.previousResult;
     }
 
-    public static ok<T, TPreviousResult extends IResultBase | undefined = undefined>(value?: T, previousResult?: TPreviousResult)
+    public static ok<T, TPreviousResult extends IResultBase | undefined = undefined>(value?: T, previousResult?: TPreviousResult): IResult<T, TPreviousResult>
     {
         return new Result(true, value, undefined, previousResult);
     }
 
-    public static fail<TPreviousResult extends IResultBase | undefined = undefined>(error?: string, previousResult?: TPreviousResult)
+    public static fail<T, TPreviousResult extends IResultBase | undefined = undefined>(error?: string, previousResult?: TPreviousResult): IResult<T, TPreviousResult>
     {
         return new Result(false, undefined, error, previousResult);
     }

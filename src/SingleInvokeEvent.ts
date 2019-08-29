@@ -1,4 +1,6 @@
 ﻿import { Event, IEvent } from "./Event";
+import { ArgumentNullException, ArgumentUndefinedException, NullReferenceException } from './Exceptions';
+import { isUndefinedOrNull } from './TypeHelpers';
 import { EventHandler } from "./Types";
 
 /**
@@ -31,6 +33,10 @@ export class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> implements 
 
         if (this._fired)
         {
+            if (isUndefinedOrNull(this._args))
+            {
+                throw new NullReferenceException("FATAL There are no args - this is not possible. Report this bug.")
+            }
             eventHandler.call(this._sender, this._sender, this._args);
         }
 
@@ -48,6 +54,10 @@ export class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> implements 
         if (this._fired)
         {
             return;
+        }
+        if (isUndefinedOrNull(args))
+        {
+            throw new ArgumentUndefinedException("args", new ArgumentNullException("args"));
         }
 
         this._fired = true;

@@ -26,20 +26,21 @@ DtsBundlePlugin.prototype.apply = function (compiler)
 
 module.exports = () =>
 {
-    const env = process.env.NODE_ENV.trim();
+    const env = process.env.NODE_ENV && process.env.NODE_ENV.trim();
     const isDevBuild = !(env && env === 'production');
 
     return [{
         mode: isDevBuild ? 'development' : 'production',
         entry: { 'index': `./${srcDir}/index.ts` },
         resolve: { extensions: ['.ts'] },
+        devtool: 'source-map',
         output: {
             path: path.join(__dirname, bundleOutputDir),
             filename: `[name].js`,
             publicPath: 'dist/',
             library: libraryName,
             libraryTarget: 'umd',
-            globalObject:'this'
+            globalObject: 'this'
         },
         externals: [
             /^tslib.*$/
@@ -49,7 +50,7 @@ module.exports = () =>
                 {
                     test: /\.ts$/,
                     include: /src/,
-                    use: 'awesome-typescript-loader?configFileName=./src/config/es5/tsconfig.json'
+                    use: ['babel-loader','awesome-typescript-loader?configFileName=./src/config/esnext/tsconfig.json']
                 }
             ]
         },
@@ -74,7 +75,7 @@ module.exports = () =>
             ]
         },
         plugins: [
-            new CheckerPlugin(),           
+            new CheckerPlugin(),
 
             ...(isDevBuild
                 ?
@@ -84,8 +85,8 @@ module.exports = () =>
                 :
                 [
                     // Plugins that apply in production builds only
-                    new DtsBundlePlugin(),
+                    new DtsBundlePlugin()
                 ])
         ]
     }];
-}
+};

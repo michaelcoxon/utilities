@@ -1,5 +1,4 @@
-﻿import { Strings } from "./Strings";
-import { NotSupportedException, Exception } from "./Exceptions";
+﻿import { NotSupportedException } from "./Exceptions";
 import { IResult, Result } from "./Result";
 
 
@@ -9,42 +8,41 @@ export namespace Booleans
     export const trueString: string = (true).toString();
     export const falseString: string = (false).toString();
 
-    export function parse(value: string): boolean
+    const _caseInsensitiveTrueString = trueString.toLowerCase();
+    const _caseInsensitiveFalseString = falseString.toLowerCase();
+
+    export function parse(value: string): boolean;
+    export function parse(value: string, caseInsensitive: boolean): boolean;
+    export function parse(value: string, caseInsensitive: boolean = false): boolean
     {
-        if (value.startsWith(trueString))
+        const result = tryParse(value, caseInsensitive);
+        if (result.success)
         {
-            return true;
-        }
-        else if (value.startsWith(falseString))
-        {
-            return false;
+            return result.value!;
         }
         else
         {
-            throw new NotSupportedException("Value is not a boolean");
+            throw new NotSupportedException(result.error);
         }
     }
 
-    export function tryParse(value: string): IResult<boolean>
+    export function tryParse(value: string): IResult<boolean>;
+    export function tryParse(value: string, caseInsensitive: boolean): IResult<boolean>;
+    export function tryParse(value: string, caseInsensitive: boolean = false): IResult<boolean>
     {
-        try
+        value = (caseInsensitive ? value.toLowerCase() : value);
+
+        if (value.startsWith(caseInsensitive ? _caseInsensitiveTrueString : trueString))
         {
-            return Result.ok(parse(value));
+            return Result.ok(true);
         }
-        catch (ex)
+        else if (value.startsWith(caseInsensitive ? _caseInsensitiveFalseString : falseString))
         {
-            if (ex instanceof Exception)
-            {
-                return Result.fail(ex.message);
-            }
-            else if (ex instanceof Error)
-            {
-                return Result.fail(ex.message);
-            }
-            else
-            {
-                return Result.fail(ex);
-            }
+            return Result.ok(false);
+        }
+        else
+        {
+            return Result.fail("Value is not a boolean");
         }
     }
 } 

@@ -1,7 +1,7 @@
 ﻿import { MutexAlreadyAquiredException } from './Exceptions';
 import { IDisposable, using, usingAsync } from './IDisposable';
-import { isUndefined } from './TypeHelpers';
 import { SingleInvokeEvent } from './SingleInvokeEvent';
+import { isUndefined } from './TypeHelpers';
 
 /** Interface for a lock */
 export interface ILock extends IDisposable
@@ -35,8 +35,8 @@ export class Mutex
         };
 
         return Object.freeze({
-            release: () => release,
-            dispose: () => release,
+            release: () => release(),
+            dispose: () => release(),
         });
     }
 
@@ -46,17 +46,18 @@ export class Mutex
      */
     public wait(): Promise<void>
     {
-        return new Promise((resolve) =>
+        if (isUndefined(this._onRelease))
         {
-            if (isUndefined(this._onRelease))
+            return Promise.resolve();
+        }
+        else
+        {
+            const handler = this._onRelease;
+            return new Promise((resolve) =>
             {
-                resolve();
-            }
-            else
-            {
-                this._onRelease.addHandler(() => resolve());
-            }
-        });
+                handler.addHandler(() => resolve());
+            });
+        }
     }
 }
 

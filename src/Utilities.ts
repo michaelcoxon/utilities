@@ -1,11 +1,22 @@
-﻿import { ArgumentException } from './Exceptions';
-import { Strings } from './Strings';
+﻿import { Strings } from './Strings';
 
 const KEYVALUESEPARATOR = ":";
 
 export namespace Utilities
 {
-
+    /**
+     * returns true if the two objects are equal but not the same object. (compares public keys)
+     * @param obj1
+     * @param obj2
+     */
+    export function equals<T>(obj1: T, obj2: T): boolean;
+    /**
+     * returns true if the two objects are equal but not the same object. (compares public keys)
+     * @param obj1
+     * @param obj2
+     * @param forceJSON converts the objects to JSON and compares the two strings.
+     */
+    export function equals<T>(obj1: T, obj2: T, forceJSON: boolean): boolean;
     /**
      * returns true if the two objects are equal but not the same object. (compares public keys)
      * @param obj1
@@ -13,35 +24,45 @@ export namespace Utilities
      * @param forceJSON converts the objects to JSON and compares the two strings.
      * @param deep Does a deep compare. forceJSON must be false
      */
+    export function equals<T>(obj1: T, obj2: T, forceJSON: boolean, deep: boolean): boolean;
     export function equals<T>(obj1: T, obj2: T, forceJSON: boolean = false, deep: boolean = false): boolean
     {
         let state = false;
 
-        if (!forceJSON)
+        if (typeof obj1 === 'object')
         {
-            for (let key in obj1)
+            if (!forceJSON)
             {
-                if (obj1.hasOwnProperty(key))
+                for (let key in obj1)
                 {
-                    if (deep)
+                    if ((obj1 as Object).hasOwnProperty(key))
                     {
-                        state = equals(obj1[key], obj2[key], forceJSON, deep);
-                    }
-                    else
-                    {
-                        state = obj1[key] == obj2[key];
-                    }
+                        if (deep)
+                        {
+                            state = equals(obj1[key], obj2[key], forceJSON, deep);
+                        }
+                        else
+                        {
+                            state = obj1[key] == obj2[key];
+                        }
 
-                    if (!state)
-                    {
-                        break;
+                        if (!state)
+                        {
+                            break;
+                        }
                     }
                 }
+            }
+            else
+            {
+                state = equivilentToByJSON(obj1, obj2);
             }
         }
         else
         {
-            state = equivilentToByJSON(obj1, obj2);
+            state = forceJSON
+                ? equivilentToByJSON(obj1, obj2)
+                : obj1 === obj2;
         }
 
         return state;

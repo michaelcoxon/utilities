@@ -1,10 +1,8 @@
-﻿import 'tslib';
-
-import { Undefinable, EventHandler, Promisable } from "./Types";
+﻿import { CancellablePromise } from './CancellablePromise';
 import { Event } from "./Event";
-import { IDisposable } from './IDisposable';
-import { CancellablePromise } from './CancellablePromise';
 import { Guid } from './Guid';
+import { IDisposable } from './IDisposable';
+import { EventHandler, Promisable, Undefinable } from "./Types";
 
 export interface IModelState<T>
 {
@@ -15,7 +13,7 @@ export interface IModelState<T>
     valueOf(): Undefinable<T>;
 }
 
-export abstract class BaseModelState<T> implements IModelState<T>
+export abstract class BaseModelState<T extends any> implements IModelState<T>
 {
     private readonly _postHandlers: { [key: string]: EventHandler<Undefinable<T>> }
     private readonly _preHandlers: { [key: string]: EventHandler<Undefinable<T>> }
@@ -83,7 +81,10 @@ export abstract class BaseModelState<T> implements IModelState<T>
     /** Returns the string version of the ModelState value */
     public toString(): string
     {
-        return this._value!.toString();
+        return this._value !== undefined
+            ? this._value.toString()
+            : undefined
+            ;
     }
 
     protected subscribeCore(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void, publishCurrentValue: boolean = true): string
