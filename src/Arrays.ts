@@ -20,17 +20,27 @@ export namespace Arrays
         return arr;
     }
 
+    /**
+     * Sums the array of numbers.
+     * @param arr
+     */
+    export function sum(...arr: number[]): number
     export function sum(arr: number[]): number
+    export function sum(arr: any): number
     {
+        arr = Array.from(arguments);
         return arr.reduce((p, c) => p + c, 0);
     }
 
     /**
      * Returns the average of all numbers in the array
      * @param arr the array
-     */ 
-    export function average(arr: number[]): number
+     */
+    export function average(...arr: number[]): number;
+    export function average(arr: number[]): number;
+    export function average(arr: any): number
     {
+        arr = Array.from(arguments);
         if (arr.length > 0)
         {
             return sum(arr) / arr.length;
@@ -80,7 +90,7 @@ export namespace Arrays
      * Returns true if the array is null, undefined or empty
      * @param a the array
      */
-    export function isNullOrEmpty<T>(a: T[]): boolean
+    export function isNullOrEmpty<T>(a?: T[] | null): boolean
     {
         return isUndefinedOrNull(a) || a.length == 0
     }

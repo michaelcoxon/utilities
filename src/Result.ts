@@ -1,5 +1,6 @@
 ﻿import { Undefinable } from "./Types";
 
+/**  */
 export interface IResultBase<TPreviousResult extends IResultBase | undefined = undefined>
 {
     readonly success: boolean;
@@ -13,7 +14,7 @@ export interface IResult<T, TPreviousResult extends IResultBase | undefined = un
     readonly value?: T;
     readonly success: boolean;
     readonly error?: string;
-    readonly previousResult: TPreviousResult;
+    readonly previousResult?: TPreviousResult;
 }
 
 export class Result<T={}, TPreviousResult extends IResultBase | undefined = undefined> implements IResult<T, TPreviousResult>
@@ -46,9 +47,9 @@ export class Result<T={}, TPreviousResult extends IResultBase | undefined = unde
         return this._error;
     }
 
-    public get previousResult(): TPreviousResult
+    public get previousResult(): Undefinable< TPreviousResult>
     {
-        return this.previousResult;
+        return this._previousResult;
     }
 
     public static ok<T, TPreviousResult extends IResultBase | undefined = undefined>(value?: T, previousResult?: TPreviousResult): IResult<T, TPreviousResult>

@@ -357,7 +357,7 @@ export class UnsignedInt32 implements INumberValue
 
 function ensureInt(value: number, minValue: number, maxValue: number): void
 {
-    if (!Number.isInteger(value))
+    if (!NumberisInteger(value))
     {
         throw new ArgumentException('value', 'Value is not a whole number');
     }
@@ -377,3 +377,11 @@ function ensureInt(value: number, minValue: number, maxValue: number): void
         throw ex;
     }
 }
+
+// HACK: adding this for now because of fucking IE
+function NumberisInteger(value: number): boolean
+{
+    return typeof value === 'number' &&
+        isFinite(value) &&
+        Math.floor(value) === value;
+};

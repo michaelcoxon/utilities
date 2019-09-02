@@ -3,18 +3,31 @@ import { Strings } from './Strings';
 
 var URI_REGEX = /^(([^:]+:\\)|([^:/?#]+:)?(\/\/([^/?#]*)[\\/])?)(([^\\/]+[\\/])*)([^/?#]*)(\?[^#]*)?(#.*)?$/gi;
 
+/** Utility namespace for path related functions. */
 export namespace Path
 {
+    /**
+     * Returns the filename portin of a path.
+     * @param path
+     */
     export function getFileName(path: string): string
     {
         return path.replace(URI_REGEX, "$8");
     }
 
+    /**
+     * Return the directory portion of a path
+     * @param path
+     */
     export function getDirectory(path: string): string
     {
         return path.replace(URI_REGEX, "$6");
     }
 
+    /**
+     * Returns the extension portion of a path
+     * @param path
+     */
     export function getExtension(path: string): string
     {
         let fileName = Path.getFileName(path);
@@ -27,6 +40,10 @@ export namespace Path
         return fileName.substring(fileName.lastIndexOf('.'));
     }
 
+    /**
+     * Returns the filename portion of a path without the file extension.
+     * @param path
+     */
     export function getFileNameWithoutExtension(path: string): string
     {
         let fileName = Path.getFileName(path);
@@ -63,7 +80,11 @@ export namespace Path
         return out;
     }
 
-   export function combine(...args: string[]): string
+    /**
+     * Combines path segments into a path. Auto-senses 'slash' direction.
+     * @param args
+     */
+    export function combine(...args: string[]): string
     {
         if (args.length == 0)
         {

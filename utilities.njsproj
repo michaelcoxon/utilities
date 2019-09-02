@@ -25,7 +25,6 @@
     <Content Include=".gitignore" />
     <Content Include=".nojekyll" />
     <Content Include=".npmignore" />
-    <Content Include="babel.config.js" />
     <Content Include="LICENSE" />
     <Content Include="package.json" />
     <Content Include="README.md" />

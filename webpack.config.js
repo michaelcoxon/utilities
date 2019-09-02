@@ -7,7 +7,27 @@ const bundleOutputDir = './dist';
 const libDir = 'lib';
 const srcDir = 'src';
 const libraryName = 'utilities';
-
+//const tsNameof = require("ts-nameof");
+/*
+function StringExtractorPlugin() { }
+StringExtractorPlugin.prototype.apply = function (compiler)
+{
+    console.log('StringExtractorPlugin');
+    compiler.hooks.normalModuleFactory.tap('StringExtractorPlugin', factory =>
+    {
+        factory.hooks.parser.for('javascript/auto').tap('StringExtractorPlugin', (parser, options) =>
+        {
+            parser.hooks.varDeclaration.tap("StringExtractorPlugin", statement =>
+            {
+                if (statement.type === 'VariableDeclaration')
+                {
+                    console.log(statement);
+                }
+            });
+        });
+    });
+};
+*/
 function DtsBundlePlugin() { }
 DtsBundlePlugin.prototype.apply = function (compiler)
 {
@@ -17,7 +37,7 @@ DtsBundlePlugin.prototype.apply = function (compiler)
 
         dts.bundle({
             name: libraryName,
-            main: `lib/index.d.ts`,
+            main: `${libDir}/index.d.ts`,
             out: `.${bundleOutputDir}/index.d.ts`,
             outputAsModuleFolder: true // to use npm in-package typings
         });
@@ -50,7 +70,16 @@ module.exports = () =>
                 {
                     test: /\.ts$/,
                     include: /src/,
-                    use: ['babel-loader','awesome-typescript-loader?configFileName=./src/config/esnext/tsconfig.json']
+                    use: [
+                        {
+                            loader: 'babel-loader',
+                            options: {
+                                presets: ['@babel/preset-env']
+                                //plugins: ['@babel/plugin-transform-runtime']
+                            }
+                        },
+                        'awesome-typescript-loader?configFileName=./src/config/esnext/tsconfig.json'
+                    ]
                 }
             ]
         },
@@ -64,7 +93,7 @@ module.exports = () =>
                         output: {
                             beautify: false,
                             comments: /^!/
-                        },
+                        }
                         /*mangle: {
                             properties: {
                                 regex: /^_/
@@ -76,7 +105,7 @@ module.exports = () =>
         },
         plugins: [
             new CheckerPlugin(),
-
+            //new StringExtractorPlugin(),
             ...(isDevBuild
                 ?
                 [

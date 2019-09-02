@@ -62,6 +62,10 @@ export function isDate<T>(subject: T | Date): subject is Date
     return subject instanceof Date;
 }
 
+/**
+ * Returns true if the subject is a Function.
+ * @param subject
+ */
 export function isFunction<T>(subject: T | Function):subject is Function
 {
     return Object.prototype.toString.call(subject) === '[object Function]';

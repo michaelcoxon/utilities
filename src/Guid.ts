@@ -22,6 +22,20 @@ export class Guid
     private readonly _j: Byte;
     private readonly _k: Byte;
 
+    /**
+     * Creates a new Guid by specifying all the parts
+     * @param a
+     * @param b
+     * @param c
+     * @param d
+     * @param e
+     * @param f
+     * @param g
+     * @param h
+     * @param i
+     * @param j
+     * @param k
+     */
     constructor(a: UnsignedInt32, b: UnsignedInt16, c: UnsignedInt16, d: Byte, e: Byte, f: Byte, g: Byte, h: Byte, i: Byte, j: Byte, k: Byte)
     {
         this._a = a;
@@ -37,6 +51,7 @@ export class Guid
         this._k = k;
     }
 
+    /** Returns the Guid as a hypen-separated string without curly braces. */
     public toString(): string
     {
         return Strings.padLeft((this._a.valueOf() >>> 0).toString(16), 8, '0') + '-' +
@@ -52,11 +67,13 @@ export class Guid
             Strings.padLeft((this._k.valueOf() >>> 0).toString(16), 2, '0');
     }
 
+/** Returns the Guid as a hypen-separated string without curly braces. */
     public valueOf(): string
     {
         return this.toString();
     }
 
+    /** An empty Guid (all zero's) */
     public static readonly empty: Guid = new Guid(
         new UnsignedInt32(0),
         new UnsignedInt16(0),
@@ -87,6 +104,10 @@ export class Guid
             randomByte());
     }
 
+    /**
+     * converts astring representaion of a Guid into a Guid object.
+     * @param str
+     */
     public static parseString(str: string): Guid
     {
         const guid = str.replace(/[-\{\}\[\]]/gi, '');

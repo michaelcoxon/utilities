@@ -1,4 +1,4 @@
-﻿import { MutexAlreadyAquiredException } from './Exceptions';
+﻿import { MutexAlreadyAquiredException, AlreadyDisposedException } from './Exceptions';
 import { IDisposable, using, usingAsync } from './IDisposable';
 import { SingleInvokeEvent } from './SingleInvokeEvent';
 import { isUndefined } from './TypeHelpers';
@@ -8,6 +8,31 @@ export interface ILock extends IDisposable
 {
     /** Releases the lock */
     release(): void;
+}
+
+class Lock implements ILock
+{    
+    private readonly _release: () => void;
+    private _isDisposed: boolean = false;
+
+    constructor(release: () => void)
+    {
+        this._release = release;
+    }
+
+    public release(): void
+    {
+        this.dispose();
+    }
+
+    public dispose(): void
+    {
+        if (this._isDisposed)
+        {
+            throw new AlreadyDisposedException();
+        }
+        this._release();
+    }
 }
 
 /**
@@ -28,15 +53,10 @@ export class Mutex
 
         this._onRelease = new SingleInvokeEvent();
 
-        const release = () =>
+        return new Lock(() =>
         {
             this._onRelease && this._onRelease.invoke(this, {});
             this._onRelease = undefined;
-        };
-
-        return Object.freeze({
-            release: () => release(),
-            dispose: () => release(),
         });
     }
 

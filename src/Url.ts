@@ -1,9 +1,16 @@
 ﻿import { Strings } from './Strings';
 import { isUndefinedOrNull } from './TypeHelpers';
 
+/** Represents a string or a Url */
 export type StringOrUrl = Url | string;
+
+/** Element in a QueryStringCollection */
 export type QueryStringItem = { name: string; value: any; }
 
+/**
+ * Convert a string or a Url to a Url
+ * @param stringOrUrl
+ */
 export function stringOrUrlToUrl(stringOrUrl: StringOrUrl): Url
 {
     if (stringOrUrl instanceof Url)
@@ -16,6 +23,10 @@ export function stringOrUrlToUrl(stringOrUrl: StringOrUrl): Url
     }
 }
 
+/**
+ * Convert a string or Url to a string
+ * @param stringOrUrl
+ */
 export function stringOrUrlToString(stringOrUrl: StringOrUrl): string
 {
     if (stringOrUrl instanceof Url)
@@ -28,11 +39,17 @@ export function stringOrUrlToString(stringOrUrl: StringOrUrl): string
     }
 }
 
+/** Defines a Url */
 export class Url
 {
     private _url: string;
     private _query: QueryStringCollection;
 
+    /**
+     * Creates a new Url
+     * @param baseUrl The Url to base this instance off of
+     * @param queryStringObject Query string items as a plain object to add/update on the base Url. Set an item to undefined | null to remove it.
+     */
     constructor(baseUrl: StringOrUrl, queryStringObject?: { [key: string]: any })
     {
         const [url, query] = stringOrUrlToString(baseUrl).split('?', 2);
@@ -53,15 +70,18 @@ export class Url
         }
     }
 
+    /** Gets the query section of this Url */
     public get query(): QueryStringCollection
     {
         return this._query;
     }
 
+    /** Sets the query section of this Url */
     public set query(value: QueryStringCollection)
     {
         this._query = value;
     }
+
 
     public toString(): string
     {
@@ -220,7 +240,10 @@ export namespace QueryStringHelper
 
         for (const key in obj)
         {
-            result.push(...convert(`${prefix}${key}`, obj[key]));
+            if (!isUndefinedOrNull(obj[key]))
+            {
+                result.push(...convert(`${prefix}${key}`, obj[key]));
+            }
         }
 
         return result;
@@ -275,10 +298,13 @@ export namespace QueryStringHelper
         {
             return value;
         }
+
+        value = Strings.trim(value);
+
         //
         // booleans
         //
-        else if (value.toLowerCase() === 'true')
+        if (value.toLowerCase() === 'true')
         {
             return true;
         }
