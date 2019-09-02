@@ -1,5 +1,6 @@
 ﻿import { isString, isNumber, isDate, isUndefinedOrNull } from './TypeHelpers';
 import { FormatException } from './Exceptions';
+import { StringBuilder } from './StringBuilder';
 
 const WHITESPACE = "\\s\\uFEFF\\xA0";
 
@@ -455,24 +456,17 @@ export class DateFormatter implements IFormatter<Date>
     public format(subject: Date, format: string): string
     {
         const tokens = Object.keys(DateFormatter.TOKEN_TO_STRING_DELEGATES);
-        tokens.sort((a, b) => b.length - a.length);
 
-        let result = format;
+        const matcher = /([a-z]+)/ig;
 
-        for (let token of tokens)
+        const result = format.replace(matcher, (token: string) =>
         {
-            try
+            if (tokens.indexOf(token) > -1)
             {
-                if (DateFormatter.TOKEN_TO_STRING_DELEGATES[token] !== undefined)
-                {
-                    result = result.replace(token, DateFormatter.TOKEN_TO_STRING_DELEGATES[token](subject, this._config))
-                }
+                return DateFormatter.TOKEN_TO_STRING_DELEGATES[token](subject, this._config);
             }
-            catch
-            {
-                continue;
-            }
-        }
+            return token;
+        });
 
         return result;
     }

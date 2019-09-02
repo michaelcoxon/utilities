@@ -47,7 +47,7 @@ describe("String.format", () =>
         assert.equal(actual, expect);
     });
 
-    it("should format a date 'yyyy-MM-dd HH:mm:ss.fff'", () =>
+    it("should format a date 'yyyy-MM-dd HH:mm:ss\.fff'", () =>
     {
         const format = "{0:yyyy-MM-dd HH:mm:ss.fff}";
         const date = new Date("July 20, 1972 02:20:18");
@@ -55,6 +55,19 @@ describe("String.format", () =>
         console.log(date);
 
         const expect = "1972-07-20 02:20:18.000";
+        const actual = Strings.format(format, date);
+
+        assert.equal(actual, expect);
+    });
+
+    it("should format a date 'MMMM' for August", () =>
+    {
+        const format = "{0:MMMM}";
+        const date = new Date("2019-08-26");
+
+        console.log(date);
+
+        const expect = "August";
         const actual = Strings.format(format, date);
 
         assert.equal(actual, expect);
