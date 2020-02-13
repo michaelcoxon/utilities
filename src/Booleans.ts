@@ -42,7 +42,7 @@ export namespace Booleans
         }
         else
         {
-            return Result.fail("Value is not a boolean");
+            return Result.fail(`Value is not a boolean. value: ${value} (${caseInsensitive?"case-insensitive":"case-sensitive"})`);
         }
     }
 } 

@@ -84,6 +84,17 @@ describe("String.format", () =>
         assert.equal(actual, expect);
     });
 
+    it("should format the number as currency negative", () =>
+    {
+        const format = "{0:c}";
+        const subject = -123.456;
+
+        let expect = "-$123.46";
+        let actual = Strings.format(format, subject);
+
+        assert.equal(actual, expect);
+    });
+
     it("should format the number as decimal", () =>
     {
         const format = "{0:d}";
@@ -101,6 +112,28 @@ describe("String.format", () =>
         const subject = -123.456;
 
         let expect = "-123";
+        let actual = Strings.format(format, subject);
+
+        assert.equal(actual, expect);
+    });
+
+    it("should format the number as fixed", () =>
+    {
+        const format = "{0:f2}";
+        const subject = 123.456;
+
+        let expect = "123.46";
+        let actual = Strings.format(format, subject);
+
+        assert.equal(actual, expect);
+    });
+
+    it("should format the number as fixed negative", () =>
+    {
+        const format = "{0:f2}";
+        const subject = -123.456;
+
+        let expect = "-123.46";
         let actual = Strings.format(format, subject);
 
         assert.equal(actual, expect);

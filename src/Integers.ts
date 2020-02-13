@@ -381,7 +381,7 @@ function ensureInt(value: number, minValue: number, maxValue: number): void
 // HACK: adding this for now because of fucking IE
 function NumberisInteger(value: number): boolean
 {
-    return typeof value === 'number' &&
+    return Number.isInteger && Number.isInteger(value) || typeof value === 'number' &&
         isFinite(value) &&
         Math.floor(value) === value;
 };

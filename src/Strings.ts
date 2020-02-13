@@ -237,7 +237,7 @@ export class StringFormatter implements IFormatter<string>
 export class NumberFormatter implements IFormatter<number>
 {
     private static readonly DefaultConfiguration: INumberFormatterConfiguration = {
-        currencyFormat: "${0}",
+        currencyFormat: "{1}${0}",
         currencyDecimalDigits: 2,
         numberDecimalDigits: 2,
         percentDecimalDigits: 2,
@@ -292,7 +292,7 @@ export class NumberFormatterDelegates
 
     public formatCurrency(subject: number, precision: number = this._config.currencyDecimalDigits): string
     {
-        return Strings.format(this._config.currencyFormat, this.formatFixed(subject, precision));
+        return Strings.format(this._config.currencyFormat, this.formatFixed(Math.abs(subject), precision), subject < 0 ? "-" : "");
     }
 
     public formatDecimal(subject: number, minDigits: number = 0): string
@@ -309,7 +309,7 @@ export class NumberFormatterDelegates
 
     public formatExponential(subject: number, precision: number = 6): string
     {
-        return subject.toExponential(precision);
+        return subject.toExponential(precision); 
     }
 
     public formatFixed(subject: number, precision: number = this._config.numberDecimalDigits): string
