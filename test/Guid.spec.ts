@@ -11,7 +11,7 @@ describe("Guid.newGuid", () =>
 
         assert.isNotNull(actual);
     });
-
+    
     it("should return a new guid every time", (done) =>
     {
         const guids: string[] = [];
@@ -40,6 +40,7 @@ describe("Guid.newGuid", () =>
         done();
     })
         .timeout(0);
+        
 });
 
 describe("Guid.parseString", () =>
@@ -51,7 +52,7 @@ describe("Guid.parseString", () =>
 
         assert.equal(newGuid.toString(), guid.toString());
     });
-
+    
     it("should return the same guid every time", (done) =>
     {
         const guids: Guid[] = [];
@@ -71,4 +72,5 @@ describe("Guid.parseString", () =>
         done();
     })
         .timeout(0);
+        
 });

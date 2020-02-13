@@ -22,6 +22,7 @@ describe("Timer.constructor", () =>
     });
 });
 
+
 describe("Timer.enabled", () =>
 {
     it("should tick every 500ms", (done) =>
@@ -39,7 +40,7 @@ describe("Timer.enabled", () =>
             }
             if (lastEventTime !== undefined)
             {
-                assert.approximately(e.signalTime.getTime(), lastEventTime + 500, 10);
+                assert.approximately(e.signalTime.getTime(), lastEventTime + 500, 20);
             }
 
             lastEventTime = e.signalTime.getTime();
