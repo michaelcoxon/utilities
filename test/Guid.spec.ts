@@ -1,7 +1,7 @@
 ﻿import { Guid } from '../src/Guid';
 import { expect, assert } from 'chai';
 import 'mocha';
-
+import { slowtest } from './_env';
 
 describe("Guid.newGuid", () =>
 {
@@ -12,7 +12,9 @@ describe("Guid.newGuid", () =>
         assert.isNotNull(actual);
     });
     
-    it("should return a new guid every time", (done) =>
+    
+
+    !slowtest && it("should return a new guid every time", (done) =>
     {
         const guids: string[] = [];
 
@@ -53,7 +55,7 @@ describe("Guid.parseString", () =>
         assert.equal(newGuid.toString(), guid.toString());
     });
     
-    it("should return the same guid every time", (done) =>
+    !slowtest && it("should return the same guid every time", (done) =>
     {
         const guids: Guid[] = [];
 

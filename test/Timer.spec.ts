@@ -2,6 +2,7 @@
 
 import { expect, assert } from 'chai';
 import 'mocha';
+import { slowtest } from './_env';
 
 describe("Timer.constructor", () =>
 {
@@ -25,7 +26,7 @@ describe("Timer.constructor", () =>
 
 describe("Timer.enabled", () =>
 {
-    it("should tick every 500ms", (done) =>
+    !slowtest && it("should tick every 500ms", (done) =>
     {
         const timer = new Timer(500);
         let lastEventTime: number | undefined = undefined;

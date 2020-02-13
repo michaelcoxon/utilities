@@ -4,35 +4,6 @@
 export namespace Arrays
 {
     /**
-     * Returns an array of the range of numbers from the start number for the specified length
-     * @param start the start number
-     * @param length the specified length
-     */
-    export function range(start: number, length: number): number[]
-    {
-        const arr: number[] = [];
-
-        for (let i = 0; i < length; i++)
-        {
-            arr.push(start++);
-        }
-
-        return arr;
-    }
-
-    /**
-     * Sums the array of numbers.
-     * @param arr
-     */
-    export function sum(...arr: number[]): number
-    export function sum(arr: number[]): number
-    export function sum(arr: any): number
-    {
-        arr = Array.from(arguments);
-        return arr.reduce((p, c) => p + c, 0);
-    }
-
-    /**
      * Returns the average of all numbers in the array
      * @param arr the array
      */
@@ -40,13 +11,25 @@ export namespace Arrays
     export function average(arr: number[]): number;
     export function average(arr: any): number
     {
-        arr = Array.from(arguments);
+        if (!Array.isArray(arr))
+        {
+            arr = Array.from(arguments);
+        }
         if (arr.length > 0)
         {
             return sum(arr) / arr.length;
         }
 
         return 0;
+    }
+
+    /**
+     * Returns true if the array is null, undefined or empty
+     * @param a the array
+     */
+    export function isNullOrEmpty<T>(a?: T[] | null): boolean
+    {
+        return isUndefinedOrNull(a) || a.length == 0
     }
 
     /**
@@ -87,11 +70,34 @@ export namespace Arrays
     }
 
     /**
-     * Returns true if the array is null, undefined or empty
-     * @param a the array
+     * Returns an array of the range of numbers from the start number for the specified length
+     * @param start the start number
+     * @param length the specified length
      */
-    export function isNullOrEmpty<T>(a?: T[] | null): boolean
+    export function range(start: number, length: number): number[]
     {
-        return isUndefinedOrNull(a) || a.length == 0
+        const arr: number[] = [];
+
+        for (let i = 0; i < length; i++)
+        {
+            arr.push(start++);
+        }
+
+        return arr;
+    }
+
+    /**
+     * Sums the array of numbers.
+     * @param arr
+     */
+    export function sum(...arr: number[]): number
+    export function sum(arr: number[]): number
+    export function sum(arr: any): number
+    {
+        if (!Array.isArray(arr))
+        {
+            arr = Array.from(arguments);
+        }
+        return arr.reduce((p, c) => p + c, 0);
     }
 }

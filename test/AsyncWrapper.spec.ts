@@ -2,6 +2,7 @@
 import 'mocha';
 import { AsyncWrapper } from '../src/AsyncWrapper';
 import { Promises } from '../src/Promises';
+import { slowtest } from './_env';
 
 describe("AsyncWrapper.construct", () =>
 {
@@ -142,7 +143,7 @@ describe("AsyncWrapper.construct", () =>
 
 describe("AsyncWrapper", () =>
 {
-    it("should ignore the current promise if updated", (done) =>
+    !slowtest && it("should ignore the current promise if updated", (done) =>
     {
         const actual = new AsyncWrapper<number>(new Promise<number>(
             async resolve =>
