@@ -21,15 +21,15 @@ export class Timer implements IDisposable
     constructor(interval: number);
     constructor(interval: number = 100)
     {
-        if (interval <= 0)
+        if (interval < 0)
         {
             throw new ArgumentException("interval", "interval must be greater than 0");
         }
 
         interval = Math.ceil(interval);
-        if (interval <= 0)
+        if (interval < 0)
         {
-            throw new ArgumentException("interval", "interval must not round to be 0 or less");
+            throw new ArgumentException("interval", "interval must be greater than 0");
         }
 
         this._autoReset = true;

@@ -81,10 +81,30 @@ export abstract class BaseModelState<T extends any> implements IModelState<T>
     /** Returns the string version of the ModelState value */
     public toString(): string
     {
-        return this._value !== undefined
-            ? this._value.toString()
-            : undefined
-            ;
+        return `${this._value}`;
+    }
+
+    /** Returns the ModelState as a Promise */
+    public async toPromise(): Promise<Undefinable<T>>
+    {
+        return await new Promise((resolve, reject) =>
+        {
+            const subscription = this.subscribe((value) =>
+            {
+                try
+                {
+                    resolve(value);
+                }
+                catch (ex)
+                {
+                    reject(ex);
+                }
+                finally
+                {
+                    this.unsubscribe(subscription);
+                }
+            });
+        });
     }
 
     protected subscribeCore(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void, publishCurrentValue: boolean = true): string

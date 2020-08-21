@@ -203,9 +203,14 @@ export namespace QueryStringHelper
     export function serializeQueryStringItems(queryStringItems: QueryStringItem[], useQuestionMark: boolean): string;
     export function serializeQueryStringItems(queryStringItems: QueryStringItem[], useQuestionMark: boolean = false): string
     {
+        if (queryStringItems.length == 0)
+        {
+            useQuestionMark = false;
+        }
+
         return (useQuestionMark ? '?' : Strings.empty) + queryStringItems
             .map(kvp => `${kvp.name}=${encodeURIComponent(kvp.value)}`)
-            .join("&");
+            .join("&");;
     }
 
     /**

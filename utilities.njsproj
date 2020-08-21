@@ -56,6 +56,7 @@
     <TypeScriptCompile Include="src\TypeHelpers.ts" />
     <TypeScriptCompile Include="src\Url.ts" />
     <TypeScriptCompile Include="test\AggregateLogger.spec.ts" />
+    <TypeScriptCompile Include="test\Arrays.spec.ts" />
     <TypeScriptCompile Include="test\AsyncWrapper.spec.ts" />
     <TypeScriptCompile Include="test\Exceptions.spec.ts" />
     <TypeScriptCompile Include="test\Guid.spec.ts" />

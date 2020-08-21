@@ -4,10 +4,10 @@ import * as sinon from 'sinon';
 import 'mocha';
 
 import { Mutex, lock } from '../src/Mutex';
-/*
+
 describe("Mutex.acquire", () =>
 {
-    it("should populate list with [1,2]", async () =>
+    it("should populate list with [1,3,2,4,5]", async () =>
     {
         const list: number[] = [];
         const mutex = new Mutex();
@@ -17,13 +17,21 @@ describe("Mutex.acquire", () =>
         const next = mutex.wait().then(() => list.push(2));
 
         list.push(1);
+        list.push(3);
 
         lock.release();
-
         await next;
 
+        list.push(4);
+        list.push(5);
+
+
+
         assert.equal(list[0], 1);
-        assert.equal(list[1], 2);
+        assert.equal(list[1], 3);
+        assert.equal(list[2], 2);
+        assert.equal(list[3], 4);
+        assert.equal(list[4], 5);
     });
 
     it("should populate list with [1,2] (2)", async () =>
@@ -66,4 +74,3 @@ describe("Mutex.acquire", () =>
         assert.equal(list[1], 2);
     });
 });
-*/

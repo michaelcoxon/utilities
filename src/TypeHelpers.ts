@@ -1,5 +1,4 @@
-﻿
-/**
+﻿/**
  * Returns true if the subject is undefined
  * @param subject
  */
@@ -24,6 +23,15 @@ export function isNull<T>(subject: T | null): subject is null
 export function isUndefinedOrNull<T>(subject: T | undefined | null): subject is undefined | null
 {
     return isUndefined(subject) || isNull(subject);
+}
+
+/**
+ * Returns true if the subject is a number
+ * @param subject
+ */
+export function isObject<T>(subject: T | object): subject is object
+{
+    return typeof subject === 'object';
 }
 
 /**
@@ -66,7 +74,7 @@ export function isDate<T>(subject: T | Date): subject is Date
  * Returns true if the subject is a Function.
  * @param subject
  */
-export function isFunction<T>(subject: T | Function):subject is Function
+export function isFunction<T>(subject: T | Function): subject is Function
 {
     return Object.prototype.toString.call(subject) === '[object Function]';
 }

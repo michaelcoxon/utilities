@@ -1,7 +1,7 @@
 ﻿import { Undefinable } from "./Types";
 
 /**  */
-export interface IResultBase<TPreviousResult extends IResultBase | undefined = undefined>
+export interface IResultBase<TPreviousResult extends IResultBase = never>
 {
     readonly success: boolean;
     readonly error?: string;
@@ -9,7 +9,7 @@ export interface IResultBase<TPreviousResult extends IResultBase | undefined = u
 }
 
 
-export interface IResult<T, TPreviousResult extends IResultBase | undefined = undefined> extends IResultBase<TPreviousResult>
+export interface IResult<T, TPreviousResult extends IResultBase = never> extends IResultBase<TPreviousResult>
 {
     readonly value?: T;
     readonly success: boolean;
@@ -17,7 +17,7 @@ export interface IResult<T, TPreviousResult extends IResultBase | undefined = un
     readonly previousResult?: TPreviousResult;
 }
 
-export class Result<T={}, TPreviousResult extends IResultBase | undefined = undefined> implements IResult<T, TPreviousResult>
+export class Result<T = {}, TPreviousResult extends IResultBase = never> implements IResult<T, TPreviousResult>
 {
     private readonly _value?: T;
     private readonly _success: boolean;
@@ -47,18 +47,18 @@ export class Result<T={}, TPreviousResult extends IResultBase | undefined = unde
         return this._error;
     }
 
-    public get previousResult(): Undefinable< TPreviousResult>
+    public get previousResult(): Undefinable<TPreviousResult>
     {
         return this._previousResult;
     }
 
-    public static ok<T, TPreviousResult extends IResultBase | undefined = undefined>(value?: T, previousResult?: TPreviousResult): IResult<T, TPreviousResult>
+    public static ok<T, TPreviousResult extends IResultBase = never>(value?: T, previousResult?: TPreviousResult): IResult<T, TPreviousResult>
     {
         return new Result(true, value, undefined, previousResult);
     }
 
-    public static fail<T, TPreviousResult extends IResultBase | undefined = undefined>(error?: string, previousResult?: TPreviousResult): IResult<T, TPreviousResult>
+    public static fail<T, TPreviousResult extends IResultBase = never>(error?: string, value?: T, previousResult?: TPreviousResult): IResult<T, TPreviousResult>
     {
-        return new Result(false, undefined, error, previousResult);
+        return new Result(false, value, error, previousResult);
     }
 }

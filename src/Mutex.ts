@@ -11,7 +11,7 @@ export interface ILock extends IDisposable
 }
 
 class Lock implements ILock
-{    
+{
     private readonly _release: () => void;
     private _isDisposed: boolean = false;
 
@@ -66,18 +66,19 @@ export class Mutex
      */
     public wait(): Promise<void>
     {
-        if (isUndefined(this._onRelease))
+        return new Promise((resolve) =>
         {
-            return Promise.resolve();
-        }
-        else
-        {
-            const handler = this._onRelease;
-            return new Promise((resolve) =>
+            if (isUndefined(this._onRelease))
             {
-                handler.addHandler(() => resolve());
-            });
-        }
+                // not acquired
+                return resolve();
+            }
+            else
+            {
+                // resolve promise when lock is released
+                this._onRelease.addHandler(() => resolve());
+            }
+        });
     }
 }
 

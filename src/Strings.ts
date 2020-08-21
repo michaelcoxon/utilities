@@ -1,6 +1,5 @@
-﻿import { isString, isNumber, isDate, isUndefinedOrNull } from './TypeHelpers';
+﻿import { isNumber, isDate, isUndefinedOrNull } from './TypeHelpers';
 import { FormatException } from './Exceptions';
-import { StringBuilder } from './StringBuilder';
 
 const WHITESPACE = "\\s\\uFEFF\\xA0";
 
@@ -513,4 +512,3 @@ export class DateFormatter implements IFormatter<Date>
         return result;
     }
 }
-
