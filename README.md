@@ -1,3 +1,5 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/michaelcoxon/utilities)
+
 # utilities
 [![Get it on NPM](https://img.shields.io/npm/dt/@michaelcoxon/utilities.svg?style=flat)](https://www.npmjs.com/package/@michaelcoxon/utilities)
 
