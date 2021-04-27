@@ -17,7 +17,7 @@ export interface IResult<T, TPreviousResult extends IResultBase = never> extends
     readonly previousResult?: TPreviousResult;
 }
 
-export class Result<T = {}, TPreviousResult extends IResultBase = never> implements IResult<T, TPreviousResult>
+export default class Result<T = {}, TPreviousResult extends IResultBase = never> implements IResult<T, TPreviousResult>
 {
     private readonly _value?: T;
     private readonly _success: boolean;

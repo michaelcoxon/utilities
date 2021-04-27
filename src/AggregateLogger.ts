@@ -1,12 +1,12 @@
 ﻿import { ILogger } from "./ILogger";
 import { IDisposable } from "./IDisposable";
-import { AggregateDisposable } from "./AggregateDisposable";
+import AggregateDisposable from "./AggregateDisposable";
 
 
 
 
 
-export class AggregateLogger implements ILogger
+export default class AggregateLogger implements ILogger
 {
     private readonly _loggers: ILogger[];
 

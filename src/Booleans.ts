@@ -1,9 +1,9 @@
-﻿import { NotSupportedException } from "./Exceptions";
-import { IResult, Result } from "./Result";
+﻿import NotSupportedException from "./Exceptions/NotSupportedException";
+import Result, { IResult } from "./Result";
 
 
 
-export namespace Booleans
+namespace Booleans
 {
     export const trueString: string = (true).toString();
     export const falseString: string = (false).toString();
@@ -42,7 +42,9 @@ export namespace Booleans
         }
         else
         {
-            return Result.fail(`Value is not a boolean. value: ${value} (${caseInsensitive?"case-insensitive":"case-sensitive"})`);
+            return Result.fail(`Value is not a boolean. value: ${value} (${caseInsensitive ? "case-insensitive" : "case-sensitive"})`);
         }
     }
-} 
+}
+
+export default Booleans;

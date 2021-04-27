@@ -1,14 +1,16 @@
-﻿import { Event, IEvent } from "./Event";
-import { ArgumentNullException, ArgumentUndefinedException, NullReferenceException } from './Exceptions';
+﻿import Event, { IEvent } from "./Event";
+import  NullReferenceException  from './Exceptions/NullReferenceException';
+import  ArgumentUndefinedException  from './Exceptions/ArgumentUndefinedException';
+import  ArgumentNullException  from './Exceptions/ArgumentNullException';
 import { isUndefinedOrNull } from './TypeHelpers';
 import { EventHandler } from "./Types";
-
+ArgumentUndefinedException
 /**
  * An event type that can only be invoked once. Once the event
  * is invoked, and handler that is added to it will be immediately
  * executed. All subsequent invocations are ignored
  */
-export class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> implements IEvent<TEventArgs>
+export default class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> implements IEvent<TEventArgs>
 {
     /** event has been fired */
     private _fired: boolean;

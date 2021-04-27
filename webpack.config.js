@@ -78,7 +78,7 @@ module.exports = () =>
                                 //plugins: ['@babel/plugin-transform-runtime']
                             }
                         },
-                        'awesome-typescript-loader?configFileName=./src/config/esnext/tsconfig.json'
+                        'awesome-typescript-loader?configFileName=./src/config/es5/tsconfig.json'
                     ]
                 }
             ]

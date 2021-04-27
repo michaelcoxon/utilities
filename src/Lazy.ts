@@ -2,7 +2,7 @@
 
 
 
-export class Lazy<T>
+export default class Lazy<T>
 {
     private readonly _factory: () => T;
     private _value: Undefinable<T>;

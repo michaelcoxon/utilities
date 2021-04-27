@@ -1,7 +1,7 @@
 ﻿import { isUndefinedOrNull } from './TypeHelpers';
 
 
-export namespace Arrays
+namespace Arrays
 {
     /**
      * Returns the average of all numbers in the array
@@ -101,3 +101,5 @@ export namespace Arrays
         return arr.reduce((p, c) => p + c, 0);
     }
 }
+
+export default Arrays;

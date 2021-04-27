@@ -1,4 +1,4 @@
-﻿import { Timer } from '../src/Timer';
+﻿import Timer from '../src/Timer';
 
 import { expect, assert } from 'chai';
 import 'mocha';

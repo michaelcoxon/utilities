@@ -3,7 +3,7 @@ import * as sinonChai from 'sinon-chai';
 import * as sinon from 'sinon';
 import 'mocha';
 
-import { Mutex, lock } from '../src/Mutex';
+import Mutex, { lockAsync } from '../src/Mutex';
 
 describe("Mutex.acquire", () =>
 {
@@ -12,20 +12,34 @@ describe("Mutex.acquire", () =>
         const list: number[] = [];
         const mutex = new Mutex();
 
-        const lock = mutex.acquire();
+        async function a()
+        {
+            const lock = mutex.acquire();
 
-        const next = mutex.wait().then(() => list.push(2));
-
-        list.push(1);
-        list.push(3);
-
-        lock.release();
-        await next;
-
-        list.push(4);
-        list.push(5);
+            // we need this to let the program catch up
+            // i think it is a base issue with generators
+            // not promises            
+            await Promise.resolve();
 
 
+            list.push(1);
+            list.push(3);
+
+            await lock.releaseAsync();
+
+            list.push(4);
+            list.push(5);
+        }
+
+        async function b()
+        {
+            await mutex.waitAsync()
+            list.push(2);
+        }
+
+        const await_this_after_b = a();
+        await b();
+        await a();
 
         assert.equal(list[0], 1);
         assert.equal(list[1], 3);
@@ -43,14 +57,14 @@ describe("Mutex.acquire", () =>
 
         async function insertTwo()
         {
-            await mutex.wait()
+            await mutex.waitAsync()
             list.push(2);
         }
 
         insertTwo();
         list.push(1);
 
-        lock.release();
+        await lock.releaseAsync();
 
         assert.equal(list[0], 1);
         assert.equal(list[1], 2);
@@ -61,9 +75,9 @@ describe("Mutex.acquire", () =>
         const list: number[] = [];
         const mutex = new Mutex();
 
-        const next = mutex.wait().then(()=>list.push(2));
+        const next = mutex.waitAsync().then(() => list.push(2));
 
-        lock(mutex, () =>
+        lockAsync(mutex, () =>
         {
             list.push(1);
         });

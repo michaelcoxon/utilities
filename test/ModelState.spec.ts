@@ -1,4 +1,6 @@
-﻿import { FactoryModelState, ModelState, PollingModelState } from '../src/ModelState';
+﻿import ModelState from '../src/ModelState/ModelState';
+import FactoryModelState from "../src/ModelState/FactoryModelState";
+import PollingModelState from "../src/ModelState/PollingModelState";
 import { expect, assert } from 'chai';
 import 'mocha';
 import { isUndefinedOrNull } from '../src/TypeHelpers';

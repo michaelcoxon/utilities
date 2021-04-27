@@ -1,10 +1,10 @@
-﻿import { SingleInvokeEvent } from './SingleInvokeEvent';
+﻿import SingleInvokeEvent from './SingleInvokeEvent';
 
 
 
 
 
-export class CancellablePromise<T> implements PromiseLike<T>
+export default class CancellablePromise<T> implements PromiseLike<T>
 {
     private _cancelled: boolean
     private _watcherPromise: Promise<T>;

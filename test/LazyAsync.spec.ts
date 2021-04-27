@@ -1,7 +1,7 @@
-﻿import { LazyAsync } from '../src/LazyAsync';
+﻿import LazyAsync from '../src/LazyAsync';
 import { expect, assert } from 'chai';
 import 'mocha';
-import { Guid } from '../src/Guid';
+import Guid from '../src/Guid';
 
 
 describe("LazyAsync.constructor", () =>

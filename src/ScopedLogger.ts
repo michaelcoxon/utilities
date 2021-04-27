@@ -1,7 +1,7 @@
 ﻿import { ILogger } from "./ILogger";
 import { IDisposable } from "./IDisposable";
 
-export class ScopedLogger implements ILogger, IDisposable
+export default class ScopedLogger implements ILogger, IDisposable
 {
     private readonly _name: string;
     private readonly _logger: ILogger;

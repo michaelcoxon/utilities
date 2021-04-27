@@ -1,6 +1,6 @@
 ﻿import 'tslib';
 
-import { SingleInvokeEvent } from "./SingleInvokeEvent";
+import SingleInvokeEvent from "./SingleInvokeEvent";
 import { Undefinable, Promisable } from "./Types";
 import { isFunction } from './TypeHelpers';
 
@@ -9,7 +9,7 @@ import { isFunction } from './TypeHelpers';
  * You can use this to provide state feedback to the user of an awaitable
  * method.
  */
-export class AsyncWrapper<T>
+export default class AsyncWrapper<T>
 {
     private readonly _callback: ((asyncWrapper: AsyncWrapper<T>) => void) | undefined;
     private readonly _completeEvent: SingleInvokeEvent<Undefinable<T>>;

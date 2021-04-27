@@ -1,4 +1,10 @@
-import { Byte, Int16, Int32, SignedByte, UnsignedInt16, UnsignedInt32, INumberValue } from '../src/Integers';
+import { INumberValue } from '../src/Integers/_common';
+import UnsignedInt32 from "../src/Integers/UnsignedInt32";
+import UnsignedInt16 from "../src/Integers/UnsignedInt16";
+import SignedByte from "../src/Integers/SignedByte";
+import Int32 from "../src/Integers/Int32";
+import Int16 from "../src/Integers/Int16";
+import Byte from "../src/Integers/Byte";
 import { expect, assert } from 'chai';
 import 'mocha';
 import { ConstructorFor } from '../src/Types';

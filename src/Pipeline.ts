@@ -1,5 +1,5 @@
 ﻿import { ILogger } from './ILogger';
-import { InvalidOperationException } from './Exceptions';
+import  InvalidOperationException from './Exceptions/InvalidOperationException';
 
 
 export interface IPipelineTask
@@ -7,7 +7,7 @@ export interface IPipelineTask
 }
 
 
-export class Pipeline<TContext>
+export default class Pipeline<TContext>
 {
     private readonly _logger: ILogger;
     private _entryPoint?: IPipelineTask;

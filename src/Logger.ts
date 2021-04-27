@@ -1,8 +1,8 @@
 ﻿import { ILogger, LogLevel, testLogVerbosity } from './ILogger';
 import { IDisposable } from './IDisposable';
-import { ErrorHelper } from "./ErrorHelper";
-import { ScopedLogger } from "./ScopedLogger";
-import { IndentedStringBuilder } from './StringBuilder';
+import ErrorHelper from "./ErrorHelper";
+import ScopedLogger from "./ScopedLogger";
+import IndentedStringBuilder from "./IndentedStringBuilder";
 
 const defaultConfig: ILoggerConfig = {
     loggingVerbosity: LogLevel.Info,
@@ -15,7 +15,7 @@ export interface ILoggerConfig
     loggingVerbosity: LogLevel;
 }
 
-export abstract class Logger implements ILogger
+export default abstract class Logger implements ILogger
 {
     private readonly _config: ILoggerConfig
 

@@ -3,20 +3,20 @@ import * as sinonChai from 'sinon-chai';
 import * as sinon from 'sinon';
 import 'mocha';
 
-import { AggregateLogger } from '../src/AggregateLogger';
-import { ConsoleLogger } from '../src/ConsoleLogger';
+import AggregateLogger from '../src/AggregateLogger';
+import ConsoleLogger from '../src/ConsoleLogger';
 import { ILogger, LogLevel } from '../src/ILogger';
-import { ErrorHelper } from '../src/ErrorHelper';
+import ErrorHelper from '../src/ErrorHelper';
 import { IDisposable } from '../src/IDisposable';
-import { ScopedLogger } from '../src/ScopedLogger';
-import { IndentedStringBuilder } from '../src/StringBuilder';
+import ScopedLogger from '../src/ScopedLogger';
+import IndentedStringBuilder from "../src/IndentedStringBuilder";
 
 class TestLogger implements ILogger
 {
-    private readonly _context: Mocha.ITestCallbackContext;
+    private readonly _context: Mocha.Context;
     private readonly _logCallback: (level: LogLevel, sb: IndentedStringBuilder) => void;
 
-    constructor(context: Mocha.ITestCallbackContext, logCallback: (level: LogLevel, sb: IndentedStringBuilder) => void)
+    constructor(context: Mocha.Context, logCallback: (level: LogLevel, sb: IndentedStringBuilder) => void)
     {
         this._context = context;
         this._logCallback = logCallback;

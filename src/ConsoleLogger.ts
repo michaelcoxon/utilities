@@ -1,9 +1,9 @@
 ﻿import { ILogger, LogLevel, testLogVerbosity } from './ILogger';
 import { IDisposable } from './IDisposable';
-import { ErrorHelper } from "./ErrorHelper";
-import { ScopedLogger } from "./ScopedLogger";
-import { IndentedStringBuilder } from './StringBuilder';
-import { Logger, ILoggerConfig } from './Logger';
+import ErrorHelper from "./ErrorHelper";
+import ScopedLogger from "./ScopedLogger";
+import IndentedStringBuilder from "./IndentedStringBuilder";
+import Logger, { ILoggerConfig } from './Logger';
 
 const defaultConfig: IConsoleLoggerConfig = {
     loggingVerbosity: LogLevel.Info,
@@ -29,7 +29,7 @@ export interface IConsole
     error?: (message?: any, ...optionalParams: any[]) => void;
 }
 
-export class ConsoleLogger extends Logger implements ILogger
+export default class ConsoleLogger extends Logger implements ILogger
 {
     private readonly _consoleLoggerConfig: IConsoleLoggerConfig
 

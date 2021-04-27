@@ -1,7 +1,7 @@
 ﻿import { expect, assert } from 'chai';
 import 'mocha';
-import { AsyncWrapper } from '../src/AsyncWrapper';
-import { Promises } from '../src/Promises';
+import AsyncWrapper from '../src/AsyncWrapper';
+import Promises from '../src/Promises';
 import { slowtest } from './_env';
 
 describe("AsyncWrapper.construct", () =>

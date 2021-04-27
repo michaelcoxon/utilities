@@ -2,7 +2,7 @@ import { expect, assert } from 'chai';
 import 'mocha';
 import { slowtest } from './_env';
 
-import { Booleans} from '../src/Booleans';
+import Booleans from '../src/Booleans';
 
 
 describe("Booleans consts", () =>

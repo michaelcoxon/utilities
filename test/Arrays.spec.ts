@@ -1,7 +1,7 @@
 import { expect, assert } from 'chai';
 import 'mocha';
 import { slowtest } from './_env';
-import { Arrays } from '../src/Arrays';
+import Arrays from '../src/Arrays';
 
 describe("Arrays.average", () =>
 {

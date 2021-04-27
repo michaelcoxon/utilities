@@ -1,8 +1,10 @@
 ﻿import { IDisposable } from "./IDisposable";
-import { AlreadyDisposedException, Exception, ErrorException } from "./Exceptions";
+import AlreadyDisposedException from './Exceptions/AlreadyDisposedException';
+import Exception from './Exceptions/Exception';
+import ErrorException from './Exceptions/ErrorException';
 
 /** A Disposable that can collect disposable objects and dispose then when it is disposed */
-export class AggregateDisposable implements IDisposable
+export default class AggregateDisposable implements IDisposable
 {
     private _disposed: boolean = false;
     private _disposables: IDisposable[];

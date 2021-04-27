@@ -1,4 +1,4 @@
-﻿import { Lazy } from '../src/Lazy';
+﻿import Lazy from '../src/Lazy';
 import { expect, assert } from 'chai';
 import 'mocha';
 

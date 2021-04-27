@@ -1,37 +1,26 @@
-﻿import { MutexAlreadyAquiredException, AlreadyDisposedException } from './Exceptions';
-import { IDisposable, using, usingAsync } from './IDisposable';
-import { SingleInvokeEvent } from './SingleInvokeEvent';
+﻿import MutexAlreadyAquiredException from './Exceptions/MutexAlreadyAquiredException';
+import SingleInvokeEvent from './SingleInvokeEvent';
 import { isUndefined } from './TypeHelpers';
 
 /** Interface for a lock */
-export interface ILock extends IDisposable
+export interface ILock
 {
     /** Releases the lock */
-    release(): void;
+    releaseAsync(): Promise<void>;
 }
 
 class Lock implements ILock
 {
-    private readonly _release: () => void;
-    private _isDisposed: boolean = false;
+    private readonly _releaseAsync: () => Promise<void>;
 
-    constructor(release: () => void)
+    constructor(releaseAsync: () => Promise<void>)
     {
-        this._release = release;
+        this._releaseAsync = releaseAsync;
     }
 
-    public release(): void
+    public releaseAsync(): Promise<void>
     {
-        this.dispose();
-    }
-
-    public dispose(): void
-    {
-        if (this._isDisposed)
-        {
-            throw new AlreadyDisposedException();
-        }
-        this._release();
+        return this._releaseAsync();
     }
 }
 
@@ -39,7 +28,7 @@ class Lock implements ILock
  * Creates a mutex that when acquired will return a lock that needs to be released
  * before any waiting code can be run.
  */
-export class Mutex 
+export default class Mutex 
 {
     private _onRelease?: SingleInvokeEvent<{}>;
 
@@ -55,8 +44,19 @@ export class Mutex
 
         return new Lock(() =>
         {
-            this._onRelease && this._onRelease.invoke(this, {});
-            this._onRelease = undefined;
+            return new Promise<void>((resolve, reject) =>
+            {
+                try
+                {
+                    this._onRelease && this._onRelease.invoke(this, {});
+                    this._onRelease = undefined;
+                    resolve();
+                }
+                catch (e)
+                {
+                    reject(e);
+                }
+            });
         });
     }
 
@@ -64,19 +64,26 @@ export class Mutex
      * Returns a promise that can be awaited until the lock is released. 
      * If there is no lock the promise is resolved immediately.
      */
-    public wait(): Promise<void>
+    public waitAsync(): Promise<void>
     {
-        return new Promise((resolve) =>
+        return new Promise((resolve, reject) =>
         {
-            if (isUndefined(this._onRelease))
+            try
             {
-                // not acquired
-                return resolve();
+                if (isUndefined(this._onRelease))
+                {
+                    // not acquired
+                    return resolve();
+                }
+                else
+                {
+                    // resolve promise when lock is released
+                    this._onRelease.addHandler(() => resolve());
+                }
             }
-            else
+            catch (e)
             {
-                // resolve promise when lock is released
-                this._onRelease.addHandler(() => resolve());
+                reject(e);
             }
         });
     }
@@ -87,17 +94,12 @@ export class Mutex
  * @param mutex
  * @param func
  */
-export function lock<T>(mutex: Mutex, func: () => T): T
+export async function lockAsync<T>(mutex: Mutex, func: () => T): Promise<T>;
+export async function lockAsync<T>(mutex: Mutex, func: () => Promise<T>): Promise<T>;
+export async function lockAsync<T>(mutex: Mutex, func: () => any): Promise<T>
 {
-    return using(() => mutex.acquire(), () => func());
-}
-
-/**
- * Locks on the provided mutex until the provided func is complete, then returning a value if any.
- * @param mutex
- * @param func
- */
-export function lockAsync<T>(mutex: Mutex, func: () => Promise<T>): Promise<T>
-{
-    return usingAsync(() => mutex.acquire(), () => func());
+    const lock = mutex.acquire();
+    const result = await func();
+    await lock.releaseAsync();
+    return result;
 }

@@ -3,7 +3,7 @@
 import { Undefinable } from "./Types";
 
 /** Lazy value provider for promises */
-export class LazyAsync<T>
+export default class LazyAsync<T>
 {
     private readonly _factory: () => Promise<T>;
     private _value: Undefinable<Promise<T>>;

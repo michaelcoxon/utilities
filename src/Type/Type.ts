@@ -9,9 +9,9 @@ import
     isUndefined,
     isObject,
 } from '../TypeHelpers';
-import { NotImplementedException } from '../Exceptions';
+import NotImplementedException from '../Exceptions/NotImplementedException';
 
-const typeResolvers: ((subject: any) => { success: boolean; type?: Type })[] = [];
+const typeResolvers: ((subject: any) => { success: boolean; type?: Type; })[] = [];
 
 export interface Type
 {
@@ -34,35 +34,35 @@ export class Type
     {
         return Object.seal((() =>
         {
-            if (isNull(subject))
+            if (isNull(subject) || subject === null)
             {
                 return new NullType();
             }
-            else if (isUndefined(subject))
+            else if (isUndefined(subject) || subject === undefined)
             {
                 return new UndefinedType();
             }
-            else if (isNumber(subject))
+            else if (isNumber(subject) || subject === Number)
             {
                 return new NumberType();
             }
-            else if (isBoolean(subject))
+            else if (isBoolean(subject) || subject === Boolean)
             {
                 return new BooleanType();
             }
-            else if (isDate(subject))
+            else if (isDate(subject) || subject === Date)
             {
                 return new DateType();
             }
-            else if (isString(subject))
+            else if (isString(subject) || subject === String)
             {
                 return new StringType();
             }
-            else if (isFunction(subject))
+            else if (isFunction(subject) || subject === Function)
             {
                 return new FunctionType();
             }
-            else if (Array.isArray(subject))
+            else if (Array.isArray(subject) || subject === Array)
             {
                 return new ArrayType();
             }
@@ -79,12 +79,12 @@ export class Type
             }
 
             // last
-            else if (isObject(subject))
+            else if (isObject(subject) || subject === Object)
             {
                 return new ObjectType();
             }
-            
-            throw new NotImplementedException(subject);            
+
+            throw new NotImplementedException(subject);
         })());
     }
 }

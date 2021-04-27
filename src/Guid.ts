@@ -1,5 +1,7 @@
-﻿import { UnsignedInt16, UnsignedInt32, Byte } from "./Integers";
-import { Strings } from "./Strings";
+﻿import UnsignedInt32 from "./Integers/UnsignedInt32";
+import UnsignedInt16 from "./Integers/UnsignedInt16";
+import Byte from "./Integers/Byte";
+import Strings from "./Strings";
 import { getDefaultLogger, ILogger } from './ILogger';
 
 
@@ -7,7 +9,7 @@ const logger = getDefaultLogger();
 /**
  * Represents a GUID
  */
-export class Guid
+export default class Guid
 {
     private readonly _;
     private readonly _a: UnsignedInt32;

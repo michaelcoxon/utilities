@@ -1,7 +1,7 @@
-﻿import { IndentedStringBuilder } from "./StringBuilder";
-import { Exception } from "./Exceptions";
+﻿import Exception from './Exceptions/Exception';
+import IndentedStringBuilder from "./IndentedStringBuilder";
 
-export namespace ErrorHelper
+namespace ErrorHelper
 {
     export function errorToLogMessage(error: Error | Exception, sb: IndentedStringBuilder): void
     {
@@ -27,3 +27,5 @@ export namespace ErrorHelper
         return JSON.stringify(Object.assign({}, error));
     }
 }
+
+export default ErrorHelper;

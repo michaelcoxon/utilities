@@ -1,4 +1,4 @@
-﻿import { Guid } from '../src/Guid';
+﻿import Guid from '../src/Guid';
 import { expect, assert } from 'chai';
 import 'mocha';
 import { slowtest } from './_env';

@@ -1,9 +1,11 @@
-﻿import { Byte, Int16, Int32, SignedByte, UnsignedInt16, UnsignedInt32 } from "./Integers";
+﻿import Byte from './Integers/Byte';
+import Int16 from './Integers/Int16';
+import Int32 from './Integers/Int32';
+import SignedByte from './Integers/SignedByte';
+import UnsignedInt16 from './Integers/UnsignedInt16';
+import UnsignedInt32 from './Integers/UnsignedInt32';
 
-
-
-
-export namespace Numbers
+namespace Numbers
 {
     export function toByte(value: number): Byte
     {
@@ -50,3 +52,5 @@ export namespace Numbers
         return !isEven(value);
     }
 }
+export default Numbers;
+

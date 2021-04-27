@@ -1,9 +1,9 @@
 ﻿import { isNumber, isDate, isUndefinedOrNull } from './TypeHelpers';
-import { FormatException } from './Exceptions';
+import FormatException from './Exceptions/FormatException';
 
 const WHITESPACE = "\\s\\uFEFF\\xA0";
 
-export namespace Strings
+namespace Strings
 {
     /**
      * An empty string.
@@ -72,11 +72,11 @@ export namespace Strings
     {
         if (chars !== undefined)
         {
-            chars = escapeRegExp(chars)
+            chars = escapeRegExp(chars);
         }
         else
         {
-            chars = WHITESPACE
+            chars = WHITESPACE;
         }
         var regex = new RegExp(`^[${chars}]+|[${chars}]+$`, 'g');
         return str.replace(regex, empty);
@@ -99,11 +99,11 @@ export namespace Strings
     {
         if (chars !== undefined)
         {
-            chars = escapeRegExp(chars)
+            chars = escapeRegExp(chars);
         }
         else
         {
-            chars = WHITESPACE
+            chars = WHITESPACE;
         }
         var regex = new RegExp(`^[${chars}]+`, 'g');
         return str.replace(regex, empty);
@@ -126,11 +126,11 @@ export namespace Strings
     {
         if (chars !== undefined)
         {
-            chars = escapeRegExp(chars)
+            chars = escapeRegExp(chars);
         }
         else
         {
-            chars = WHITESPACE
+            chars = WHITESPACE;
         }
         var regex = new RegExp(`[${chars}]+$`, 'g');
         return str.replace(regex, empty);
@@ -184,6 +184,8 @@ export namespace Strings
         return new StringFormatter().format(subject.toString(), format);
     }
 }
+
+export default Strings;
 
 export interface IDateFormatterConfiguration
 {
@@ -308,7 +310,7 @@ export class NumberFormatterDelegates
 
     public formatExponential(subject: number, precision: number = 6): string
     {
-        return subject.toExponential(precision); 
+        return subject.toExponential(precision);
     }
 
     public formatFixed(subject: number, precision: number = this._config.numberDecimalDigits): string
@@ -397,7 +399,7 @@ export class DateFormatter implements IFormatter<Date>
         ],
     };
 
-    private static readonly TOKEN_TO_STRING_DELEGATES: { [key: string]: (d: Date, config: IDateFormatterConfiguration) => string } = {
+    private static readonly TOKEN_TO_STRING_DELEGATES: { [key: string]: (d: Date, config: IDateFormatterConfiguration) => string; } = {
         "d": d => d.getDate().toString(),
         "dd": d => Strings.padLeft(d.getDate().toString(), 2, '0'),
         "ddd": (d, c) => c.daysOfWeek_Short[d.getDay()],
@@ -408,17 +410,17 @@ export class DateFormatter implements IFormatter<Date>
         "F": d =>
         {
             const value = Math.round(d.getMilliseconds() / 100);
-            return value > 0 ? value.toString() : Strings.empty
+            return value > 0 ? value.toString() : Strings.empty;
         },
         "FF": d =>
         {
             const value = Math.round(d.getMilliseconds() / 10);
-            return value > 0 ? Strings.padLeft(value.toString(), 2, '0') : Strings.empty
+            return value > 0 ? Strings.padLeft(value.toString(), 2, '0') : Strings.empty;
         },
         "FFF": d =>
         {
             const value = Math.round(d.getMilliseconds());
-            return value > 0 ? Strings.padLeft(value.toString(), 3, '0') : Strings.empty
+            return value > 0 ? Strings.padLeft(value.toString(), 3, '0') : Strings.empty;
         },
         "h": d => (d.getHours() % 12 || 12).toString(),
         "hh": d => Strings.padLeft((d.getHours() % 12 || 12).toString(), 2, '0'),

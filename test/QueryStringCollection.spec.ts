@@ -1,7 +1,7 @@
 ﻿import { expect, assert } from 'chai';
 import 'mocha';
 
-import { QueryStringCollection } from '../src/Url';
+import QueryStringCollection from "../src/QueryStringCollection";
 
 describe('QueryStringCollection.constructor', () =>
 {

@@ -1,11 +1,11 @@
-﻿import { Event, IEvent } from './Event';
-import { ArgumentException } from './Exceptions';
+﻿import Event, { IEvent } from './Event';
+import ArgumentException from './Exceptions/ArgumentException';
 import { IDisposable } from './IDisposable';
 
 declare function clearInterval(intervalId: any): void;
 declare function setInterval(callback: (...args: any[]) => void, ms: number, ...args: any[]): any;
 
-export class Timer implements IDisposable
+export default class Timer implements IDisposable
 {
     private _autoReset: boolean;
     private _enabled: boolean;
@@ -13,7 +13,7 @@ export class Timer implements IDisposable
 
     private _intervalPointer?: any;
 
-    private readonly _elapsedEvent: Event<{ signalTime: Date }>;
+    private readonly _elapsedEvent: Event<{ signalTime: Date; }>;
 
     /** Initializes a new instance of the Timer class, and sets all the properties to their initial values. */
     constructor();
@@ -39,7 +39,7 @@ export class Timer implements IDisposable
         this._elapsedEvent = new Event();
     }
 
-    get onElapsed(): IEvent<{ signalTime: Date }>
+    get onElapsed(): IEvent<{ signalTime: Date; }>
     {
         return this._elapsedEvent;
     }

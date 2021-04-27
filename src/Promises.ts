@@ -4,7 +4,7 @@ declare function clearTimeout(intervalId: any): void;
 declare function setTimeout(callback: (...args: any[]) => void, ms: number, ...args: any[]): any;
 
 
-export namespace Promises
+namespace Promises
 {
     /**
      * Delays for the number of milliseconds
@@ -104,3 +104,5 @@ export namespace Promises
         });
     }
 }
+export default Promises;
+

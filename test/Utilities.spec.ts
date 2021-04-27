@@ -3,7 +3,7 @@ import * as sinonChai from 'sinon-chai';
 import * as sinon from 'sinon';
 import 'mocha';
 
-import { Utilities } from '../src/Utilities';
+import Utilities from '../src/Utilities';
 
 describe("Utilities.equals", () =>
 {

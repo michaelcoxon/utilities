@@ -1,10 +1,10 @@
-﻿import { ArgumentException } from "./Exceptions";
-import { Strings } from './Strings';
+﻿import ArgumentException from "./Exceptions/ArgumentException";
+import Strings from './Strings';
 
 var URI_REGEX = /^(([^:]+:\\)|([^:/?#]+:)?(\/\/([^/?#]*)[\\/])?)(([^\\/]+[\\/])*)([^/?#]*)(\?[^#]*)?(#.*)?$/gi;
 
 /** Utility namespace for path related functions. */
-export namespace Path
+namespace Path
 {
     /**
      * Returns the filename portin of a path.
@@ -53,7 +53,7 @@ export namespace Path
             return fileName;
         }
 
-        return fileName.substring(0, fileName.lastIndexOf('.'))
+        return fileName.substring(0, fileName.lastIndexOf('.'));
     }
 
     /**
@@ -101,3 +101,5 @@ export namespace Path
         return segments.join('/');
     }
 }
+
+export default Path;

@@ -1,8 +1,8 @@
-﻿import { Strings } from './Strings';
+﻿import Strings from './Strings';
 
 const KEYVALUESEPARATOR = ":";
 
-export namespace Utilities
+namespace Utilities
 {
     /**
      * returns true if the two objects are equal but not the same object. (compares public keys)
@@ -152,6 +152,8 @@ export namespace Utilities
         return typeof o;
     }
 }
+
+export default Utilities;
 
 function hashString(str: string): number
 {

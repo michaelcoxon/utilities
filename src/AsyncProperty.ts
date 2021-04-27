@@ -1,6 +1,6 @@
 ﻿
-import { Event } from "./Event";
-import { NullReferenceException } from './Exceptions';
+import Event from "./Event";
+import NullReferenceException from './Exceptions/NullReferenceException';
 import { EventHandler, Undefinable } from './Types';
 
 
@@ -8,8 +8,8 @@ import { EventHandler, Undefinable } from './Types';
 
 class AsyncProperty<T extends any>
 {
-    private readonly _postHandlers: { [key: string]: EventHandler<Undefinable<T>> }
-    private readonly _preHandlers: { [key: string]: EventHandler<Undefinable<T>> }
+    private readonly _postHandlers: { [key: string]: EventHandler<Undefinable<T>>; };
+    private readonly _preHandlers: { [key: string]: EventHandler<Undefinable<T>>; };
     private readonly _updatedEvent: Event<Undefinable<T>>;
     private readonly _updatingEvent: Event<Undefinable<T>>;
     private readonly _getAsync: () => Promise<T>;
@@ -37,7 +37,7 @@ class AsyncProperty<T extends any>
             this._value = await this._getAsync();
 
             this._onUpdated();
-        }
+        };
 
         if (updateNow)
         {
@@ -119,10 +119,7 @@ class AsyncProperty<T extends any>
     /** Returns the string version of the ModelState value */
     public toString(): string
     {
-        return this._value !== undefined
-            ? this._value.toString()
-            : undefined
-            ;
+        return `${this._value}`;
     }
 
 
