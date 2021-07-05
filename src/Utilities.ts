@@ -1,9 +1,29 @@
 ﻿import Strings from './Strings';
-
+import { isDate, isNumber } from './TypeHelpers';
+import NumberFormatter from './Formatters/NumberFormatter';
+import DateFormatter from './Formatters/DateFormatter';
+import StringFormatter from './Formatters/StringFormatter';
 const KEYVALUESEPARATOR = ":";
 
 namespace Utilities
 {
+    export const noop = (...args: any[]) => { };
+
+    export function convertToString(subject: any, format: string = Strings.empty): string
+    {
+        if (isNumber(subject))
+        {
+            return new NumberFormatter().format(subject, format);
+        }
+        if (isDate(subject))
+        {
+            return new DateFormatter().format(subject, format);
+        }
+
+        // default and string
+        return new StringFormatter().format(subject.toString(), format);
+    }
+
     /**
      * returns true if the two objects are equal but not the same object. (compares public keys)
      * @param obj1

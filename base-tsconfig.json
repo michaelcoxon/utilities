@@ -16,7 +16,8 @@
     "target": "es5",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "pretty": true
+    "pretty": true,
+    "allowSyntheticDefaultImports": true
   },
 
   "compileOnSave": true,

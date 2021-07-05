@@ -2,7 +2,9 @@ import Exception from '../Exceptions/Exception';
 import Result, { IResult } from "../Result";
 import { INumberValue, ensureInt } from './_common';
 
-
+/**
+ * Represents an unsigned 8-bit integer. 
+ */
 export default class Byte implements INumberValue
 {
     /** The largest number that can be represented. Equal to 255. */

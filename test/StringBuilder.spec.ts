@@ -1,5 +1,5 @@
 import Strings from '../src/Strings';
-import StringBuilder from '../src/StringBuilder';
+import StringBuilder from '../src/IO/StringBuilder';
 import { expect, assert } from 'chai';
 import 'mocha';
 

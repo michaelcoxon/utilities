@@ -1,5 +1,4 @@
-﻿
-/** Shortcut for T | null */
+﻿/** Shortcut for T | null */
 export type Nullable<T> = T | null;
 
 /** Shortcut for T | undefined */

@@ -1,5 +1,5 @@
-﻿import { ILogger } from "./ILogger";
-import { IDisposable } from "./IDisposable";
+﻿import { ILogger } from "./_types";
+import { IDisposable } from "../IDisposable";
 
 export default class ScopedLogger implements ILogger, IDisposable
 {

@@ -1,5 +1,5 @@
-import Strings from './Strings';
-import { Undefinable } from './Types';
+import Strings from '../Strings';
+import { Undefinable } from '../Types';
 
 /**
  * Class for building strings that will only concatenate them upon calling toString().

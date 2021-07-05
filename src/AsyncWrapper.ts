@@ -3,6 +3,7 @@
 import SingleInvokeEvent from "./SingleInvokeEvent";
 import { Undefinable, Promisable } from "./Types";
 import { isFunction } from './TypeHelpers';
+import Type from './Type/Type';
 
 /**
  * The AsyncWrapper is provided to monitor the state of a promise.
@@ -19,6 +20,8 @@ export default class AsyncWrapper<T>
     private _success: boolean;
     private _error: any;
     private _value: Undefinable<T>;
+    private _promiseOrValueOrFactory: Promisable<T> | (() => Promisable<T>) | undefined;
+    private _awaitable: Promise<any>;
 
     /**
     * Creates a new unresolved AsyncWrapper
@@ -54,31 +57,33 @@ export default class AsyncWrapper<T>
     constructor(promiseOrValueOrFactory?: Promisable<T> | (() => Promisable<T>), callback?: (asyncWrapper: AsyncWrapper<T>) => void);
     constructor(promiseOrValueOrFactory?: Promisable<T> | (() => Promisable<T>), callback?: (asyncWrapper: AsyncWrapper<T>) => void)
     {
+        this._awaitable = (async () => { })();
         this._complete = false;
         this._success = false;
         this._completeEvent = new SingleInvokeEvent();
         this._callback = callback;
-
-        this.update(promiseOrValueOrFactory);
+        this._promiseOrValueOrFactory = promiseOrValueOrFactory;
+        this.update(this._promiseOrValueOrFactory);
     }
 
-    public update(promiseOrValueOrFactory?: Promisable<T> | (() => Promisable<T>)): void
+    public update(promiseOrValueOrFactory: (Promisable<T> | (() => Promisable<T>) | undefined) = this._promiseOrValueOrFactory): void
     {
         if (promiseOrValueOrFactory !== undefined)
         {
+            this._promiseOrValueOrFactory = promiseOrValueOrFactory;
             this._success = false;
             this._complete = false;
 
-            if (isFunction(promiseOrValueOrFactory))
+            if (isFunction(this._promiseOrValueOrFactory))
             {
-                this._promise = Promise.resolve(promiseOrValueOrFactory());
+                this._promise = Promise.resolve(this._promiseOrValueOrFactory());
             }
             else
             {
-                this._promise = Promise.resolve(promiseOrValueOrFactory);
+                this._promise = Promise.resolve(this._promiseOrValueOrFactory);
             }
 
-            new Promise<T>(async (resolve, reject) =>
+            this._awaitable = new Promise<T>(async (resolve, reject) =>
             {
                 let cancelled = false;
                 const promise = this._promise;
@@ -157,5 +162,10 @@ export default class AsyncWrapper<T>
     public get error(): any
     {
         return this._error;
+    }
+
+    public cancel(): void
+    {
+        delete this._promise;
     }
 }

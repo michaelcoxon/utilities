@@ -1,4 +1,4 @@
-﻿import Path from '../src/Path';
+﻿import Path from '../src/IO/Path';
 import { expect, assert } from 'chai';
 import 'mocha';
 

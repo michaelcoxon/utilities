@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "./dist/modules",
     "sourceMap": true,
+    "allowSyntheticDefaultImports": true
   },
   "compileOnSave": true,
   "exclude": [

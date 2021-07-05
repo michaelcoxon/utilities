@@ -1,6 +1,8 @@
 {
   "extends": "./base-tsconfig",
-
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true
+  },
   "compileOnSave": true,
   "exclude": [
     "node_modules",

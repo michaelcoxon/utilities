@@ -1,4 +1,4 @@
-﻿import { ILogger } from './ILogger';
+﻿import { ILogger } from './Logging/_types';
 import  InvalidOperationException from './Exceptions/InvalidOperationException';
 
 

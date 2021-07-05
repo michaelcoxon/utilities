@@ -1,4 +1,4 @@
-import { testLogVerbosity, LogLevel } from '../src/ILogger';
+import { testLogVerbosity, LogLevel } from '../src/Logging';
 import { expect, assert } from 'chai';
 import 'mocha';
 

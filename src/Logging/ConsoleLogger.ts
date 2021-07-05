@@ -1,33 +1,10 @@
-﻿import { ILogger, LogLevel, testLogVerbosity } from './ILogger';
-import { IDisposable } from './IDisposable';
-import ErrorHelper from "./ErrorHelper";
-import ScopedLogger from "./ScopedLogger";
-import IndentedStringBuilder from "./IndentedStringBuilder";
-import Logger, { ILoggerConfig } from './Logger';
+﻿import { ILogger, LogLevel, IConsole, IConsoleLoggerConfig } from './_types';
+import Logger from './Logger';
 
 const defaultConfig: IConsoleLoggerConfig = {
     loggingVerbosity: LogLevel.Info,
     useTraceMethodForTraceLogLevel: false
 };
-
-export interface IConsoleLoggerConfig extends ILoggerConfig
-{
-    /** the logging verbosity to filter on */
-    loggingVerbosity: LogLevel;
-    /** some browsers support the 'console.trace' method. this method gives out more info on trace logs. */
-    useTraceMethodForTraceLogLevel: boolean;
-}
-
-export interface IConsole
-{
-    log: (message?: any, ...optionalParams: any[]) => void;
-
-    // these are optional as tey are only supported by some console implementations
-    warn?: (message?: any, ...optionalParams: any[]) => void;
-    trace?: (message?: any, ...optionalParams: any[]) => void;
-    info?: (message?: any, ...optionalParams: any[]) => void;
-    error?: (message?: any, ...optionalParams: any[]) => void;
-}
 
 export default class ConsoleLogger extends Logger implements ILogger
 {

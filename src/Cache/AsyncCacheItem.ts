@@ -1,5 +1,5 @@
-import { Promisable } from './Types';
-import { IAsyncCacheItem, IExpiryPolicyDelegate } from './ICache';
+import { Promisable } from '../Types';
+import { IAsyncCacheItem, IExpiryPolicyDelegate } from './_types';
 import CacheExpiredException from './CacheExpiredException';
 
 
@@ -40,7 +40,7 @@ export default class AsyncCacheItem<T> implements IAsyncCacheItem<T>
         {
             try
             {
-                resolve(this._expiryPolicy(await this._promiseOrValue));
+                resolve(this._expiryPolicy(this));
             }
             catch (ex)
             {

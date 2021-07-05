@@ -1,26 +1,48 @@
-import { Type } from "./Type";
-
-
-export class TypeBuilder
+import Type, { IType } from "./Type";
+import Strings from '../Strings';
+import { Ensure } from '@michaelcoxon/ensure';
+export default class TypeBuilder
 {
-    public build(): Type
+    private _name: string = '';
+    private _namespace: string = '';
+    private _baseType: IType = Type.getType(undefined);
+    private _isArray: boolean = false;
+    private _factory: (...args: any[]) => any = () => undefined;
+
+    public build(): IType
     {
+        Ensure.arg(this._name, 'name').isNotNullOrUndefinedOrEmpty();
+
         var type = {
-            fullName: this.fullName,
-            name: this.name,
-            namespace: this.namespace,
-            baseType: this.baseType,
-            isArray: this.isArray,
-            factory: this.factory
-        } as Type;
+            fullName: Strings.isNullOrEmpty(this._namespace) ? this._name : `${this._namespace}.${this._name}`,
+            name: this._name,
+            namespace: this._namespace,
+            baseType: this._baseType,
+            isArray: this._isArray,
+            factory: this._factory
+        } as IType;
         Object.seal(type);
         return type;
     }
 
-    public fullName?: string;
-    public name?: string;
-    public namespace?: string;
-    public baseType?: Type;
-    public isArray?: boolean;
-    public factory?: (...args: any[]) => any;
+    public setName: (name: string) => this = name =>
+    {
+        this._name = name;
+        return this;
+    };
+    public setNamespace: (namespace: string) => this = namespace =>
+    {
+        this._namespace = namespace;
+        return this;
+    };
+    public deriveFrom: (type: IType) => this = type =>
+    {
+        this._baseType = type;
+        return this;
+    };
+    public factory?: (constructor: new <T, TArgs = keyof T>(...args: TArgs[]) => T) => this = constructor =>
+    {
+        this._factory = (...args) => new constructor(...args);
+        return this;
+    };
 }

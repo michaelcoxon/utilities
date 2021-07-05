@@ -1,21 +1,20 @@
-﻿import { IDisposable } from "./IDisposable";
+﻿import { IDisposable } from "../IDisposable";
+import Utilities from "../Utilities";
 
-const noop = (...args: any[]) => { };
-
-let _defaultLogger: ILogger
+let _defaultLogger: ILogger;
 
 _defaultLogger = {
-    debug: noop,
-    debugError: noop,
-    error: noop,
-    errorError: noop,
-    info: noop,
-    infoError: noop,
-    trace: noop,
-    traceError: noop,
-    warn: noop,
-    warnError: noop,
-    scope: (name) => Object.assign({ dispose: noop }, _defaultLogger),
+    debug: Utilities.noop,
+    debugError: Utilities.noop,
+    error: Utilities.noop,
+    errorError: Utilities.noop,
+    info: Utilities.noop,
+    infoError: Utilities.noop,
+    trace: Utilities.noop,
+    traceError: Utilities.noop,
+    warn: Utilities.noop,
+    warnError: Utilities.noop,
+    scope: (name) => Object.assign({ dispose: Utilities.noop }, _defaultLogger),
 };
 
 
@@ -174,4 +173,32 @@ export interface ILogger
      *  });
      */
     scope(name: string): ILogger & IDisposable;
+}
+
+
+
+export interface ILoggerConfig
+{
+    /** the logging verbosity to filter on */
+    loggingVerbosity: LogLevel;
+}
+
+
+export interface IConsoleLoggerConfig extends ILoggerConfig
+{
+    /** the logging verbosity to filter on */
+    loggingVerbosity: LogLevel;
+    /** some browsers support the 'console.trace' method. this method gives out more info on trace logs. */
+    useTraceMethodForTraceLogLevel: boolean;
+}
+
+export interface IConsole
+{
+    log: (message?: any, ...optionalParams: any[]) => void;
+
+    // these are optional as tey are only supported by some console implementations
+    warn?: (message?: any, ...optionalParams: any[]) => void;
+    trace?: (message?: any, ...optionalParams: any[]) => void;
+    info?: (message?: any, ...optionalParams: any[]) => void;
+    error?: (message?: any, ...optionalParams: any[]) => void;
 }

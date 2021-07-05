@@ -1,5 +1,5 @@
 import Strings from '../src/Strings';
-import IndentedStringBuilder from '../src/IndentedStringBuilder';
+import IndentedStringBuilder from '../src/IO/IndentedStringBuilder';
 import { expect, assert } from 'chai';
 import 'mocha';
 

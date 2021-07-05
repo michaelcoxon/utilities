@@ -1,5 +1,5 @@
 ﻿import Exception from './Exceptions/Exception';
-import IndentedStringBuilder from "./IndentedStringBuilder";
+import IndentedStringBuilder from "./IO/IndentedStringBuilder";
 
 namespace ErrorHelper
 {

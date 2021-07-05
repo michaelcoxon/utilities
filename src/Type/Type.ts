@@ -8,33 +8,34 @@ import
     isString,
     isUndefined,
     isObject,
+    isUndefinedOrNull,
 } from '../TypeHelpers';
 import NotImplementedException from '../Exceptions/NotImplementedException';
 
-const typeResolvers: ((subject: any) => { success: boolean; type?: Type; })[] = [];
+const typeResolvers: ((subject: any) => { success: boolean; type?: IType; })[] = [];
 
-export interface Type
+export interface IType
 {
     readonly fullName: string;
     readonly name: string;
     readonly namespace: string;
-    readonly baseType: Type;
+    readonly baseType: IType;
     readonly isArray: boolean;
     factory(...args: any[]): any;
 }
 
-export class Type
+export default class Type
 {
     public static get typeResolvers()
     {
         return typeResolvers;
     }
 
-    public static getType(subject: any): Type
+    public static getType(subject: any): IType
     {
         return Object.seal((() =>
         {
-            if (isNull(subject) || subject === null)
+            if (isUndefinedOrNull(subject) || subject === null)
             {
                 return new NullType();
             }
@@ -89,7 +90,7 @@ export class Type
     }
 }
 
-class NullType extends Type implements Type
+class NullType implements IType
 {
     get fullName()
     {
@@ -114,7 +115,7 @@ class NullType extends Type implements Type
     factory = () => null;
 }
 
-class UndefinedType extends Type implements Type
+class UndefinedType implements IType
 {
     get fullName()
     {
@@ -139,7 +140,7 @@ class UndefinedType extends Type implements Type
     factory = () => undefined;
 }
 
-class ArrayType extends Type implements Type
+class ArrayType implements IType
 {
     get fullName()
     {
@@ -164,7 +165,7 @@ class ArrayType extends Type implements Type
     factory = Array;
 }
 
-class NumberType extends Type implements Type
+class NumberType implements IType
 {
     get fullName()
     {
@@ -189,7 +190,7 @@ class NumberType extends Type implements Type
     factory = Number;
 }
 
-class BooleanType extends Type implements Type
+class BooleanType implements IType
 {
     get fullName()
     {
@@ -214,7 +215,7 @@ class BooleanType extends Type implements Type
     factory = Boolean;
 }
 
-class DateType extends Type implements Type
+class DateType implements IType
 {
     get fullName()
     {
@@ -239,7 +240,7 @@ class DateType extends Type implements Type
     factory = Date;
 }
 
-class StringType extends Type implements Type
+class StringType implements IType
 {
     get fullName()
     {
@@ -264,7 +265,7 @@ class StringType extends Type implements Type
     factory = String;
 }
 
-class FunctionType extends Type implements Type
+class FunctionType implements IType
 {
     get fullName()
     {
@@ -289,7 +290,7 @@ class FunctionType extends Type implements Type
     factory = Function;
 }
 
-class ObjectType extends Type implements Type
+class ObjectType implements IType
 {
     get fullName()
     {

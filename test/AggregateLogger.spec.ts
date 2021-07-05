@@ -3,13 +3,11 @@ import * as sinonChai from 'sinon-chai';
 import * as sinon from 'sinon';
 import 'mocha';
 
-import AggregateLogger from '../src/AggregateLogger';
-import ConsoleLogger from '../src/ConsoleLogger';
-import { ILogger, LogLevel } from '../src/ILogger';
+import AggregateLogger from '../src/Logging/AggregateLogger';
 import ErrorHelper from '../src/ErrorHelper';
 import { IDisposable } from '../src/IDisposable';
-import ScopedLogger from '../src/ScopedLogger';
-import IndentedStringBuilder from "../src/IndentedStringBuilder";
+import IndentedStringBuilder from "../src/IO/IndentedStringBuilder";
+import { ConsoleLogger, ILogger, LogLevel, ScopedLogger } from '../src/Logging';
 
 class TestLogger implements ILogger
 {

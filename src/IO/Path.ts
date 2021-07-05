@@ -1,5 +1,5 @@
-﻿import ArgumentException from "./Exceptions/ArgumentException";
-import Strings from './Strings';
+﻿import ArgumentException from "../Exceptions/ArgumentException";
+import Strings from '../Strings';
 
 var URI_REGEX = /^(([^:]+:\\)|([^:/?#]+:)?(\/\/([^/?#]*)[\\/])?)(([^\\/]+[\\/])*)([^/?#]*)(\?[^#]*)?(#.*)?$/gi;
 
