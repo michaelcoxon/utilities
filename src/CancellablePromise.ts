@@ -1,43 +1,38 @@
-﻿import SingleInvokeEvent from './SingleInvokeEvent';
-
-
-
-
+﻿import CancellationToken from './CancellationToken';
+import CancellationTokenSource from './CancellationTokenSource';
+import SingleInvokeEvent from './SingleInvokeEvent';
 
 export default class CancellablePromise<T> implements PromiseLike<T>
 {
-    private _cancelled: boolean
+    private _cancellationTokenSource: CancellationTokenSource;
     private _watcherPromise: Promise<T>;
-    private readonly _finallyEvent = new SingleInvokeEvent<{ promise: Promise<T>, cancelled: boolean }>();
+    private readonly _finallyEvent = new SingleInvokeEvent<{ promise: PromiseLike<T>, cancelled: boolean; }>();
 
-    constructor(promise: PromiseLike<T>)
+    constructor(promise: PromiseLike<T>, cancellationToken?: CancellationToken)
     {
-        this._cancelled = false;
+        this._cancellationTokenSource = new CancellationTokenSource(cancellationToken);
 
         this._watcherPromise = new Promise<T>(async (resolve, reject) =>
         {
             try
             {
-                const value = await promise;
-                if (this._cancelled)
+                if (this._cancellationTokenSource.isCancellationRequested)
                 {
                     return;
                 }
-                resolve(value);
+
+                resolve(await promise);
             }
             catch (error)
             {
-                if (this._cancelled)
-                {
-                    return;
-                }
                 reject(error);
             }
             finally
             {
+                const _this = this;
                 this._finallyEvent.invoke(this, {
-                    promise: this._watcherPromise,
-                    cancelled: this.cancelled
+                    get promise(): PromiseLike<T> { return promise; },
+                    get cancelled(): boolean { return _this.cancelled; }
                 });
             }
         });
@@ -45,12 +40,12 @@ export default class CancellablePromise<T> implements PromiseLike<T>
 
     public get cancelled(): boolean
     {
-        return this._cancelled;
+        return this._cancellationTokenSource.isCancellationRequested;
     }
-
+    
     public cancel(): void
     {
-        this._cancelled = true;
+        this._cancellationTokenSource.cancel();
         // as soon as wee call cancel finalise the promise
         this._finallyEvent.invoke(this, {
             promise: this._watcherPromise,
@@ -62,7 +57,7 @@ export default class CancellablePromise<T> implements PromiseLike<T>
     {
         let promise: Promise<TResult1 | TResult2>;
 
-        if (this._cancelled)
+        if (this._cancellationTokenSource.isCancellationRequested)
         {
             promise = new Promise(() => { });
         }
@@ -71,7 +66,7 @@ export default class CancellablePromise<T> implements PromiseLike<T>
             promise = this._watcherPromise.then(onfulfilled, onrejected);
         }
 
-        const cancellable = new CancellablePromise(promise);
+        const cancellable = new CancellablePromise(promise, this._cancellationTokenSource.token);
 
         this.finally((p, cancelled) =>
         {
@@ -79,7 +74,7 @@ export default class CancellablePromise<T> implements PromiseLike<T>
             {
                 cancellable.cancel();
             }
-        })
+        });
 
         return cancellable;
     }
@@ -88,7 +83,7 @@ export default class CancellablePromise<T> implements PromiseLike<T>
     {
         let promise: Promise<T | TResult>;
 
-        if (this._cancelled)
+        if (this._cancellationTokenSource)
         {
             promise = new Promise(() => { });
         }
@@ -97,7 +92,7 @@ export default class CancellablePromise<T> implements PromiseLike<T>
             promise = this._watcherPromise.catch(onrejected);
         }
 
-        const cancellable = new CancellablePromise(promise);
+        const cancellable = new CancellablePromise(promise, this._cancellationTokenSource.token);
 
         this.finally((p, cancelled) =>
         {
@@ -105,12 +100,12 @@ export default class CancellablePromise<T> implements PromiseLike<T>
             {
                 cancellable.cancel();
             }
-        })
+        });
 
         return cancellable;
     }
 
-    public finally(onfinally?: ((promise: Promise<T>, cancelled: boolean) => void)): this
+    public finally(onfinally?: ((promise: PromiseLike<T>, cancelled: boolean) => void)): this
     {
         if (onfinally)
         {

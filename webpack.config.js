@@ -63,7 +63,7 @@ module.exports = () =>
             globalObject: 'this'
         },
         externals: [
-            /^tslib.*$/
+          //  /^tslib.*$/
         ],
         module: {
             rules: [

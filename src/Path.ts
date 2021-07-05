@@ -12,7 +12,7 @@ namespace Path
      */
     export function getFileName(path: string): string
     {
-        return path.replace(URI_REGEX, "$8");
+        return Strings.trimStart(path, '/\\').replace(URI_REGEX, "$8");
     }
 
     /**
@@ -21,7 +21,23 @@ namespace Path
      */
     export function getDirectory(path: string): string
     {
-        return path.replace(URI_REGEX, "$6");
+        if (path.endsWith('/') || path.endsWith('\\'))
+        {
+            return path;
+        }
+        else if (path.startsWith('/') || path.startsWith('\\'))
+        {
+            return Path.combine(...path.split(path[0]).slice(0, -1), path[0]);
+        }
+        else
+        {
+            if (path.indexOf('\\') > -1)
+            {
+                return Path.combine(...path.split('\\').slice(0, -1), '\\');
+            }
+
+            return Path.combine(...path.split('/').slice(0, -1), '/');
+        }
     }
 
     /**
@@ -59,10 +75,16 @@ namespace Path
     /**
      * convert a string into a url friendly version
      * @param str
+     */
+    export function toFriendlyUrl(str: string): string;
+    /**
+     * convert a string into a url friendly version
+     * @param str
      * @param noTrim if true, it will leave hyphens (-) on the
      *               start and end of the url. You probably will
      *               never want this.
      */
+    export function toFriendlyUrl(str: string, noTrim: boolean): string;
     export function toFriendlyUrl(str: string, noTrim: boolean = false): string
     {
         let out = str.toLowerCase();
@@ -70,11 +92,11 @@ namespace Path
         out = out.replace(/@/g, " at ");
         out = out.replace(/[,'"]/g, "");
         out = out.replace(/[^a-z0-9]+/g, "-");
-        out = out.replace(/^-+|-+$/g, "-");
+        out = out.replace(/-+/g, "-");
 
         if (!noTrim)
         {
-            out = out.replace(/^-+|-+$/g, '');
+            out = out.replace(/(^-+)|(-+$)/g, '');
         }
 
         return out;
@@ -91,9 +113,19 @@ namespace Path
             throw new ArgumentException("path", "Provide at least 1 path to combine");
         }
 
-        let segments = args.map(arg => Strings.trim(arg, '/\\'));
+        let segments = args.map((arg, i) =>
+        {
+            if (i == 0)
+            {
+                return Strings.trimEnd(arg, '/\\');
+            }
+            else
+            {
+                return Strings.trim(arg, '/\\');
+            }
+        });
 
-        if (args[0].indexOf('\\') != -1)
+        if (args.findIndex(i => i.indexOf('\\') > -1) > -1)
         {
             return segments.join('\\');
         }
