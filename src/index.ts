@@ -25,7 +25,6 @@ export * from "./AsyncWrapper";
 export * from "./CancellablePromise";
 export * from "./Event";
 export * from "./Lazy";
-export * from "./LazyAsync";
 export * from "./Result";
 export * from "./SingleInvokeEvent";
 export * from "./Timer";

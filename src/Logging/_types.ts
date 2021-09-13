@@ -196,7 +196,7 @@ export interface IConsole
 {
     log: (message?: any, ...optionalParams: any[]) => void;
 
-    // these are optional as tey are only supported by some console implementations
+    // these are optional as they are only supported by some console implementations
     warn?: (message?: any, ...optionalParams: any[]) => void;
     trace?: (message?: any, ...optionalParams: any[]) => void;
     info?: (message?: any, ...optionalParams: any[]) => void;

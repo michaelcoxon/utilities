@@ -33,13 +33,17 @@
         "**/bin/": true,
         "**/_NCrunch_collections/": true,
         "docs/.nojekyll": true,
-        //"dist/": true,
-        //"lib/": true,
-        //"lib.es6/": true,
-        //"lib.es5/": true,
+        "dist/": true,
+        "lib/": true,
+        "lib.es6/": true,
+        "lib.es5/": true,
         "test/**/*.js": true,
         "test/**/*.js.map": true,
         "src/**/*.js": true,
         "src/**/*.js.map": true
-    }
+    },
+    "mocha.files.glob": "test/**/*.spec.ts",
+    "mocha.showInExplorer": true,
+    "mocha.runTestsOnSave": "true",
+    "mocha.sideBarOptions": {}
 }

@@ -2,10 +2,7 @@
 import UnsignedInt16 from "./Integers/UnsignedInt16";
 import Byte from "./Integers/Byte";
 import Strings from "./Strings";
-import { getDefaultLogger } from './Logging/_types';
 
-
-const logger = getDefaultLogger();
 /**
  * Represents a GUID
  */

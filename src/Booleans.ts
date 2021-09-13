@@ -1,15 +1,16 @@
 ﻿import NotSupportedException from "./Exceptions/NotSupportedException";
 import Result, { IResult } from "./Result";
 
+const TRUE_STRING: string = (true).toString();
+const FALSE_STRING: string = (false).toString();
 
+const _caseInsensitiveTrueString = TRUE_STRING.toLowerCase();
+const _caseInsensitiveFalseString = FALSE_STRING.toLowerCase();
 
 namespace Booleans
 {
-    export const trueString: string = (true).toString();
-    export const falseString: string = (false).toString();
-
-    const _caseInsensitiveTrueString = trueString.toLowerCase();
-    const _caseInsensitiveFalseString = falseString.toLowerCase();
+    export const trueString = TRUE_STRING;
+    export const falseString = FALSE_STRING;
 
     export function parse(value: string): boolean;
     export function parse(value: string, caseInsensitive: boolean): boolean;

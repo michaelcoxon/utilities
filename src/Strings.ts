@@ -2,17 +2,21 @@
 import Utilities from './Utilities';
 
 const WHITESPACE = "\\s\\uFEFF\\xA0";
+const EMPTY = '';
+const NEW_LINE = "\n";
+const FORMAT_REGEX = /{(\d+):?([^}]+)?}/g;
+const ESCAPE_REGEX_SEARCH = /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g;
 
 namespace Strings
 {
     /**
      * An empty string.
      */
-    export const empty = '';
+    export const empty = EMPTY;
     /**
      * A new line.
      */
-    export const newLine = "\n";
+    export const newLine = NEW_LINE;
 
     export function firstCharToLowerCase(str: string): string
     {
@@ -26,7 +30,7 @@ namespace Strings
 
     export function format(format: string, ...args: any[]): string
     {
-        return format.replace(/{(\d+):?([^}]+)?}/g, (match: string, index: string, format: string) =>
+        return format.replace(FORMAT_REGEX, (match: string, index: string, format: string) =>
         {
             if (!Strings.isNullOrEmpty(format))
             {
@@ -166,7 +170,7 @@ namespace Strings
 
     function escapeRegExp(str: string): string
     {
-        return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+        return str.replace(ESCAPE_REGEX_SEARCH, "\\$&");
     }
 }
 

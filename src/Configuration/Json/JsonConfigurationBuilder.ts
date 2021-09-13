@@ -24,7 +24,7 @@ export default class JsonConfigurationBuilder implements IConfigurationBuilder
         return this._configuration;
     }
 
-    append(json: string): this
+    public append(json: string): this
     {
         this._configs.push(json);
         return this;

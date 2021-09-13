@@ -1,7 +1,8 @@
 ﻿import { Undefinable } from "./Types";
 
-
-
+/**
+ * Lazy wrapper for a factory.
+ */
 export default class Lazy<T>
 {
     private readonly _factory: () => T;
