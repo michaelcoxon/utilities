@@ -1,25 +1,26 @@
 ﻿import UnsignedInt32 from "./Integers/UnsignedInt32";
 import UnsignedInt16 from "./Integers/UnsignedInt16";
 import Byte from "./Integers/Byte";
-import Strings from "./Strings";
+import padLeft from './Strings/padLeft';
+
+const PARSE_FILTER_REGEX = /[-{}[\]]/gi;
 
 /**
  * Represents a GUID
  */
 export default class Guid
 {
-    private readonly _;
-    private readonly _a: UnsignedInt32;
-    private readonly _b: UnsignedInt16;
-    private readonly _c: UnsignedInt16;
-    private readonly _d: Byte;
-    private readonly _e: Byte;
-    private readonly _f: Byte;
-    private readonly _g: Byte;
-    private readonly _h: Byte;
-    private readonly _i: Byte;
-    private readonly _j: Byte;
-    private readonly _k: Byte;
+    readonly #a: UnsignedInt32;
+    readonly #b: UnsignedInt16;
+    readonly #c: UnsignedInt16;
+    readonly #d: Byte;
+    readonly #e: Byte;
+    readonly #f: Byte;
+    readonly #g: Byte;
+    readonly #h: Byte;
+    readonly #i: Byte;
+    readonly #j: Byte;
+    readonly #k: Byte;
 
     /**
      * Creates a new Guid by specifying all the parts
@@ -37,36 +38,36 @@ export default class Guid
      */
     constructor(a: UnsignedInt32, b: UnsignedInt16, c: UnsignedInt16, d: Byte, e: Byte, f: Byte, g: Byte, h: Byte, i: Byte, j: Byte, k: Byte)
     {
-        this._a = a;
-        this._b = b;
-        this._c = c;
-        this._d = d;
-        this._e = e;
-        this._f = f;
-        this._g = g;
-        this._h = h;
-        this._i = i;
-        this._j = j;
-        this._k = k;
+        this.#a = a;
+        this.#b = b;
+        this.#c = c;
+        this.#d = d;
+        this.#e = e;
+        this.#f = f;
+        this.#g = g;
+        this.#h = h;
+        this.#i = i;
+        this.#j = j;
+        this.#k = k;
     }
 
     /** Returns the Guid as a hypen-separated string without curly braces. */
     public toString(): string
     {
-        return Strings.padLeft((this._a.valueOf() >>> 0).toString(16), 8, '0') + '-' +
-            Strings.padLeft((this._b.valueOf() >>> 0).toString(16), 4, '0') + '-' +
-            Strings.padLeft((this._c.valueOf() >>> 0).toString(16), 4, '0') + '-' +
-            Strings.padLeft((this._d.valueOf() >>> 0).toString(16), 2, '0') +
-            Strings.padLeft((this._e.valueOf() >>> 0).toString(16), 2, '0') + '-' +
-            Strings.padLeft((this._f.valueOf() >>> 0).toString(16), 2, '0') +
-            Strings.padLeft((this._g.valueOf() >>> 0).toString(16), 2, '0') +
-            Strings.padLeft((this._h.valueOf() >>> 0).toString(16), 2, '0') +
-            Strings.padLeft((this._i.valueOf() >>> 0).toString(16), 2, '0') +
-            Strings.padLeft((this._j.valueOf() >>> 0).toString(16), 2, '0') +
-            Strings.padLeft((this._k.valueOf() >>> 0).toString(16), 2, '0');
+        return padLeft((this.#a.valueOf() >>> 0).toString(16), 8, '0') + '-' +
+            padLeft((this.#b.valueOf() >>> 0).toString(16), 4, '0') + '-' +
+            padLeft((this.#c.valueOf() >>> 0).toString(16), 4, '0') + '-' +
+            padLeft((this.#d.valueOf() >>> 0).toString(16), 2, '0') +
+            padLeft((this.#e.valueOf() >>> 0).toString(16), 2, '0') + '-' +
+            padLeft((this.#f.valueOf() >>> 0).toString(16), 2, '0') +
+            padLeft((this.#g.valueOf() >>> 0).toString(16), 2, '0') +
+            padLeft((this.#h.valueOf() >>> 0).toString(16), 2, '0') +
+            padLeft((this.#i.valueOf() >>> 0).toString(16), 2, '0') +
+            padLeft((this.#j.valueOf() >>> 0).toString(16), 2, '0') +
+            padLeft((this.#k.valueOf() >>> 0).toString(16), 2, '0');
     }
 
-/** Returns the Guid as a hypen-separated string without curly braces. */
+    /** Returns the Guid as a hypen-separated string without curly braces. */
     public valueOf(): string
     {
         return this.toString();
@@ -109,7 +110,7 @@ export default class Guid
      */
     public static parseString(str: string): Guid
     {
-        const guid = str.replace(/[-\{\}\[\]]/gi, '');
+        const guid = str.replace(PARSE_FILTER_REGEX, '');
         return new Guid(
             new UnsignedInt32(parseInt(guid.substr(0, 8), 16)),
             new UnsignedInt16(parseInt(guid.substr(8, 4), 16)),
@@ -142,7 +143,7 @@ function randomInt32(): UnsignedInt32
 
 function randomNumber(min: number, max: number): number
 {
-    let rand = Math.random();
+    const rand = Math.random();
     const num = Math.floor(rand * (max + 1)) + min;
     return num > max ? max : num;
 }

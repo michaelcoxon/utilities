@@ -4,7 +4,7 @@
 
 export default class Exception extends Error
 {
-    private readonly _innerException?: Exception;
+    readonly #innerException?: Exception;
 
     __proto__: Error;
 
@@ -23,26 +23,34 @@ export default class Exception extends Error
      * @param innerException this is used to capture any exceptions that were
      *                       called before this exception.
      */
-    constructor(message: string, innerException: Exception)
+    constructor(message: string | undefined, innerException: Exception);
     constructor(message?: string, innerException?: Exception)
     {
-        const trueProto = new.target.prototype;
         super(message);
+        const trueProto = new.target.prototype;
 
         // Alternatively use Object.setPrototypeOf if you have an ES6 environment.
         this.__proto__ = trueProto;
 
-        this._innerException = innerException;
+        this.#innerException = innerException;
     }
 
     /** Gets the Exception instance that caused the current exception. */
     public get innerException(): Exception | undefined
     {
-        return this._innerException;
+        return this.#innerException;
     }
 
-    public static isException(error: Error): error is Exception
+    public static isException(error: unknown | Error | Exception): error is Exception
     {
-        return (error as any)['innerException'] !== undefined;
+        if (error instanceof Exception)
+        {
+            return true;
+        }
+        else if (error instanceof Object)
+        {
+            return error['innerException'] !== undefined;
+        }
+        return false;
     }
 }

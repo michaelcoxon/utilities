@@ -1,15 +1,38 @@
 {
-  "extends": "./base-tsconfig",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true
+    "baseUrl": ".",
+    "noImplicitAny": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "target": "es2015",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "pretty": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "./lib",
+    "declaration": true,
+    "declarationDir": "./lib",
   },
   "compileOnSave": true,
-  "exclude": [
-    "node_modules",
-    "lib",
-    "lib.esnext",
-    "lib.es6",
-    "src",
-    "dist"
-  ]
+  "awesomeTypescriptLoaderOptions": {
+    "useWebpackText": true,
+    "useTranspileModule": true,
+    "doTypeCheck": true,
+    "forkChecker": true
+  },
+  "include": [
+    "./src/**/*"
+, "tests/CaseInsensitiveStringComparer.spec.ts", "tests/Collection.spec.ts", "tests/AggregateEnumerator.spec.ts"  ],
 }

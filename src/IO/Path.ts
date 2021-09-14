@@ -1,9 +1,12 @@
 ﻿import ArgumentException from "../Exceptions/ArgumentException";
-import Strings from '../Strings';
+import trim from '../Strings/trim';
+import trimEnd from '../Strings/trimEnd';
+import trimStart from '../Strings/trimStart';
 
-var URI_REGEX = /^(([^:]+:\\)|([^:/?#]+:)?(\/\/([^/?#]*)[\\/])?)(([^\\/]+[\\/])*)([^/?#]*)(\?[^#]*)?(#.*)?$/gi;
+const URI_REGEX = /^(([^:]+:\\)|([^:/?#]+:)?(\/\/([^/?#]*)[\\/])?)(([^\\/]+[\\/])*)([^/?#]*)(\?[^#]*)?(#.*)?$/gi;
 
 /** Utility namespace for path related functions. */
+// eslint-disable-next-line @typescript-eslint/no-namespace
 namespace Path
 {
     /**
@@ -12,7 +15,7 @@ namespace Path
      */
     export function getFileName(path: string): string
     {
-        return Strings.trimStart(path, '/\\').replace(URI_REGEX, "$8");
+        return trimStart(path, '/\\').replace(URI_REGEX, "$8");
     }
 
     /**
@@ -46,7 +49,7 @@ namespace Path
      */
     export function getExtension(path: string): string
     {
-        let fileName = Path.getFileName(path);
+        const fileName = Path.getFileName(path);
 
         if (fileName.indexOf('.') == -1)
         {
@@ -62,7 +65,7 @@ namespace Path
      */
     export function getFileNameWithoutExtension(path: string): string
     {
-        let fileName = Path.getFileName(path);
+        const fileName = Path.getFileName(path);
 
         if (fileName.indexOf('.') == -1)
         {
@@ -85,7 +88,7 @@ namespace Path
      *               never want this.
      */
     export function toFriendlyUrl(str: string, noTrim: boolean): string;
-    export function toFriendlyUrl(str: string, noTrim: boolean = false): string
+    export function toFriendlyUrl(str: string, noTrim = false): string
     {
         let out = str.toLowerCase();
         out = out.replace(/&/g, " and ");
@@ -113,15 +116,15 @@ namespace Path
             throw new ArgumentException("path", "Provide at least 1 path to combine");
         }
 
-        let segments = args.map((arg, i) =>
+        const segments = args.map((arg, i) =>
         {
             if (i == 0)
             {
-                return Strings.trimEnd(arg, '/\\');
+                return trimEnd(arg, '/\\');
             }
             else
             {
-                return Strings.trim(arg, '/\\');
+                return trim(arg, '/\\');
             }
         });
 

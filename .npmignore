@@ -75,3 +75,7 @@ tests/
 *.njsproj
 *tsconfig.json
 *config.js
+
+.*
+
+_config.yml

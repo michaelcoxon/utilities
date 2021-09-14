@@ -2,103 +2,106 @@ import KeyNotFoundException from '../Exceptions/KeyNotFoundException';
 import KeyAlreadyDefinedException from '../Exceptions/KeyAlreadyDefinedException';
 import { IAsyncCacheItem, ICache, IExpiryPolicyDelegate } from './_types';
 import AsyncCacheItem from './AsyncCacheItem';
-import { Promisable } from '../Types';
+import { Awaitable } from '../Types';
 
 
 export default class MemoryCache<TKey = string> implements ICache<TKey>
 {
-    private readonly _internalCache: Map<TKey, IAsyncCacheItem<any>>;
+    readonly #internalCache: Map<TKey, IAsyncCacheItem<unknown>>;
 
     constructor()
     {
-        this._internalCache = new Map<TKey, IAsyncCacheItem<any>>();
+        this.#internalCache = new Map<TKey, IAsyncCacheItem<unknown>>();
     }
 
-    add<T>(key: TKey, value: Promisable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): void
+    add<T>(key: TKey, value: Awaitable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): void
     {
-        if (this._internalCache.has(key))
+        if (this.#internalCache.has(key))
         {
             throw new KeyAlreadyDefinedException(key);
         }
 
-        this._internalCache.set(key, new AsyncCacheItem(value, expiryPolicy));
+        this.#internalCache.set(key, new AsyncCacheItem(value, expiryPolicy));
     }
 
-    async addOrGetAsync<T>(key: TKey, factory: (key: TKey) => Promisable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): Promise<T>
+    async addOrGetAsync<T>(key: TKey, factory: (key: TKey) => Awaitable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): Promise<T>
     {
-        const cacheItem = this._internalCache.get(key);
+        const cacheItem = this.#internalCache.get(key);
 
         if (cacheItem !== undefined && !cacheItem.expiredAsync)
         {
-            return cacheItem.valueAsync;
+            return (await cacheItem.valueAsync) as T;
         }
 
         const value = factory(key);
 
-        this._internalCache.set(key, new AsyncCacheItem(value, expiryPolicy));
+        this.#internalCache.set(key, new AsyncCacheItem(value, expiryPolicy));
 
         return await value;
     }
 
-    addOrReplace<T>(key: TKey, value: Promisable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): void
+    addOrReplace<T>(key: TKey, value: Awaitable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): void
     {
-        this._internalCache.set(key, new AsyncCacheItem(value, expiryPolicy));
+        this.#internalCache.set(key, new AsyncCacheItem(value, expiryPolicy));
     }
 
-    clean(): void
+    async cleanAsync(): Promise<void>
     {
-        this._internalCache.forEach((value, key, map) =>
+        for (var item of this.#internalCache)
         {
-            if (value.expiredAsync)
+            const value = item[1];
+            const key = item[0];
+
+            if (await value.expiredAsync)
             {
-                map.delete(key);
+                this.#internalCache.delete(key);
             }
-        });
+        }
     }
 
-    getAsync<T>(key: TKey): Promise<T>
+    async getAsync<T>(key: TKey): Promise<T>
     {
-        const cacheItem = this._internalCache.get(key);
+        const cacheItem = this.#internalCache.get(key);
 
         if (cacheItem === undefined)
         {
             throw new KeyNotFoundException(key);
         }
 
-        if (cacheItem.expiredAsync)
+        if (await cacheItem.expiredAsync)
         {
-            this._internalCache.delete(key);
+            this.#internalCache.delete(key);
             throw new KeyNotFoundException(key);
         }
 
-        return cacheItem.valueAsync;
+        return (await cacheItem.valueAsync) as T;
     }
 
-    tryGet<T>(key: TKey): { success: boolean; value?: Promise<T>; }
+    async tryGetAsync<T>(key: TKey): Promise<{ success: boolean; value?: T; }>
     {
-        const cacheItem = this._internalCache.get(key);
+        const cacheItem = this.#internalCache.get(key);
 
         if (cacheItem === undefined)
         {
             return { success: false };
         }
 
-        if (cacheItem.expiredAsync)
+        if (await cacheItem.expiredAsync)
         {
-            this._internalCache.delete(key);
+            this.#internalCache.delete(key);
             return { success: false };
         }
 
-        return { success: true, value: cacheItem.valueAsync };
+        return { success: true, value: await (cacheItem.valueAsync as Promise<T>) };
     }
 
-    replace<T>(key: TKey, value: Promisable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): void
+    replace<T>(key: TKey, value: Awaitable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): void
     {
-        if (!this._internalCache.has(key))
+        if (!this.#internalCache.has(key))
         {
             throw new KeyNotFoundException(key);
         }
 
-        this._internalCache.set(key, new AsyncCacheItem(value, expiryPolicy));
+        this.#internalCache.set(key, new AsyncCacheItem(value, expiryPolicy));
     }
 }

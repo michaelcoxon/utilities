@@ -1,4 +1,4 @@
-﻿import Strings from '../Strings';
+﻿import { empty, newLine } from '../Strings/_consts';
 import { Undefinable } from '../Types';
 
 /**
@@ -6,18 +6,18 @@ import { Undefinable } from '../Types';
  */
 export default class StringBuilder 
 {
-    private readonly _strings: string[];
+    readonly #strings: string[];
 
-    private _lastValue: Undefinable<string>;
-    private _invalidateLastValue: boolean;
+    #lastValue: Undefinable<string>;
+    #invalidateLastValue: boolean;
     /**
      * Create a new StringBuilder.
      * @param value
      */
     constructor(...value: string[])
     {
-        this._strings = [...value];
-        this._invalidateLastValue = true;
+        this.#strings = [...value];
+        this.#invalidateLastValue = true;
     }
 
     /**
@@ -26,8 +26,8 @@ export default class StringBuilder
      */
     public append(value: string): void
     {
-        this._strings.push(value);
-        this._invalidateLastValue = true;
+        this.#strings.push(value);
+        this.#invalidateLastValue = true;
     }
 
     /**
@@ -36,8 +36,8 @@ export default class StringBuilder
      */
     public appendLine(value: string): void
     {
-        this._strings.push(...[value, Strings.newLine]);
-        this._invalidateLastValue = true;
+        this.#strings.push(...[value, newLine]);
+        this.#invalidateLastValue = true;
     }
 
     /**
@@ -45,8 +45,8 @@ export default class StringBuilder
      */
     public clear(): void
     {
-        this._strings.length = 0;
-        this._invalidateLastValue = true;
+        this.#strings.length = 0;
+        this.#invalidateLastValue = true;
     }
 
     /**
@@ -54,14 +54,14 @@ export default class StringBuilder
      */
     public toString(): string
     {
-        if (this._invalidateLastValue)
+        if (this.#invalidateLastValue)
         {
-            this._invalidateLastValue = false;
-            return this._lastValue = this._strings.join(Strings.empty);
+            this.#invalidateLastValue = false;
+            return this.#lastValue = this.#strings.join(empty);
         }
         else
         {
-            return this._lastValue || Strings.empty;
+            return this.#lastValue || empty;
         }
     }
 }

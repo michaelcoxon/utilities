@@ -10,11 +10,11 @@ const defaultConfig: ILoggerConfig = {
 
 export default abstract class Logger implements ILogger
 {
-    private readonly _config: ILoggerConfig
+    readonly #config: ILoggerConfig
 
     constructor(config: ILoggerConfig = defaultConfig)
     {
-        this._config = config;
+        this.#config = config;
     }
 
     public debug(msg: string): void
@@ -144,7 +144,7 @@ export default abstract class Logger implements ILogger
 
     private log(level: LogLevel, sb: IndentedStringBuilder): void
     {
-        if (testLogVerbosity(level, this._config.loggingVerbosity))
+        if (testLogVerbosity(level, this.#config.loggingVerbosity))
         {
             const message = `[${level}] ${sb.toString()}`;
 

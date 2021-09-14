@@ -7,7 +7,7 @@ export default class AlreadyDisposedException extends Exception
     {
         if (innerException)
         {
-            super(message!, innerException);
+            super(message, innerException);
         }
 
         else

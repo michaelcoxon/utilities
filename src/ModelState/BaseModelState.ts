@@ -6,21 +6,21 @@ import { IModelState } from './ModelState';
 
 export default abstract class BaseModelState<T extends any> implements IModelState<T>
 {
-    private readonly _postHandlers: { [key: string]: EventHandler<Undefinable<T>>; };
-    private readonly _preHandlers: { [key: string]: EventHandler<Undefinable<T>>; };
-    private readonly _updatedEvent: Event<Undefinable<T>>;
-    private readonly _updatingEvent: Event<Undefinable<T>>;
+    readonly #postHandlers: Record<string, EventHandler<Undefinable<T>>>;
+    readonly #preHandlers: Record<string, EventHandler<Undefinable<T>>>;
+    readonly #updatedEvent: Event<Undefinable<T>>;
+    readonly #updatingEvent: Event<Undefinable<T>>;
 
-    private _value: Undefinable<T>;
+    #value: Undefinable<T>;
 
     constructor(value?: T)
     {
-        this._value = value;
+        this.#value = value;
 
-        this._preHandlers = {};
-        this._postHandlers = {};
-        this._updatedEvent = new Event();
-        this._updatingEvent = new Event();
+        this.#preHandlers = {};
+        this.#postHandlers = {};
+        this.#updatedEvent = new Event();
+        this.#updatingEvent = new Event();
     }
 
     /**
@@ -42,37 +42,37 @@ export default abstract class BaseModelState<T extends any> implements IModelSta
      */
     public unsubscribe(key: string): void
     {
-        const postHandler = this._postHandlers[key];
+        const postHandler = this.#postHandlers[key];
         if (postHandler)
         {
-            this._updatedEvent.removeHandler(postHandler);
-            delete this._postHandlers[key];
+            this.#updatedEvent.removeHandler(postHandler);
+            delete this.#postHandlers[key];
         }
 
-        const preHandler = this._preHandlers[key];
+        const preHandler = this.#preHandlers[key];
         if (preHandler)
         {
-            this._updatingEvent.removeHandler(preHandler);
-            delete this._preHandlers[key];
+            this.#updatingEvent.removeHandler(preHandler);
+            delete this.#preHandlers[key];
         }
     }
 
     /** Gets the current value of the ModelState */
     public get value(): Undefinable<T>
     {
-        return this._value;
+        return this.#value;
     }
 
     /** Returns the current value of the ModelState */
     public valueOf(): Undefinable<T>
     {
-        return this._value;
+        return this.#value;
     }
 
     /** Returns the string version of the ModelState value */
     public toString(): string
     {
-        return `${this._value}`;
+        return `${this.#value}`;
     }
 
     /** Returns the ModelState as a Promise */
@@ -99,24 +99,24 @@ export default abstract class BaseModelState<T extends any> implements IModelSta
         });
     }
 
-    protected subscribeCore(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void, publishCurrentValue: boolean = true): string
+    protected subscribeCore(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void, publishCurrentValue = true): string
     {
         const key = Guid.newGuid().toString();
 
         const postHandler: EventHandler<Undefinable<T>> = (s, e) => postCallback(e);
-        this._postHandlers[key] = postHandler;
-        this._updatedEvent.addHandler(postHandler);
+        this.#postHandlers[key] = postHandler;
+        this.#updatedEvent.addHandler(postHandler);
 
         if (preCallback)
         {
             const preHandler: EventHandler<Undefinable<T>> = (s, e) => preCallback(e);
-            this._preHandlers[key] = preHandler;
-            this._updatingEvent.addHandler(preHandler);
+            this.#preHandlers[key] = preHandler;
+            this.#updatingEvent.addHandler(preHandler);
         }
 
         if (publishCurrentValue)
         {
-            postCallback(this._value);
+            postCallback(this.#value);
         }
 
         return key;
@@ -124,24 +124,24 @@ export default abstract class BaseModelState<T extends any> implements IModelSta
 
     protected getValue(): Undefinable<T>
     {
-        return this._value;
+        return this.#value;
     }
 
     protected setValue(value: Undefinable<T>): void
     {
-        this._onUpdating();
-        this._value = value;
-        this._onUpdated();
+        this.#onUpdating();
+        this.#value = value;
+        this.#onUpdated();
     }
 
     /** Invokes the subscriptions with the current value */
-    private _onUpdated()
+    readonly #onUpdated = () =>
     {
-        this._updatedEvent.invoke(this, this._value);
-    }
+        this.#updatedEvent.invoke(this, this.#value);
+    };
 
-    private _onUpdating()
+    readonly #onUpdating = () =>
     {
-        this._updatingEvent.invoke(this, this._value);
-    }
+        this.#updatingEvent.invoke(this, this.#value);
+    };
 }

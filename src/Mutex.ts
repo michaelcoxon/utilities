@@ -1,6 +1,7 @@
 ﻿import MutexAlreadyAquiredException from './Exceptions/MutexAlreadyAquiredException';
 import SingleInvokeEvent from './SingleInvokeEvent';
-import { isUndefined } from './TypeHelpers';
+import isUndefined from './TypeHelpers/isUndefined';
+import { Awaitable } from './Types';
 
 /** Interface for a lock */
 export interface ILock
@@ -11,16 +12,16 @@ export interface ILock
 
 class Lock implements ILock
 {
-    private readonly _releaseAsync: () => Promise<void>;
+    readonly #releaseAsync: () => Promise<void>;
 
     constructor(releaseAsync: () => Promise<void>)
     {
-        this._releaseAsync = releaseAsync;
+        this.#releaseAsync = releaseAsync;
     }
 
     public releaseAsync(): Promise<void>
     {
-        return this._releaseAsync();
+        return this.#releaseAsync();
     }
 }
 
@@ -30,17 +31,17 @@ class Lock implements ILock
  */
 export default class Mutex 
 {
-    private _onRelease?: SingleInvokeEvent<{}>;
+    #onRelease?: SingleInvokeEvent<unknown>;
 
     /** Acquires a lock on this mutex. Only one lock can be kept at a time; calling multiple times will fail */
     public acquire(): ILock
     {
-        if (!isUndefined(this._onRelease))
+        if (!isUndefined(this.#onRelease))
         {
             throw new MutexAlreadyAquiredException();
         }
 
-        this._onRelease = new SingleInvokeEvent();
+        this.#onRelease = new SingleInvokeEvent();
 
         return new Lock(() =>
         {
@@ -48,8 +49,8 @@ export default class Mutex
             {
                 try
                 {
-                    this._onRelease && this._onRelease.invoke(this, {});
-                    this._onRelease = undefined;
+                    this.#onRelease && this.#onRelease.invoke(this, {});
+                    this.#onRelease = undefined;
                     resolve();
                 }
                 catch (e)
@@ -70,7 +71,7 @@ export default class Mutex
         {
             try
             {
-                if (isUndefined(this._onRelease))
+                if (isUndefined(this.#onRelease))
                 {
                     // not acquired
                     return resolve();
@@ -78,7 +79,7 @@ export default class Mutex
                 else
                 {
                     // resolve promise when lock is released
-                    this._onRelease.addHandler(() => resolve());
+                    this.#onRelease.addHandler(() => resolve());
                 }
             }
             catch (e)
@@ -96,7 +97,7 @@ export default class Mutex
  */
 export async function lockAsync<T>(mutex: Mutex, func: () => T): Promise<T>;
 export async function lockAsync<T>(mutex: Mutex, func: () => Promise<T>): Promise<T>;
-export async function lockAsync<T>(mutex: Mutex, func: () => any): Promise<T>
+export async function lockAsync<T>(mutex: Mutex, func: () => Awaitable<T>): Promise<T>
 {
     const lock = mutex.acquire();
     const result = await func();

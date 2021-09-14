@@ -1,18 +1,13 @@
-import
-{
-    isBoolean,
-    isDate,
-    isFunction,
-    isNull,
-    isNumber,
-    isString,
-    isUndefined,
-    isObject,
-    isUndefinedOrNull,
-} from '../TypeHelpers';
 import NotImplementedException from '../Exceptions/NotImplementedException';
+import isBoolean from '../TypeHelpers/isBoolean';
+import isDate from '../TypeHelpers/isDate';
+import isFunction from '../TypeHelpers/isFunction';
+import isNumber from '../TypeHelpers/isNumber';
+import isObject from '../TypeHelpers/isObject';
+import isString from '../TypeHelpers/isString';
+import isUndefined from '../TypeHelpers/isUndefined';
 
-const typeResolvers: ((subject: any) => { success: boolean; type?: IType; })[] = [];
+const typeResolvers: ((subject: unknown) => { success: boolean; type?: IType; })[] = [];
 
 export interface IType
 {
@@ -21,7 +16,7 @@ export interface IType
     readonly namespace: string;
     readonly baseType: IType;
     readonly isArray: boolean;
-    factory(...args: any[]): any;
+    factory(...args: unknown[]): unknown;
 }
 
 export default class Type
@@ -31,39 +26,39 @@ export default class Type
         return typeResolvers;
     }
 
-    public static getType(subject: any): IType
+    public static getType(subject: unknown): IType
     {
         return Object.seal((() =>
         {
-            if (isUndefinedOrNull(subject) || subject === null)
+            if (subject === null)
             {
                 return new NullType();
             }
-            else if (isUndefined(subject) || subject === undefined)
+            else if (isUndefined(subject))
             {
                 return new UndefinedType();
             }
-            else if (isNumber(subject) || subject === Number)
+            else if (isNumber(subject))
             {
                 return new NumberType();
             }
-            else if (isBoolean(subject) || subject === Boolean)
+            else if (isBoolean(subject))
             {
                 return new BooleanType();
             }
-            else if (isDate(subject) || subject === Date)
+            else if (isDate(subject))
             {
                 return new DateType();
             }
-            else if (isString(subject) || subject === String)
+            else if (isString(subject))
             {
                 return new StringType();
             }
-            else if (isFunction(subject) || subject === Function)
+            else if (isFunction(subject))
             {
                 return new FunctionType();
             }
-            else if (Array.isArray(subject) || subject === Array)
+            else if (Array.isArray(subject))
             {
                 return new ArrayType();
             }
@@ -74,19 +69,19 @@ export default class Type
                     const result = resolver(subject);
                     if (result.success)
                     {
-                        return result.type!;
+                        return result.type;
                     }
                 }
             }
 
             // last
-            else if (isObject(subject) || subject === Object)
+            else if (isObject(subject))
             {
                 return new ObjectType();
             }
 
-            throw new NotImplementedException(subject);
-        })());
+            throw new NotImplementedException(`${subject}`);
+        })() as IType);
     }
 }
 

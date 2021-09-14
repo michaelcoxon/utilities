@@ -1,13 +1,14 @@
-import Strings from '../Strings';
-import  Exception  from './Exception';
-import  SR from './_SR';
+import format from '../Strings/format';
+import { empty } from '../Strings/_consts';
+import Exception from './Exception';
+import SR from './_SR';
 
 
 export default class InvalidTypeException extends Exception
 {
     constructor(variableName: string, expectedTypeName: string, message?: string, innerException?: Exception)
     {
-        const _message = Strings.format(SR.InvalidTypeException_message, variableName, expectedTypeName, message !== undefined ? message : Strings.empty);
+        const _message = format(SR.InvalidTypeException_message, variableName, expectedTypeName, message !== undefined ? message : empty);
         if (innerException)
         {
             super(_message, innerException);

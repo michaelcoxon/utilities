@@ -1,9 +1,10 @@
 import Exception from '../Exceptions/Exception';
 import Result, { IResult } from "../Result";
-import { INumberValue, ensureInt } from './_common';
+import { INumberValue } from './Integers.types';
+import { ensureInt } from "./ensureInt";
 
 
-export default class SignedByte implements INumberValue
+export default class SignedByte extends Number  implements INumberValue
 {
     /** The largest number that can be represented. Equal to 127. */
     public static readonly maxValue: number = 127;
@@ -11,17 +12,23 @@ export default class SignedByte implements INumberValue
     /** The lowest number that can be represented. Equal to -127. */
     public static readonly minValue: number = -127;
 
-    private readonly _value: number;
+    readonly #value: number;
 
     constructor(value: number)
     {
+        super(value);
         ensureInt(value, SignedByte.minValue, SignedByte.maxValue);
-        this._value = value;
+        this.#value = value;
+    }
+        
+    [Symbol.toPrimitive](): number
+    {
+        return this.valueOf();
     }
 
     public valueOf(): number
     {
-        return this._value.valueOf() & 0x7F;
+        return this.#value.valueOf() & 0x7F;
     }
 
     public toString(): string
@@ -56,7 +63,7 @@ export default class SignedByte implements INumberValue
 
             else
             {
-                return Result.fail(ex);
+                return Result.fail(`${ex}`);
             }
         }
     }

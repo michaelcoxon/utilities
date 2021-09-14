@@ -1,20 +1,20 @@
 ﻿import { IDisposable } from "../IDisposable";
-import Utilities from "../Utilities";
+import noop from '../Utilities/noop';
 
 let _defaultLogger: ILogger;
 
 _defaultLogger = {
-    debug: Utilities.noop,
-    debugError: Utilities.noop,
-    error: Utilities.noop,
-    errorError: Utilities.noop,
-    info: Utilities.noop,
-    infoError: Utilities.noop,
-    trace: Utilities.noop,
-    traceError: Utilities.noop,
-    warn: Utilities.noop,
-    warnError: Utilities.noop,
-    scope: (name) => Object.assign({ dispose: Utilities.noop }, _defaultLogger),
+    debug: noop,
+    debugError: noop,
+    error: noop,
+    errorError: noop,
+    info: noop,
+    infoError: noop,
+    trace: noop,
+    traceError: noop,
+    warn: noop,
+    warnError: noop,
+    scope: (name) => Object.assign({ dispose: noop }, _defaultLogger),
 };
 
 
@@ -66,9 +66,9 @@ export function testLogVerbosity(desiredLevel: LogLevel, loggingVerbosity: LogLe
  * Decorator for setting the logger scope of an ILogger instance
  * @param name
  */
-export function loggerScope(name: string): (target: any, key: string) => void
+export function loggerScope(name: string): (target: Record<string, unknown>, key: string) => void
 {
-    return (target: any, key: string) =>
+    return (target: Record<string, unknown>, key: string) =>
     {
         const logger = target[key] as ILogger;
         if (!logger)
@@ -194,11 +194,11 @@ export interface IConsoleLoggerConfig extends ILoggerConfig
 
 export interface IConsole
 {
-    log: (message?: any, ...optionalParams: any[]) => void;
+    log: (message?: unknown, ...optionalParams: unknown[]) => void;
 
     // these are optional as they are only supported by some console implementations
-    warn?: (message?: any, ...optionalParams: any[]) => void;
-    trace?: (message?: any, ...optionalParams: any[]) => void;
-    info?: (message?: any, ...optionalParams: any[]) => void;
-    error?: (message?: any, ...optionalParams: any[]) => void;
+    warn?: (message?: unknown, ...optionalParams: unknown[]) => void;
+    trace?: (message?: unknown, ...optionalParams: unknown[]) => void;
+    info?: (message?: unknown, ...optionalParams: unknown[]) => void;
+    error?: (message?: unknown, ...optionalParams: unknown[]) => void;
 }

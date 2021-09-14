@@ -1,16 +1,18 @@
 import ArgumentException from '../../Exceptions/ArgumentException';
-import Strings from '../../Strings';
-import { IConfigurationSection, parseKey } from '../_types';
-
+import isNullOrEmpty from '../../TypeHelpers/isNullOrEmpty';
+import isObject from '../../TypeHelpers/isObject';
+import { Undefinable } from '../../Types';
+import { IConfigurationSection, parseKey } from '../Configuration.types';
+import { ConfigValue } from './Json.types';
 
 
 export default class JsonConfigurationSection implements IConfigurationSection
 {
-    private readonly _source: {};
+    readonly #source: Record<string, unknown>;
 
-    constructor(source: {})
+    constructor(source: Record<string, unknown>)
     {
-        this._source = source;
+        this.#source = source;
     }
 
     getSection(key: string): IConfigurationSection
@@ -18,42 +20,52 @@ export default class JsonConfigurationSection implements IConfigurationSection
         const keys = parseKey(key);
 
         let i = 0;
-        let result = this._source;
+        let result = this.#source;
 
         while (i < keys.length)
         {
             const partial = result[keys[i]];
-            if (!Object.isObject(partial))
+            if (!isObject(partial))
             {
                 throw new ArgumentException("key", "Key is not a section. Try using get");
             }
             result = partial;
+            i++;
         }
 
         return new JsonConfigurationSection(result);
     }
 
-    get<T = any>(): T;
-    get<T = any>(key: string): T;
-    get<T = any>(key?: string): T
+    get<T = ConfigValue>(): Undefinable<T>;
+    get<T = ConfigValue>(key: string): Undefinable<T>;
+    get<T = ConfigValue>(key?: string): Undefinable<T>
     {
-        if (Strings.isNullOrEmpty(key))
+        if (isNullOrEmpty(key))
         {
-            return this._source as T;
+            return this.#source as T;
         }
         else
         {
-            const keys = parseKey(key!);
+            const keys = parseKey(key);
 
             let i = 0;
-            let result = this._source;
+            let result = this.#source;
 
             while (i < keys.length)
             {
-                result = result[keys[i]];
-            }
+                const value = result[keys[i]];
 
-            return result as T;
+                if (isObject(value))
+                {
+                    result = value;
+                }
+                else
+                {
+                    return result as T;
+                }
+
+                i++;
+            }
         }
     }
 

@@ -1,4 +1,4 @@
-import Strings from '../Strings';
+import { empty, newLine } from '../Strings/_consts';
 import { Undefinable } from '../Types';
 
 /**
@@ -7,13 +7,13 @@ import { Undefinable } from '../Types';
 
 export default class IndentedStringBuilder
 {
-    private readonly _strings: { indent: number; value: string; }[];
+    readonly #strings: { indent: number; value: string; }[];
 
-    private _lastValue: Undefinable<string>;
-    private _invalidateLastValue: boolean;
-    private _indentationLevel: number;
+    #lastValue: Undefinable<string>;
+    #invalidateLastValue: boolean;
+    #indentationLevel: number;
 
-    public indentationString: string = "\t";
+    public indentationString = "\t";
 
     /**
      * Create a new StringBuilder.
@@ -21,9 +21,9 @@ export default class IndentedStringBuilder
      */
     constructor(indentationLevel: number, ...lines: string[])
     {
-        this._indentationLevel = indentationLevel;
-        this._strings = lines.map(s => ({ indent: this._indentationLevel, value: s + Strings.newLine }));
-        this._invalidateLastValue = true;
+        this.#indentationLevel = indentationLevel;
+        this.#strings = lines.map(s => ({ indent: this.#indentationLevel, value: s + newLine }));
+        this.#invalidateLastValue = true;
     }
 
     /**
@@ -32,8 +32,8 @@ export default class IndentedStringBuilder
      */
     public appendLine(value: string): void
     {
-        this._strings.push({ indent: this._indentationLevel, value: value + Strings.newLine });
-        this._invalidateLastValue = true;
+        this.#strings.push({ indent: this.#indentationLevel, value: value + newLine });
+        this.#invalidateLastValue = true;
     }
 
     /**
@@ -41,23 +41,23 @@ export default class IndentedStringBuilder
      */
     public clear(): void
     {
-        this._strings.length = 0;
-        this._invalidateLastValue = true;
+        this.#strings.length = 0;
+        this.#invalidateLastValue = true;
     }
 
     /** adds an indent level */
     public indent(): void
     {
-        this._indentationLevel++;
+        this.#indentationLevel++;
     }
 
     /** Removes the current indent */
     public unindent(): void
     {
-        this._indentationLevel--;
-        if (this._indentationLevel < 0)
+        this.#indentationLevel--;
+        if (this.#indentationLevel < 0)
         {
-            this._indentationLevel = 0;
+            this.#indentationLevel = 0;
         }
     }
 
@@ -66,17 +66,17 @@ export default class IndentedStringBuilder
      */
     public toString(): string
     {
-        if (this._invalidateLastValue)
+        if (this.#invalidateLastValue)
         {
-            this._invalidateLastValue = false;
-            return this._lastValue = this._strings
+            this.#invalidateLastValue = false;
+            return this.#lastValue = this.#strings
                 .map(sv => [this.indentationString.repeat(sv.indent), sv.value])
-                .reduce((p, c) => [p, ...c].join(Strings.empty), Strings.empty);
+                .reduce((p, c) => [p, ...c].join(empty), empty);
         }
 
         else
         {
-            return this._lastValue || Strings.empty;
+            return this.#lastValue || empty;
         }
     }
 }

@@ -1,52 +1,54 @@
-import { Promisable } from '../Types';
+import { Awaitable } from '../Types';
 import { IAsyncCacheItem, IExpiryPolicyDelegate } from './_types';
 import CacheExpiredException from './CacheExpiredException';
 
 
 export default class AsyncCacheItem<T> implements IAsyncCacheItem<T>
 {
-    private readonly _promiseOrValue: Promisable<T>;
-    private readonly _expiryPolicy: IExpiryPolicyDelegate<T>;
+    readonly #promiseOrValue: Awaitable<T>;
+    readonly #expiryPolicy: IExpiryPolicyDelegate<T>;
 
-    constructor(promiseOrValue: Promisable<T>, expiryPolicy: IExpiryPolicyDelegate<T>)
+    constructor(promiseOrValue: Awaitable<T>, expiryPolicy: IExpiryPolicyDelegate<T>)
     {
-        this._promiseOrValue = promiseOrValue;
-        this._expiryPolicy = expiryPolicy;
+        this.#promiseOrValue = promiseOrValue;
+        this.#expiryPolicy = expiryPolicy;
     }
 
     public get valueAsync(): Promise<T>
     {
-        return new Promise<T>(async (resolve, reject) =>
+        return new Promise<T>((resolve, reject) =>
         {
-            try
+            (async () =>
             {
-                if (await this.expiredAsync)
+                try
                 {
-                    throw new CacheExpiredException();
-                }
+                    if (await this.expiredAsync)
+                    {
+                        throw new CacheExpiredException();
+                    }
 
-                resolve(await this._promiseOrValue);
-            }
-            catch (ex)
-            {
-                reject(ex);
-            }
+                    resolve(await this.#promiseOrValue);
+                }
+                catch (ex)
+                {
+                    reject(ex);
+                }
+            })();
         });
     }
 
     public get expiredAsync(): Promise<boolean>
     {
-        return new Promise<boolean>(async (resolve, reject) =>
+        return new Promise<boolean>((resolve, reject) =>
         {
             try
             {
-                resolve(this._expiryPolicy(this));
+                resolve(this.#expiryPolicy(this));
             }
             catch (ex)
             {
                 reject(ex);
             }
         });
-
     }
 }

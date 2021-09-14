@@ -12,14 +12,14 @@ export interface IEvent<TEventArgs>
  */
 export default class Event<TEventArgs> implements IEvent<TEventArgs>
 {
-    private readonly _eventHandlers: EventHandler<TEventArgs>[];
+    readonly #eventHandlers: EventHandler<TEventArgs>[];
 
     /**
      * Creates a new event
      */
     constructor()
     {
-        this._eventHandlers = [];
+        this.#eventHandlers = [];
     }
 
     /**
@@ -27,9 +27,9 @@ export default class Event<TEventArgs> implements IEvent<TEventArgs>
      * @param sender the object that is calling invoke
      * @param args the arguments to send along with the event.
      */
-    public invoke(sender: any, args: TEventArgs)
+    public invoke(sender: unknown, args: TEventArgs)
     {
-        for (let eventHandler of this._eventHandlers)
+        for (const eventHandler of this.#eventHandlers)
         {
             eventHandler.call(sender, sender, args);
         }
@@ -41,7 +41,7 @@ export default class Event<TEventArgs> implements IEvent<TEventArgs>
      */
     public addHandler(eventHandler: EventHandler<TEventArgs>): EventHandler<TEventArgs>
     {
-        this._eventHandlers.push(eventHandler);
+        this.#eventHandlers.push(eventHandler);
         return eventHandler;
     }
 
@@ -51,11 +51,11 @@ export default class Event<TEventArgs> implements IEvent<TEventArgs>
      */
     public removeHandler(eventHandler: EventHandler<TEventArgs>): void
     {
-        var index = this._eventHandlers.indexOf(eventHandler);
+        const index = this.#eventHandlers.indexOf(eventHandler);
 
         if (index != -1)
         {
-            this._eventHandlers.splice(index, 1);
+            this.#eventHandlers.splice(index, 1);
         }
         else
         {

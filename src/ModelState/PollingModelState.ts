@@ -1,12 +1,12 @@
 import { IDisposable } from '../IDisposable';
-import { Promisable } from "../Types";
+import { Awaitable } from "../Types";
 import BaseModelState from './BaseModelState';
 import { IModelState } from './ModelState';
 
 
 export default class PollingModelState<T> extends BaseModelState<T> implements IDisposable, IModelState<T>
 {
-    private _timeout: any;
+    #timeout?: unknown;
 
     /**
     * Creates a new PollingModelState
@@ -22,15 +22,15 @@ export default class PollingModelState<T> extends BaseModelState<T> implements I
     * Creates a new PollingModelState
     * @param promiseOrValueFactory can be a promise or a value factory, a value or a promise that will be invoked immediately
     */
-    constructor(promiseOrValueFactory: (() => Promisable<T>), timeout: number);
-    constructor(promiseOrValueFactory: (() => Promisable<T>), timeout: number)
+    constructor(promiseOrValueFactory: (() => Awaitable<T>), timeout: number);
+    constructor(promiseOrValueFactory: (() => Awaitable<T>), timeout: number)
     {
         super();
 
         const worker = (async () =>
         {
             this.setValue(await promiseOrValueFactory());
-            this._timeout = setTimeout(worker, timeout);
+            this.#timeout = setTimeout(worker, timeout);
         }).bind(this);
 
         worker();
@@ -38,9 +38,9 @@ export default class PollingModelState<T> extends BaseModelState<T> implements I
 
     public dispose()
     {
-        if (this._timeout)
+        if (this.#timeout)
         {
-            clearTimeout(this._timeout);
+            clearTimeout(this.#timeout as any);
         }
     }
 }

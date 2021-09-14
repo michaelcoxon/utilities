@@ -1,12 +1,13 @@
-import CancellablePromise from '../CancellablePromise';
-import { Promisable, Undefinable } from "../Types";
+import CancellablePromise from '../Promises/CancellablePromise';
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
+import { Awaitable, Undefinable } from "../Types";
 import BaseModelState from './BaseModelState';
 
 
 export default class FactoryModelState<T> extends BaseModelState<T>
 {
-    private readonly _updater: () => Promise<void>;
-    private _currentPromise?: CancellablePromise<void>;
+    readonly #updater: () => Promise<void>;
+    #currentPromise?: CancellablePromise<void>;
     /**
     * Creates a new PollingModelState
     * @param valueFactory can be a value factory
@@ -21,12 +22,12 @@ export default class FactoryModelState<T> extends BaseModelState<T>
     * Creates a new PollingModelState
     * @param promiseOrValueFactory can be a promise or a value factory, a value or a promise that will be invoked immediately
     */
-    constructor(promiseOrValueFactory: (() => Promisable<T>), updateNow?: boolean);
-    constructor(promiseOrValueFactory: (() => Promisable<T>), updateNow: boolean = true)
+    constructor(promiseOrValueFactory: (() => Awaitable<T>), updateNow?: boolean);
+    constructor(promiseOrValueFactory: (() => Awaitable<T>), updateNow = true)
     {
         super();
 
-        this._updater = (async () =>
+        this.#updater = (async () =>
         {
             this.setValue(await promiseOrValueFactory());
         }).bind(this);
@@ -41,9 +42,9 @@ export default class FactoryModelState<T> extends BaseModelState<T>
     {
         const key = super.subscribeCore(postCallback, preCallback, false);
 
-        if (this._currentPromise)
+        if (this.#currentPromise)
         {
-            this._waitForPromise(() => postCallback(this.value));
+            this.#waitForPromise(() => postCallback(this.value));
         }
 
         else
@@ -68,22 +69,26 @@ export default class FactoryModelState<T> extends BaseModelState<T>
 
     public update(): void
     {
-        if (this._currentPromise)
+        if (this.#currentPromise)
         {
-            this._currentPromise.cancel();
+            this.#currentPromise.cancel();
         }
-        this._currentPromise = new CancellablePromise(this._updater());
+        this.#currentPromise = new CancellablePromise(this.#updater());
     }
 
-    private _waitForPromise(then: () => void): void
+    readonly #waitForPromise = (then: () => void) =>
     {
-        this._currentPromise!
+        if(isUndefinedOrNull(this.#currentPromise))
+        {
+            return Promise.resolve().then(then);
+        }
+        return this.#currentPromise
             .then(then)
             .finally((promise, cancelled) =>
             {
                 if (cancelled)
                 {
-                    this._waitForPromise(then);
+                    this.#waitForPromise(then);
                 }
             });
     }

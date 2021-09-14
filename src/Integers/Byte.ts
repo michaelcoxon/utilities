@@ -1,11 +1,12 @@
 import Exception from '../Exceptions/Exception';
 import Result, { IResult } from "../Result";
-import { INumberValue, ensureInt } from './_common';
+import { INumberValue } from './Integers.types';
+import { ensureInt } from "./ensureInt";
 
 /**
  * Represents an unsigned 8-bit integer. 
  */
-export default class Byte implements INumberValue
+export default class Byte extends Number  implements INumberValue
 {
     /** The largest number that can be represented. Equal to 255. */
     public static readonly maxValue: number = 255;
@@ -13,17 +14,23 @@ export default class Byte implements INumberValue
     /** The lowest number that can be represented. Equal to 0. */
     public static readonly minValue: number = 0;
 
-    private readonly _value: number;
+    readonly #value: number;
 
     constructor(value: number)
     {
+        super(value);
         ensureInt(value, Byte.minValue, Byte.maxValue);
-        this._value = value;
+        this.#value = value;
+    }
+        
+    [Symbol.toPrimitive](): number
+    {
+        return this.valueOf();
     }
 
     public valueOf(): number
     {
-        return this._value.valueOf() & 0xFF;
+        return this.#value.valueOf() & 0xFF;
     }
 
     public toString(): string
@@ -55,10 +62,9 @@ export default class Byte implements INumberValue
             {
                 return Result.fail(ex.message);
             }
-
             else
             {
-                return Result.fail(ex);
+                return Result.fail(`${ex}`);
             }
         }
     }

@@ -7,7 +7,7 @@ export default class NotSupportedException extends Exception
     {
         if (innerException)
         {
-            super(message!, innerException);
+            super(message, innerException);
         }
 
         else

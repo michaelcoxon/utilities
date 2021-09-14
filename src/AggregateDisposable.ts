@@ -6,20 +6,20 @@ import ErrorException from './Exceptions/ErrorException';
 /** A Disposable that can collect disposable objects and dispose then when it is disposed */
 export default class AggregateDisposable implements IDisposable
 {
-    private _disposed: boolean = false;
-    private _disposables: IDisposable[];
+    #disposed = false;
+    #disposables: IDisposable[];
 
     constructor(...disposables: IDisposable[])
     {
-        this._disposables = disposables;
+        this.#disposables = disposables;
     }
 
     /** Disposes the objects tracked by this */
     public dispose(): void
     {
-        this._disposed = true;
+        this.#disposed = true;
 
-        for (var disposable of this._disposables)
+        for (const disposable of this.#disposables)
         {
             try
             {
@@ -48,11 +48,11 @@ export default class AggregateDisposable implements IDisposable
 
     public track(disposable: IDisposable)
     {
-        if (this._disposed)
+        if (this.#disposed)
         {
             throw new AlreadyDisposedException();
         }
-        this._disposables.push(disposable);
+        this.#disposables.push(disposable);
     }
 
     public async disposeAsync(): Promise<void>
@@ -61,7 +61,7 @@ export default class AggregateDisposable implements IDisposable
         {
             try
             {
-                for (var disposable of this._disposables)
+                for (const disposable of this.#disposables)
                 {
                     return disposable.dispose();
                 }

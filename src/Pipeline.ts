@@ -1,9 +1,7 @@
 ﻿import { ILogger } from './Logging/_types';
-import InvalidOperationException from './Exceptions/InvalidOperationException';
-import { isContext } from 'node:vm';
-import { isUndefinedOrNull } from './TypeHelpers';
+import isUndefinedOrNull from './TypeHelpers/isUndefinedOrNull';
 
-export interface IContext<T = any, TPrevious extends any = undefined>
+export interface IContext<T = unknown, TPrevious extends unknown = undefined>
 {
     readonly frame: string;
     readonly data: T;
@@ -23,31 +21,31 @@ export interface IPipelineTaskQueue
 
 export default class Pipeline implements IPipelineTaskQueue
 {
-    private readonly _logger: ILogger;
-    private readonly _queue: IPipelineTask[];
+    readonly #logger: ILogger;
+    readonly #queue: IPipelineTask[];
 
     constructor(logger: ILogger)
     {
-        this._logger = logger;
-        this._queue = [];
+        this.#logger = logger;
+        this.#queue = [];
     }
 
     public start<TPipelineTask extends IPipelineTask>(task: TPipelineTask): IPipelineTaskQueue
     {
-        this._queue.push(task);
+        this.#queue.push(task);
         return this;
     }
 
     public then<TPipelineTask extends IPipelineTask>(task: TPipelineTask): IPipelineTaskQueue
     {
-        this._queue.push(task);
+        this.#queue.push(task);
         return this;
     }
 
-    public async executeAsync<TContext extends IContext<T, TPrevious>, T = any, TPrevious extends any = undefined>(context: TContext): Promise<void>
+    public async executeAsync<TContext extends IContext<T, TPrevious>, T = unknown, TPrevious extends unknown = undefined>(context: TContext): Promise<void>
     {
-        let next = this._queue.pop();
-        let curr = this._queue.pop();
+        let next = this.#queue.pop();
+        let curr = this.#queue.pop();
 
         if (isUndefinedOrNull(curr))
         {
@@ -64,16 +62,19 @@ export default class Pipeline implements IPipelineTaskQueue
 
         do
         {
-            tasks.push({ name: curr.name, promise: (ctx) => curr.executeAsync(ctx, next) });
+            tasks.push({
+                name: curr?.name,
+                promise: async (ctx) => await curr?.executeAsync(ctx, next)
+            });
             next = curr;
         }
-        while (curr = this._queue.pop());
+        while ((curr = this.#queue.pop()));
 
         let _ctx = context;
 
         for (const task of tasks)
         {
-            const newCtx: TContext = { ..._ctx, previous: _ctx, frame:task.name };
+            const newCtx: TContext = { ..._ctx, previous: _ctx, frame: task.name };
             await task.promise(newCtx);
             _ctx = newCtx;
         }

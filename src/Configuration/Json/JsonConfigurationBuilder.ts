@@ -1,57 +1,39 @@
-import JsonConfigurationSection from './JsonConfigurationSection';
-import { IConfiguration, IConfigurationBuilder, IConfigurationSection } from '../_types';
-import { isUndefinedOrNull } from '../../TypeHelpers';
+import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull';
+import { IConfiguration, IConfigurationBuilder } from '../Configuration.types';
+import { ConfigValue } from './Json.types';
+import JsonConfiguration from './JsonConfiguration';
 
 
 export default class JsonConfigurationBuilder implements IConfigurationBuilder
 {
-    private readonly _configs: string[] = [];
-    private _configuration?: IConfiguration;
+    #reload = false;
+    readonly #configs: Record<string, ConfigValue>[] = [];
+    #configuration?: IConfiguration;
 
-    public build(): IConfiguration
+    public build(reload?: boolean): IConfiguration
     {
-        if (isUndefinedOrNull(this._configuration))
+        if (reload || this.#reload || isUndefinedOrNull(this.#configuration))
         {
-            try
+            this.#configuration = new JsonConfiguration(this.#configs.reduce((p, c) => ({ ...p, ...c }), {}));
+            // clear
+            this.#configs.length = 0;
+            // complete reload if needed
+            if (this.#reload)
             {
-                return this._configuration = new JsonConfiguration(this._configs.reduce((p, c) => ({ ...p, ...JSON.parse(c) }), {}));
-            }
-            finally
-            {
-                this._configs.length = 0;
+                this.#reload = false;
             }
         }
-        return this._configuration;
+        return this.#configuration;
     }
 
     public append(json: string): this
     {
-        this._configs.push(json);
+        this.#configs.push(JSON.parse(json));
+        if (!this.#reload)
+        {
+            this.#reload = true;
+        }
         return this;
     }
 }
 
-class JsonConfiguration implements IConfiguration
-{
-    private readonly _root: IConfigurationSection;
-
-    constructor(source: any)
-    {
-        this._root = new JsonConfigurationSection(source);
-    }
-
-    public get root(): IConfigurationSection
-    {
-        return this._root;
-    }
-
-    getSection(key: string): IConfigurationSection
-    {
-        return this.root.getSection(key);
-    }
-
-    get<T = any>(key?: string): T
-    {
-        return this.root.get(key);
-    }
-}
