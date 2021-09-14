@@ -6,7 +6,7 @@ import convertObject from './convertObject';
 
 
 
-export default function convert(name: string, value: unknown): QueryStringItem[]
+export default function convert(name: string, value: any): QueryStringItem[]
 {
     const result: QueryStringItem[] = [];
 
@@ -18,7 +18,7 @@ export default function convert(name: string, value: unknown): QueryStringItem[]
         }
         else if (typeof value === 'object')
         {
-            result.push(...convertObject(value as Record<string, unknown>, `${name}.`));
+            result.push(...convertObject(value as Record<string, any>, `${name}.`));
         }
         else
         {

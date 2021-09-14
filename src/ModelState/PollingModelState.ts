@@ -6,7 +6,7 @@ import { IModelState } from './ModelState';
 
 export default class PollingModelState<T> extends BaseModelState<T> implements IDisposable, IModelState<T>
 {
-    #timeout?: unknown;
+    #timeout?: any;
 
     /**
     * Creates a new PollingModelState

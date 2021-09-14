@@ -50,7 +50,7 @@ export default class QueryStringCollection
         return new QueryStringCollection(QueryStringHelper.deserialize(queryString));
     }
 
-    public static createFromObject(queryStringObject: Record<string, unknown>)
+    public static createFromObject(queryStringObject: Record<string, any>)
     {
         return new QueryStringCollection(QueryStringHelper.convertObject(queryStringObject));
     }

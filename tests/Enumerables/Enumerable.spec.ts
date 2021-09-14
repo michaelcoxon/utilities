@@ -396,9 +396,9 @@ describe("Enumerable.ofType", () =>
 
         expect(result.count()).toEqual(3);
 
-        expect(result.item(0).property).toEqual("derived value");
-        expect(result.item(1).property).toEqual("derived 2 value");
-        expect(result.item(2).property).toEqual("derived value");
+        expect(result.item(0)?.property).toEqual("derived value");
+        expect(result.item(1)?.property).toEqual("derived 2 value");
+        expect(result.item(2)?.property).toEqual("derived value");
     });
 });
 

@@ -4,7 +4,7 @@ import DefaultStringComparer from './DefaultStringComparer';
 import { IComparer } from "./IComparer";
 import { IEqualityComparer } from './IEqualityComparer';
 
-export default class DefaultObjectComparer<T extends unknown = unknown> implements IComparer<T>, IEqualityComparer<T> {
+export default class DefaultObjectComparer<T extends any = any> implements IComparer<T>, IEqualityComparer<T> {
     public compare(x: T, y: T): number
     {
         const toStringMethodName = 'toString';

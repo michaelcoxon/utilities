@@ -3,7 +3,7 @@ import { KEY_WORD_SEPARATOR } from '../Strings/_consts';
 export interface IConfigurationSection
 {
     getSection(key: string): IConfigurationSection;
-    get<T = Record<string,unknown>>(key?: string): T;
+    get<T = Record<string,any>>(key?: string): T;
 }
 
 export interface IConfiguration extends IConfigurationSection

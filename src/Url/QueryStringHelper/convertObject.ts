@@ -7,13 +7,13 @@ import  convert  from "./convert";
  * Converts and {@link Object} to a collection of {@link QueryStringItem}'s.
  * @param obj
  */
- export default function convertObject(obj: Record<string, unknown>): QueryStringItem[];
+ export default function convertObject(obj: Record<string, any>): QueryStringItem[];
 /**
  * Converts and {@link Object} to a collection of {@link QueryStringItem}'s with the specified {@param prefix} for the key.
  * @param obj
  */
- export default function convertObject(obj: Record<string, unknown>, prefix: string): QueryStringItem[];
-export default function convertObject(obj: Record<string, unknown>, prefix: string = empty): QueryStringItem[]
+ export default function convertObject(obj: Record<string, any>, prefix: string): QueryStringItem[];
+export default function convertObject(obj: Record<string, any>, prefix: string = empty): QueryStringItem[]
 {
     const result: QueryStringItem[] = [];
 

@@ -3,7 +3,7 @@
  * @param subject
  */
 
-export default function isObject<T>(subject: T | Record<string, unknown>): subject is Record<string, unknown>
+export default function isObject<T>(subject: T | Record<string, any>): subject is Record<string, any>
 {
     return typeof subject === 'object';
 }

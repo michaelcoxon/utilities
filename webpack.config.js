@@ -34,21 +34,7 @@ module.exports = () =>
                 }
             ]
         },
-        /*optimization: {
-            minimizer: [
-                new UglifyJsPlugin({
-                    parallel: true,
-                    sourceMap: true,
-                    uglifyOptions: {
-                        ecma: 5,
-                        output: {
-                            beautify: false,
-                            comments: /^!/
-                        }
-                    }
-                })
-            ]
-        },*/
+
         plugins: [
             new CheckerPlugin(),
             //new StringExtractorPlugin(),

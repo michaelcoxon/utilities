@@ -65,7 +65,7 @@ export default class CancellablePromise<T> implements PromiseLike<T>
         });
     }
 
-    public then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | null | undefined, onrejected?: ((reason: unknown) => TResult2 | PromiseLike<TResult2>) | null | undefined): CancellablePromise<TResult1 | TResult2>
+    public then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | null | undefined, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | null | undefined): CancellablePromise<TResult1 | TResult2>
     {
         let promise: Promise<TResult1 | TResult2>;
 
@@ -91,7 +91,7 @@ export default class CancellablePromise<T> implements PromiseLike<T>
         return cancellable;
     }
 
-    public catch<TResult = never>(onrejected?: ((reason: unknown) => TResult | PromiseLike<TResult>) | null | undefined): CancellablePromise<T | TResult>
+    public catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | null | undefined): CancellablePromise<T | TResult>
     {
         let promise: Promise<T | TResult>;
 

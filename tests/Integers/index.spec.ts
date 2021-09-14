@@ -31,7 +31,7 @@ describe("ComplexObject", () =>
             name: "hello"
         };
 
-        function replacer(key: string, value: unknown)
+        function replacer(key: string, value: any)
         {
             if (value instanceof Int32)
             {

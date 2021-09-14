@@ -4,7 +4,7 @@ import SingleInvokeEvent from '../SingleInvokeEvent';
 
 export default class CancellationTokenSource
 {
-    readonly #timeoutables: unknown[] = [];
+    readonly #timeoutables: any[] = [];
     readonly #cancelledEvent: SingleInvokeEvent<undefined> = new SingleInvokeEvent();
     #cancelled = false;
 

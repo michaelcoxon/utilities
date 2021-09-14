@@ -6,7 +6,7 @@ import isNumber from '../TypeHelpers/isNumber';
 import isDate from '../TypeHelpers/isDate';
 
 
-export default function convertToString(subject: unknown, format: string = empty): string
+export default function convertToString(subject: any, format: string = empty): string
 {
     if (isNumber(subject))
     {

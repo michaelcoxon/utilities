@@ -8,9 +8,9 @@ import { ConfigValue } from './Json.types';
 
 export default class JsonConfigurationSection implements IConfigurationSection
 {
-    readonly #source: Record<string, unknown>;
+    readonly #source: Record<string, any>;
 
-    constructor(source: Record<string, unknown>)
+    constructor(source: Record<string, any>)
     {
         this.#source = source;
     }

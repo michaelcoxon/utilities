@@ -27,7 +27,7 @@ export default class Event<TEventArgs> implements IEvent<TEventArgs>
      * @param sender the object that is calling invoke
      * @param args the arguments to send along with the event.
      */
-    public invoke(sender: unknown, args: TEventArgs)
+    public invoke(sender: any, args: TEventArgs)
     {
         for (const eventHandler of this.#eventHandlers)
         {

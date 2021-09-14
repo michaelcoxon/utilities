@@ -4,7 +4,7 @@ import DefaultObjectComparer from './DefaultObjectComparer';
 import DefaultStringComparer from './DefaultStringComparer';
 
 export const DefaultComparers = {
-    DefaultComparer: new DefaultComparer<unknown>(),
+    DefaultComparer: new DefaultComparer<any>(),
     StringComparer: new DefaultStringComparer(),
     NumberComparer: new DefaultNumberComparer(),
     ObjectComparer: new DefaultObjectComparer(),

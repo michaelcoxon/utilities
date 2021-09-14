@@ -1,7 +1,7 @@
 import { QueryStringItem } from './../Url.types';
 import  convert  from "./convert";
 
-export default function convertArray(name: string, arr: unknown[]): QueryStringItem[]
+export default function convertArray(name: string, arr: any[]): QueryStringItem[]
 {
     const result: QueryStringItem[] = [];
 

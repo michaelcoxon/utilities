@@ -34,5 +34,5 @@
   },
   "include": [
     "./src/**/*"
-, "tests/CaseInsensitiveStringComparer.spec.ts", "tests/Collection.spec.ts", "tests/AggregateEnumerator.spec.ts"  ],
+  ],
 }

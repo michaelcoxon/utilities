@@ -15,10 +15,10 @@ export default class AsyncWrapper<T>
     #promise?: Promise<T>;
     #complete: boolean;
     #success: boolean;
-    #error: unknown;
+    #error: any;
     #value: Undefinable<T>;
     #promiseOrValueOrFactory: Awaitable<T> | (() => Awaitable<T>) | undefined;
-    #awaitable: Promise<unknown>;
+    #awaitable: Promise<any>;
 
     /**
     * Creates a new unresolved AsyncWrapper
@@ -158,7 +158,7 @@ export default class AsyncWrapper<T>
     }
 
     /** returns the error if the promise failed */
-    public get error(): unknown
+    public get error(): any
     {
         return this.#error;
     }

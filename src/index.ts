@@ -1,5 +1,7 @@
 export * from "./IDisposable";
 
+
+export * from "./Assertions";
 export * from "./Cache";
 export * from "./Configuration";
 export * from "./Exceptions";

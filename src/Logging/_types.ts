@@ -66,9 +66,9 @@ export function testLogVerbosity(desiredLevel: LogLevel, loggingVerbosity: LogLe
  * Decorator for setting the logger scope of an ILogger instance
  * @param name
  */
-export function loggerScope(name: string): (target: Record<string, unknown>, key: string) => void
+export function loggerScope(name: string): (target: Record<string, any>, key: string) => void
 {
-    return (target: Record<string, unknown>, key: string) =>
+    return (target: Record<string, any>, key: string) =>
     {
         const logger = target[key] as ILogger;
         if (!logger)
@@ -194,11 +194,11 @@ export interface IConsoleLoggerConfig extends ILoggerConfig
 
 export interface IConsole
 {
-    log: (message?: unknown, ...optionalParams: unknown[]) => void;
+    log: (message?: any, ...optionalParams: any[]) => void;
 
     // these are optional as they are only supported by some console implementations
-    warn?: (message?: unknown, ...optionalParams: unknown[]) => void;
-    trace?: (message?: unknown, ...optionalParams: unknown[]) => void;
-    info?: (message?: unknown, ...optionalParams: unknown[]) => void;
-    error?: (message?: unknown, ...optionalParams: unknown[]) => void;
+    warn?: (message?: any, ...optionalParams: any[]) => void;
+    trace?: (message?: any, ...optionalParams: any[]) => void;
+    info?: (message?: any, ...optionalParams: any[]) => void;
+    error?: (message?: any, ...optionalParams: any[]) => void;
 }

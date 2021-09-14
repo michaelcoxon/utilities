@@ -948,7 +948,7 @@ export class LinkedList<T> extends EnumerableBase<T> implements ICollection<T>, 
         }
     }
 
-    ofType<N extends T>(ctor: new (...args: unknown[]) => N): IEnumerable<N>
+    ofType<N extends T>(ctor: new (...args: any[]) => N): IEnumerable<N>
     {
         return this.where((item) => item instanceof ctor).select((item) => item as N);
     }

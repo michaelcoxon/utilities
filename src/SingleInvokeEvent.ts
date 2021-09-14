@@ -15,7 +15,7 @@ export default class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> imp
     /** event has been fired */
     #fired: boolean;
     /** the firing sender */
-    #sender?: unknown;
+    #sender?: any;
     /** the firing args */
     #args?: TEventArgs;
 
@@ -46,7 +46,7 @@ export default class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> imp
     }
 
     // invoke the event
-    public invoke(sender: unknown, args: TEventArgs)
+    public invoke(sender: any, args: TEventArgs)
     {
         /// <signature>
         /// <summary>Invoke the event handlers</summary>

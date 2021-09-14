@@ -31,7 +31,7 @@ class Lock implements ILock
  */
 export default class Mutex 
 {
-    #onRelease?: SingleInvokeEvent<unknown>;
+    #onRelease?: SingleInvokeEvent<any>;
 
     /** Acquires a lock on this mutex. Only one lock can be kept at a time; calling multiple times will fail */
     public acquire(): ILock

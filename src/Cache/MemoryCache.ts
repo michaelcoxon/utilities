@@ -7,11 +7,11 @@ import { Awaitable } from '../Types';
 
 export default class MemoryCache<TKey = string> implements ICache<TKey>
 {
-    readonly #internalCache: Map<TKey, IAsyncCacheItem<unknown>>;
+    readonly #internalCache: Map<TKey, IAsyncCacheItem<any>>;
 
     constructor()
     {
-        this.#internalCache = new Map<TKey, IAsyncCacheItem<unknown>>();
+        this.#internalCache = new Map<TKey, IAsyncCacheItem<any>>();
     }
 
     add<T>(key: TKey, value: Awaitable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): void

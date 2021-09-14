@@ -1,20 +1,21 @@
 {
   "name": "@michaelcoxon/utilities",
-  "version": "10.0.0-alpha.1",
+  "version": "10.0.0-alpha.2",
   "description": "utilities for JS and TypeScript",
   "main": "dist/index.js",
   "types": "lib/index.d.ts",
   "module": "lib/index.js",
   "sideEffects": false,
   "scripts": {
-    "build-typescript": "tsc",
+    "build": "npm-run-all -s build-typescript build-prod",
     "version": "npm -v && node -v",
     "coverage": "nyc --reporter=html --reporter=text jest",
     "test": "jest",
     "build-dev": "SET NODE_ENV=development&& webpack",
+    "build-doc": "typedoc --logger console --out docs src&& copy .nojekyll docs\\.nojekyll",
     "build-prod": "SET NODE_ENV=production&& webpack",
-    "prepack": "npm-run-all -s build-typescript build-prod test build-doc",
-    "build-doc": "typedoc --logger console --out docs src&& copy .nojekyll docs\\.nojekyll"
+    "build-typescript": "tsc",
+    "prepack": "npm-run-all -s build test build-doc"
   },
   "mocha": {
     "require": [

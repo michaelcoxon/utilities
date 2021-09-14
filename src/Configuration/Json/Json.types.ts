@@ -1,1 +1,1 @@
-export type ConfigValue = Record<string, unknown> | unknown
+export type ConfigValue = Record<string, any> | any

@@ -2,8 +2,8 @@
 import ArgumentException from '../Exceptions/ArgumentException';
 import { IDisposable } from '../IDisposable';
 
-declare function clearInterval(intervalId: unknown): void;
-declare function setInterval(callback: (...args: unknown[]) => void, ms: number, ...args: unknown[]): unknown;
+declare function clearInterval(intervalId: any): void;
+declare function setInterval(callback: (...args: any[]) => void, ms: number, ...args: any[]): any;
 
 export default class Timer implements IDisposable
 {
@@ -11,7 +11,7 @@ export default class Timer implements IDisposable
     #enabled: boolean;
     #interval: number;
 
-    #intervalPointer?: unknown;
+    #intervalPointer?: any;
 
     readonly #elapsedEvent: Event<{ signalTime: number; }>;
 

@@ -1,7 +1,7 @@
 ﻿import { ILogger } from './Logging/_types';
 import isUndefinedOrNull from './TypeHelpers/isUndefinedOrNull';
 
-export interface IContext<T = unknown, TPrevious extends unknown = undefined>
+export interface IContext<T = any, TPrevious extends any = undefined>
 {
     readonly frame: string;
     readonly data: T;
@@ -42,7 +42,7 @@ export default class Pipeline implements IPipelineTaskQueue
         return this;
     }
 
-    public async executeAsync<TContext extends IContext<T, TPrevious>, T = unknown, TPrevious extends unknown = undefined>(context: TContext): Promise<void>
+    public async executeAsync<TContext extends IContext<T, TPrevious>, T = any, TPrevious extends any = undefined>(context: TContext): Promise<void>
     {
         let next = this.#queue.pop();
         let curr = this.#queue.pop();

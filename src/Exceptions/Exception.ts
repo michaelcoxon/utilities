@@ -41,7 +41,7 @@ export default class Exception extends Error
         return this.#innerException;
     }
 
-    public static isException(error: unknown | Error | Exception): error is Exception
+    public static isException(error: any | Error | Exception): error is Exception
     {
         if (error instanceof Exception)
         {

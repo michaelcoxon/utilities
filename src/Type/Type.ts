@@ -7,7 +7,7 @@ import isObject from '../TypeHelpers/isObject';
 import isString from '../TypeHelpers/isString';
 import isUndefined from '../TypeHelpers/isUndefined';
 
-const typeResolvers: ((subject: unknown) => { success: boolean; type?: IType; })[] = [];
+const typeResolvers: ((subject: any) => { success: boolean; type?: IType; })[] = [];
 
 export interface IType
 {
@@ -16,7 +16,7 @@ export interface IType
     readonly namespace: string;
     readonly baseType: IType;
     readonly isArray: boolean;
-    factory(...args: unknown[]): unknown;
+    factory(...args: any[]): any;
 }
 
 export default class Type
@@ -26,7 +26,7 @@ export default class Type
         return typeResolvers;
     }
 
-    public static getType(subject: unknown): IType
+    public static getType(subject: any): IType
     {
         return Object.seal((() =>
         {
