@@ -1,24 +1,25 @@
 ﻿import { Undefinable } from "./Types";
 
-
-
-export class Lazy<T>
+/**
+ * Lazy wrapper for a factory.
+ */
+export default class Lazy<T>
 {
-    private readonly _factory: () => T;
-    private _value: Undefinable<T>;
+    readonly #factory: () => T;
+    #value: Undefinable<T>;
 
     constructor(factory: () => T)
     {
-        this._factory = factory;
+        this.#factory = factory;
     }
 
     public get value(): T
     {
-        return this._value || (this._value = this._factory());
+        return this.#value || (this.#value = this.#factory());
     }
 
     public get isValueCreated(): boolean
     {
-        return this._value !== undefined;
+        return this.#value !== undefined;
     }
 }

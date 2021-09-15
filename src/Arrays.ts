@@ -1,20 +1,12 @@
-﻿import { isUndefinedOrNull } from './TypeHelpers';
-
-
-export namespace Arrays
+﻿// eslint-disable-next-line @typescript-eslint/no-namespace
+namespace Arrays
 {
     /**
      * Returns the average of all numbers in the array
      * @param arr the array
      */
-    export function average(...arr: number[]): number;
-    export function average(arr: number[]): number;
-    export function average(arr: any): number
+    export function average(arr: number[]): number
     {
-        if (!Array.isArray(arr))
-        {
-            arr = Array.from(arguments);
-        }
         if (arr.length > 0)
         {
             return sum(arr) / arr.length;
@@ -24,21 +16,12 @@ export namespace Arrays
     }
 
     /**
-     * Returns true if the array is null, undefined or empty
-     * @param a the array
-     */
-    export function isNullOrEmpty<T>(a?: T[] | null): boolean
-    {
-        return isUndefinedOrNull(a) || a.length == 0
-    }
-
-    /**
      * Returns true if the sequence is equal
      * @param a array 1
      * @param b array 2
      * @param anyOrder set to true if you do not care about the order of the arrays
      */
-    export function sequenceEqual<T>(a: T[], b: T[], anyOrder: boolean = false)
+    export function sequenceEqual<T>(a: T[], b: T[], anyOrder = false)
     {
         if (a === b)
         {
@@ -90,14 +73,10 @@ export namespace Arrays
      * Sums the array of numbers.
      * @param arr
      */
-    export function sum(...arr: number[]): number
     export function sum(arr: number[]): number
-    export function sum(arr: any): number
     {
-        if (!Array.isArray(arr))
-        {
-            arr = Array.from(arguments);
-        }
         return arr.reduce((p, c) => p + c, 0);
     }
 }
+
+export default Arrays;

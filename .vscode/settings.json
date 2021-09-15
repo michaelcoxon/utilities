@@ -41,5 +41,9 @@
         "test/**/*.js.map": true,
         "src/**/*.js": true,
         "src/**/*.js.map": true
-    }
+    },
+    "mocha.files.glob": "test/**/*.spec.ts",
+    "mocha.showInExplorer": true,
+    "mocha.runTestsOnSave": "true",
+    "mocha.sideBarOptions": {}
 }

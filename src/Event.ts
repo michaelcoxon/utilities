@@ -1,4 +1,4 @@
-﻿import { ArgumentException, ArgumentUndefinedException } from "./Exceptions";
+﻿import ArgumentException from "./Exceptions/ArgumentException";
 import { EventHandler } from "./Types";
 
 export interface IEvent<TEventArgs>
@@ -10,16 +10,16 @@ export interface IEvent<TEventArgs>
 /**
  * Class to represent an event.
  */
-export class Event<TEventArgs> implements IEvent<TEventArgs>
+export default class Event<TEventArgs> implements IEvent<TEventArgs>
 {
-    private readonly _eventHandlers: EventHandler<TEventArgs>[];
+    readonly #eventHandlers: EventHandler<TEventArgs>[];
 
     /**
      * Creates a new event
      */
     constructor()
     {
-        this._eventHandlers = [];
+        this.#eventHandlers = [];
     }
 
     /**
@@ -29,7 +29,7 @@ export class Event<TEventArgs> implements IEvent<TEventArgs>
      */
     public invoke(sender: any, args: TEventArgs)
     {
-        for (let eventHandler of this._eventHandlers)
+        for (const eventHandler of this.#eventHandlers)
         {
             eventHandler.call(sender, sender, args);
         }
@@ -41,7 +41,7 @@ export class Event<TEventArgs> implements IEvent<TEventArgs>
      */
     public addHandler(eventHandler: EventHandler<TEventArgs>): EventHandler<TEventArgs>
     {
-        this._eventHandlers.push(eventHandler);
+        this.#eventHandlers.push(eventHandler);
         return eventHandler;
     }
 
@@ -51,11 +51,11 @@ export class Event<TEventArgs> implements IEvent<TEventArgs>
      */
     public removeHandler(eventHandler: EventHandler<TEventArgs>): void
     {
-        var index = this._eventHandlers.indexOf(eventHandler);
+        const index = this.#eventHandlers.indexOf(eventHandler);
 
         if (index != -1)
         {
-            this._eventHandlers.splice(index, 1);
+            this.#eventHandlers.splice(index, 1);
         }
         else
         {

@@ -1,4 +1,14 @@
-﻿
+﻿import { IEnumerable } from './Enumerables/IEnumerable';
+
+/** A type that is either an array or an enumerable */
+export type IEnumerableOrArray<T> = T[] | IEnumerable<T>;
+
+/** A function that returns the value of the key */
+export type KeySelector<T, K extends keyof T> = (propertyName: K) => T[K];
+
+/** A key and value pair */
+export type KeyValuePair<TKey, TValue> = { readonly key: TKey; readonly value: TValue; };
+
 /** Shortcut for T | null */
 export type Nullable<T> = T | null;
 
@@ -6,13 +16,13 @@ export type Nullable<T> = T | null;
 export type Undefinable<T> = T | undefined;
 
 /** Shortcut for T | Promise<T> */
-export type Promisable<T> = T | Promise<T>;
+export type Awaitable<T> = T | Promise<T>;
 
 /** The event handler type */
 export type EventHandler<TEventArgs> = (sender: any, args: TEventArgs) => void;
 
 /** Helper type for representing constructors */
-export type ConstructorFor<T> = { new(...args: any[]): T; }
+export type ConstructorFor<T> = { new(...args: any[]): T; };
 
 /** Shortcut for () => T */
 export type Action<T> = () => T;
@@ -43,3 +53,6 @@ export type Selector<T, TReturn> = (item: T) => TReturn;
 
 /** Represents a comparision between two items of the same type. Should return 0 if they are the same, >0 if a > b, <0 if a < b. */
 export type Comparison<T> = (a: T, y: T) => number;
+
+/** Represents any function*/
+export type AnyFunction = (...args: any[]) => any;

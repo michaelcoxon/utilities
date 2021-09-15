@@ -1,21 +1,23 @@
-﻿import { Event, IEvent } from "./Event";
-import { ArgumentNullException, ArgumentUndefinedException, NullReferenceException } from './Exceptions';
-import { isUndefinedOrNull } from './TypeHelpers';
+﻿import Event, { IEvent } from "./Event";
+import NullReferenceException from './Exceptions/NullReferenceException';
+import ArgumentUndefinedException from './Exceptions/ArgumentUndefinedException';
+import ArgumentNullException from './Exceptions/ArgumentNullException';
 import { EventHandler } from "./Types";
+import isUndefinedOrNull from './TypeHelpers/isUndefinedOrNull';
 
 /**
  * An event type that can only be invoked once. Once the event
  * is invoked, and handler that is added to it will be immediately
  * executed. All subsequent invocations are ignored
  */
-export class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> implements IEvent<TEventArgs>
+export default class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> implements IEvent<TEventArgs>
 {
     /** event has been fired */
-    private _fired: boolean;
+    #fired: boolean;
     /** the firing sender */
-    private _sender?: any;
+    #sender?: any;
     /** the firing args */
-    private _args?: TEventArgs;
+    #args?: TEventArgs;
 
     /**
      * Create a new singly invokable event.
@@ -23,7 +25,7 @@ export class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> implements 
     constructor()
     {
         super();
-        this._fired = false;
+        this.#fired = false;
     }
 
     // Add a handler to the event
@@ -31,13 +33,13 @@ export class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> implements 
     {
         super.addHandler(eventHandler);
 
-        if (this._fired)
+        if (this.#fired)
         {
-            if (isUndefinedOrNull(this._args))
+            if (isUndefinedOrNull(this.#args))
             {
-                throw new NullReferenceException("FATAL There are no args - this is not possible. Report this bug.")
+                throw new NullReferenceException("FATAL There are no args - this is not possible. Report this bug.");
             }
-            eventHandler.call(this._sender, this._sender, this._args);
+            eventHandler.call(this.#sender, this.#sender, this.#args);
         }
 
         return eventHandler;
@@ -51,7 +53,7 @@ export class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> implements 
         /// <param type='Object' name='sender'>The object that raised/owns the event</param>
         /// <param type='Object' name='sender'>Any to be passed as arguments to the handlers</param>
         /// </signature>
-        if (this._fired)
+        if (this.#fired)
         {
             return;
         }
@@ -60,9 +62,9 @@ export class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> implements 
             throw new ArgumentUndefinedException("args", new ArgumentNullException("args"));
         }
 
-        this._fired = true;
-        this._sender = sender;
-        this._args = args;
+        this.#fired = true;
+        this.#sender = sender;
+        this.#args = args;
 
         super.invoke(sender, args);
     }

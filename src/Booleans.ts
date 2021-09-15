@@ -1,24 +1,27 @@
-﻿import { NotSupportedException } from "./Exceptions";
-import { IResult, Result } from "./Result";
+﻿import NotSupportedException from "./Exceptions/NotSupportedException";
+import Result, { IResult } from "./Result";
+import isUndefinedOrNull from './TypeHelpers/isUndefinedOrNull';
 
+const TRUE_STRING: string = (true).toString();
+const FALSE_STRING: string = (false).toString();
 
+const _caseInsensitiveTrueString = TRUE_STRING.toLowerCase();
+const _caseInsensitiveFalseString = FALSE_STRING.toLowerCase();
 
-export namespace Booleans
+// eslint-disable-next-line @typescript-eslint/no-namespace
+namespace Booleans
 {
-    export const trueString: string = (true).toString();
-    export const falseString: string = (false).toString();
-
-    const _caseInsensitiveTrueString = trueString.toLowerCase();
-    const _caseInsensitiveFalseString = falseString.toLowerCase();
+    export const trueString = TRUE_STRING;
+    export const falseString = FALSE_STRING;
 
     export function parse(value: string): boolean;
     export function parse(value: string, caseInsensitive: boolean): boolean;
-    export function parse(value: string, caseInsensitive: boolean = false): boolean
+    export function parse(value: string, caseInsensitive = false): boolean
     {
         const result = tryParse(value, caseInsensitive);
-        if (result.success)
+        if (result.success && !isUndefinedOrNull(result.value))
         {
-            return result.value!;
+            return result.value;
         }
         else
         {
@@ -28,7 +31,7 @@ export namespace Booleans
 
     export function tryParse(value: string): IResult<boolean>;
     export function tryParse(value: string, caseInsensitive: boolean): IResult<boolean>;
-    export function tryParse(value: string, caseInsensitive: boolean = false): IResult<boolean>
+    export function tryParse(value: string, caseInsensitive = false): IResult<boolean>
     {
         value = (caseInsensitive ? value.toLowerCase() : value);
 
@@ -42,7 +45,9 @@ export namespace Booleans
         }
         else
         {
-            return Result.fail(`Value is not a boolean. value: ${value} (${caseInsensitive?"case-insensitive":"case-sensitive"})`);
+            return Result.fail(`Value is not a boolean. value: ${value} (${caseInsensitive ? "case-insensitive" : "case-sensitive"})`);
         }
     }
-} 
+}
+
+export default Booleans;

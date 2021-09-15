@@ -1,272 +1,586 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>@michaelcoxon/utilities - v1.8.2</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">@michaelcoxon/utilities - v1.8.2</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
-			<h1> @michaelcoxon/utilities - v1.8.2</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#utilities" id="utilities" style="color: inherit; text-decoration: none;">
-					<h1>utilities</h1>
-				</a>
-				<p><a href="https://www.npmjs.com/package/@michaelcoxon/utilities"><img src="https://img.shields.io/npm/dt/@michaelcoxon/utilities.svg?style=flat" alt="Get it on NPM"></a></p>
-				<p>Simple utility classes and function for JS and TypeScript</p>
-				<p>Check out the tests for a more doco too.</p>
-				<p>Also check out the <a href="https://michaelcoxon.github.io/utilities/">project site for the api docs</a></p>
-				<pre><code><span class="hljs-built_in">npm</span> i @michaelcoxon/utilities</code></pre>
-				<a href="#why" id="why" style="color: inherit; text-decoration: none;">
-					<h2>Why</h2>
-				</a>
-				<p>There are a few things in JavaScript that turn out be annoying to write every time. The idea behind this library is to provide some classes and functions that help with these issues.</p>
-				<p>The library is HEAVILY influenced by .Net so if you are familiar with the language/framework then this will help you a bit.</p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_aggregatedisposable_.html">&quot;<wbr>Aggregate<wbr>Disposable&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_aggregatelogger_.html">&quot;<wbr>Aggregate<wbr>Logger&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_arrays_.html">&quot;<wbr>Arrays&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_asyncproperty_.html">&quot;<wbr>Async<wbr>Property&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_asyncwrapper_.html">&quot;<wbr>Async<wbr>Wrapper&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_booleans_.html">&quot;<wbr>Booleans&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_cache_.html">&quot;<wbr>Cache&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_cancellablepromise_.html">&quot;<wbr>Cancellable<wbr>Promise&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_consolelogger_.html">&quot;<wbr>Console<wbr>Logger&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_errorhelper_.html">&quot;<wbr>Error<wbr>Helper&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_event_.html">&quot;<wbr>Event&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_exceptions_.html">&quot;<wbr>Exceptions&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_guid_.html">&quot;<wbr>Guid&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_idisposable_.html">&quot;IDisposable&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_ilogger_.html">&quot;ILogger&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_integers_.html">&quot;<wbr>Integers&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lazy_.html">&quot;<wbr>Lazy&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lazyasync_.html">&quot;<wbr>Lazy<wbr>Async&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_logger_.html">&quot;<wbr>Logger&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_modelstate_.html">&quot;<wbr>Model<wbr>State&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_mutex_.html">&quot;<wbr>Mutex&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_numbers_.html">&quot;<wbr>Numbers&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_path_.html">&quot;<wbr>Path&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_pipeline_.html">&quot;<wbr>Pipeline&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_promises_.html">&quot;<wbr>Promises&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_result_.html">&quot;<wbr>Result&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_scopedlogger_.html">&quot;<wbr>Scoped<wbr>Logger&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_singleinvokeevent_.html">&quot;<wbr>Single<wbr>Invoke<wbr>Event&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_stringbuilder_.html">&quot;<wbr>String<wbr>Builder&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_strings_.html">&quot;<wbr>Strings&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_timer_.html">&quot;<wbr>Timer&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_typehelpers_.html">&quot;<wbr>Type<wbr>Helpers&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_types_.html">&quot;<wbr>Types&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_url_.html">&quot;<wbr>Url&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_utilities_.html">&quot;<wbr>Utilities&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_index_.html">&quot;index&quot;</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
-</body>
-</html>
+<!DOCTYPE html><html class="default no-js"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>@michaelcoxon/utilities</title><meta name="description" content="Documentation for @michaelcoxon/utilities"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">@michaelcoxon/utilities</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>@michaelcoxon/utilities</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#utilities" id="utilities" style="color: inherit; text-decoration: none;">
+  <h1>utilities</h1>
+</a>
+<p><a href="https://www.npmjs.com/package/@michaelcoxon/utilities"><img src="https://img.shields.io/npm/dt/@michaelcoxon/utilities.svg?style=flat" alt="Get it on NPM"></a></p>
+<p>Simple utility classes and function for JS and TypeScript</p>
+<p>Check out the tests for a more comprehesive doco.</p>
+<p>This project includes API&#39;s based on .NET and the way it does enumerables, collections and fluent LINQ.</p>
+<p>Also check out the <a href="https://michaelcoxon.github.io/utilities/">project site for the api docs</a></p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">i</span><span class="hl-1"> @</span><span class="hl-0">michaelcoxon</span><span class="hl-1">/</span><span class="hl-0">utilities</span>
+</code></pre>
+
+<a href="#why" id="why" style="color: inherit; text-decoration: none;">
+  <h2>Why</h2>
+</a>
+<p>There are a few things in JavaScript that turn out be annoying to write every time. The idea behind this library is to provide some classes and functions that help with these issues.</p>
+<p>The library is HEAVILY influenced by .Net so if you are familiar with the language/framework then this will help you a bit.</p>
+
+<a href="#note-for-typescript" id="note-for-typescript" style="color: inherit; text-decoration: none;">
+  <h3>Note for TypeScript</h3>
+</a>
+<p>If you are using TypeScript, the classes herein are generics. This means
+you <em>should</em> construct them with a type parameter to use them.</p>
+<p>For example:</p>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myArray</span><span class="hl-1"> = [</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">];</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">&lt;</span><span class="hl-5">number</span><span class="hl-1">&gt;(</span><span class="hl-0">myArray</span><span class="hl-1">);</span>
+</code></pre>
+<p>If the type can be determined by the compiler (as in the example above) it
+is not neccessary to explicitly define the type - doing it will just make 
+the code more readable.</p>
+<p>All examples given in the documentation are JavaScript examples so that no-one 
+gets confused.</p>
+<p>Just use this as you need to - sometimes it wont be neccessary - the examples
+below will still work fine.</p>
+
+<a href="#collection" id="collection" style="color: inherit; text-decoration: none;">
+  <h1>Collection</h1>
+</a>
+<p>This is the base class for <code>List</code>. </p>
+<p>A collection is immutable meaning you cannot modify it once it is created. 
+It only provides ways of iterating items and copying items to a new collection</p>
+
+<a href="#constructors" id="constructors" style="color: inherit; text-decoration: none;">
+  <h2>Constructors</h2>
+</a>
+<p>You can create a new Collection from either a current 
+Collection, an array or nothing.</p>
+
+<a href="#default-constructor" id="default-constructor" style="color: inherit; text-decoration: none;">
+  <h3>Default constructor</h3>
+</a>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">();</span>
+</code></pre>
+
+<a href="#array-constructor" id="array-constructor" style="color: inherit; text-decoration: none;">
+  <h3>Array constructor</h3>
+</a>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myArray</span><span class="hl-1"> = [</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">];</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">(</span><span class="hl-0">myArray</span><span class="hl-1">);</span>
+</code></pre>
+
+<a href="#collection-constructor" id="collection-constructor" style="color: inherit; text-decoration: none;">
+  <h3>Collection constructor</h3>
+</a>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myArray</span><span class="hl-1"> = [</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">];</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">(</span><span class="hl-0">myArray</span><span class="hl-1">);</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection2</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">(</span><span class="hl-0">myCollection</span><span class="hl-1">);</span>
+</code></pre>
+
+<a href="#properties" id="properties" style="color: inherit; text-decoration: none;">
+  <h2>Properties</h2>
+</a>
+
+<a href="#length-number" id="length-number" style="color: inherit; text-decoration: none;">
+  <h3>length: number</h3>
+</a>
+<blockquote>
+<p>Returns to number of items in the Collection.</p>
+</blockquote>
+<p>This will return a number greater than or equal to 0.</p>
+<p><code>myCollection.length;</code></p>
+
+<a href="#methods" id="methods" style="color: inherit; text-decoration: none;">
+  <h2>Methods</h2>
+</a>
+
+<a href="#copytointo-collection-void" id="copytointo-collection-void" style="color: inherit; text-decoration: none;">
+  <h3>copyTo(into: Collection): void</h3>
+</a>
+<blockquote>
+<p>Copies the items from the current collection into another one.</p>
+</blockquote>
+<p>This appends the items from one collection into another.</p>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">]);</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection2</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">([-</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">0</span><span class="hl-1">]);</span><br/><br/><span class="hl-6">// copy the items from myCollection into myCollection2</span><br/><span class="hl-0">myCollection</span><span class="hl-1">.</span><span class="hl-4">copyTo</span><span class="hl-1">(</span><span class="hl-0">myCollection2</span><span class="hl-1">);</span><br/><br/><span class="hl-6">// the contents of myCollection2 will now be: [-1, 0, 1, 2, 3, 4]</span>
+</code></pre>
+
+<a href="#foreachcallback-value-any-index-number-gt-boolean--void-void" id="foreachcallback-value-any-index-number-gt-boolean--void-void" style="color: inherit; text-decoration: none;">
+  <h3>forEach(callback: (value: any, index: number) =&gt; boolean | void): void</h3>
+</a>
+<blockquote>
+<p>Iterates over each item in the collection, performing the callback on 
+each item.</p>
+</blockquote>
+<p>Return <code>false</code> from your callback to break iteration. You do not have to
+return anything if you do not want to break. You can return <code>true</code> to
+continue iteration if required.</p>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">]);</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">count</span><span class="hl-1"> = </span><span class="hl-3">0</span><span class="hl-1">;</span><br/><br/><span class="hl-6">// iterate over each item, if the item is &#39;3&#39; then break.</span><br/><span class="hl-0">myCollection</span><span class="hl-1">.</span><span class="hl-4">forEach</span><span class="hl-1">((</span><span class="hl-0">value</span><span class="hl-1">, </span><span class="hl-0">index</span><span class="hl-1">) </span><span class="hl-2">=&gt;</span><br/><span class="hl-1">{</span><br/><span class="hl-1">    </span><span class="hl-7">if</span><span class="hl-1"> (</span><span class="hl-0">value</span><span class="hl-1"> === </span><span class="hl-3">3</span><span class="hl-1">)</span><br/><span class="hl-1">    {</span><br/><span class="hl-1">        </span><span class="hl-7">return</span><span class="hl-1"> </span><span class="hl-2">false</span><span class="hl-1">;</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">    </span><span class="hl-0">count</span><span class="hl-1">++;</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-6">// count will be equal to 2</span>
+</code></pre>
+
+<a href="#itemindex-number-any" id="itemindex-number-any" style="color: inherit; text-decoration: none;">
+  <h3>item(index: number): any</h3>
+</a>
+<blockquote>
+<p>Returns the item at the index or throws an exception if the index is 
+out of bounds of the Collection.</p>
+</blockquote>
+<p><code>myCollection.item(6);</code></p>
+
+<a href="#toarray-" id="toarray-" style="color: inherit; text-decoration: none;">
+  <h3>toArray(): []</h3>
+</a>
+<blockquote>
+<p>Returns the contents of the collection as an array.</p>
+</blockquote>
+<p><code>myCollection.toArray();</code></p>
+
+<a href="#extension-methods" id="extension-methods" style="color: inherit; text-decoration: none;">
+  <h2>Extension methods</h2>
+</a>
+<p>These methods will only work if you have included the module that they are in.
+The module is the first part and the method is the second part in the docs 
+below using the pattern <code>{module}::{method}</code></p>
+
+<a href="#enumeratorgetenumerator-enumerator" id="enumeratorgetenumerator-enumerator" style="color: inherit; text-decoration: none;">
+  <h3>Enumerator::getEnumerator(): Enumerator</h3>
+</a>
+<blockquote>
+<p>Returns an Enumerator for a collection.</p>
+</blockquote>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">]);</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollectionEnumerator</span><span class="hl-1"> = </span><span class="hl-0">myCollection</span><span class="hl-1">.</span><span class="hl-4">getEnumerator</span><span class="hl-1">();</span>
+</code></pre>
+
+<a href="#enumerator" id="enumerator" style="color: inherit; text-decoration: none;">
+  <h1>Enumerator</h1>
+</a>
+<p>The enumerator class allows iteration of a collection or array.</p>
+<p>An enumerator allows you to move incrementally through a collection or array
+giving you the ability to <code>peek</code> at the next element or move to it.</p>
+
+<a href="#constructors-1" id="constructors-1" style="color: inherit; text-decoration: none;">
+  <h2>Constructors</h2>
+</a>
+<p>You can create a new Enumerator from either a current 
+Collection or an array. </p>
+
+<a href="#array-constructor-1" id="array-constructor-1" style="color: inherit; text-decoration: none;">
+  <h3>Array constructor</h3>
+</a>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myArray</span><span class="hl-1"> = [</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">];</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myEnumerator</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Enumerator</span><span class="hl-1">(</span><span class="hl-0">myArray</span><span class="hl-1">);</span>
+</code></pre>
+
+<a href="#collection-constructor-1" id="collection-constructor-1" style="color: inherit; text-decoration: none;">
+  <h3>Collection constructor</h3>
+</a>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myArray</span><span class="hl-1"> = [</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">];</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">(</span><span class="hl-0">myArray</span><span class="hl-1">);</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myEnumerator</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Enumerator</span><span class="hl-1">(</span><span class="hl-0">myCollection</span><span class="hl-1">);</span>
+</code></pre>
+
+<a href="#properties-1" id="properties-1" style="color: inherit; text-decoration: none;">
+  <h2>Properties</h2>
+</a>
+
+<a href="#current-any" id="current-any" style="color: inherit; text-decoration: none;">
+  <h3>current: any</h3>
+</a>
+<blockquote>
+<p>Returns the current item in the enumeration.</p>
+</blockquote>
+<p>This will throw an error if <code>moveNext()</code> is not called <strong>before</strong> it.</p>
+<p>This will throw an error if the pointer is invalid (out of bounds).</p>
+<p><code>myEnumerator.current;</code></p>
+
+<a href="#methods-1" id="methods-1" style="color: inherit; text-decoration: none;">
+  <h2>Methods</h2>
+</a>
+
+<a href="#movenext-boolean" id="movenext-boolean" style="color: inherit; text-decoration: none;">
+  <h3>moveNext(): boolean</h3>
+</a>
+<blockquote>
+<p>Increments the internal pointer of the Enumerator, essentially 
+moving to the next element in the Enumerator. </p>
+<p>Returns a boolean value of whether there is another item in the 
+enumerator after this item.</p>
+</blockquote>
+<p>Returns <code>false</code> if there are no more elements in the enumerator.</p>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">]);</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myEnumerator</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Enumerator</span><span class="hl-1">(</span><span class="hl-0">myCollection</span><span class="hl-1">);</span><br/><br/><span class="hl-6">// iterate over each item, will break when there </span><br/><span class="hl-6">// are no more items left.</span><br/><span class="hl-7">while</span><span class="hl-1"> (</span><span class="hl-0">myEnumerator</span><span class="hl-1">.</span><span class="hl-4">moveNext</span><span class="hl-1">())</span><br/><span class="hl-1">{</span><br/><span class="hl-1">  </span><span class="hl-6">// do something here...</span><br/><span class="hl-1">}</span>
+</code></pre>
+
+<a href="#peek-any" id="peek-any" style="color: inherit; text-decoration: none;">
+  <h3>peek(): any</h3>
+</a>
+<blockquote>
+<p>Returns the next item in the enumerator without incrementing the internal
+pointer.</p>
+</blockquote>
+<p>Will throw an exception if there is no item to &quot;peek&quot; at.</p>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">]);</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myEnumerator</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Enumerator</span><span class="hl-1">(</span><span class="hl-0">myCollection</span><span class="hl-1">);</span><br/><br/><span class="hl-6">// check out the first item, it will return 1</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">thisIsTheFirstElement</span><span class="hl-1"> = </span><span class="hl-0">myEnumerator</span><span class="hl-1">.</span><span class="hl-4">peek</span><span class="hl-1">();</span><br/><br/><span class="hl-6">// we can still iterate over the collection</span><br/><span class="hl-7">while</span><span class="hl-1"> (</span><span class="hl-0">myEnumerator</span><span class="hl-1">.</span><span class="hl-4">moveNext</span><span class="hl-1">())</span><br/><span class="hl-1">{</span><br/><span class="hl-1">  </span><span class="hl-6">// do something here...</span><br/><span class="hl-1">}</span>
+</code></pre>
+
+<a href="#reset-void" id="reset-void" style="color: inherit; text-decoration: none;">
+  <h3>reset(): void</h3>
+</a>
+<blockquote>
+<p>Moves the pointer back to the start of the enumerator as thought it were
+freshly created</p>
+</blockquote>
+<p>You must call <code>moveNext()</code> after calling this as it resets the entire
+iteration.</p>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">]);</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myEnumerator</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Enumerator</span><span class="hl-1">(</span><span class="hl-0">myCollection</span><span class="hl-1">);</span><br/><br/><span class="hl-6">// iterate over the collection</span><br/><span class="hl-7">while</span><span class="hl-1"> (</span><span class="hl-0">myEnumerator</span><span class="hl-1">.</span><span class="hl-4">moveNext</span><span class="hl-1">())</span><br/><span class="hl-1">{</span><br/><span class="hl-1">  </span><span class="hl-6">// do something here...</span><br/><span class="hl-1">}</span><br/><br/><span class="hl-6">// reset the iteration</span><br/><span class="hl-0">myEnumerator</span><span class="hl-1">.</span><span class="hl-4">reset</span><span class="hl-1">();</span><br/><br/><span class="hl-6">// iterate over the collection again</span><br/><span class="hl-7">while</span><span class="hl-1"> (</span><span class="hl-0">myEnumerator</span><span class="hl-1">.</span><span class="hl-4">moveNext</span><span class="hl-1">())</span><br/><span class="hl-1">{</span><br/><span class="hl-1">  </span><span class="hl-6">// do something else here...</span><br/><span class="hl-1">}</span>
+</code></pre>
+
+<a href="#list" id="list" style="color: inherit; text-decoration: none;">
+  <h1>List</h1>
+</a>
+<p>A list is a level above a collection. It allows you to add, remove, insert and
+prepend items. Think of it as a mutable collection.</p>
+<p>It inherits from Collection.</p>
+
+<a href="#constructors-2" id="constructors-2" style="color: inherit; text-decoration: none;">
+  <h2>Constructors</h2>
+</a>
+<p>You can create a new List from either a current 
+Collection, an array or nothing.</p>
+
+<a href="#default-constructor-1" id="default-constructor-1" style="color: inherit; text-decoration: none;">
+  <h3>Default constructor</h3>
+</a>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">();</span>
+</code></pre>
+
+<a href="#array-constructor-2" id="array-constructor-2" style="color: inherit; text-decoration: none;">
+  <h3>Array constructor</h3>
+</a>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myArray</span><span class="hl-1"> = [</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">];</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">(</span><span class="hl-0">myArray</span><span class="hl-1">);</span>
+</code></pre>
+
+<a href="#collection-constructor-2" id="collection-constructor-2" style="color: inherit; text-decoration: none;">
+  <h3>Collection constructor</h3>
+</a>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myArray</span><span class="hl-1"> = [</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">];</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">(</span><span class="hl-0">myArray</span><span class="hl-1">);</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">(</span><span class="hl-0">myCollection</span><span class="hl-1">);</span>
+</code></pre>
+
+<a href="#properties-2" id="properties-2" style="color: inherit; text-decoration: none;">
+  <h2>Properties</h2>
+</a>
+<p>Inherits all properties from Collection.</p>
+
+<a href="#methods-2" id="methods-2" style="color: inherit; text-decoration: none;">
+  <h2>Methods</h2>
+</a>
+<p>Inherits all methods from Collection.</p>
+
+<a href="#addobj-any-void" id="addobj-any-void" style="color: inherit; text-decoration: none;">
+  <h3>add(obj: any): void</h3>
+</a>
+<blockquote>
+<p>Adds an item to the List.</p>
+</blockquote>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">();</span><br/><br/><span class="hl-0">myList</span><span class="hl-1">.</span><span class="hl-4">add</span><span class="hl-1">(</span><span class="hl-3">1</span><span class="hl-1">);</span>
+</code></pre>
+
+<a href="#addrangearray--void" id="addrangearray--void" style="color: inherit; text-decoration: none;">
+  <h3>addRange(array: []): void</h3>
+</a>
+<blockquote>
+<p>Adds a array of items to the end of the List.</p>
+</blockquote>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">();</span><br/><br/><span class="hl-0">myList</span><span class="hl-1">.</span><span class="hl-4">addRange</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">]);</span>
+</code></pre>
+
+<a href="#addrangecollection-collection-void" id="addrangecollection-collection-void" style="color: inherit; text-decoration: none;">
+  <h3>addRange(collection: Collection): void</h3>
+</a>
+<blockquote>
+<p>Adds a collection of items to the end of the List.</p>
+</blockquote>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">();</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">]);</span><br/><br/><span class="hl-0">myList</span><span class="hl-1">.</span><span class="hl-4">addRange</span><span class="hl-1">(</span><span class="hl-0">myCollection</span><span class="hl-1">);</span>
+</code></pre>
+
+<a href="#clear-void" id="clear-void" style="color: inherit; text-decoration: none;">
+  <h3>clear(): void</h3>
+</a>
+<blockquote>
+<p>Removes all items from the List.</p>
+</blockquote>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">]);</span><br/><br/><span class="hl-0">myList</span><span class="hl-1">.</span><span class="hl-4">clear</span><span class="hl-1">();</span>
+</code></pre>
+
+<a href="#containsobj-any-isequivilent-boolean-boolean" id="containsobj-any-isequivilent-boolean-boolean" style="color: inherit; text-decoration: none;">
+  <h3>contains(obj: any, isEquivilent?: boolean): boolean</h3>
+</a>
+<blockquote>
+<p>Returns true if the List contains the item. Setting <code>isEquivilent</code> will
+compare each item as a JSON serilized object.</p>
+</blockquote>
+<p><code>isEquivilent</code> will essentially compare each item as a string. So even if they
+are not the exact same item, by reference, they can be &#39;equal&#39;.</p>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">]);</span><br/><br/><span class="hl-0">myList</span><span class="hl-1">.</span><span class="hl-4">contains</span><span class="hl-1">(</span><span class="hl-3">2</span><span class="hl-1">); </span><span class="hl-6">// returns true</span><br/><span class="hl-0">myList</span><span class="hl-1">.</span><span class="hl-4">contains</span><span class="hl-1">(</span><span class="hl-3">5</span><span class="hl-1">); </span><span class="hl-6">// returns false</span>
+</code></pre>
+
+<a href="#findobj-any-isequivilent-boolean--false-any--undefined" id="findobj-any-isequivilent-boolean--false-any--undefined" style="color: inherit; text-decoration: none;">
+  <h3>find(obj: any, isEquivilent: boolean = false): any | undefined</h3>
+</a>
+<blockquote>
+<p>Returns the item if it is in the List or <code>undefined</code> if it is not. Setting <code>isEquivilent</code> will
+compare each item as a JSON serilized object.</p>
+</blockquote>
+<p><code>isEquivilent</code> will essentially compare each item as a string. So even if they
+are not the exact same item, by reference, they can be &#39;equal&#39;.</p>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">]);</span><br/><br/><span class="hl-0">myList</span><span class="hl-1">.</span><span class="hl-4">find</span><span class="hl-1">(</span><span class="hl-3">2</span><span class="hl-1">); </span><span class="hl-6">// returns 2</span><br/><span class="hl-0">myList</span><span class="hl-1">.</span><span class="hl-4">find</span><span class="hl-1">(</span><span class="hl-3">5</span><span class="hl-1">); </span><span class="hl-6">// returns undefined</span>
+</code></pre>
+
+<a href="#findindexobj-any-isequivilent-boolean--false-number--undefined" id="findindexobj-any-isequivilent-boolean--false-number--undefined" style="color: inherit; text-decoration: none;">
+  <h3>findIndex(obj: any, isEquivilent: boolean = false): number | undefined</h3>
+</a>
+<blockquote>
+<p>Returns the index of an item if it is in the List or <code>undefined</code> if it is not. 
+Setting <code>isEquivilent</code> will compare each item as a JSON serilized object.</p>
+</blockquote>
+<p><code>isEquivilent</code> will essentially compare each item as a string. So even if they
+are not the exact same item, by reference, they can be &#39;equal&#39;.</p>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">]);</span><br/><br/><span class="hl-0">myList</span><span class="hl-1">.</span><span class="hl-4">findIndex</span><span class="hl-1">(</span><span class="hl-3">2</span><span class="hl-1">); </span><span class="hl-6">// returns 1</span><br/><span class="hl-0">myList</span><span class="hl-1">.</span><span class="hl-4">findIndex</span><span class="hl-1">(</span><span class="hl-3">5</span><span class="hl-1">); </span><span class="hl-6">// returns undefined</span>
+</code></pre>
+
+<a href="#insertatobj-any-index-number-void" id="insertatobj-any-index-number-void" style="color: inherit; text-decoration: none;">
+  <h3>insertAt(obj: any, index: number): void</h3>
+</a>
+<blockquote>
+<p>Inserts an item at the <code>index</code> and moves the subsequent items up 1 index.</p>
+</blockquote>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">]);</span><br/><br/><span class="hl-0">myList</span><span class="hl-1">.</span><span class="hl-4">insertAt</span><span class="hl-1">(</span><span class="hl-3">4</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">); </span><span class="hl-6">// will now be [1, 2, 4, 3]</span>
+</code></pre>
+
+<a href="#prependobj-any-void" id="prependobj-any-void" style="color: inherit; text-decoration: none;">
+  <h3>prepend(obj: any): void</h3>
+</a>
+<blockquote>
+<p>Inserts an item at the start and moves the subsequent items up 1 index.</p>
+</blockquote>
+<p>Shorthand for <code>myList.insertAt(obj, 0)</code>.</p>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">]);</span><br/><br/><span class="hl-0">myList</span><span class="hl-1">.</span><span class="hl-4">prepend</span><span class="hl-1">(</span><span class="hl-3">4</span><span class="hl-1">); </span><span class="hl-6">// will now be [4, 1, 2, 3]</span>
+</code></pre>
+
+<a href="#prependrangearray--void" id="prependrangearray--void" style="color: inherit; text-decoration: none;">
+  <h3>prependRange(array: []): void</h3>
+</a>
+<blockquote>
+<p>Inserts an array of items at the start and moves the subsequent items up 1 index.</p>
+</blockquote>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">]);</span><br/><br/><span class="hl-0">myList</span><span class="hl-1">.</span><span class="hl-4">prependRange</span><span class="hl-1">([</span><span class="hl-3">4</span><span class="hl-1">, </span><span class="hl-3">5</span><span class="hl-1">, </span><span class="hl-3">6</span><span class="hl-1">]); </span><span class="hl-6">// will now be [4, 5, 6, 1, 2, 3]</span>
+</code></pre>
+
+<a href="#prependrangecollection-collection-void" id="prependrangecollection-collection-void" style="color: inherit; text-decoration: none;">
+  <h3>prependRange(collection: Collection): void</h3>
+</a>
+<blockquote>
+<p>Inserts a collection of items at the start and moves the subsequent items up 1 index.</p>
+</blockquote>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">]);</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">([</span><span class="hl-3">4</span><span class="hl-1">, </span><span class="hl-3">5</span><span class="hl-1">, </span><span class="hl-3">6</span><span class="hl-1">]);</span><br/><br/><span class="hl-0">myList</span><span class="hl-1">.</span><span class="hl-4">prependRange</span><span class="hl-1">(</span><span class="hl-0">myCollection</span><span class="hl-1">); </span><span class="hl-6">// will now be [4, 5, 6, 1, 2, 3]</span>
+</code></pre>
+
+<a href="#removeobj-any-void" id="removeobj-any-void" style="color: inherit; text-decoration: none;">
+  <h3>remove(obj: any): void</h3>
+</a>
+<blockquote>
+<p>Removes an item from the List.</p>
+</blockquote>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">]);</span><br/><br/><span class="hl-0">myList</span><span class="hl-1">.</span><span class="hl-4">remove</span><span class="hl-1">(</span><span class="hl-3">1</span><span class="hl-1">); </span><span class="hl-6">// will now be [2, 3]</span>
+</code></pre>
+
+<a href="#removeatindex-number-void" id="removeatindex-number-void" style="color: inherit; text-decoration: none;">
+  <h3>removeAt(index: number): void</h3>
+</a>
+<blockquote>
+<p>Removes an item at the <code>index</code> from the List.</p>
+</blockquote>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">]);</span><br/><br/><span class="hl-0">myList</span><span class="hl-1">.</span><span class="hl-4">removeAt</span><span class="hl-1">(</span><span class="hl-3">2</span><span class="hl-1">); </span><span class="hl-6">// will now be [1, 2]</span>
+</code></pre>
+
+<a href="#sortcomparer-icomparer-void" id="sortcomparer-icomparer-void" style="color: inherit; text-decoration: none;">
+  <h3>sort(comparer?: IComparer): void</h3>
+</a>
+<blockquote>
+<p>Sorts the List using the provided <code>comparer</code>.</p>
+</blockquote>
+
+<a href="#enumerable" id="enumerable" style="color: inherit; text-decoration: none;">
+  <h1>Enumerable</h1>
+</a>
+<p>The Enumerable class is mostly fluent by design and allows chaining of 
+<em>query-like</em> methods to filter or aggregate an array or collection.</p>
+<ul>
+<li>It has been modelled off of the .NET Fluent LINQ extension methods.</li>
+<li>It inherits from Collection.</li>
+<li>As with collections, enumerables are immutable - <strong>Every method returns 
+a new Enumerable if it returns a Enumerable</strong></li>
+</ul>
+
+<a href="#predicate-type" id="predicate-type" style="color: inherit; text-decoration: none;">
+  <h2>Predicate type</h2>
+</a>
+<p>A Predicate is a delegate method that takes an item of the enumerable as
+the argument, and returns a boolean value.</p>
+<p>This is used on the <code>all</code>, <code>any</code> and <code>where</code> methods of Enumerable.</p>
+<p><code>Predicate = (item: any) =&gt; boolean</code></p>
+
+<a href="#constructors-3" id="constructors-3" style="color: inherit; text-decoration: none;">
+  <h2>Constructors</h2>
+</a>
+<p>You can create a new Enumerable from either a current 
+Collection, an array or nothing.</p>
+
+<a href="#default-constructor-2" id="default-constructor-2" style="color: inherit; text-decoration: none;">
+  <h3>Default constructor</h3>
+</a>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myList</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">List</span><span class="hl-1">();</span>
+</code></pre>
+
+<a href="#array-constructor-3" id="array-constructor-3" style="color: inherit; text-decoration: none;">
+  <h3>Array constructor</h3>
+</a>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myArray</span><span class="hl-1"> = [</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">];</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myEnumerable</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Enumerable</span><span class="hl-1">(</span><span class="hl-0">myArray</span><span class="hl-1">);</span>
+</code></pre>
+
+<a href="#collection-constructor-3" id="collection-constructor-3" style="color: inherit; text-decoration: none;">
+  <h3>Collection constructor</h3>
+</a>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myArray</span><span class="hl-1"> = [</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">];</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myCollection</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Collection</span><span class="hl-1">(</span><span class="hl-0">myArray</span><span class="hl-1">);</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myEnumerable</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">Enumerable</span><span class="hl-1">(</span><span class="hl-0">myCollection</span><span class="hl-1">);</span>
+</code></pre>
+
+<a href="#properties-3" id="properties-3" style="color: inherit; text-decoration: none;">
+  <h2>Properties</h2>
+</a>
+<p>Inherits all properties from Collection.</p>
+
+<a href="#methods-3" id="methods-3" style="color: inherit; text-decoration: none;">
+  <h2>Methods</h2>
+</a>
+<p>Inherits all methods from Collection.</p>
+
+<a href="#allpredicate-predicate-boolean" id="allpredicate-predicate-boolean" style="color: inherit; text-decoration: none;">
+  <h3>all(predicate: Predicate): boolean</h3>
+</a>
+<blockquote>
+<p>Returns <code>true</code> if all the items match the <code>predicate</code>.</p>
+</blockquote>
+
+<a href="#any-boolean" id="any-boolean" style="color: inherit; text-decoration: none;">
+  <h3>any(): boolean</h3>
+</a>
+<blockquote>
+<p>Returns <code>true</code> if the Enumerable contains elements</p>
+</blockquote>
+<pre><code class="language-js"><span class="hl-7">if</span><span class="hl-1">(</span><span class="hl-0">myEnumerable</span><span class="hl-1">.</span><span class="hl-4">any</span><span class="hl-1">())</span><br/><span class="hl-1">{</span><br/><span class="hl-1">  </span><span class="hl-6">// do something because the enumerable has elements</span><br/><span class="hl-1">}</span>
+</code></pre>
+
+<a href="#anypredicate-predicate-boolean" id="anypredicate-predicate-boolean" style="color: inherit; text-decoration: none;">
+  <h3>any(predicate: Predicate): boolean</h3>
+</a>
+<blockquote>
+<p>Returns <code>true</code> if any of the elements satisfy the <code>predicate</code>.</p>
+</blockquote>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myEnumerable</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">ArrayEnumerable</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">]);</span><br/><span class="hl-7">if</span><span class="hl-1">(</span><span class="hl-0">myEnumerable</span><span class="hl-1">.</span><span class="hl-4">any</span><span class="hl-1">((</span><span class="hl-0">i</span><span class="hl-1">) </span><span class="hl-2">=&gt;</span><span class="hl-1"> </span><span class="hl-0">i</span><span class="hl-1"> == </span><span class="hl-3">2</span><span class="hl-1">))</span><br/><span class="hl-1">{</span><br/><span class="hl-1">  </span><span class="hl-6">// the enumerable contains a &#39;2&#39;</span><br/><span class="hl-1">}</span>
+</code></pre>
+
+<a href="#averagepropertyname-string-number" id="averagepropertyname-string-number" style="color: inherit; text-decoration: none;">
+  <h3>average(propertyName: string): number</h3>
+</a>
+
+<a href="#averageselector-a-any-gt-number" id="averageselector-a-any-gt-number" style="color: inherit; text-decoration: none;">
+  <h3>average(selector: (a: any) =&gt; number)</h3>
+</a>
+
+<a href="#clone-enumerable" id="clone-enumerable" style="color: inherit; text-decoration: none;">
+  <h3>clone(): Enumerable</h3>
+</a>
+
+<a href="#distinctpropertyname-string-enumerable" id="distinctpropertyname-string-enumerable" style="color: inherit; text-decoration: none;">
+  <h3>distinct(propertyName: string): Enumerable</h3>
+</a>
+
+<a href="#distinctselector-a-any-gt-any-enumerable" id="distinctselector-a-any-gt-any-enumerable" style="color: inherit; text-decoration: none;">
+  <h3>distinct(selector: (a: any) =&gt; any): Enumerable</h3>
+</a>
+
+<a href="#first-any" id="first-any" style="color: inherit; text-decoration: none;">
+  <h3>first(): any</h3>
+</a>
+
+<a href="#firstordefault-any--null" id="firstordefault-any--null" style="color: inherit; text-decoration: none;">
+  <h3>firstOrDefault(): any | null</h3>
+</a>
+
+<a href="#groupbypropertyname-string-enumerable" id="groupbypropertyname-string-enumerable" style="color: inherit; text-decoration: none;">
+  <h3>groupBy(propertyName: string): Enumerable</h3>
+</a>
+
+<a href="#groupbykeyselector-a-any-gt-any-enumerable" id="groupbykeyselector-a-any-gt-any-enumerable" style="color: inherit; text-decoration: none;">
+  <h3>groupBy(keySelector: (a: any) =&gt; any): Enumerable</h3>
+</a>
+
+<a href="#maxpropertyname-string-number" id="maxpropertyname-string-number" style="color: inherit; text-decoration: none;">
+  <h3>max(propertyName: string): number</h3>
+</a>
+
+<a href="#maxselector-a-any-gt-number-number" id="maxselector-a-any-gt-number-number" style="color: inherit; text-decoration: none;">
+  <h3>max(selector: (a: any) =&gt; number): number</h3>
+</a>
+
+<a href="#minpropertyname-string-number" id="minpropertyname-string-number" style="color: inherit; text-decoration: none;">
+  <h3>min(propertyName: string): number</h3>
+</a>
+
+<a href="#minselector-a-any-gt-number-number" id="minselector-a-any-gt-number-number" style="color: inherit; text-decoration: none;">
+  <h3>min(selector: (a: any) =&gt; number): number</h3>
+</a>
+
+<a href="#oftypector-constructor-enumerable" id="oftypector-constructor-enumerable" style="color: inherit; text-decoration: none;">
+  <h3>ofType(ctor: Constructor): Enumerable</h3>
+</a>
+
+<a href="#orderbypropertyname-k-comparer-icomparer-enumerable" id="orderbypropertyname-k-comparer-icomparer-enumerable" style="color: inherit; text-decoration: none;">
+  <h3>orderBy(propertyName: K, comparer?: IComparer): Enumerable</h3>
+</a>
+
+<a href="#orderbyselector-a-t-gt-r-comparer-icomparer-enumerable" id="orderbyselector-a-t-gt-r-comparer-icomparer-enumerable" style="color: inherit; text-decoration: none;">
+  <h3>orderBy(selector: (a: T) =&gt; R, comparer?: IComparer): Enumerable</h3>
+</a>
+
+<a href="#orderbydescendingpropertyname-k-comparer-icomparer-enumerable" id="orderbydescendingpropertyname-k-comparer-icomparer-enumerable" style="color: inherit; text-decoration: none;">
+  <h3>orderByDescending(propertyName: K, comparer?: IComparer): Enumerable</h3>
+</a>
+
+<a href="#orderbydescendingselector-a-any-gt-any-comparer-icomparer-enumerable" id="orderbydescendingselector-a-any-gt-any-comparer-icomparer-enumerable" style="color: inherit; text-decoration: none;">
+  <h3>orderByDescending(selector: (a: any) =&gt; any, comparer?: IComparer): Enumerable</h3>
+</a>
+
+<a href="#skipcount-number-enumerable" id="skipcount-number-enumerable" style="color: inherit; text-decoration: none;">
+  <h3>skip(count: number): Enumerable</h3>
+</a>
+
+<a href="#selectpropertyname-string-enumerable" id="selectpropertyname-string-enumerable" style="color: inherit; text-decoration: none;">
+  <h3>select(propertyName: string): Enumerable</h3>
+</a>
+
+<a href="#selectselector-a-any-gt-any-enumerable" id="selectselector-a-any-gt-any-enumerable" style="color: inherit; text-decoration: none;">
+  <h3>select(selector: (a: any) =&gt; any): Enumerable</h3>
+</a>
+
+<a href="#sumpropertyname-string-number" id="sumpropertyname-string-number" style="color: inherit; text-decoration: none;">
+  <h3>sum(propertyName: string): number</h3>
+</a>
+<blockquote>
+<p>Returns the sum of numbers designated by the <code>propertyName</code>.</p>
+</blockquote>
+<p>Useful for getting totals of a dataset.</p>
+
+<a href="#sumselector-a-any-gt-number-number" id="sumselector-a-any-gt-number-number" style="color: inherit; text-decoration: none;">
+  <h3>sum(selector: (a: any) =&gt; number): number</h3>
+</a>
+<blockquote>
+<p>Returns the sum of numbers returned by the <code>selector</code>.</p>
+</blockquote>
+<p>Useful for getting totals of a dataset.</p>
+
+<a href="#takecount-number-enumerable" id="takecount-number-enumerable" style="color: inherit; text-decoration: none;">
+  <h3>take(count: number): Enumerable</h3>
+</a>
+<blockquote>
+<p>Returns a Enumerable that subset of the items from 0 to <code>count</code></p>
+</blockquote>
+
+<a href="#wherepredicate-predicate-enumerable" id="wherepredicate-predicate-enumerable" style="color: inherit; text-decoration: none;">
+  <h3>where(predicate: Predicate): Enumerable</h3>
+</a>
+<blockquote>
+<p>Returns a Enumerable of the items that match the predicate</p>
+</blockquote>
+<p>Used to filter a dataset.</p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li><li class=" tsd-kind-namespace"><a href="modules/Arrays.html">Arrays</a></li><li class=" tsd-kind-namespace"><a href="modules/AsyncCacheItem.html">Async<wbr/>Cache<wbr/>Item</a></li><li class=" tsd-kind-namespace"><a href="modules/Booleans.html">Booleans</a></li><li class=" tsd-kind-namespace"><a href="modules/CacheExpiredException.html">Cache<wbr/>Expired<wbr/>Exception</a></li><li class=" tsd-kind-namespace"><a href="modules/ErrorHelper.html">Error<wbr/>Helper</a></li><li class=" tsd-kind-namespace"><a href="modules/MemoryCache.html">Memory<wbr/>Cache</a></li><li class=" tsd-kind-namespace"><a href="modules/Path.html">Path</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-enum"><a href="enums/LogLevel.html" class="tsd-kind-icon">Log<wbr/>Level</a></li><li class="tsd-kind-class"><a href="classes/AggregateDisposable.html" class="tsd-kind-icon">Aggregate<wbr/>Disposable</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/AggregateEnumerable.html" class="tsd-kind-icon">Aggregate<wbr/>Enumerable</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/AggregateEnumerator.html" class="tsd-kind-icon">Aggregate<wbr/>Enumerator</a></li><li class="tsd-kind-class"><a href="classes/AggregateLogger.html" class="tsd-kind-icon">Aggregate<wbr/>Logger</a></li><li class="tsd-kind-class"><a href="classes/AlreadyDisposedException.html" class="tsd-kind-icon">Already<wbr/>Disposed<wbr/>Exception</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/AppendEnumerator.html" class="tsd-kind-icon">Append<wbr/>Enumerator</a></li><li class="tsd-kind-class"><a href="classes/ArgumentException.html" class="tsd-kind-icon">Argument<wbr/>Exception</a></li><li class="tsd-kind-class"><a href="classes/ArgumentNullException.html" class="tsd-kind-icon">Argument<wbr/>Null<wbr/>Exception</a></li><li class="tsd-kind-class"><a href="classes/ArgumentUndefinedException.html" class="tsd-kind-icon">Argument<wbr/>Undefined<wbr/>Exception</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/ArrayEnumerable.html" class="tsd-kind-icon">Array<wbr/>Enumerable</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/ArrayEnumerator.html" class="tsd-kind-icon">Array<wbr/>Enumerator</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/ArrayLikeArgumentAssertionBuilder.html" class="tsd-kind-icon">Array<wbr/>Like<wbr/>Argument<wbr/>Assertion<wbr/>Builder</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/AsyncEnumerator.html" class="tsd-kind-icon">Async<wbr/>Enumerator</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/AsyncWrapper.html" class="tsd-kind-icon">Async<wbr/>Wrapper</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/BaseModelState.html" class="tsd-kind-icon">Base<wbr/>Model<wbr/>State</a></li><li class="tsd-kind-class"><a href="classes/Byte.html" class="tsd-kind-icon">Byte</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/CancellablePromise.html" class="tsd-kind-icon">Cancellable<wbr/>Promise</a></li><li class="tsd-kind-class"><a href="classes/CancellationToken.html" class="tsd-kind-icon">Cancellation<wbr/>Token</a></li><li class="tsd-kind-class"><a href="classes/CancellationTokenSource.html" class="tsd-kind-icon">Cancellation<wbr/>Token<wbr/>Source</a></li><li class="tsd-kind-class"><a href="classes/CaseInsensitiveStringComparer.html" class="tsd-kind-icon">Case<wbr/>Insensitive<wbr/>String<wbr/>Comparer</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/Collection.html" class="tsd-kind-icon">Collection</a></li><li class="tsd-kind-class"><a href="classes/ConsoleLogger.html" class="tsd-kind-icon">Console<wbr/>Logger</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/CustomComparer.html" class="tsd-kind-icon">Custom<wbr/>Comparer</a></li><li class="tsd-kind-class"><a href="classes/DateFormatter.html" class="tsd-kind-icon">Date<wbr/>Formatter</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/Dictionary.html" class="tsd-kind-icon">Dictionary</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/DictionaryEnumerator.html" class="tsd-kind-icon">Dictionary<wbr/>Enumerator</a></li><li class="tsd-kind-class"><a href="classes/Enumerable.html" class="tsd-kind-icon">Enumerable</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/EnumeratorBase.html" class="tsd-kind-icon">Enumerator<wbr/>Base</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/EnumeratorEnumerable.html" class="tsd-kind-icon">Enumerator<wbr/>Enumerable</a></li><li class="tsd-kind-class"><a href="classes/ErrorException.html" class="tsd-kind-icon">Error<wbr/>Exception</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/Event.html" class="tsd-kind-icon">Event</a></li><li class="tsd-kind-class"><a href="classes/Exception.html" class="tsd-kind-icon">Exception</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/FactoryModelState.html" class="tsd-kind-icon">Factory<wbr/>Model<wbr/>State</a></li><li class="tsd-kind-class"><a href="classes/FileNotFoundException.html" class="tsd-kind-icon">File<wbr/>Not<wbr/>Found<wbr/>Exception</a></li><li class="tsd-kind-class"><a href="classes/FormatException.html" class="tsd-kind-icon">Format<wbr/>Exception</a></li><li class="tsd-kind-class"><a href="classes/Guid.html" class="tsd-kind-icon">Guid</a></li><li class="tsd-kind-class"><a href="classes/GuidArgumentAssertionBuilder.html" class="tsd-kind-icon">Guid<wbr/>Argument<wbr/>Assertion<wbr/>Builder</a></li><li class="tsd-kind-class"><a href="classes/IndentedStringBuilder.html" class="tsd-kind-icon">Indented<wbr/>String<wbr/>Builder</a></li><li class="tsd-kind-class"><a href="classes/IndexOutOfRangeException.html" class="tsd-kind-icon">Index<wbr/>Out<wbr/>Of<wbr/>Range<wbr/>Exception</a></li><li class="tsd-kind-class"><a href="classes/Int16.html" class="tsd-kind-icon">Int16</a></li><li class="tsd-kind-class"><a href="classes/Int32.html" class="tsd-kind-icon">Int32</a></li><li class="tsd-kind-class"><a href="classes/InvalidOperationException.html" class="tsd-kind-icon">Invalid<wbr/>Operation<wbr/>Exception</a></li><li class="tsd-kind-class"><a href="classes/InvalidTypeException.html" class="tsd-kind-icon">Invalid<wbr/>Type<wbr/>Exception</a></li><li class="tsd-kind-class"><a href="classes/JsonConfigurationBuilder.html" class="tsd-kind-icon">Json<wbr/>Configuration<wbr/>Builder</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/KeyAlreadyDefinedException.html" class="tsd-kind-icon">Key<wbr/>Already<wbr/>Defined<wbr/>Exception</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/KeyNotFoundException.html" class="tsd-kind-icon">Key<wbr/>Not<wbr/>Found<wbr/>Exception</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/Lazy.html" class="tsd-kind-icon">Lazy</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/LinkedList.html" class="tsd-kind-icon">Linked<wbr/>List</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/LinkedListEnumerator.html" class="tsd-kind-icon">Linked<wbr/>List<wbr/>Enumerator</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/List.html" class="tsd-kind-icon">List</a></li><li class="tsd-kind-class"><a href="classes/Logger.html" class="tsd-kind-icon">Logger</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/MapComparer.html" class="tsd-kind-icon">Map<wbr/>Comparer</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/ModelState.html" class="tsd-kind-icon">Model<wbr/>State</a></li><li class="tsd-kind-class"><a href="classes/MutexAlreadyAquiredException.html" class="tsd-kind-icon">Mutex<wbr/>Already<wbr/>Aquired<wbr/>Exception</a></li><li class="tsd-kind-class"><a href="classes/NotImplementedException.html" class="tsd-kind-icon">Not<wbr/>Implemented<wbr/>Exception</a></li><li class="tsd-kind-class"><a href="classes/NotSupportedException.html" class="tsd-kind-icon">Not<wbr/>Supported<wbr/>Exception</a></li><li class="tsd-kind-class"><a href="classes/NullReferenceException.html" class="tsd-kind-icon">Null<wbr/>Reference<wbr/>Exception</a></li><li class="tsd-kind-class"><a href="classes/NumberFormatter.html" class="tsd-kind-icon">Number<wbr/>Formatter</a></li><li class="tsd-kind-class"><a href="classes/NumberFormatterDelegates.html" class="tsd-kind-icon">Number<wbr/>Formatter<wbr/>Delegates</a></li><li class="tsd-kind-class"><a href="classes/OutOfBoundsException.html" class="tsd-kind-icon">Out<wbr/>Of<wbr/>Bounds<wbr/>Exception</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/PollingModelState.html" class="tsd-kind-icon">Polling<wbr/>Model<wbr/>State</a></li><li class="tsd-kind-class"><a href="classes/QueryStringCollection.html" class="tsd-kind-icon">Query<wbr/>String<wbr/>Collection</a></li><li class="tsd-kind-class"><a href="classes/RangeEnumerator.html" class="tsd-kind-icon">Range<wbr/>Enumerator</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/Result.html" class="tsd-kind-icon">Result</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/ReverseComparer.html" class="tsd-kind-icon">Reverse<wbr/>Comparer</a></li><li class="tsd-kind-class"><a href="classes/ScopedLogger.html" class="tsd-kind-icon">Scoped<wbr/>Logger</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/SelectEnumerator.html" class="tsd-kind-icon">Select<wbr/>Enumerator</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/SelectManyEnumerator.html" class="tsd-kind-icon">Select<wbr/>Many<wbr/>Enumerator</a></li><li class="tsd-kind-class"><a href="classes/SignedByte.html" class="tsd-kind-icon">Signed<wbr/>Byte</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/SingleInvokeEvent.html" class="tsd-kind-icon">Single<wbr/>Invoke<wbr/>Event</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/SkipEnumerator.html" class="tsd-kind-icon">Skip<wbr/>Enumerator</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/StorageRepository.html" class="tsd-kind-icon">Storage<wbr/>Repository</a></li><li class="tsd-kind-class"><a href="classes/StringArgumentAssertionBuilder.html" class="tsd-kind-icon">String<wbr/>Argument<wbr/>Assertion<wbr/>Builder</a></li><li class="tsd-kind-class"><a href="classes/StringBuilder.html" class="tsd-kind-icon">String<wbr/>Builder</a></li><li class="tsd-kind-class"><a href="classes/StringFormatter.html" class="tsd-kind-icon">String<wbr/>Formatter</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/TakeEnumerator.html" class="tsd-kind-icon">Take<wbr/>Enumerator</a></li><li class="tsd-kind-class"><a href="classes/Type.html" class="tsd-kind-icon">Type</a></li><li class="tsd-kind-class"><a href="classes/TypeBuilder.html" class="tsd-kind-icon">Type<wbr/>Builder</a></li><li class="tsd-kind-class"><a href="classes/UnsignedInt16.html" class="tsd-kind-icon">Unsigned<wbr/>Int16</a></li><li class="tsd-kind-class"><a href="classes/UnsignedInt32.html" class="tsd-kind-icon">Unsigned<wbr/>Int32</a></li><li class="tsd-kind-class"><a href="classes/Url.html" class="tsd-kind-icon">Url</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/WhereEnumerator.html" class="tsd-kind-icon">Where<wbr/>Enumerator</a></li><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/IAsyncCacheItem.html" class="tsd-kind-icon">IAsync<wbr/>Cache<wbr/>Item</a></li><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/ICache.html" class="tsd-kind-icon">ICache</a></li><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/IComparer.html" class="tsd-kind-icon">IComparer</a></li><li class="tsd-kind-interface"><a href="interfaces/IConfiguration.html" class="tsd-kind-icon">IConfiguration</a></li><li class="tsd-kind-interface"><a href="interfaces/IConfigurationBuilder.html" class="tsd-kind-icon">IConfiguration<wbr/>Builder</a></li><li class="tsd-kind-interface"><a href="interfaces/IConfigurationSection.html" class="tsd-kind-icon">IConfiguration<wbr/>Section</a></li><li class="tsd-kind-interface"><a href="interfaces/IConsole.html" class="tsd-kind-icon">IConsole</a></li><li class="tsd-kind-interface"><a href="interfaces/IConsoleLoggerConfig.html" class="tsd-kind-icon">IConsole<wbr/>Logger<wbr/>Config</a></li><li class="tsd-kind-interface"><a href="interfaces/IDateFormatterConfiguration.html" class="tsd-kind-icon">IDate<wbr/>Formatter<wbr/>Configuration</a></li><li class="tsd-kind-interface"><a href="interfaces/IDisposable.html" class="tsd-kind-icon">IDisposable</a></li><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/IEqualityComparer.html" class="tsd-kind-icon">IEquality<wbr/>Comparer</a></li><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/IFormatter.html" class="tsd-kind-icon">IFormatter</a></li><li class="tsd-kind-interface"><a href="interfaces/ILogger.html" class="tsd-kind-icon">ILogger</a></li><li class="tsd-kind-interface"><a href="interfaces/ILoggerConfig.html" class="tsd-kind-icon">ILogger<wbr/>Config</a></li><li class="tsd-kind-interface"><a href="interfaces/INumberFormatterConfiguration.html" class="tsd-kind-icon">INumber<wbr/>Formatter<wbr/>Configuration</a></li><li class="tsd-kind-interface"><a href="interfaces/INumberValue.html" class="tsd-kind-icon">INumber<wbr/>Value</a></li><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/IStorageRepository.html" class="tsd-kind-icon">IStorage<wbr/>Repository</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Action" class="tsd-kind-icon">Action</a></li><li class="tsd-kind-type-alias"><a href="modules.html#AnyFunction" class="tsd-kind-icon">Any<wbr/>Function</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Awaitable" class="tsd-kind-icon">Awaitable</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Comparison" class="tsd-kind-icon">Comparison</a></li><li class="tsd-kind-type-alias"><a href="modules.html#ConfigValue" class="tsd-kind-icon">Config<wbr/>Value</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#ConstructorFor" class="tsd-kind-icon">Constructor<wbr/>For</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#EventHandler" class="tsd-kind-icon">Event<wbr/>Handler</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Func1" class="tsd-kind-icon">Func1</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Func2" class="tsd-kind-icon">Func2</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Func3" class="tsd-kind-icon">Func3</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Func4" class="tsd-kind-icon">Func4</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Func5" class="tsd-kind-icon">Func5</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Func6" class="tsd-kind-icon">Func6</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#IEnumerableOrArray" class="tsd-kind-icon">IEnumerable<wbr/>Or<wbr/>Array</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#IExpiryPolicyDelegate" class="tsd-kind-icon">IExpiry<wbr/>Policy<wbr/>Delegate</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#KeySelector" class="tsd-kind-icon">Key<wbr/>Selector</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#KeyValuePair" class="tsd-kind-icon">Key<wbr/>Value<wbr/>Pair</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Nullable" class="tsd-kind-icon">Nullable</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Predicate" class="tsd-kind-icon">Predicate</a></li><li class="tsd-kind-type-alias"><a href="modules.html#QueryStringItem" class="tsd-kind-icon">Query<wbr/>String<wbr/>Item</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Selector" class="tsd-kind-icon">Selector</a></li><li class="tsd-kind-type-alias"><a href="modules.html#StringOrUrl" class="tsd-kind-icon">String<wbr/>Or<wbr/>Url</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Undefinable" class="tsd-kind-icon">Undefinable</a></li><li class="tsd-kind-variable"><a href="modules.html#DefaultComparers" class="tsd-kind-icon">Default<wbr/>Comparers</a></li><li class="tsd-kind-variable"><a href="modules.html#ESCAPE_REGEX_SEARCH" class="tsd-kind-icon">ESCAPE_<wbr/>REGEX_<wbr/>SEARCH</a></li><li class="tsd-kind-variable"><a href="modules.html#FORMAT_REGEX" class="tsd-kind-icon">FORMAT_<wbr/>REGEX</a></li><li class="tsd-kind-variable"><a href="modules.html#KEY_VALUE_SEPARATOR" class="tsd-kind-icon">KEY_<wbr/>VALUE_<wbr/>SEPARATOR</a></li><li class="tsd-kind-variable"><a href="modules.html#KEY_WORD_SEPARATOR" class="tsd-kind-icon">KEY_<wbr/>WORD_<wbr/>SEPARATOR</a></li><li class="tsd-kind-variable"><a href="modules.html#WHITESPACE" class="tsd-kind-icon">WHITESPACE</a></li><li class="tsd-kind-variable"><a href="modules.html#empty" class="tsd-kind-icon">empty</a></li><li class="tsd-kind-variable"><a href="modules.html#newLine" class="tsd-kind-icon">new<wbr/>Line</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#arg" class="tsd-kind-icon">arg</a></li><li class="tsd-kind-function"><a href="modules.html#buildObjectTree" class="tsd-kind-icon">build<wbr/>Object<wbr/>Tree</a></li><li class="tsd-kind-function"><a href="modules.html#convert" class="tsd-kind-icon">convert</a></li><li class="tsd-kind-function"><a href="modules.html#convertArray" class="tsd-kind-icon">convert<wbr/>Array</a></li><li class="tsd-kind-function"><a href="modules.html#convertObject" class="tsd-kind-icon">convert<wbr/>Object</a></li><li class="tsd-kind-function"><a href="modules.html#convertToObject" class="tsd-kind-icon">convert<wbr/>To<wbr/>Object</a></li><li class="tsd-kind-function"><a href="modules.html#convertToString" class="tsd-kind-icon">convert<wbr/>To<wbr/>String</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#create" class="tsd-kind-icon">create</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#createSelector" class="tsd-kind-icon">create<wbr/>Selector</a></li><li class="tsd-kind-function"><a href="modules.html#delay" class="tsd-kind-icon">delay</a></li><li class="tsd-kind-function"><a href="modules.html#deserialize" class="tsd-kind-icon">deserialize</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#ensure" class="tsd-kind-icon">ensure</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#equals" class="tsd-kind-icon">equals</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#equivilentToByJSON" class="tsd-kind-icon">equivilent<wbr/>To<wbr/>ByJSON</a></li><li class="tsd-kind-function"><a href="modules.html#escapeRegExp" class="tsd-kind-icon">escape<wbr/>Reg<wbr/>Exp</a></li><li class="tsd-kind-function"><a href="modules.html#firstCharToLowerCase" class="tsd-kind-icon">first<wbr/>Char<wbr/>To<wbr/>Lower<wbr/>Case</a></li><li class="tsd-kind-function"><a href="modules.html#firstCharToUpperCase" class="tsd-kind-icon">first<wbr/>Char<wbr/>To<wbr/>Upper<wbr/>Case</a></li><li class="tsd-kind-function"><a href="modules.html#format" class="tsd-kind-icon">format</a></li><li class="tsd-kind-function"><a href="modules.html#getDefaultLogger" class="tsd-kind-icon">get<wbr/>Default<wbr/>Logger</a></li><li class="tsd-kind-function"><a href="modules.html#getHash" class="tsd-kind-icon">get<wbr/>Hash</a></li><li class="tsd-kind-function"><a href="modules.html#getType" class="tsd-kind-icon">get<wbr/>Type</a></li><li class="tsd-kind-function"><a href="modules.html#hashString" class="tsd-kind-icon">hash<wbr/>String</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#isBoolean" class="tsd-kind-icon">is<wbr/>Boolean</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#isDate" class="tsd-kind-icon">is<wbr/>Date</a></li><li class="tsd-kind-function"><a href="modules.html#isEven" class="tsd-kind-icon">is<wbr/>Even</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#isFunction" class="tsd-kind-icon">is<wbr/>Function</a></li><li class="tsd-kind-function"><a href="modules.html#isMultipleOf" class="tsd-kind-icon">is<wbr/>Multiple<wbr/>Of</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#isNull" class="tsd-kind-icon">is<wbr/>Null</a></li><li class="tsd-kind-function"><a href="modules.html#isNullOrEmpty" class="tsd-kind-icon">is<wbr/>Null<wbr/>Or<wbr/>Empty</a></li><li class="tsd-kind-function"><a href="modules.html#isNullOrWhitespace" class="tsd-kind-icon">is<wbr/>Null<wbr/>Or<wbr/>Whitespace</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#isNumber" class="tsd-kind-icon">is<wbr/>Number</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#isObject" class="tsd-kind-icon">is<wbr/>Object</a></li><li class="tsd-kind-function"><a href="modules.html#isOdd" class="tsd-kind-icon">is<wbr/>Odd</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#isString" class="tsd-kind-icon">is<wbr/>String</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#isUndefined" class="tsd-kind-icon">is<wbr/>Undefined</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#isUndefinedOrNull" class="tsd-kind-icon">is<wbr/>Undefined<wbr/>Or<wbr/>Null</a></li><li class="tsd-kind-function"><a href="modules.html#loggerScope" class="tsd-kind-icon">logger<wbr/>Scope</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#nameof" class="tsd-kind-icon">nameof</a></li><li class="tsd-kind-function"><a href="modules.html#noop" class="tsd-kind-icon">noop</a></li><li class="tsd-kind-function"><a href="modules.html#padLeft" class="tsd-kind-icon">pad<wbr/>Left</a></li><li class="tsd-kind-function"><a href="modules.html#parseKey" class="tsd-kind-icon">parse<wbr/>Key</a></li><li class="tsd-kind-function"><a href="modules.html#parseValue" class="tsd-kind-icon">parse<wbr/>Value</a></li><li class="tsd-kind-function"><a href="modules.html#serialize" class="tsd-kind-icon">serialize</a></li><li class="tsd-kind-function"><a href="modules.html#serializeQueryStringItems" class="tsd-kind-icon">serialize<wbr/>Query<wbr/>String<wbr/>Items</a></li><li class="tsd-kind-function"><a href="modules.html#setDefaultLogger" class="tsd-kind-icon">set<wbr/>Default<wbr/>Logger</a></li><li class="tsd-kind-function"><a href="modules.html#stringOrUrlToString" class="tsd-kind-icon">string<wbr/>Or<wbr/>Url<wbr/>To<wbr/>String</a></li><li class="tsd-kind-function"><a href="modules.html#stringOrUrlToUrl" class="tsd-kind-icon">string<wbr/>Or<wbr/>Url<wbr/>To<wbr/>Url</a></li><li class="tsd-kind-function"><a href="modules.html#testLogVerbosity" class="tsd-kind-icon">test<wbr/>Log<wbr/>Verbosity</a></li><li class="tsd-kind-function"><a href="modules.html#toByte" class="tsd-kind-icon">to<wbr/>Byte</a></li><li class="tsd-kind-function"><a href="modules.html#toCharArray" class="tsd-kind-icon">to<wbr/>Char<wbr/>Array</a></li><li class="tsd-kind-function"><a href="modules.html#toInt16" class="tsd-kind-icon">to<wbr/>Int16</a></li><li class="tsd-kind-function"><a href="modules.html#toInt32" class="tsd-kind-icon">to<wbr/>Int32</a></li><li class="tsd-kind-function"><a href="modules.html#toSignedByte" class="tsd-kind-icon">to<wbr/>Signed<wbr/>Byte</a></li><li class="tsd-kind-function"><a href="modules.html#toUnsignedInt16" class="tsd-kind-icon">to<wbr/>Unsigned<wbr/>Int16</a></li><li class="tsd-kind-function"><a href="modules.html#toUnsignedInt32" class="tsd-kind-icon">to<wbr/>Unsigned<wbr/>Int32</a></li><li class="tsd-kind-function"><a href="modules.html#trim" class="tsd-kind-icon">trim</a></li><li class="tsd-kind-function"><a href="modules.html#trimEnd" class="tsd-kind-icon">trim<wbr/>End</a></li><li class="tsd-kind-function"><a href="modules.html#trimStart" class="tsd-kind-icon">trim<wbr/>Start</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#using" class="tsd-kind-icon">using</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#usingAsync" class="tsd-kind-icon">using<wbr/>Async</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li><li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li><li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li><li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
