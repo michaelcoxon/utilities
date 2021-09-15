@@ -90,9 +90,6 @@ function testMethod(str: string | null) {
 
 This is the base class for `List`.
 
-A collection is immutable meaning you cannot modify it once it is created.
-It only provides ways of iterating items and copying items to a new collection
-
 ## Constructors
 
 You can create a new Collection from either a current
@@ -129,7 +126,60 @@ This will return a number greater than or equal to 0.
 
 `myCollection.length;`
 
+### isReadOnly: boolean
+
+> Gets a value indicating whether the `ICollection<T>` is read-only.
+
+This will return true if you cannot change the collection.
+
+```js
+if(myCollection.isReadOnly)
+{
+    setReadOnly(true);
+}
+else
+{
+    setReadOnly(false);
+}
+```
+
+
 ## Methods
+
+### add(obj: any): void
+
+> Adds an item to the List.
+
+```js
+let myList = new List();
+
+myList.add(1);
+```
+
+### clear(): void
+
+> Removes all items from the List.
+
+```js
+let myList = new List([1, 2, 3]);
+
+myList.clear();
+```
+
+### contains(obj: any, isEquivilent?: boolean): boolean
+
+> Returns true if the List contains the item. Setting `isEquivilent` will
+> compare each item as a JSON serilized object.
+
+`isEquivilent` will essentially compare each item as a string. So even if they
+are not the exact same item, by reference, they can be 'equal'.
+
+```js
+let myList = new List([1, 2, 3]);
+
+myList.contains(2); // returns true
+myList.contains(5); // returns false
+```
 
 ### copyTo(into: Collection): void
 
@@ -147,56 +197,14 @@ myCollection.copyTo(myCollection2);
 // the contents of myCollection2 will now be: [-1, 0, 1, 2, 3, 4]
 ```
 
-### forEach(callback: (value: any, index: number) => boolean | void): void
+### remove(obj: any): void
 
-> Iterates over each item in the collection, performing the callback on
-> each item.
-
-Return `false` from your callback to break iteration. You do not have to
-return anything if you do not want to break. You can return `true` to
-continue iteration if required.
+> Removes an item from the List.
 
 ```js
-let myCollection = new Collection([1, 2, 3, 4]);
-let count = 0;
+let myList = new List([1, 2, 3]);
 
-// iterate over each item, if the item is '3' then break.
-myCollection.forEach((value, index) => {
-    if (value === 3) {
-        return false;
-    }
-    count++;
-});
-
-// count will be equal to 2
-```
-
-### item(index: number): any
-
-> Returns the item at the index or throws an exception if the index is
-> out of bounds of the Collection.
-
-`myCollection.item(6);`
-
-### toArray(): []
-
-> Returns the contents of the collection as an array.
-
-`myCollection.toArray();`
-
-## Extension methods
-
-These methods will only work if you have included the module that they are in.
-The module is the first part and the method is the second part in the docs
-below using the pattern `{module}::{method}`
-
-### Enumerator::getEnumerator(): Enumerator
-
-> Returns an Enumerator for a collection.
-
-```js
-let myCollection = new Collection([1, 2, 3, 4]);
-let myCollectionEnumerator = myCollection.getEnumerator();
+myList.remove(1); // will now be [2, 3]
 ```
 
 # utilities/List
@@ -240,78 +248,30 @@ Inherits all properties from Collection.
 
 Inherits all methods from Collection.
 
-### add(obj: any): void
-
-> Adds an item to the List.
-
-```js
-let myList = new List();
-
-myList.add(1);
-```
-
 ### addRange(array: []): void
 
 > Adds a array of items to the end of the List.
 
 ```js
-let myList = new List();
+let myList = new List<number>();
 
 myList.addRange([1, 2, 3]);
 ```
 
-### addRange(collection: Collection): void
+### addRange(enumerable: IEnumerable<T>): void
 
 > Adds a collection of items to the end of the List.
 
 ```js
-let myList = new List();
-let myCollection = new Collection([1, 2, 3]);
+let myList = new List<number>();
+let myCollection = new Collection<number>([1, 2, 3]);
 
 myList.addRange(myCollection);
 ```
 
-### clear(): void
 
-> Removes all items from the List.
 
-```js
-let myList = new List([1, 2, 3]);
-
-myList.clear();
-```
-
-### contains(obj: any, isEquivilent?: boolean): boolean
-
-> Returns true if the List contains the item. Setting `isEquivilent` will
-> compare each item as a JSON serilized object.
-
-`isEquivilent` will essentially compare each item as a string. So even if they
-are not the exact same item, by reference, they can be 'equal'.
-
-```js
-let myList = new List([1, 2, 3]);
-
-myList.contains(2); // returns true
-myList.contains(5); // returns false
-```
-
-### find(obj: any, isEquivilent: boolean = false): any | undefined
-
-> Returns the item if it is in the List or `undefined` if it is not. Setting `isEquivilent` will
-> compare each item as a JSON serilized object.
-
-`isEquivilent` will essentially compare each item as a string. So even if they
-are not the exact same item, by reference, they can be 'equal'.
-
-```js
-let myList = new List([1, 2, 3]);
-
-myList.find(2); // returns 2
-myList.find(5); // returns undefined
-```
-
-### findIndex(obj: any, isEquivilent: boolean = false): number | undefined
+### indexOf(item: T): number | undefined
 
 > Returns the index of an item if it is in the List or `undefined` if it is not.
 > Setting `isEquivilent` will compare each item as a JSON serilized object.
@@ -326,14 +286,14 @@ myList.findIndex(2); // returns 1
 myList.findIndex(5); // returns undefined
 ```
 
-### insertAt(obj: any, index: number): void
+### insert(obj: any, index: number): void
 
 > Inserts an item at the `index` and moves the subsequent items up 1 index.
 
 ```js
 let myList = new List([1, 2, 3]);
 
-myList.insertAt(4, 2); // will now be [1, 2, 4, 3]
+myList.insert(4, 2); // will now be [1, 2, 4, 3]
 ```
 
 ### prepend(obj: any): void
@@ -367,16 +327,6 @@ let myList = new List([1, 2, 3]);
 let myCollection = new Collection([4, 5, 6]);
 
 myList.prependRange(myCollection); // will now be [4, 5, 6, 1, 2, 3]
-```
-
-### remove(obj: any): void
-
-> Removes an item from the List.
-
-```js
-let myList = new List([1, 2, 3]);
-
-myList.remove(1); // will now be [2, 3]
 ```
 
 ### removeAt(index: number): void
@@ -485,9 +435,40 @@ if (myEnumerable.any((i) => i == 2)) {
 
 ### firstOrDefault(): any | null
 
+### forEach(callback: (value: any, index: number) => boolean | void): void
+
+> Iterates over each item in the collection, performing the callback on
+> each item.
+
+Return `false` from your callback to break iteration. You do not have to
+return anything if you do not want to break. You can return `true` to
+continue iteration if required.
+
+```js
+let myCollection = new Collection([1, 2, 3, 4]);
+let count = 0;
+
+// iterate over each item, if the item is '3' then break.
+myCollection.forEach((value, index) => {
+    if (value === 3) {
+        return false;
+    }
+    count++;
+});
+
+// count will be equal to 2
+```
+
 ### groupBy(propertyName: string): Enumerable
 
 ### groupBy(keySelector: (a: any) => any): Enumerable
+
+### item(index: number): any
+
+> Returns the item at the index or throws an exception if the index is
+> out of bounds of the Collection.
+
+`myCollection.item(6);`
 
 ### max(propertyName: string): number
 
@@ -528,6 +509,12 @@ Useful for getting totals of a dataset.
 ### take(count: number): Enumerable
 
 > Returns a Enumerable that subset of the items from 0 to `count`
+
+### toArray(): []
+
+> Returns the contents of the collection as an array.
+
+`myCollection.toArray();`
 
 ### where(predicate: Predicate): Enumerable
 
