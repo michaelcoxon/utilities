@@ -305,7 +305,7 @@ abstract class EnumerableBase<T> implements IEnumerable<T>
     */
     public last(): T;
     public last(predicate: Predicate<T>): T;
-    public last(predicate?: Predicate<T>): T 
+    public last(predicate?: Predicate<T>): T
     {
         // eslint-disable-next-line @typescript-eslint/no-this-alias
         let enumerable: IEnumerable<T> = this;
@@ -1033,7 +1033,7 @@ export class List<T> extends Collection<T> implements IList<T>, ICollection<T>, 
     {
         if (isEquivilent)
         {
-            let index: number | undefined = undefined;
+            let index: number | undefined;
 
             this.forEach((item, i) =>
             {
@@ -1101,7 +1101,7 @@ class EnumerableGroup<T, TKey> extends EnumerableBase<T> implements IEnumerableG
         this.#key = key;
     }
 
-    public get key(): TKey 
+    public get key(): TKey
     {
         return this.#key;
     }
