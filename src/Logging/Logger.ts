@@ -1,8 +1,9 @@
-﻿import { ILogger, ILoggerConfig, LogLevel, testLogVerbosity } from './_types';
+﻿import { ILogger, ILoggerConfig, LogLevel } from './_types';
+import testLogVerbosity from "./testLogVerbosity";
 import { IDisposable } from '../IDisposable';
-import ErrorHelper from "../ErrorHelper";
 import ScopedLogger from "./ScopedLogger";
 import IndentedStringBuilder from "../IO/IndentedStringBuilder";
+import errorToLogMessage from '../errorToLogMessage';
 
 const defaultConfig: ILoggerConfig = {
     loggingVerbosity: LogLevel.Info,
@@ -31,12 +32,12 @@ export default abstract class Logger implements ILogger
         {
             sb.appendLine(msg);
             sb.indent();
-            ErrorHelper.errorToLogMessage(err, sb);
+            errorToLogMessage(err, sb);
             sb.unindent();
         }
         else
         {
-            ErrorHelper.errorToLogMessage(err, sb);
+            errorToLogMessage(err, sb);
         }
         this.log(LogLevel.Debug, sb);
     }
@@ -55,12 +56,12 @@ export default abstract class Logger implements ILogger
         {
             sb.appendLine(msg);
             sb.indent();
-            ErrorHelper.errorToLogMessage(err, sb);
+            errorToLogMessage(err, sb);
             sb.unindent();
         }
         else
         {
-            ErrorHelper.errorToLogMessage(err, sb);
+            errorToLogMessage(err, sb);
         }
         this.log(LogLevel.Error, sb);
     }
@@ -79,12 +80,12 @@ export default abstract class Logger implements ILogger
         {
             sb.appendLine(msg);
             sb.indent();
-            ErrorHelper.errorToLogMessage(err, sb);
+            errorToLogMessage(err, sb);
             sb.unindent();
         }
         else
         {
-            ErrorHelper.errorToLogMessage(err, sb);
+            errorToLogMessage(err, sb);
         }
         this.log(LogLevel.Info, sb);
     }
@@ -103,12 +104,12 @@ export default abstract class Logger implements ILogger
         {
             sb.appendLine(msg);
             sb.indent();
-            ErrorHelper.errorToLogMessage(err, sb);
+            errorToLogMessage(err, sb);
             sb.unindent();
         }
         else
         {
-            ErrorHelper.errorToLogMessage(err, sb);
+            errorToLogMessage(err, sb);
         }
         this.log(LogLevel.Trace, sb);
     }
@@ -127,12 +128,12 @@ export default abstract class Logger implements ILogger
         {
             sb.appendLine(msg);
             sb.indent();
-            ErrorHelper.errorToLogMessage(err, sb);
+            errorToLogMessage(err, sb);
             sb.unindent();
         }
         else
         {
-            ErrorHelper.errorToLogMessage(err, sb);
+            errorToLogMessage(err, sb);
         }
         this.log(LogLevel.Warn, sb);
     }

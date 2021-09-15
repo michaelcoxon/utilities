@@ -1,32 +1,4 @@
 ﻿import { IDisposable } from "../IDisposable";
-import noop from '../Utilities/noop';
-
-let _defaultLogger: ILogger;
-
-_defaultLogger = {
-    debug: noop,
-    debugError: noop,
-    error: noop,
-    errorError: noop,
-    info: noop,
-    infoError: noop,
-    trace: noop,
-    traceError: noop,
-    warn: noop,
-    warnError: noop,
-    scope: (name) => Object.assign({ dispose: noop }, _defaultLogger),
-};
-
-
-export function getDefaultLogger(): ILogger
-{
-    return _defaultLogger;
-}
-
-export function setDefaultLogger(logger: ILogger): void
-{
-    _defaultLogger = logger;
-}
 
 /** The log level. Used for filtering and tagging logging events */
 export enum LogLevel
@@ -42,43 +14,6 @@ export enum LogLevel
     /** Warning. Used to log errors and exceptions that do not break the program but need to be klnown about */
     Warn = "WARN",
 }
-/**
- * Returns true if the desired log level is valid for the currently configured logging verbosity
- * @param desiredLevel The log level you want to log at
- * @param loggingVerbosity The cut off for when logging should be hidden
- */
-export function testLogVerbosity(desiredLevel: LogLevel, loggingVerbosity: LogLevel): boolean
-{
-    const isError = desiredLevel === LogLevel.Error;
-    const isWarn = desiredLevel === LogLevel.Warn;
-    const isInfo = desiredLevel === LogLevel.Info;
-    const isTrace = desiredLevel === LogLevel.Trace;
-    const isDebug = desiredLevel === LogLevel.Debug;
-
-    return loggingVerbosity === LogLevel.Error && isError
-        || loggingVerbosity === LogLevel.Warn && (isError || isWarn)
-        || loggingVerbosity === LogLevel.Info && (isError || isWarn || isInfo)
-        || loggingVerbosity === LogLevel.Trace && (isError || isWarn || isInfo || isTrace)
-        || loggingVerbosity === LogLevel.Debug && (isError || isWarn || isInfo || isTrace || isDebug);
-}
-
-/**
- * Decorator for setting the logger scope of an ILogger instance
- * @param name
- */
-export function loggerScope(name: string): (target: Record<string, any>, key: string) => void
-{
-    return (target: Record<string, any>, key: string) =>
-    {
-        const logger = target[key] as ILogger;
-        if (!logger)
-        {
-            throw "logger is no set yet";
-        }
-        target[key] = logger.scope(name);
-    };
-}
-
 /** ILogger interface for all logging implementations */
 export interface ILogger
 {

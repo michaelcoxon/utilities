@@ -1,5 +1,4 @@
-﻿import { assert } from 'console';
-import { Collection, Exception } from '../../src';
+﻿import { Collection, Exception } from '../../src';
 
 describe("Collection.constructor", () =>
 {

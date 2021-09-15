@@ -1,4 +1,4 @@
-﻿import { arg, Guid } from '../src';
+﻿import { arg, Guid } from '../../src';
 
 describe("Ensure a Guid isNotNull", () =>
 {

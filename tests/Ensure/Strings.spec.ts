@@ -1,4 +1,4 @@
-﻿import { arg } from '../src';
+﻿import { arg } from '../../src';
 
 describe("Ensure a string isNotNull", () =>
 {

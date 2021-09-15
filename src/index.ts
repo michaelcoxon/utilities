@@ -1,7 +1,8 @@
+// modules
 export * from "./IDisposable";
-
-
+export * from "./Arrays";
 export * from "./Assertions";
+export * from "./Booleans";
 export * from "./Cache";
 export * from "./Configuration";
 export * from "./Exceptions";
@@ -20,10 +21,8 @@ export * from "./TypeHelpers";
 export * from "./Url";
 export * from "./Utilities";
 
+// single classes
 export { default as AggregateDisposable } from "./AggregateDisposable";
-export { default as Arrays } from "./Arrays";
-export { default as Booleans } from "./Booleans";
-export { default as ErrorHelper } from "./ErrorHelper";
 export { default as Event } from "./Event";
 export { default as Guid } from "./Guid";
 export { default as Lazy } from "./Lazy";
@@ -32,6 +31,11 @@ export { default as SingleInvokeEvent } from "./SingleInvokeEvent";
 //export * from "./Timer";
 export * from "./Types";
 
+//collections
 export * from './Enumerables';
 export * from './Comparers';
 export * from './Enumerators';
+
+// utility functions
+export {default as errorToLogMessage } from './errorToLogMessage';
+export {default as serializeError } from './serializeError';

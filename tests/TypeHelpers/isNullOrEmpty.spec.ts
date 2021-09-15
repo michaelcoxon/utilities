@@ -1,4 +1,4 @@
-import { isNullOrEmpty } from '../../src';
+import { isNullOrEmpty, List } from '../../src';
 
 describe("isNullOrEmpty", () =>
 {
@@ -36,5 +36,18 @@ describe("isNullOrEmpty (Array)", () =>
     it("should return false if the array is valid", () =>
     {
         expect(isNullOrEmpty(['a'])).toEqual(false);
+    });
+});
+
+describe("isNullOrEmpty (Enumerable)", () =>
+{
+    it("should return true if the Enumerable is empty", () =>
+    {
+        expect(isNullOrEmpty(new List())).toEqual(true);
+    });
+
+    it("should return false if the Enumerable is valid", () =>
+    {
+        expect(isNullOrEmpty(new List(['a']))).toEqual(false);
     });
 });

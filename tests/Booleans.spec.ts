@@ -1,11 +1,11 @@
-import Booleans from '../src/Booleans';
+import { falseString, trueString } from '../src/Booleans/_consts';
 
 
 describe("Booleans consts", () =>
 {
     it("trueString", () =>
     {
-        const actual = Booleans.trueString;
+        const actual = trueString;
         const expected = true.toString();
 
         expect(actual).toEqual(expected);
@@ -13,7 +13,7 @@ describe("Booleans consts", () =>
 
     it("falseString", () =>
     {
-        const actual = Booleans.falseString;
+        const actual = falseString;
         const expected = false.toString();
 
         expect(actual).toEqual(expected);

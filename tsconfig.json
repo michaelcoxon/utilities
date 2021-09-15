@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "noImplicitAny": false,
-    "module": "esnext",
+    "module": "ES2015",
     "moduleResolution": "node",
     "noEmitOnError": true,
     "noEmitHelpers": true,
@@ -16,7 +16,7 @@
       "esnext",
       "dom"
     ],
-    "target": "es2015",
+    "target": "ES2015",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "pretty": true,
@@ -26,12 +26,6 @@
     "declarationDir": "./lib",
   },
   "compileOnSave": true,
-  "awesomeTypescriptLoaderOptions": {
-    "useWebpackText": true,
-    "useTranspileModule": true,
-    "doTypeCheck": true,
-    "forkChecker": true
-  },
   "include": [
     "./src/**/*"
   ],
