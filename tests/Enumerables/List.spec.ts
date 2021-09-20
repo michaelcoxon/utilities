@@ -1,4 +1,5 @@
-﻿import { Collection, List } from '../../src/Enumerables';
+﻿import CustomComparer from '../../src/Comparers/CustomComparer';
+import { Collection, List } from '../../src/Enumerables';
 
 describe("List.constructor", () =>
 {

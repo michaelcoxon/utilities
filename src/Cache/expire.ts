@@ -1,4 +1,3 @@
-import { Predicate } from '..';
 import { IExpiryPolicyDelegate } from './_types';
 
 
@@ -7,72 +6,85 @@ export default function expire<T>(): IExpiryPolicyDelegate<T>
     return () => true;
 }
 
+expire.when = expireWhen;
+expire.at = expireAt;
+expire.in = expireIn;
+expire.now = expireNow;
+expire.tomorrow = expireTomorrow;
+expire.inSeconds = expireInSeconds;
+expire.inMinutes = expireInMinutes;
+expire.inHours = expireInHours;
+expire.inDays = expireInDays;
+expire.inMonths = expireInMonths;
+expire.inYears = expireInYears;
 
-expire.at = function (date: Date) 
-{
-    return expire.when(() => date > new Date());
-};
 
-expire.in = function (time: number)
-{
-    const expires = new Date();
-    expires.setTime(expires.getTime() + time);
-    return expire.when(() => expires > new Date());
-};
-
-expire.now = function ()
-{
-    return expire.when(() => true);
-};
-
-expire.when = function <T>(predicate: IExpiryPolicyDelegate<T>)
+function expireWhen<T>(predicate: IExpiryPolicyDelegate<T>)
 {
     return predicate;
 };
 
-expire.tomorrow = function ()
+function expireAt(date: Date) 
 {
-    return expire.inDays(1);
+    return expireWhen(() => date <= new Date());
 };
 
-expire.inSeconds = function (time: number)
+function expireIn(time: number)
 {
     const expires = new Date();
-    expires.setSeconds(expires.getSeconds() + time);
-    return expire.when(() => expires < new Date());
+    expires.setTime(expires.getTime() + time);
+    return expireAt(expires);
 };
 
-expire.inMinutes = function (time: number)
+function expireNow()
 {
-    const expires = new Date();
-    expires.setMinutes(expires.getMinutes() + time);
-    return expire.when(() => expires < new Date());
+    return expireWhen(() => true);
 };
 
-expire.inHours = function (time: number)
+
+function expireTomorrow()
 {
-    const expires = new Date();
-    expires.setHours(expires.getHours() + time);
-    return expire.when(() => expires < new Date());
+    return expireInDays(1);
 };
 
-expire.inDays = function (time: number)
+function expireInSeconds(seconds: number)
 {
     const expires = new Date();
-    expires.setDate(expires.getDate() + time);
-    return expire.when(() => expires < new Date());
+    expires.setSeconds(expires.getSeconds() + seconds);
+    return expireAt(expires);
 };
 
-expire.inMonths = function (time: number)
+function expireInMinutes(minutes: number)
 {
     const expires = new Date();
-    expires.setMonth(expires.getMonth() + time);
-    return expire.when(() => expires < new Date());
+    expires.setMinutes(expires.getMinutes() + minutes);
+    return expireAt(expires);
 };
 
-expire.inYears = function (time: number)
+function expireInHours(hours: number)
 {
     const expires = new Date();
-    expires.setFullYear(expires.getFullYear() + time);
-    return expire.when(() => expires < new Date());
+    expires.setHours(expires.getHours() + hours);
+    return expireAt(expires);
+};
+
+function expireInDays(days: number)
+{
+    const expires = new Date();
+    expires.setDate(expires.getDate() + days);
+    return expireAt(expires);
+};
+
+function expireInMonths(months: number)
+{
+    const expires = new Date();
+    expires.setMonth(expires.getMonth() + months);
+    return expireAt(expires);
+};
+
+function expireInYears(years: number)
+{
+    const expires = new Date();
+    expires.setFullYear(expires.getFullYear() + years);
+    return expireAt(expires);
 };
