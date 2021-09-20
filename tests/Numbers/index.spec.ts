@@ -1,4 +1,4 @@
-import { Int32 } from '../../src';
+import Int32 from '../../src/Numbers/Integers/Int32';
 
 interface IComplexObject
 {

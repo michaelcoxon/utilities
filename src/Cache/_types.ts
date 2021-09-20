@@ -4,7 +4,7 @@
  * A function that returns true if the value is expired.
  * @argument value the value to evaluate.
  */
-export type IExpiryPolicyDelegate<T> = (value: IAsyncCacheItem<T>) => boolean;
+export type IExpiryPolicyDelegate<T, TAsyncCacheItem = IAsyncCacheItem<T>> = (value: TAsyncCacheItem) => boolean;
 
 
 export interface IAsyncCacheItem<T>
@@ -23,3 +23,4 @@ export interface ICache<TKey>
     tryGetAsync<T>(key: TKey): Promise<{ success: boolean, value?: Promise<T>; }>;
     replace<T>(key: TKey, value: Awaitable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): void;
 }
+

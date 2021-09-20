@@ -1,4 +1,5 @@
-﻿import { DefaultComparers, MapComparer } from '../../src';
+﻿import DefaultComparers from '../../src/Comparers/DefaultComparers';
+import MapComparer from '../../src/Comparers/MapComparer';
 import testComparer from '../TestHelpers/testComparer';
 
 interface ITestObject

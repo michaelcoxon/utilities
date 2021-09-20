@@ -1,4 +1,5 @@
-import { Byte, INumberValue } from '../../src';
+import Byte from '../../src/Numbers/Integers/Byte';
+import { INumberValue } from '../../src/Numbers/Integers/Integers.types';
 
 describe("Integers.MinMax", () => {
     function test(value: INumberValue, minValue?: number, maxValue?: number) {

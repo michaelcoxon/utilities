@@ -1,4 +1,4 @@
-﻿import { CaseInsensitiveStringComparer } from '../../src';
+﻿import CaseInsensitiveStringComparer from '../../src/Comparers/CaseInsensitiveStringComparer';
 
 describe("CaseInsensitiveStringComparer.compare", () =>
 {

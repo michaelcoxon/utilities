@@ -1,4 +1,5 @@
-import { IndentedStringBuilder, empty } from '../../src';
+import IndentedStringBuilder from '../../src/IO/IndentedStringBuilder';
+import { empty } from '../../src/Strings';
 
 describe("IndentedStringBuilder.constructor", () =>
 {

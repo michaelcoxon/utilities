@@ -1,1 +1,1 @@
-export type ConfigValue = Record<string, any> | any
+export type ConfigValue = any[] | Record<string, any> | string | number | boolean;

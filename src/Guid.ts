@@ -1,7 +1,8 @@
-﻿import UnsignedInt32 from "./Integers/UnsignedInt32";
-import UnsignedInt16 from "./Integers/UnsignedInt16";
-import Byte from "./Integers/Byte";
+﻿import UnsignedInt32 from './Numbers/Integers/UnsignedInt32';
+import UnsignedInt16 from './Numbers/Integers/UnsignedInt16';
+import Byte from './Numbers/Integers/Byte';
 import padLeft from './Strings/padLeft';
+import StringBuilder from './IO/StringBuilder';
 
 const PARSE_FILTER_REGEX = /[-{}[\]]/gi;
 
@@ -54,17 +55,25 @@ export default class Guid
     /** Returns the Guid as a hypen-separated string without curly braces. */
     public toString(): string
     {
-        return padLeft((this.#a.valueOf() >>> 0).toString(16), 8, '0') + '-' +
-            padLeft((this.#b.valueOf() >>> 0).toString(16), 4, '0') + '-' +
-            padLeft((this.#c.valueOf() >>> 0).toString(16), 4, '0') + '-' +
-            padLeft((this.#d.valueOf() >>> 0).toString(16), 2, '0') +
-            padLeft((this.#e.valueOf() >>> 0).toString(16), 2, '0') + '-' +
-            padLeft((this.#f.valueOf() >>> 0).toString(16), 2, '0') +
-            padLeft((this.#g.valueOf() >>> 0).toString(16), 2, '0') +
-            padLeft((this.#h.valueOf() >>> 0).toString(16), 2, '0') +
-            padLeft((this.#i.valueOf() >>> 0).toString(16), 2, '0') +
-            padLeft((this.#j.valueOf() >>> 0).toString(16), 2, '0') +
-            padLeft((this.#k.valueOf() >>> 0).toString(16), 2, '0');
+        const sb = new StringBuilder();
+
+        sb.append(padLeft((this.#a.valueOf() >>> 0).toString(16), 8, '0'));
+        sb.append('-');
+        sb.append(padLeft((this.#b.valueOf() >>> 0).toString(16), 4, '0'));
+        sb.append('-');
+        sb.append(padLeft((this.#c.valueOf() >>> 0).toString(16), 4, '0'));
+        sb.append('-');
+        sb.append(padLeft((this.#d.valueOf() >>> 0).toString(16), 2, '0'));
+        sb.append(padLeft((this.#e.valueOf() >>> 0).toString(16), 2, '0'));
+        sb.append('-');
+        sb.append(padLeft((this.#f.valueOf() >>> 0).toString(16), 2, '0'));
+        sb.append(padLeft((this.#g.valueOf() >>> 0).toString(16), 2, '0'));
+        sb.append(padLeft((this.#h.valueOf() >>> 0).toString(16), 2, '0'));
+        sb.append(padLeft((this.#i.valueOf() >>> 0).toString(16), 2, '0'));
+        sb.append(padLeft((this.#j.valueOf() >>> 0).toString(16), 2, '0'));
+        sb.append(padLeft((this.#k.valueOf() >>> 0).toString(16), 2, '0'));
+
+        return sb.toString();
     }
 
     /** Returns the Guid as a hypen-separated string without curly braces. */
@@ -140,7 +149,7 @@ function randomInt32(): UnsignedInt32
 {
     return new UnsignedInt32(randomNumber(UnsignedInt32.minValue.valueOf(), UnsignedInt32.maxValue.valueOf()));
 }
-
+// TODO: This can be better
 function randomNumber(min: number, max: number): number
 {
     const rand = Math.random();

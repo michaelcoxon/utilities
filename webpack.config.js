@@ -1,6 +1,5 @@
-/// <binding />
+
 const path = require('path');
-const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const bundleOutputDir = './dist';
 const libDir = 'lib';
 const libraryName = 'utilities';
@@ -23,9 +22,6 @@ module.exports = () =>
             libraryTarget: 'umd',
             globalObject: 'this'
         },
-        externals: [
-          //  /^tslib.*$/
-        ],
         module: {
             rules: [
                 {
@@ -36,8 +32,6 @@ module.exports = () =>
         },
 
         plugins: [
-            new CheckerPlugin(),
-            //new StringExtractorPlugin(),
             ...(isDevBuild
                 ?
                 [

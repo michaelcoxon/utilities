@@ -1,4 +1,5 @@
-﻿import { getDefaultLogger, ArrayEnumerable, Enumerable } from '../../src';
+﻿import { ArrayEnumerable, Enumerable } from '../../src/Enumerables';
+import { getDefaultLogger } from '../../src/Logging/defaultLogger';
 
 /*
 setDefaultLogger(new ConsoleLogger(console, {

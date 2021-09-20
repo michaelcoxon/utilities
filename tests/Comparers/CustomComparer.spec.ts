@@ -1,4 +1,4 @@
-﻿import { CustomComparer } from '../../src';
+﻿import CustomComparer from '../../src/Comparers/CustomComparer';
 import testComparer from '../TestHelpers/testComparer';
 
 const numberComparer = (x: number, y: number) => x - y;

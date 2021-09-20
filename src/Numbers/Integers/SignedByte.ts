@@ -1,23 +1,23 @@
-import Exception from '../Exceptions/Exception';
-import Result, { IResult } from "../Result";
+import Exception from '../../Exceptions/Exception';
+import Result, { IResult } from "../../Result";
 import { INumberValue } from './Integers.types';
 import { ensureInt } from "./ensureInt";
 
 
-export default class UnsignedInt16  extends Number implements INumberValue
+export default class SignedByte extends Number  implements INumberValue
 {
-    /** The largest number that can be represented. Equal to 65,535. */
-    public static readonly maxValue: number = 65535;
+    /** The largest number that can be represented. Equal to 127. */
+    public static readonly maxValue: number = 127;
 
-    /** The lowest number that can be represented. Equal to 0. */
-    public static readonly minValue: number = 0;
+    /** The lowest number that can be represented. Equal to -127. */
+    public static readonly minValue: number = -127;
 
     readonly #value: number;
 
     constructor(value: number)
     {
         super(value);
-        ensureInt(value, UnsignedInt16.minValue, UnsignedInt16.maxValue);
+        ensureInt(value, SignedByte.minValue, SignedByte.maxValue);
         this.#value = value;
     }
         
@@ -28,7 +28,7 @@ export default class UnsignedInt16  extends Number implements INumberValue
 
     public valueOf(): number
     {
-        return this.#value.valueOf() & 0xFFFF;
+        return this.#value.valueOf() & 0x7F;
     }
 
     public toString(): string
@@ -36,19 +36,19 @@ export default class UnsignedInt16  extends Number implements INumberValue
         return this.valueOf().toString();
     }
 
-    public static parse(value: string): UnsignedInt16
+    public static parse(value: string): SignedByte
     {
         const int = parseInt(value);
-        return new UnsignedInt16(int);
+        return new SignedByte(int);
     }
 
-    public static tryParse(value: string): IResult<UnsignedInt16>
+    public static tryParse(value: string): IResult<SignedByte>
     {
         const int = parseInt(value);
         try
         {
-            ensureInt(int, UnsignedInt16.minValue, UnsignedInt16.maxValue);
-            return Result.ok(new UnsignedInt16(int));
+            ensureInt(int, SignedByte.minValue, SignedByte.maxValue);
+            return Result.ok(new SignedByte(int));
         }
         catch (ex)
         {

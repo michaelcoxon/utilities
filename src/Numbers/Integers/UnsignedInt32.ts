@@ -1,15 +1,13 @@
-import Exception from '../Exceptions/Exception';
-import Result, { IResult } from "../Result";
+import Exception from '../../Exceptions/Exception';
+import Result, { IResult } from "../../Result";
 import { INumberValue } from './Integers.types';
 import { ensureInt } from "./ensureInt";
 
-/**
- * Represents an unsigned 8-bit integer. 
- */
-export default class Byte extends Number  implements INumberValue
+
+export default class UnsignedInt32 extends Number  implements INumberValue
 {
-    /** The largest number that can be represented. Equal to 255. */
-    public static readonly maxValue: number = 255;
+    /** The largest number that can be represented. Equal to 4,294,967,295. */
+    public static readonly maxValue: number = 4294967295;
 
     /** The lowest number that can be represented. Equal to 0. */
     public static readonly minValue: number = 0;
@@ -19,7 +17,7 @@ export default class Byte extends Number  implements INumberValue
     constructor(value: number)
     {
         super(value);
-        ensureInt(value, Byte.minValue, Byte.maxValue);
+        ensureInt(value, UnsignedInt32.minValue, UnsignedInt32.maxValue);
         this.#value = value;
     }
         
@@ -30,7 +28,7 @@ export default class Byte extends Number  implements INumberValue
 
     public valueOf(): number
     {
-        return this.#value.valueOf() & 0xFF;
+        return this.#value.valueOf() & 0xFFFFFFFF;
     }
 
     public toString(): string
@@ -38,19 +36,19 @@ export default class Byte extends Number  implements INumberValue
         return this.valueOf().toString();
     }
 
-    public static parse(value: string): Byte
+    public static parse(value: string): UnsignedInt32
     {
         const int = parseInt(value);
-        return new Byte(int);
+        return new UnsignedInt32(int);
     }
 
-    public static tryParse(value: string): IResult<Byte>
+    public static tryParse(value: string): IResult<UnsignedInt32>
     {
         const int = parseInt(value);
         try
         {
-            ensureInt(int, Byte.minValue, Byte.maxValue);
-            return Result.ok(new Byte(int));
+            ensureInt(int, UnsignedInt32.minValue, UnsignedInt32.maxValue);
+            return Result.ok(new UnsignedInt32(int));
         }
         catch (ex)
         {
@@ -62,6 +60,7 @@ export default class Byte extends Number  implements INumberValue
             {
                 return Result.fail(ex.message);
             }
+
             else
             {
                 return Result.fail(`${ex}`);

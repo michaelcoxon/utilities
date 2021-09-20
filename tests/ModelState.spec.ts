@@ -1,7 +1,6 @@
-﻿import ModelState from '../src/ModelState/ModelState';
-import FactoryModelState from "../src/ModelState/FactoryModelState";
-import { isUndefinedOrNull } from '../src/TypeHelpers';
-
+﻿import FactoryModelState from '../src/ModelState/FactoryModelState';
+import ModelState from '../src/ModelState/ModelState';
+import isUndefinedOrNull from '../src/TypeHelpers/isUndefinedOrNull';
 
 describe("FactoryModelState.construct", () =>
 {

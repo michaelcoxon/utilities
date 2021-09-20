@@ -4,7 +4,7 @@ import { ConfigValue } from './Json.types';
 
 export default class JsonConfiguration implements IConfiguration
 {
-    readonly #root: IConfigurationSection;
+    readonly #root: JsonConfigurationSection;
 
     constructor(source: Record<string, ConfigValue>)
     {

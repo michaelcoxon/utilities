@@ -8,7 +8,6 @@ export * from "./Configuration";
 export * from "./Exceptions";
 export * from "./Ensure";
 export * from "./Formatters";
-export * from "./Integers";
 export * from "./IO";
 export * from "./Logging";
 export * from "./ModelState";

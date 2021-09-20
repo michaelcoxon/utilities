@@ -4,7 +4,9 @@ import { IAsyncCacheItem, ICache, IExpiryPolicyDelegate } from './_types';
 import AsyncCacheItem from './AsyncCacheItem';
 import { Awaitable } from '../Types';
 
-
+/**
+ * Creates an in-memory cache. This cache will be forgotten on disposal.
+ */
 export default class MemoryCache<TKey = string> implements ICache<TKey>
 {
     readonly #internalCache: Map<TKey, IAsyncCacheItem<any>>;

@@ -1,4 +1,4 @@
-﻿import { DefaultComparers } from '../../src';
+﻿import DefaultComparers from '../../src/Comparers/DefaultComparers';
 import testComparer from '../TestHelpers/testComparer';
 
 const createComparer = () => DefaultComparers.NumberComparer;

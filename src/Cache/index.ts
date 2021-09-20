@@ -1,4 +1,5 @@
 export * from './_types';
-export * as AsyncCacheItem from './AsyncCacheItem';
-export * as CacheExpiredException from './CacheExpiredException';
-export * as MemoryCache from './MemoryCache';
+export { default as expire } from './expire';
+export { default as AsyncCacheItem } from './AsyncCacheItem';
+export { default as CacheExpiredException } from './CacheExpiredException';
+export { default as MemoryCache } from './MemoryCache';

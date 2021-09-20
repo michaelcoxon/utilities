@@ -1,16 +1,24 @@
 import { Awaitable } from '../Types';
 import { IAsyncCacheItem, IExpiryPolicyDelegate } from './_types';
 import CacheExpiredException from './CacheExpiredException';
+import { isFunction } from '..';
 
 
 export default class AsyncCacheItem<T> implements IAsyncCacheItem<T>
 {
     readonly #promiseOrValue: Awaitable<T>;
-    readonly #expiryPolicy: IExpiryPolicyDelegate<T>;
+    readonly #expiryPolicy: IExpiryPolicyDelegate<T, AsyncCacheItem<T>>;
 
-    constructor(promiseOrValue: Awaitable<T>, expiryPolicy: IExpiryPolicyDelegate<T>)
+    constructor(promiseOrValueOrFactory: Awaitable<T> | (() => Awaitable<T>), expiryPolicy: IExpiryPolicyDelegate<T, AsyncCacheItem<T>>)
     {
-        this.#promiseOrValue = promiseOrValue;
+        if (isFunction(promiseOrValueOrFactory))
+        {
+            this.#promiseOrValue = promiseOrValueOrFactory();
+        }
+        else
+        {
+            this.#promiseOrValue = promiseOrValueOrFactory;
+        }
         this.#expiryPolicy = expiryPolicy;
     }
 

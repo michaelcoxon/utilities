@@ -1,4 +1,4 @@
-﻿import Mutex, { ILock, lockAsync } from '../src/Mutex';
+﻿import Mutex, { lockAsync } from '../src/Mutex';
 describe("Mutex.acquire", () =>
 {
     it("should populate list with [1,3,2,4,5]", async () =>

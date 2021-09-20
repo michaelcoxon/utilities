@@ -1,4 +1,6 @@
-﻿import { AggregateEnumerator, Collection, isNumber } from '../../src';
+﻿import { Collection } from '../../src/Enumerables';
+import AggregateEnumerator from '../../src/Enumerators/AggregateEnumerator';
+import isNumber from '../../src/TypeHelpers/isNumber';
 
 describe("AggregateEnumerator.constructor", () =>
 {

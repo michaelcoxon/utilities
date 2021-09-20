@@ -1,11 +1,13 @@
 import { empty, newLine } from '../Strings/_consts';
 import { Undefinable } from '../Types';
+import { IIndentedStringBuilder } from './_types';
+
 
 /**
  * Class for building strings that will only concatenate them upon calling toString().
  */
 
-export default class IndentedStringBuilder
+export default class IndentedStringBuilder implements IIndentedStringBuilder
 {
     readonly #strings: { indent: number; value: string; }[];
 

@@ -1,4 +1,7 @@
-import { average, sequenceEqual, range, sum } from '../src';
+import average from '../src/Arrays/average';
+import range from '../src/Arrays/range';
+import sequenceEqual from '../src/Arrays/sequenceEqual';
+import sum from '../src/Arrays/sum';
 
 describe("Arrays.average", () =>
 {

@@ -8,19 +8,24 @@ import { ConfigValue } from './Json.types';
 
 export default class JsonConfigurationSection implements IConfigurationSection
 {
-    readonly #source: Record<string, any>;
+    readonly #source: Record<string, ConfigValue>;
 
-    constructor(source: Record<string, any>)
+    constructor(source: Record<string, ConfigValue>)
     {
         this.#source = source;
     }
 
     getSection(key: string): IConfigurationSection
     {
+        if (isNullOrEmpty(key))
+        {
+            return this;
+        }
+
         const keys = parseKey(key);
 
         let i = 0;
-        let result = this.#source;
+        let result: Record<string, any> = this.#source;
 
         while (i < keys.length)
         {
@@ -36,20 +41,20 @@ export default class JsonConfigurationSection implements IConfigurationSection
         return new JsonConfigurationSection(result);
     }
 
-    get<T = ConfigValue>(): Undefinable<T>;
-    get<T = ConfigValue>(key: string): Undefinable<T>;
-    get<T = ConfigValue>(key?: string): Undefinable<T>
+    get<T extends ConfigValue>(): Undefinable<T>;
+    get<T extends ConfigValue>(key: string): Undefinable<T>;
+    get<T extends ConfigValue>(key?: string): Undefinable<T>
     {
         if (isNullOrEmpty(key))
         {
-            return this.#source as T;
+            return this.#source as any;
         }
         else
         {
             const keys = parseKey(key);
 
             let i = 0;
-            let result = this.#source;
+            let result: Record<string, any> = this.#source;
 
             while (i < keys.length)
             {
@@ -61,12 +66,13 @@ export default class JsonConfigurationSection implements IConfigurationSection
                 }
                 else
                 {
-                    return result as T;
+                    return value;
                 }
 
                 i++;
             }
-        }
-    }
 
+            return result as any;
+        } 
+    }
 }

@@ -1,5 +1,9 @@
-﻿import Path from '../src/IO/Path';
-
+﻿import combine from '../../src/IO/Path/combine';
+import getDirectory from '../../src/IO/Path/getDirectory';
+import getExtension from '../../src/IO/Path/getExtension';
+import getFileName from '../../src/IO/Path/getFileName';
+import getFileNameWithoutExtension from '../../src/IO/Path/getFileNameWithoutExtension';
+import toFriendlyUrl from '../../src/IO/Path/toFriendlyUrl';
 
 describe("Path.combine", () =>
 {
@@ -7,7 +11,7 @@ describe("Path.combine", () =>
     {
         const components = ["path", "to", "file"];
         const expected = "path/to/file";
-        const actual = Path.combine(...components);
+        const actual = combine(...components);
 
         expect(actual).toEqual(expected);
     });
@@ -16,7 +20,7 @@ describe("Path.combine", () =>
     {
         const components = ["https://www.example.com", "path", "to", "file"];
         const expected = "https://www.example.com/path/to/file";
-        const actual = Path.combine(...components);
+        const actual = combine(...components);
 
         expect(actual).toEqual(expected);
     });
@@ -25,7 +29,7 @@ describe("Path.combine", () =>
     {
         const components = ["C:\\", "path", "to", "file"];
         const expected = "C:\\path\\to\\file";
-        const actual = Path.combine(...components);
+        const actual = combine(...components);
 
         expect(actual).toEqual(expected);
     });
@@ -34,7 +38,7 @@ describe("Path.combine", () =>
     {
         const components = ["/path", "to", "file"];
         const expected = "/path/to/file";
-        const actual = Path.combine(...components);
+        const actual = combine(...components);
 
         expect(actual).toEqual(expected);
     });
@@ -43,7 +47,7 @@ describe("Path.combine", () =>
     {
         const components = ["/", "path", "to", "file"];
         const expected = "/path/to/file";
-        const actual = Path.combine(...components);
+        const actual = combine(...components);
 
         expect(actual).toEqual(expected);
     });
@@ -55,7 +59,7 @@ describe("Path.getFileName", () =>
     {
         const subject = "path/to/file";
         const expected = "file";
-        const actual = Path.getFileName(subject);
+        const actual = getFileName(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -64,7 +68,7 @@ describe("Path.getFileName", () =>
     {
         const subject = "https://www.example.com/path/to/file";
         const expected = "file";
-        const actual = Path.getFileName(subject);
+        const actual = getFileName(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -73,7 +77,7 @@ describe("Path.getFileName", () =>
     {
         const subject = "C:\\path\\to\\file";
         const expected = "file";
-        const actual = Path.getFileName(subject);
+        const actual = getFileName(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -82,7 +86,7 @@ describe("Path.getFileName", () =>
     {
         const subject = "/path/to/file";
         const expected = "file";
-        const actual = Path.getFileName(subject);
+        const actual = getFileName(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -95,7 +99,7 @@ describe("Path.getDirectory", () =>
     {
         const subject = "path/to/file";
         const expected = "path/to/";
-        const actual = Path.getDirectory(subject);
+        const actual = getDirectory(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -104,7 +108,7 @@ describe("Path.getDirectory", () =>
     {
         const subject = "https://www.example.com/path/to/file";
         const expected = "https://www.example.com/path/to/";
-        const actual = Path.getDirectory(subject);
+        const actual = getDirectory(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -113,7 +117,7 @@ describe("Path.getDirectory", () =>
     {
         const subject = "C:\\path\\to\\file";
         const expected = "C:\\path\\to\\";
-        const actual = Path.getDirectory(subject);
+        const actual = getDirectory(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -122,7 +126,7 @@ describe("Path.getDirectory", () =>
     {
         const subject = "/path/to/file";
         const expected = "/path/to/";
-        const actual = Path.getDirectory(subject);
+        const actual = getDirectory(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -135,7 +139,7 @@ describe("Path.getExtension", () =>
     {
         const subject = "path/to/file.txt";
         const expected = ".txt";
-        const actual = Path.getExtension(subject);
+        const actual = getExtension(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -144,7 +148,7 @@ describe("Path.getExtension", () =>
     {
         const subject = "https://www.example.com/path/to/file.txt";
         const expected = ".txt";
-        const actual = Path.getExtension(subject);
+        const actual = getExtension(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -153,7 +157,7 @@ describe("Path.getExtension", () =>
     {
         const subject = "C:\\path\\to\\file.txt";
         const expected = ".txt";
-        const actual = Path.getExtension(subject);
+        const actual = getExtension(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -162,7 +166,7 @@ describe("Path.getExtension", () =>
     {
         const subject = "/path/to/file.txt";
         const expected = ".txt";
-        const actual = Path.getExtension(subject);
+        const actual = getExtension(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -171,7 +175,7 @@ describe("Path.getExtension", () =>
     {
         const subject = "/path/to/file";
         const expected = "";
-        const actual = Path.getExtension(subject);
+        const actual = getExtension(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -183,7 +187,7 @@ describe("Path.getFileNameWithoutExtension", () =>
     {
         const subject = "path/to/file.txt";
         const expected = "file";
-        const actual = Path.getFileNameWithoutExtension(subject);
+        const actual = getFileNameWithoutExtension(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -192,7 +196,7 @@ describe("Path.getFileNameWithoutExtension", () =>
     {
         const subject = "https://www.example.com/path/to/file.txt";
         const expected = "file";
-        const actual = Path.getFileNameWithoutExtension(subject);
+        const actual = getFileNameWithoutExtension(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -201,7 +205,7 @@ describe("Path.getFileNameWithoutExtension", () =>
     {
         const subject = "C:\\path\\to\\file.txt";
         const expected = "file";
-        const actual = Path.getFileNameWithoutExtension(subject);
+        const actual = getFileNameWithoutExtension(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -210,7 +214,7 @@ describe("Path.getFileNameWithoutExtension", () =>
     {
         const subject = "/path/to/file.txt";
         const expected = "file";
-        const actual = Path.getFileNameWithoutExtension(subject);
+        const actual = getFileNameWithoutExtension(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -219,7 +223,7 @@ describe("Path.getFileNameWithoutExtension", () =>
     {
         const subject = "/path/to/file";
         const expected = "file";
-        const actual = Path.getFileNameWithoutExtension(subject);
+        const actual = getFileNameWithoutExtension(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -231,7 +235,7 @@ describe("Path.toFriendlyUrl", () =>
     {
         const subject = "This Is My Title";
         const expected = "this-is-my-title";
-        const actual = Path.toFriendlyUrl(subject);
+        const actual = toFriendlyUrl(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -240,7 +244,7 @@ describe("Path.toFriendlyUrl", () =>
     {
         const subject = "This Is My Title & stUff";
         const expected = "this-is-my-title-and-stuff";
-        const actual = Path.toFriendlyUrl(subject);
+        const actual = toFriendlyUrl(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -249,7 +253,7 @@ describe("Path.toFriendlyUrl", () =>
     {
         const subject = "This Is My Title @stUff";
         const expected = "this-is-my-title-at-stuff";
-        const actual = Path.toFriendlyUrl(subject);
+        const actual = toFriendlyUrl(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -258,7 +262,7 @@ describe("Path.toFriendlyUrl", () =>
     {
         const subject = "/*+-This Is My Title & stUff";
         const expected = "this-is-my-title-and-stuff";
-        const actual = Path.toFriendlyUrl(subject);
+        const actual = toFriendlyUrl(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -267,7 +271,7 @@ describe("Path.toFriendlyUrl", () =>
     {
         const subject = "This Is My Title & stUff/*+-";
         const expected = "this-is-my-title-and-stuff";
-        const actual = Path.toFriendlyUrl(subject);
+        const actual = toFriendlyUrl(subject);
 
         expect(actual).toEqual(expected);
     });
@@ -276,7 +280,7 @@ describe("Path.toFriendlyUrl", () =>
     {
         const subject = "/*+-This Is My Title & stUff";
         const expected = "-this-is-my-title-and-stuff";
-        const actual = Path.toFriendlyUrl(subject, true);
+        const actual = toFriendlyUrl(subject, true);
 
         expect(actual).toEqual(expected);
     });
@@ -285,7 +289,7 @@ describe("Path.toFriendlyUrl", () =>
     {
         const subject = "This Is My Title & stUff/*+-";
         const expected = "this-is-my-title-and-stuff-";
-        const actual = Path.toFriendlyUrl(subject, true);
+        const actual = toFriendlyUrl(subject, true);
 
         expect(actual).toEqual(expected);
     });

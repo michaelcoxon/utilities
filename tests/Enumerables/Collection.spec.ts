@@ -1,4 +1,5 @@
-﻿import { Collection, Exception } from '../../src';
+﻿import { Collection } from '../../src/Enumerables';
+import Exception from '../../src/Exceptions/Exception';
 
 describe("Collection.constructor", () =>
 {

@@ -1,8 +1,9 @@
+import { isString } from '../..';
 import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull';
 import { IConfiguration, IConfigurationBuilder } from '../Configuration.types';
 import { ConfigValue } from './Json.types';
 import JsonConfiguration from './JsonConfiguration';
-
+import { merge } from 'lodash';
 
 export default class JsonConfigurationBuilder implements IConfigurationBuilder
 {
@@ -14,21 +15,26 @@ export default class JsonConfigurationBuilder implements IConfigurationBuilder
     {
         if (reload || this.#reload || isUndefinedOrNull(this.#configuration))
         {
-            this.#configuration = new JsonConfiguration(this.#configs.reduce((p, c) => ({ ...p, ...c }), {}));
-            // clear
-            this.#configs.length = 0;
-            // complete reload if needed
-            if (this.#reload)
+            let mergedConfig = {};
+            for(const config of this.#configs)
             {
-                this.#reload = false;
+                merge(mergedConfig, config);
             }
+            this.#configuration = new JsonConfiguration(mergedConfig);
+            this.#reload = false;
         }
         return this.#configuration;
     }
-
-    public append(json: string): this
+    public append(json: string): this;
+    public append(array: any[]): this;
+    public append(object: Record<string, any>): this;
+    public append(value: any): this
     {
-        this.#configs.push(JSON.parse(json));
+        if (isString(value))
+        {
+            value = JSON.parse(value);
+        }
+        this.#configs.push(value);
         if (!this.#reload)
         {
             this.#reload = true;

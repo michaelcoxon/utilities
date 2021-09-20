@@ -1,10 +1,11 @@
 ﻿import { empty, newLine } from '../Strings/_consts';
 import { Undefinable } from '../Types';
+import { IStringBuilder } from './_types';
 
 /**
  * Class for building strings that will only concatenate them upon calling toString().
  */
-export default class StringBuilder 
+export default class StringBuilder implements IStringBuilder
 {
     readonly #strings: string[];
 

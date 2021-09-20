@@ -1,4 +1,4 @@
-﻿import { arg } from '../../src';
+﻿import { arg } from '../../src/Ensure';
 
 describe("Ensure a ArrayLike isNotNull", () =>
 {
