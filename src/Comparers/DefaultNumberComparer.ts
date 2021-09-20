@@ -1,5 +1,4 @@
-import { IComparer } from "./IComparer";
-import { IEqualityComparer } from './IEqualityComparer';
+import { IComparer, IEqualityComparer } from './_types';
 
 export default class DefaultNumberComparer implements IComparer<number>, IEqualityComparer<number> {
     public compare(x: number, y: number): number

@@ -1,6 +1,6 @@
-﻿import { ICollection } from "./ICollection";
+﻿import { IComparer } from '../Comparers/_types';
+import { ICollection } from "./ICollection";
 import { IEnumerable } from "./IEnumerable";
-import { IComparer } from "../Comparers/IComparer";
 
 
 export interface IList<T> extends ICollection<T>, IEnumerable<T>

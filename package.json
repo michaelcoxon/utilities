@@ -7,15 +7,15 @@
   "module": "lib/index.js",
   "sideEffects": false,
   "scripts": {
-    "build": "npm-run-all -s build-typescript build-prod",
-    "version": "npm -v && node -v",
+    "_build:debug": "SET NODE_ENV=development&& webpack",
+    "_build:release": "SET NODE_ENV=production&& webpack",
+    "build": "npm-run-all -s build:typescript -p _build:release",
+    "build:debug": "npm-run-all -s build:typescript -p _build:debug",
+    "build:typescript": "tsc",
     "coverage": "jest --coverage --coverageDirectory coverage --coverageReporters html",
     "test": "jest",
-    "build-dev": "SET NODE_ENV=development&& webpack",
     "build-doc": "typedoc --logger console --out docs src&& copy .nojekyll docs\\.nojekyll",
-    "build-prod": "SET NODE_ENV=production&& webpack",
-    "build-typescript": "tsc",
-    "prepack": "npm-run-all -s build test build-doc"
+    "prepack": "npm-run-all -s build -p test build-doc"
   },
   "mocha": {
     "require": [
@@ -53,7 +53,6 @@
   "homepage": "https://github.com/michaelcoxon/utilities#readme",
   "devDependencies": {
     "@types/jest": "27.0.1",
-    "@types/lodash": "^4.14.173",
     "@types/node": "^14.17.14",
     "@types/prop-types": "^15.7.4",
     "@types/shelljs": "^0.8.9",
@@ -62,6 +61,7 @@
     "file-loader": "^6.2.0",
     "jest": "27.0.3",
     "json-loader": "^0.5.7",
+    "lodash-es": "^4.17.21",
     "npm-run-all": "^4.1.5",
     "source-map-support": "^0.5.20",
     "string-replace-loader": "^2.3.0",
@@ -75,7 +75,6 @@
     "webpack-log": "^3.0.2"
   },
   "dependencies": {
-    "lodash": "^4.17.21",
     "tslib": "^2.3.1"
   },
   "-vs-binding": {

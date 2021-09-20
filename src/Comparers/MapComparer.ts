@@ -1,5 +1,4 @@
-﻿import { IComparer } from "./IComparer";
-import { IEqualityComparer } from './IEqualityComparer';
+﻿import { IComparer, IEqualityComparer } from './_types';
 
 /**
  * Compares objects of the same type using a custom selector and 

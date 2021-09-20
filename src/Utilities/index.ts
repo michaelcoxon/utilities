@@ -6,4 +6,3 @@ export { default as getHash } from './getHash';
 export { default as getType } from './getType';
 export { default as hashString } from './hashString';
 export { default as noop } from './noop';
-export { default as nameof } from './nameof';

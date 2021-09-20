@@ -1,4 +1,12 @@
-﻿export interface IComparer<T>
+
+
+
+export interface IComparable
+{
+    valueOf(): any;
+}
+
+export interface IComparer<T>
 {
     /**
      * Compares 'x' to 'y' where the following rules apply;
@@ -32,4 +40,9 @@
      * Returns true if 'x' is less than or equal to 'y'.
      */
     lessThanOrEqual(x: T, y: T): boolean;
+}
+
+export interface IEqualityComparer<T>
+{
+    equals(x: T, y: T): boolean;
 }

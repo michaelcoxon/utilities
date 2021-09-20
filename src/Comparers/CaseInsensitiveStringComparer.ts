@@ -1,5 +1,4 @@
-﻿import { IComparer } from "./IComparer";
-import { IEqualityComparer } from "./IEqualityComparer";
+﻿import { IComparer, IEqualityComparer } from './_types';
 
 export default class CaseInsensitiveStringComparer implements IComparer<string>, IEqualityComparer<string>
 {

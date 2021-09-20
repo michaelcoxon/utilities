@@ -1,5 +1,4 @@
-export * from './IComparer';
-export * from './IEqualityComparer';
+export * from './_types';
 export {default as CaseInsensitiveStringComparer} from './CaseInsensitiveStringComparer';
 export {default as CustomComparer} from './CustomComparer';
 export {default as DefaultComparers} from './DefaultComparers';

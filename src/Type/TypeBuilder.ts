@@ -1,4 +1,5 @@
-import Type, { IType } from "./Type";
+import Type from "./Type";
+import { IType } from "./_types";
 import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty';
 import NullReferenceException from '../Exceptions/NullReferenceException';
 export default class TypeBuilder

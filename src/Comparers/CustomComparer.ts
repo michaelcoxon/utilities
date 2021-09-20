@@ -1,8 +1,7 @@
-﻿import ArgumentException from '../Exceptions/ArgumentException';
+﻿import { IComparer, IEqualityComparer } from './_types';
+import ArgumentException from '../Exceptions/ArgumentException';
 import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException';
 import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
-import { IComparer } from "./IComparer";
-import { IEqualityComparer } from "./IEqualityComparer";
 
 export default class CustomComparer<T> implements IComparer<T>, IEqualityComparer<T>
 {

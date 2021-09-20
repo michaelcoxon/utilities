@@ -4,7 +4,6 @@ import { IDictionary } from "./IDictionary";
 import DefaultComparers from "../Comparers/DefaultComparers";
 import MapComparer from "../Comparers/MapComparer";
 import ReverseComparer from "../Comparers/ReverseComparer";
-import { IComparer } from "../Comparers/IComparer";
 import { IEnumerableGroup } from "./IEnumerableGroup";
 import { ConstructorFor, IEnumerableOrArray, KeyValuePair, Predicate, Selector, Undefinable } from "../Types";
 import { ICollection } from "./ICollection";
@@ -39,6 +38,7 @@ import ArgumentException from '../Exceptions/ArgumentException';
 import KeyAlreadyDefinedException from '../Exceptions/KeyAlreadyDefinedException';
 import KeyNotFoundException from '../Exceptions/KeyNotFoundException';
 import equivilentToByJSON from '../Utilities/equivilentToByJSON';
+import { IComparer } from '../Comparers/_types';
 
 export class Enumerable
 {

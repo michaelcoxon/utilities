@@ -2,21 +2,15 @@ import FormatException from '../Exceptions/FormatException';
 import { IFormatter, INumberFormatterConfiguration } from './_types';
 import NumberFormatterDelegates from "./NumberFormatterDelegates";
 import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty';
+import DefaultConfiguration from './en.NumberFormatterConfiguration.json';
 
 /** Formats numbers */
 
 export default  class NumberFormatter implements IFormatter<number>
 {
-    private static readonly DefaultConfiguration: INumberFormatterConfiguration = {
-        currencyFormat: "{1}${0}",
-        currencyDecimalDigits: 2,
-        numberDecimalDigits: 2,
-        percentDecimalDigits: 2,
-    };
-
     readonly #delegates: NumberFormatterDelegates;
 
-    constructor(numberFormatterDelegates: NumberFormatterDelegates = new NumberFormatterDelegates(NumberFormatter.DefaultConfiguration))
+    constructor(numberFormatterDelegates: NumberFormatterDelegates = new NumberFormatterDelegates(DefaultConfiguration))
     {
         this.#delegates = numberFormatterDelegates;
     }

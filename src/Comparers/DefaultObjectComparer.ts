@@ -1,8 +1,7 @@
 import equals from '../Utilities/equals';
 import getHash from '../Utilities/getHash';
 import DefaultStringComparer from './DefaultStringComparer';
-import { IComparer } from "./IComparer";
-import { IEqualityComparer } from './IEqualityComparer';
+import { IComparer, IEqualityComparer } from './_types';
 
 export default class DefaultObjectComparer<T extends any = any> implements IComparer<T>, IEqualityComparer<T> {
     public compare(x: T, y: T): number

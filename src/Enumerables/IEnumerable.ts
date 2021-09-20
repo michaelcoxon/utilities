@@ -1,9 +1,9 @@
 ﻿import { IEnumerator } from "../Enumerators/IEnumerator";
 import { IList } from "./IList";
 import { IDictionary } from "./IDictionary";
-import { IComparer } from "../Comparers/IComparer";
 import { IEnumerableGroup } from "./IEnumerableGroup";
 import { ConstructorFor, Predicate, Selector, Undefinable } from '../Types';
+import { IComparer } from '../Comparers/_types';
 
 
 export interface IEnumerable<T> extends Iterable<T>

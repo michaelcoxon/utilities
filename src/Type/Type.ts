@@ -1,4 +1,5 @@
 import NotImplementedException from '../Exceptions/NotImplementedException';
+import isArray from '../TypeHelpers/isArray';
 import isBoolean from '../TypeHelpers/isBoolean';
 import isDate from '../TypeHelpers/isDate';
 import isFunction from '../TypeHelpers/isFunction';
@@ -6,18 +7,18 @@ import isNumber from '../TypeHelpers/isNumber';
 import isObject from '../TypeHelpers/isObject';
 import isString from '../TypeHelpers/isString';
 import isUndefined from '../TypeHelpers/isUndefined';
+import ArrayType from './ArrayType';
+import BooleanType from './BooleanType';
+import DateType from './DateType';
+import FunctionType from './FunctionType';
+import { IType } from './_types';
+import NullType from './NullType';
+import NumberType from './NumberType';
+import ObjectType from './ObjectType';
+import StringType from './StringType';
+import UndefinedType from './UndefinedType';
 
 const typeResolvers: ((subject: any) => { success: boolean; type?: IType; })[] = [];
-
-export interface IType
-{
-    readonly fullName: string;
-    readonly name: string;
-    readonly namespace: string;
-    readonly baseType: IType;
-    readonly isArray: boolean;
-    factory(...args: any[]): any;
-}
 
 export default class Type
 {
@@ -32,35 +33,35 @@ export default class Type
         {
             if (subject === null)
             {
-                return new NullType();
+                return NullType;
             }
             else if (isUndefined(subject))
             {
-                return new UndefinedType();
+                return UndefinedType;
             }
             else if (isNumber(subject))
             {
-                return new NumberType();
+                return NumberType;
             }
             else if (isBoolean(subject))
             {
-                return new BooleanType();
+                return BooleanType;
             }
             else if (isDate(subject))
             {
-                return new DateType();
+                return DateType;
             }
             else if (isString(subject))
             {
-                return new StringType();
+                return StringType;
             }
             else if (isFunction(subject))
             {
-                return new FunctionType();
+                return FunctionType;
             }
-            else if (Array.isArray(subject))
+            else if (isArray(subject))
             {
-                return new ArrayType();
+                return ArrayType;
             }
             else if (this.typeResolvers.length > 0)
             {
@@ -77,235 +78,10 @@ export default class Type
             // last
             else if (isObject(subject))
             {
-                return new ObjectType();
+                return ObjectType;
             }
 
             throw new NotImplementedException(`${subject}`);
         })() as IType);
     }
-}
-
-class NullType implements IType
-{
-    get fullName()
-    {
-        return 'Array';
-    }
-    get name()
-    {
-        return 'Array';
-    }
-    get namespace()
-    {
-        return '';
-    }
-    get baseType()
-    {
-        return new NullType();
-    }
-    get isArray()
-    {
-        return false;
-    }
-    factory = () => null;
-}
-
-class UndefinedType implements IType
-{
-    get fullName()
-    {
-        return 'undefined';
-    }
-    get name()
-    {
-        return 'undefined';
-    }
-    get namespace()
-    {
-        return '';
-    }
-    get baseType()
-    {
-        return new UndefinedType();
-    }
-    get isArray()
-    {
-        return false;
-    }
-    factory = () => undefined;
-}
-
-class ArrayType implements IType
-{
-    get fullName()
-    {
-        return 'Array';
-    }
-    get name()
-    {
-        return 'Array';
-    }
-    get namespace()
-    {
-        return '';
-    }
-    get baseType()
-    {
-        return new ObjectType();
-    }
-    get isArray()
-    {
-        return true;
-    }
-    factory = Array;
-}
-
-class NumberType implements IType
-{
-    get fullName()
-    {
-        return 'Number';
-    }
-    get name()
-    {
-        return 'Number';
-    }
-    get namespace()
-    {
-        return '';
-    }
-    get baseType()
-    {
-        return new ObjectType();
-    }
-    get isArray()
-    {
-        return false;
-    }
-    factory = Number;
-}
-
-class BooleanType implements IType
-{
-    get fullName()
-    {
-        return 'Boolean';
-    }
-    get name()
-    {
-        return 'Boolean';
-    }
-    get namespace()
-    {
-        return '';
-    }
-    get baseType()
-    {
-        return new ObjectType();
-    }
-    get isArray()
-    {
-        return false;
-    }
-    factory = Boolean;
-}
-
-class DateType implements IType
-{
-    get fullName()
-    {
-        return 'Date';
-    }
-    get name()
-    {
-        return 'Date';
-    }
-    get namespace()
-    {
-        return '';
-    }
-    get baseType()
-    {
-        return new ObjectType();
-    }
-    get isArray()
-    {
-        return false;
-    }
-    factory = Date;
-}
-
-class StringType implements IType
-{
-    get fullName()
-    {
-        return 'String';
-    }
-    get name()
-    {
-        return 'String';
-    }
-    get namespace()
-    {
-        return '';
-    }
-    get baseType()
-    {
-        return new ObjectType();
-    }
-    get isArray()
-    {
-        return false;
-    }
-    factory = String;
-}
-
-class FunctionType implements IType
-{
-    get fullName()
-    {
-        return 'Function';
-    }
-    get name()
-    {
-        return 'Function';
-    }
-    get namespace()
-    {
-        return '';
-    }
-    get baseType()
-    {
-        return new ObjectType();
-    }
-    get isArray()
-    {
-        return false;
-    }
-    factory = Function;
-}
-
-class ObjectType implements IType
-{
-    get fullName()
-    {
-        return 'Object';
-    }
-    get name()
-    {
-        return 'Object';
-    }
-    get namespace()
-    {
-        return '';
-    }
-    get baseType()
-    {
-        return new ObjectType();
-    }
-    get isArray()
-    {
-        return false;
-    }
-    factory = Object;
 }

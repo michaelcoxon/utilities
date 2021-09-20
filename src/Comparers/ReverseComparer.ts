@@ -1,5 +1,4 @@
-﻿import { IComparer } from "./IComparer";
-import { IEqualityComparer } from './IEqualityComparer';
+﻿import { IComparer, IEqualityComparer } from './_types';
 
 /** reverses the comparer provided */
 export default class ReverseComparer<T> implements IComparer<T>, IEqualityComparer<T>

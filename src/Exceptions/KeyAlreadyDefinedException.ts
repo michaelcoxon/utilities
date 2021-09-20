@@ -1,6 +1,6 @@
 import format from '../Strings/format';
 import  Exception  from './Exception';
-import  SR  from './_SR';
+import SR from '../i18n/en.exceptions.strings.json';
 
 
 export default class KeyAlreadyDefinedException<TKey> extends Exception

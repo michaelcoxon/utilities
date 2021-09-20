@@ -1,9 +1,9 @@
 import { isString } from '../..';
 import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull';
+import merge from '../../Utilities/merge';
 import { IConfiguration, IConfigurationBuilder } from '../Configuration.types';
 import { ConfigValue } from './Json.types';
 import JsonConfiguration from './JsonConfiguration';
-import { merge } from 'lodash';
 
 export default class JsonConfigurationBuilder implements IConfigurationBuilder
 {
