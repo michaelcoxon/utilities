@@ -1,4 +1,4 @@
-﻿import { ArgumentAssertionBuilder, IArgumentAssertionBuilder } from '../ArgumentAssertionBuilder';
+﻿import { ArgumentAssertionBuilder, IArgumentAssertionBuilder } from './ArgumentAssertionBuilder';
 import ArgumentException from '../Exceptions/ArgumentException';
 import ArgumentNullException from '../Exceptions/ArgumentNullException';
 import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException';

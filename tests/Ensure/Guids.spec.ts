@@ -1,11 +1,11 @@
-﻿import { arg } from '../../src/Ensure';
+﻿import ensure from '../../src/Ensure/ensure';
 import Guid from '../../src/Guid';
 
 describe("Ensure a Guid isNotNull", () =>
 {
     function testMethod(guid: Guid | null)
     {
-        arg(guid, "guid").isNotNull();
+        ensure(guid, "guid").isNotNull();
     }
 
     it("'Guid.newGuid()' should not throw an exception", () =>
@@ -38,7 +38,7 @@ describe("Ensure a Guid isNotUndefined", () =>
 {
     function testMethod(guid?: Guid)
     {
-        arg(guid, "guid").isNotUndefined();
+        ensure(guid, "guid").isNotUndefined();
     }
 
     it("'Guid.newGuid()' should not throw an exception", () =>
@@ -71,7 +71,7 @@ describe("Ensure a Guid isNotNullOrUndefined", () =>
 {
     function testMethod(guid?: Guid | null)
     {
-        arg(guid, "guid").isNotNullOrUndefined();
+        ensure(guid, "guid").isNotNullOrUndefined();
     }
 
     it("'Guid.newGuid()' should not throw an exception", () =>
@@ -122,8 +122,7 @@ describe("Ensure a Guid isOneOf", () =>
 
     function testMethod(guid: Guid)
     {
-        console.log(guid.toString());
-        arg(guid, "guid").isOneOf(guid1, guid2, guid3);
+        ensure(guid, "guid").isOneOf(guid1, guid2, guid3);
     }
 
     it("'guid1' should not throw an exception", () =>
@@ -183,7 +182,7 @@ describe("Ensure a Guid matches", () =>
 
     function testMethod(guid: Guid | null)
     {
-        arg(guid, "guid").matches(s => s == guid);
+        ensure(guid, "guid").matches(s => s == guid);
     }
 
     it("'Guid.newGuid()' should not throw an exception", () =>
@@ -216,7 +215,7 @@ describe("Ensure a Guid isValidGuid", () =>
 {
     function testMethod(guid: Guid | null)
     {
-        arg(guid, "guid").isValidGuid();
+        ensure(guid, "guid").isValidGuid();
     }
 
     it("'Guid.newGuid()' should not throw an exception", () =>

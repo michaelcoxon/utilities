@@ -1,10 +1,10 @@
-﻿import { arg } from '../../src/Ensure';
+﻿import ensure from '../../src/Ensure/ensure';
 
 describe("Ensure a ArrayLike isNotNull", () =>
 {
     function testMethod<T>(arrayLike: ArrayLike<T> | null)
     {
-        arg(arrayLike, "arrayLike").isNotNull();
+        ensure(arrayLike, "arrayLike").isNotNull();
     }
 
     it("'[]' should not throw an exception", () =>
@@ -37,7 +37,7 @@ describe("Ensure a ArrayLike isNotUndefined", () =>
 {
     function testMethod<T>(arrayLike?: ArrayLike<T>)
     {
-        arg(arrayLike, "arrayLike").isNotUndefined();
+        ensure(arrayLike, "arrayLike").isNotUndefined();
     }
 
     it("'[]' should not throw an exception", () =>
@@ -70,7 +70,7 @@ describe("Ensure a ArrayLike isNotNullOrUndefined", () =>
 {
     function testMethod<T>(arrayLike?: ArrayLike<T> | null)
     {
-        arg(arrayLike, "arrayLike").isNotNullOrUndefined();
+        ensure(arrayLike, "arrayLike").isNotNullOrUndefined();
     }
 
     it("'[]' should not throw an exception", () =>
@@ -116,7 +116,7 @@ describe("Ensure a ArrayLike matches", () =>
 {
     function testMethod<T>(arrayLike: ArrayLike<T> | null)
     {
-        arg(arrayLike, "arrayLike").matches(s => s.length == 4);
+        ensure(arrayLike, "arrayLike").matches(s => s.length == 4);
     }
 
     it("'[1,2,3,4]' should not throw an exception", () =>
@@ -162,7 +162,7 @@ describe("Ensure a ArrayLike isNotNullOrUndefinedOrEmpty", () =>
 {
     function testMethod<T>(arrayLike?: ArrayLike<T> | null)
     {
-        arg(arrayLike, "arrayLike").isNotNull();
+        ensure(arrayLike, "arrayLike").isNotNull();
     }
 
     it("'[1,2,3,4]' should not throw an exception", () =>

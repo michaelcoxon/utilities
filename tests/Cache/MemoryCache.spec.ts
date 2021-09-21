@@ -1,8 +1,7 @@
-import { fail, throws } from 'assert';
-import { KeyNotFoundException } from '../../src';
 import expire from '../../src/Cache/expire';
 import MemoryCache from '../../src/Cache/MemoryCache';
-
+import Exception from '../../src/Exceptions/Exception';
+import KeyNotFoundException from '../../src/Exceptions/KeyNotFoundException';
 
 describe("MemoryCache.constructor", () =>
 {
@@ -42,6 +41,7 @@ describe("MemoryCache + expire", () =>
         catch (ex)
         {
             expect(ex).toBeInstanceOf(KeyNotFoundException);
+            expect((ex as Exception).message).toEqual("Key 'key' is not found");
         }
     });
 

@@ -1,4 +1,4 @@
-﻿import { ArgumentAssertionBuilder } from '../ArgumentAssertionBuilder';
+﻿import { ArgumentAssertionBuilder } from './ArgumentAssertionBuilder';
 import ArgumentException from '../Exceptions/ArgumentException';
 import Guid from '../Guid';
 

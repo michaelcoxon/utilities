@@ -12,6 +12,7 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
+    "esModuleInterop": true,
     "strict": true,
     "lib": [
       "esnext",

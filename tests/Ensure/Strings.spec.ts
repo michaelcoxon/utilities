@@ -1,10 +1,10 @@
-﻿import { arg } from '../../src/Ensure';
+﻿import ensure from '../../src/Ensure/ensure';
 
 describe("Ensure a string isNotNull", () =>
 {
     function testMethod(str: string | null)
     {
-        arg(str, "str").isNotNull();
+        ensure(str, "str").isNotNull();
     }
 
     it("'asdf' should not throw an exception", () =>
@@ -37,7 +37,7 @@ describe("Ensure a string isNotUndefined", () =>
 {
     function testMethod(str?: string)
     {
-        arg(str, "str").isNotUndefined();
+        ensure(str, "str").isNotUndefined();
     }
 
     it("'asdf' should not throw an exception", () =>
@@ -70,7 +70,7 @@ describe("Ensure a string isNotNullOrUndefined", () =>
 {
     function testMethod(str?: string | null)
     {
-        arg(str, "str").isNotNullOrUndefined();
+        ensure(str, "str").isNotNullOrUndefined();
     }
 
     it("'asdf' should not throw an exception", () =>
@@ -116,7 +116,7 @@ describe("Ensure a string isNotNullOrUndefinedOrEmpty", () =>
 {
     function testMethod(str?: string | null)
     {
-        arg(str, "str").isNotNullOrUndefinedOrEmpty();
+        ensure(str, "str").isNotNullOrUndefinedOrEmpty();
     }
 
     it("'asdf' should not throw an exception", () =>
@@ -175,7 +175,7 @@ describe("Ensure a string isOneOf", () =>
 {
     function testMethod(str: string)
     {
-        arg(str, "str").isOneOf("asdf", "", "fdsa");
+        ensure(str, "str").isOneOf("asdf", "", "fdsa");
     }
 
     it("'asdf' should not throw an exception", () =>
@@ -232,7 +232,7 @@ describe("Ensure a string matches", () =>
 {
     function testMethod(str: string | null)
     {
-        arg(str, "str").matches(s => s === "asdf");
+        ensure(str, "str").matches(s => s === "asdf");
     }
 
     it("'asdf' should not throw an exception", () =>
@@ -265,7 +265,7 @@ describe("Ensure a string matchesRegex", () =>
 {
     function testMethod(str: string | null)
     {
-        arg(str, "str").matchesRegex(/^asdf$/);
+        ensure(str, "str").matchesRegex(/^asdf$/);
     }
 
     it("'asdf' should not throw an exception", () =>

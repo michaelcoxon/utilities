@@ -1,8 +1,8 @@
-﻿import ArgumentException from './Exceptions/ArgumentException';
-import ArgumentNullException from './Exceptions/ArgumentNullException';
-import ArgumentUndefinedException from './Exceptions/ArgumentUndefinedException';
-import Exception from './Exceptions/Exception';
-import { ConstructorFor, Func1 } from './Types';
+﻿import ArgumentException from '../Exceptions/ArgumentException';
+import ArgumentNullException from '../Exceptions/ArgumentNullException';
+import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException';
+import Exception from '../Exceptions/Exception';
+import { ConstructorFor, Func1 } from '../Types';
 
 export type AssertionType<T> = T | undefined | null
 

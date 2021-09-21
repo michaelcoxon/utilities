@@ -16,7 +16,7 @@ export type Nullable<T> = T | null;
 export type Undefinable<T> = T | undefined;
 
 /** Shortcut for T | Promise<T> */
-export type Awaitable<T> = T | Promise<T>;
+export type Awaitable<T> = T | PromiseLike<T>;
 
 /** The event handler type */
 export type EventHandler<TEventArgs> = (sender: any, args: TEventArgs) => void;

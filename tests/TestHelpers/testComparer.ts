@@ -1,4 +1,4 @@
-﻿import { IComparer } from '../../src/Comparers/IComparer';
+﻿import { IComparer } from '../../src/Comparers/_types';
 
 export default function testComparer<T>(
     name: string,

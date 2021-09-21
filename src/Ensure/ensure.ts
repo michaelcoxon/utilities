@@ -1,10 +1,12 @@
-import { AssertionType, ArgumentAssertionBuilder, IArgumentAssertionBuilder } from '../ArgumentAssertionBuilder';
+import { AssertionType, ArgumentAssertionBuilder, IArgumentAssertionBuilder } from '../Assertions/ArgumentAssertionBuilder';
 import ArrayLikeArgumentAssertionBuilder from '../Assertions/ArrayLikeArgumentAssertionBuilder';
+import CompareAssertionBuilder from '../Assertions/CompareAssertionBuilder';
 import GuidArgumentAssertionBuilder from '../Assertions/GuidArgumentAssertionBuilder';
 import StringArgumentAssertionBuilder from '../Assertions/StringArgumentAssertionBuilder';
 import NotSupportedException from '../Exceptions/NotSupportedException';
 import Guid from '../Guid';
 import isArray from '../TypeHelpers/isArray';
+import isComparable from '../TypeHelpers/isComparable';
 
 /**
  * Provides the helpers for validation
@@ -24,7 +26,7 @@ export default function ensure(argument: AssertionType<any>, argumentName: strin
     else if (isArray(argument))
     {
         return new ArrayLikeArgumentAssertionBuilder(argument, argumentName);
-    }
+    }    
     else if (typeof (argument) === "string")
     {
         return new StringArgumentAssertionBuilder(argument, argumentName);
@@ -32,6 +34,10 @@ export default function ensure(argument: AssertionType<any>, argumentName: strin
     else if (typeof (argument) === "object")
     {
         return new ArgumentAssertionBuilder(argument, argumentName);
+    }
+    else if (isComparable(argument))
+    {
+        return new CompareAssertionBuilder(argument, argumentName);
     }
     else
     {

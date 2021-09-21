@@ -18,7 +18,7 @@ export default class JsonConfigurationBuilder implements IConfigurationBuilder
             let mergedConfig = {};
             for(const config of this.#configs)
             {
-                merge(mergedConfig, config);
+                mergedConfig = merge(mergedConfig, config);
             }
             this.#configuration = new JsonConfiguration(mergedConfig);
             this.#reload = false;
