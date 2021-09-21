@@ -1,4 +1,5 @@
-﻿import MutexAlreadyAquiredException from './Exceptions/MutexAlreadyAquiredException';
+﻿import { CancellationToken } from '.';
+import MutexAlreadyAquiredException from './Exceptions/MutexAlreadyAquiredException';
 import SingleInvokeEvent from './SingleInvokeEvent';
 import isUndefined from './TypeHelpers/isUndefined';
 import { Awaitable } from './Types';
@@ -12,16 +13,16 @@ export interface ILock
 
 class Lock implements ILock
 {
-    readonly #releaseAsync: () => Promise<void>;
+    readonly #releaseAsync: (cancellationToken: CancellationToken) => Promise<void>;
 
-    constructor(releaseAsync: () => Promise<void>)
+    constructor(releaseAsync: (cancellationToken: CancellationToken) => Promise<void>)
     {
         this.#releaseAsync = releaseAsync;
     }
 
-    public releaseAsync(): Promise<void>
+    public releaseAsync(cancellationToken: CancellationToken = CancellationToken.default): Promise<void>
     {
-        return this.#releaseAsync();
+        return this.#releaseAsync(cancellationToken);
     }
 }
 
@@ -33,12 +34,12 @@ export default class Mutex
 {
     #onRelease?: SingleInvokeEvent<any>;
 
-    /** Acquires a lock on this mutex. Only one lock can be kept at a time; calling multiple times will fail */
-    public async acquireAsync()
+    /** Acquires a lock on this mutex. Only one lock can be kept at a time; calling multiple times will create dependent locks */
+    public async acquireAsync(cancellationToken: CancellationToken = CancellationToken.default)
     {
         if (!isUndefined(this.#onRelease))
         {
-            await this.waitAsync();
+            await this.waitAsync(cancellationToken);
         }
 
         this.#onRelease = new SingleInvokeEvent();
@@ -65,10 +66,12 @@ export default class Mutex
      * Returns a promise that can be awaited until the lock is released. 
      * If there is no lock the promise is resolved immediately.
      */
-    public waitAsync(): Promise<void>
+    public waitAsync(cancellationToken: CancellationToken = CancellationToken.default): Promise<void>
     {
         return new Promise((resolve, reject) =>
         {
+            cancellationToken.onCancelled.addHandler(() => reject());
+
             try
             {
                 if (isUndefined(this.#onRelease))
@@ -79,7 +82,7 @@ export default class Mutex
                 else
                 {
                     // resolve promise when lock is released
-                    this.#onRelease.addHandler(() => resolve());
+                    this.#onRelease.addHandler(() => resolve());                    
                 }
             }
             catch (e)
@@ -95,12 +98,12 @@ export default class Mutex
  * @param mutex
  * @param func
  */
-export async function lockAsync<T>(mutex: Mutex, func: () => T): Promise<T>;
-export async function lockAsync<T>(mutex: Mutex, func: () => Promise<T>): Promise<T>;
-export async function lockAsync<T>(mutex: Mutex, func: () => Awaitable<T>): Promise<T>
+export async function lockAsync<T>(mutex: Mutex, func: () => T, cancellationToken?: CancellationToken): Promise<T>;
+export async function lockAsync<T>(mutex: Mutex, func: () => Promise<T>, cancellationToken?: CancellationToken): Promise<T>;
+export async function lockAsync<T>(mutex: Mutex, func: () => Awaitable<T>, cancellationToken: CancellationToken = CancellationToken.default): Promise<T>
 {
-    const lock = await mutex.acquireAsync();
+    const lock = await mutex.acquireAsync(cancellationToken);
     const result = await func();
-    await lock.releaseAsync();
+    await lock.releaseAsync(cancellationToken);
     return result;
 }

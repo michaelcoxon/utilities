@@ -12,7 +12,7 @@ export default class CancellationTokenSource
     {
         if (cancellationToken)
         {
-            cancellationToken.cancelledEvent.addHandler(() => this.cancel());
+            cancellationToken.onCancelled.addHandler(() => this.cancel());
         }
     }
 

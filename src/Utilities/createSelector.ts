@@ -1,18 +1,14 @@
-import NotSupportedException from '../Exceptions/NotSupportedException';
+import isString from '../TypeHelpers/isString';
 import { Selector } from '../Types';
 
-export default function createSelector<T, K extends keyof T, R>(propertyNameOrSelector: K | Selector<T, R>): Selector<T, R | T[K]>
+/**
+ * Returns a Selector for the given type.
+ */
+export default function createSelector<T, R = T, K extends keyof T = keyof T>(propertyNameOrSelector: K | Selector<T, R>): Selector<T, R | T[K]>
 {
-    if (typeof propertyNameOrSelector === 'string')
+    if (isString(propertyNameOrSelector))
     {
-        return (a: T) =>
-        {
-            if (typeof a[propertyNameOrSelector] === 'function')
-            {
-                throw new NotSupportedException(`property names that are functions ('${propertyNameOrSelector}')`);
-            }
-            return a[propertyNameOrSelector];
-        };
+        return (a: T) => a[propertyNameOrSelector as string];
     }
     else
     {

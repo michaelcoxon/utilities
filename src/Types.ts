@@ -56,3 +56,10 @@ export type Comparison<T> = (a: T, y: T) => number;
 
 /** Represents any function*/
 export type AnyFunction = (...args: any[]) => any;
+
+
+export interface IEvent<TEventArgs>
+{
+    addHandler(eventHandler: EventHandler<TEventArgs>): EventHandler<TEventArgs>;
+    removeHandler(eventHandler: EventHandler<TEventArgs>): void;
+}

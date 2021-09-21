@@ -1,8 +1,8 @@
-﻿import Event, { IEvent } from "./Event";
+﻿import Event from "./Event";
 import NullReferenceException from './Exceptions/NullReferenceException';
 import ArgumentUndefinedException from './Exceptions/ArgumentUndefinedException';
 import ArgumentNullException from './Exceptions/ArgumentNullException';
-import { EventHandler } from "./Types";
+import { EventHandler, IEvent } from "./Types";
 import isUndefinedOrNull from './TypeHelpers/isUndefinedOrNull';
 
 /**
