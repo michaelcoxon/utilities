@@ -12,7 +12,6 @@ export default class KeyNotFoundException<TKey> extends Exception
         {
             super(_message, innerException);
         }
-
         else
         {
             super(_message);

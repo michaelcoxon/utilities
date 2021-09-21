@@ -8,13 +8,7 @@ describe("Mutex.acquire", () =>
 
         async function a()
         {
-            const lock = mutex.acquire();
-
-            // we need this to let the program catch up
-            // i think it is a base issue with generators
-            // not promises            
-            await Promise.resolve();
-
+            const lock = await mutex.acquireAsync();
 
             list.push(1);
             list.push(3);
@@ -47,7 +41,7 @@ describe("Mutex.acquire", () =>
         const list: number[] = [];
         const mutex = new Mutex();
 
-        const lock = mutex.acquire();
+        const lock = await mutex.acquireAsync();
 
         async function insertTwo()
         {
@@ -68,15 +62,16 @@ describe("Mutex.acquire", () =>
     {
         const list: number[] = [];
         const mutex = new Mutex();
+        const lock = await mutex.acquireAsync();       
 
-        const next = mutex.waitAsync().then(() => list.push(2));
-
-        lockAsync(mutex, () =>
-        {
-            list.push(1);
-        });
-
-        await next;
+        await Promise.all([
+            lockAsync(mutex, () =>
+            {
+                list.push(2);
+            }),
+            mutex.waitAsync().then(() => list.push(1)),
+            lock.releaseAsync()
+        ]);
 
         expect(list[0]).toEqual(1);
         expect(list[1]).toEqual(2);

@@ -34,11 +34,11 @@ export default class Mutex
     #onRelease?: SingleInvokeEvent<any>;
 
     /** Acquires a lock on this mutex. Only one lock can be kept at a time; calling multiple times will fail */
-    public acquire(): ILock
+    public async acquireAsync()
     {
         if (!isUndefined(this.#onRelease))
         {
-            throw new MutexAlreadyAquiredException();
+            await this.waitAsync();
         }
 
         this.#onRelease = new SingleInvokeEvent();
@@ -99,7 +99,7 @@ export async function lockAsync<T>(mutex: Mutex, func: () => T): Promise<T>;
 export async function lockAsync<T>(mutex: Mutex, func: () => Promise<T>): Promise<T>;
 export async function lockAsync<T>(mutex: Mutex, func: () => Awaitable<T>): Promise<T>
 {
-    const lock = mutex.acquire();
+    const lock = await mutex.acquireAsync();
     const result = await func();
     await lock.releaseAsync();
     return result;
