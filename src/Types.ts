@@ -1,4 +1,4 @@
-﻿import { IEnumerable } from './Enumerables/IEnumerable';
+﻿import { IEnumerable } from './Enumerables/_types';
 
 /** A type that is either an array or an enumerable */
 export type IEnumerableOrArray<T> = T[] | IEnumerable<T>;
@@ -62,4 +62,10 @@ export interface IEvent<TEventArgs>
 {
     addHandler(eventHandler: EventHandler<TEventArgs>): EventHandler<TEventArgs>;
     removeHandler(eventHandler: EventHandler<TEventArgs>): void;
+}
+
+/** interface for disposable objects */
+export interface IDisposable
+{
+    dispose(): void;
 }

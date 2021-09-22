@@ -9,6 +9,13 @@ describe("Guid.newGuid", () =>
         expect(actual).not.toBeNull();
     });
 
+    it("should return v4 guids", () =>
+    {
+        const actual = Guid.newGuid();
+
+        expect(actual.toString()[14]).toEqual('4');
+    });
+
 
 
     it("should return a new guid every time", (done) =>
@@ -68,6 +75,6 @@ describe("Guid.parseString", () =>
         }
 
         done();
-    },0);
+    }, 0);
 
 });

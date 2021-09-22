@@ -1,6 +1,6 @@
-﻿import Event, { IEvent } from '../Event';
+﻿import Event from '../Event';
 import ArgumentException from '../Exceptions/ArgumentException';
-import { IDisposable } from '../IDisposable';
+import { IDisposable, IEvent } from '../Types';
 
 declare function clearInterval(intervalId: any): void;
 declare function setInterval(callback: (...args: any[]) => void, ms: number, ...args: any[]): any;

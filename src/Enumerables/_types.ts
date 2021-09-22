@@ -1,8 +1,5 @@
 ﻿import { IEnumerator } from "../Enumerators/IEnumerator";
-import { IList } from "./IList";
-import { IDictionary } from "./IDictionary";
-import { IEnumerableGroup } from "./IEnumerableGroup";
-import { ConstructorFor, Predicate, Selector, Undefinable } from '../Types';
+import { ConstructorFor, KeyValuePair, Predicate, Selector, Undefinable } from '../Types';
 import { IComparer } from '../Comparers/_types';
 
 
@@ -240,4 +237,147 @@ export interface IEnumerable<T> extends Iterable<T>
      * @param predicate the filter for each item.
      */
     where(predicate: Predicate<T>): IEnumerable<T>;
+}
+
+
+export interface ICollection<T> extends IEnumerable<T>
+{
+    /** Gets the number of elements contained in the ICollection<T>. */
+    readonly length: number;
+
+    /** Gets a value indicating whether the ICollection<T> is read-only. */
+    readonly isReadOnly: boolean;
+
+    /**
+     * Adds an item to the ICollection<T>.
+     * @param item The object to add to the ICollection<T>.
+     */
+    add(item: T): void;
+
+    /** Removes all items from the ICollection<T>. */
+    clear(): void;
+
+    /**
+     * Determines whether the ICollection<T> contains a specific value.
+     * @param item The object to locate in the ICollection<T>.
+     */
+    contains(item: T): boolean;
+
+    /**
+     * Copies the elements of the ICollection<T> to an Array, starting at a particular Array index.
+     * @param array The one-dimensional Array that is the destination of the elements copied from ICollection<T>. The Array must have zero-based indexing.
+     * @param arrayIndex The zero-based index in array at which copying begins.
+     */
+    copyTo(array: T[], arrayIndex: number): void;
+
+    /**
+     * Removes the first occurrence of a specific object from the ICollection<T>.
+     * @param item
+     */
+    remove(item: T): boolean;
+}
+
+export interface IDictionary<TKey, TValue> extends ICollection<KeyValuePair<TKey, TValue>>, IEnumerable<KeyValuePair<TKey, TValue>>
+{
+    readonly keys: TKey[];
+
+    readonly values: TValue[];
+
+    addKeyValue(key: TKey, value: TValue): void;
+
+    containsKey(key: TKey): boolean;
+
+    itemByKey(key: TKey): TValue;
+
+    removeByKey(key: TKey): boolean;
+
+    tryGetValue(key: TKey): { value?: TValue, success: boolean };
+}
+
+export interface IEnumerableGroup<T, TKey> extends IEnumerable<T>
+{
+    readonly key: TKey
+}
+
+export interface IList<T> extends ICollection<T>, IEnumerable<T>
+{
+    addRange(array: T[]): void;
+
+    addRange(enumerable: IEnumerable<T>): void;
+
+    indexOf(item: T): number | undefined
+
+    insert(item: T, index: number): void
+
+    prepend(item: T): void
+
+    prepend(item: T): IEnumerable<T>
+
+    prependRange(array: T[]): void;
+
+    prependRange(enumerable: IEnumerable<T>): void;
+
+    removeAt(index: number): void;
+
+    sort(comparer: IComparer<T>): void
+}
+
+export interface IReadOnlyCollection<T> extends IEnumerable<T>
+{
+    readonly length: number;
+}
+
+export interface ISet<T> extends ICollection<T>, IEnumerable<T>
+{
+    /**
+     * Removes all elements in the specified collection from the current set.
+     * @param enumerable The collection of items to remove from the set.
+     */
+    exceptWith(enumerable: IEnumerable<T>): void;
+
+    /**
+     * Modifies the current set so that it contains only elements that are also in a specified collection.
+     * @param enumerable The collection to compare to the current set.
+     */
+    intersectWith(enumerable: IEnumerable<T>): void;
+
+    /**
+     * Determines whether a set is a subset of a specified collection.
+     * @param enumerable The collection to compare to the current set.
+     * @returns true if the current set is a subset of other; otherwise, false.
+     */
+    isSubsetOf(enumerable: IEnumerable<T>): boolean;
+
+    /**
+     * Determines whether the current set is a superset of a specified collection.
+     * @param enumerable The collection to compare to the current set.
+     * @returns true if the current set is a superset of other; otherwise, false.
+     */
+    isSupersetOf(enumerable: IEnumerable<T>): boolean;
+
+    /**
+     * Determines whether the current set overlaps with the specified collection.
+     * @param enumerable The collection to compare to the current set.
+     * @returns true if the current set and other share at least one common element; otherwise, false.
+     */
+    overlaps(enumerable: IEnumerable<T>): boolean;
+
+    /**
+     * Determines whether the current set and the specified collection contain the same elements.
+     * @param enumerable The collection to compare to the current set.
+     * @returns true if the current set is equal to other; otherwise, false.
+     */
+    setEquals(enumerable: IEnumerable<T>): boolean;
+
+    /**
+     * Modifies the current set so that it contains only elements that are present either in the current set or in the specified collection, but not both.
+     * @param enumerable The collection to compare to the current set.
+     */
+    symmetricExceptWith(enumerable: IEnumerable<T>): void;
+
+    /**
+     * Modifies the current set so that it contains all elements that are present in the current set, in the specified collection, or in both.
+     * @param enumerable The collection to compare to the current set.
+     */
+    unionWith(enumerable: IEnumerable<T>): void;
 }

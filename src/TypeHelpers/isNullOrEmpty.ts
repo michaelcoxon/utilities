@@ -1,4 +1,4 @@
-import { IEnumerable } from '../Enumerables/IEnumerable';
+import { IEnumerable } from '../Enumerables/_types';
 import isFunction from './isFunction';
 import isUndefinedOrNull from './isUndefinedOrNull';
 

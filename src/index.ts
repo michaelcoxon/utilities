@@ -1,5 +1,4 @@
 // modules
-export * from "./IDisposable";
 export * from "./Arrays";
 export * from "./Assertions";
 export * from "./Booleans";
@@ -38,3 +37,5 @@ export * from './Enumerators';
 // utility functions
 export {default as errorToLogMessage } from './errorToLogMessage';
 export {default as serializeError } from './serializeError';
+export {default as using } from './using';
+export {default as usingAsync } from './usingAsync';

@@ -1,12 +1,7 @@
-import { IEnumerable } from "./IEnumerable";
-import { IList } from "./IList";
-import { IDictionary } from "./IDictionary";
 import DefaultComparers from "../Comparers/DefaultComparers";
 import MapComparer from "../Comparers/MapComparer";
 import ReverseComparer from "../Comparers/ReverseComparer";
-import { IEnumerableGroup } from "./IEnumerableGroup";
 import { ConstructorFor, IEnumerableOrArray, KeyValuePair, Predicate, Selector, Undefinable } from "../Types";
-import { ICollection } from "./ICollection";
 
 import AppendEnumerator from "../Enumerators/AppendEnumerator";
 import ArrayEnumerator from "../Enumerators/ArrayEnumerator";
@@ -20,15 +15,6 @@ import TakeEnumerator from "../Enumerators/TakeEnumerator";
 import WhereEnumerator from "../Enumerators/WhereEnumerator";
 import AggregateEnumerator from "../Enumerators/AggregateEnumerator";
 import LinkedListEnumerator from "../Enumerators/LinkedListEnumerator";
-
-// import InvalidOperationException from '@michaelcoxon/utilities';
-// import NullReferenceException from '@michaelcoxon/utilities';
-// import ArgumentException from '@michaelcoxon/utilities';
-// import KeyAlreadyDefinedException from '@michaelcoxon/utilities';
-
-//import { Undefinable, Predicate, Selector, ConstructorFor } from "@michaelcoxon/utilities";
-//import { isUndefinedOrNull } from "@michaelcoxon/utilities";
-
 import { IEnumerator } from '../Enumerators/IEnumerator';
 import getHash from '../Utilities/getHash';
 import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
@@ -39,6 +25,7 @@ import KeyAlreadyDefinedException from '../Exceptions/KeyAlreadyDefinedException
 import KeyNotFoundException from '../Exceptions/KeyNotFoundException';
 import equivilentToByJSON from '../Utilities/equivilentToByJSON';
 import { IComparer } from '../Comparers/_types';
+import { IEnumerable, IEnumerableGroup, IDictionary, IList, ICollection } from './_types';
 
 export class Enumerable
 {

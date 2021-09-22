@@ -1,2 +1,2 @@
-export * from './Configuration.types';
+export * from './_types';
 export * from './Json';

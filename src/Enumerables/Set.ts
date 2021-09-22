@@ -1,14 +1,10 @@
-import { ISet } from "./ISet";
-import { IEnumerable } from "./IEnumerable";
-import { ICollection } from "./ICollection";
-import { IList } from "./IList";
-import { IDictionary } from "./IDictionary";
 import { IEnumerator } from "../Enumerators/IEnumerator";
 import { EnumeratorEnumerable, Collection, ArrayEnumerable } from "./";
 
 import AppendEnumerator from '../Enumerators/AppendEnumerator';
 import ArgumentException from '../Exceptions/ArgumentException';
 import { Undefinable } from '../Types';
+import { ISet, ICollection, IEnumerable, IDictionary, IList } from './_types';
 
 
 // all of this needs to be optimised

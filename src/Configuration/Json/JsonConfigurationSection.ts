@@ -2,7 +2,7 @@ import ArgumentException from '../../Exceptions/ArgumentException';
 import isNullOrEmpty from '../../TypeHelpers/isNullOrEmpty';
 import isObject from '../../TypeHelpers/isObject';
 import { Undefinable } from '../../Types';
-import { IConfigurationSection, parseKey } from '../Configuration.types';
+import { IConfigurationSection, parseKey } from '../_types';
 import { ConfigValue } from './Json.types';
 
 
