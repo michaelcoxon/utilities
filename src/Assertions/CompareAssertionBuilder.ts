@@ -1,5 +1,5 @@
 ﻿import { DefaultComparers } from '..';
-import { ArgumentAssertionBuilder } from './ArgumentAssertionBuilder';
+import ArgumentAssertionBuilder from './ArgumentAssertionBuilder';
 import { IComparable } from '../Comparers/_types';
 import ArgumentException from '../Exceptions/ArgumentException';
 
@@ -13,7 +13,7 @@ export default class CompareAssertionBuilder<T extends IComparable> extends Argu
     /// <exception cref="System.ArgumentNullException"></exception>
     isGreaterThanOrEqualTo<T extends IComparable>(value: T): this
     {
-        if (DefaultComparers.DefaultComparer.compare(this.argument, value) < 0)
+        if (DefaultComparers.DefaultComparer.compare(this.argument.valueOf(), value) < 0)
         {
             throw new ArgumentException(`The argument '${this.argumentName}' is not greater than or equal to '${value}'`, this.argumentName);
         }
@@ -28,7 +28,7 @@ export default class CompareAssertionBuilder<T extends IComparable> extends Argu
     /// <exception cref="System.ArgumentNullException"></exception>
     isLessThanOrEqualTo<T extends IComparable>(value: T): this
     {
-        if (DefaultComparers.DefaultComparer.compare(this.argument, value) > 0)
+        if (DefaultComparers.DefaultComparer.compare(this.argument.valueOf(), value) > 0)
         {
             throw new ArgumentException(`The argument '${this.argumentName}' is not less than or equal to '${value}'`, this.argumentName);
         }
@@ -43,7 +43,7 @@ export default class CompareAssertionBuilder<T extends IComparable> extends Argu
     /// <exception cref="System.ArgumentNullException"></exception>
     isLessThan<T extends IComparable>(value: T): this
     {
-        if (DefaultComparers.DefaultComparer.compare(this.argument, value) != -1)
+        if (DefaultComparers.DefaultComparer.compare(this.argument.valueOf(), value) != -1)
         {
             throw new ArgumentException(`The argument '${this.argumentName}' is not less '${value}'`, this.argumentName);
         }
@@ -58,7 +58,7 @@ export default class CompareAssertionBuilder<T extends IComparable> extends Argu
     /// <exception cref="System.ArgumentNullException"></exception>
     isGreaterThan<T extends IComparable>(value: T): this
     {
-        if (DefaultComparers.DefaultComparer.compare(this.argument, value) != 1)
+        if (DefaultComparers.DefaultComparer.compare(this.argument.valueOf(), value) != 1)
         {
             throw new ArgumentException(`The argument '${this.argumentName}' is not greater than '${value}'`, this.argumentName);
         }
@@ -73,7 +73,7 @@ export default class CompareAssertionBuilder<T extends IComparable> extends Argu
     /// <exception cref="System.ArgumentNullException"></exception>
     isEqualTo<T extends IComparable>(value: T): this
     {
-        if (DefaultComparers.DefaultComparer.compare(this.argument, value) != 0)
+        if (DefaultComparers.DefaultComparer.compare(this.argument.valueOf(), value) != 0)
         {
             throw new ArgumentException(`The argument '${this.argumentName}' is not equal to '${value}'`, this.argumentName);
         }

@@ -1,4 +1,5 @@
-﻿import ArgumentException from '../Exceptions/ArgumentException';
+﻿import { Undefinable } from '..';
+import ArgumentException from '../Exceptions/ArgumentException';
 import ArgumentNullException from '../Exceptions/ArgumentNullException';
 import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException';
 import Exception from '../Exceptions/Exception';
@@ -12,12 +13,12 @@ export interface IArgumentAssertionBuilder<T>
     readonly argumentName: string;
 }
 
-export class ArgumentAssertionBuilder<T> implements IArgumentAssertionBuilder<T>
+export default class ArgumentAssertionBuilder<T> implements IArgumentAssertionBuilder<T>
 {
     constructor(readonly argument: T, readonly argumentName: string) { }
 
     /** Ensures the argument is not null or undefined */
-    isNotNullOrUndefined<T>(): this
+    isNotNullOrUndefined(): this
     {
         return this.isNotNull().isNotUndefined();
     }
@@ -63,7 +64,7 @@ export class ArgumentAssertionBuilder<T> implements IArgumentAssertionBuilder<T>
     matches(predicate: Func1<T, boolean>, message?: string): this
     {
         let result: boolean;
-        let innerException: Exception;
+        let innerException: Undefinable<Exception>;
         try
         {
             result = predicate(this.argument);
@@ -75,7 +76,7 @@ export class ArgumentAssertionBuilder<T> implements IArgumentAssertionBuilder<T>
         }
         if (!result)
         {
-            throw new ArgumentException(this.argumentName, message!, innerException!);
+            throw new ArgumentException(this.argumentName, message, innerException);
         }
 
         return this;

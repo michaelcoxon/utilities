@@ -1,4 +1,4 @@
-import { AssertionType, ArgumentAssertionBuilder, IArgumentAssertionBuilder } from '../Assertions/ArgumentAssertionBuilder';
+import ArgumentAssertionBuilder, { AssertionType, IArgumentAssertionBuilder } from '../Assertions/ArgumentAssertionBuilder';
 import ArrayLikeArgumentAssertionBuilder from '../Assertions/ArrayLikeArgumentAssertionBuilder';
 import CompareAssertionBuilder from '../Assertions/CompareAssertionBuilder';
 import GuidArgumentAssertionBuilder from '../Assertions/GuidArgumentAssertionBuilder';
