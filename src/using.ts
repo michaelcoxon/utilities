@@ -1,7 +1,8 @@
 import { IDisposable } from './Types';
 
 /**
- * creates a disposable object then cleans it up after inner has finished execution. DO NOT USE ON PROMISES!!! use `usingAsync` instead.
+ * Creates a disposable object then cleans it up after inner has finished execution. 
+ * DO NOT USE ON PROMISES!!! use `usingAsync` instead.
  * @param disposableObjectFactory
  * @param inner
  */

@@ -1,5 +1,5 @@
-import { IEvent, noop } from '..';
-import SingleInvokeEvent from '../SingleInvokeEvent';
+import SingleInvokeEvent from '../Events/SingleInvokeEvent';
+import { IEvent } from '../Events/_types';
 
 
 export default class CancellationToken

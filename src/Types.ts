@@ -18,9 +18,6 @@ export type Undefinable<T> = T | undefined;
 /** Shortcut for T | Promise<T> */
 export type Awaitable<T> = T | PromiseLike<T>;
 
-/** The event handler type */
-export type EventHandler<TEventArgs> = (sender: any, args: TEventArgs) => void;
-
 /** Helper type for representing constructors */
 export type ConstructorFor<T> = { new(...args: any[]): T; };
 
@@ -58,11 +55,7 @@ export type Comparison<T> = (a: T, y: T) => number;
 export type AnyFunction = (...args: any[]) => any;
 
 
-export interface IEvent<TEventArgs>
-{
-    addHandler(eventHandler: EventHandler<TEventArgs>): EventHandler<TEventArgs>;
-    removeHandler(eventHandler: EventHandler<TEventArgs>): void;
-}
+
 
 /** interface for disposable objects */
 export interface IDisposable

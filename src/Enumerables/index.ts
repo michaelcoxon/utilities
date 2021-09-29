@@ -15,7 +15,6 @@ import TakeEnumerator from "../Enumerators/TakeEnumerator";
 import WhereEnumerator from "../Enumerators/WhereEnumerator";
 import AggregateEnumerator from "../Enumerators/AggregateEnumerator";
 import LinkedListEnumerator from "../Enumerators/LinkedListEnumerator";
-import { IEnumerator } from '../Enumerators/IEnumerator';
 import getHash from '../Utilities/getHash';
 import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
 import InvalidOperationException from '../Exceptions/InvalidOperationException';
@@ -26,6 +25,7 @@ import KeyNotFoundException from '../Exceptions/KeyNotFoundException';
 import equivilentToByJSON from '../Utilities/equivilentToByJSON';
 import { IComparer } from '../Comparers/_types';
 import { IEnumerable, IEnumerableGroup, IDictionary, IList, ICollection } from './_types';
+import { IEnumerator } from '../Enumerators/_types';
 
 export class Enumerable
 {

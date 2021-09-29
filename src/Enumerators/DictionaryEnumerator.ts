@@ -1,4 +1,4 @@
-import { IEnumerator } from "./IEnumerator";
+import { IEnumerator } from './_types';
 import { KeyValuePair, Undefinable } from "../Types";
 import ArrayEnumerator from "./ArrayEnumerator";
 import EnumeratorBase from "./EnumeratorBase";

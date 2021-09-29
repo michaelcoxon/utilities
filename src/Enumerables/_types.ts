@@ -1,6 +1,6 @@
-﻿import { IEnumerator } from "../Enumerators/IEnumerator";
-import { ConstructorFor, KeyValuePair, Predicate, Selector, Undefinable } from '../Types';
+﻿import { ConstructorFor, KeyValuePair, Predicate, Selector, Undefinable } from '../Types';
 import { IComparer } from '../Comparers/_types';
+import { IEnumerator } from '../Enumerators/_types';
 
 
 export interface IEnumerable<T> extends Iterable<T>

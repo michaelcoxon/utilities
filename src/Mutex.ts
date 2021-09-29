@@ -1,6 +1,6 @@
 ﻿import { CancellationToken } from '.';
 import MutexAlreadyAquiredException from './Exceptions/MutexAlreadyAquiredException';
-import SingleInvokeEvent from './SingleInvokeEvent';
+import SingleInvokeEvent from './Events/SingleInvokeEvent';
 import isUndefined from './TypeHelpers/isUndefined';
 import { Awaitable } from './Types';
 

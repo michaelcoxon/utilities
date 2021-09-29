@@ -1,6 +1,7 @@
-import Event from "../Event";
+import Event from "../Events/Event";
+import { EventHandler } from '../Events/_types';
 import Guid from '../Guid';
-import { EventHandler, Undefinable } from "../Types";
+import { Undefinable } from "../Types";
 import { IModelState } from './ModelState';
 
 

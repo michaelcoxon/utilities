@@ -1,4 +1,4 @@
-﻿import Event from '../Event';
+﻿import Event from '../Events/Event';
 import ArgumentException from '../Exceptions/ArgumentException';
 import { IDisposable, IEvent } from '../Types';
 

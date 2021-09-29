@@ -1,4 +1,4 @@
-﻿import SingleInvokeEvent from "../SingleInvokeEvent";
+﻿import SingleInvokeEvent from "../Events/SingleInvokeEvent";
 import isFunction from '../TypeHelpers/isFunction';
 import { Undefinable, Awaitable } from "../Types";
 

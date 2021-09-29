@@ -1,6 +1,5 @@
-﻿import ArgumentException from "./Exceptions/ArgumentException";
-import { EventHandler, IEvent } from "./Types";
-
+﻿import ArgumentException from "../Exceptions/ArgumentException";
+import { IEvent, EventHandler } from './_types';
 /**
  * Class to represent an event.
  */

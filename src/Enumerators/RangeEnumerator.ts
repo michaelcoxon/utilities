@@ -1,4 +1,4 @@
-import { IEnumerator } from "./IEnumerator";
+import { IEnumerator } from './_types';
 import EnumeratorBase from "./EnumeratorBase";
 import ArgumentException from '../Exceptions/ArgumentException';
 import Exception from '../Exceptions/Exception';
