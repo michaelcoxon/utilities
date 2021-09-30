@@ -8,11 +8,11 @@
 import { isUndefinedOrNull } from '..';
 
 export default function sequenceEqual<T>(a: T[], b: T[], anyOrder = false)
-{    
+{
     if (a === b)
     {
         return true;
-    }    
+    }
     if (isUndefinedOrNull(a) || isUndefinedOrNull(b))
     {
         return false;

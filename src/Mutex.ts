@@ -30,7 +30,7 @@ class Lock implements ILock
  * Creates a mutex that when acquired will return a lock that needs to be released
  * before any waiting code can be run.
  */
-export default class Mutex 
+export default class Mutex
 {
     #onRelease?: SingleInvokeEvent<any>;
 
@@ -62,8 +62,8 @@ export default class Mutex
         });
     }
 
-    /** 
-     * Returns a promise that can be awaited until the lock is released. 
+    /**
+     * Returns a promise that can be awaited until the lock is released.
      * If there is no lock the promise is resolved immediately.
      */
     public waitAsync(cancellationToken: CancellationToken = CancellationToken.default): Promise<void>
@@ -82,7 +82,7 @@ export default class Mutex
                 else
                 {
                     // resolve promise when lock is released
-                    this.#onRelease.addHandler(() => resolve());                    
+                    this.#onRelease.addHandler(() => resolve());
                 }
             }
             catch (e)

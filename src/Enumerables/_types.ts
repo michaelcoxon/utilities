@@ -191,7 +191,7 @@ export interface IEnumerable<T> extends Iterable<T>
     singleOrDefault(): T | null;
 
     /**
-     * Returns a single element only if there is one element in the queryable that matches the predicate. 
+     * Returns a single element only if there is one element in the queryable that matches the predicate.
      * If there are no items in the queryable, then null is returned
      * @throws InvalidOperationException if there is not exactly one or zero item in the queryable that matches the predicate
      */

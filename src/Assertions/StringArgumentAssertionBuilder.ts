@@ -12,8 +12,8 @@ export default class StringArgumentAssertionBuilder
     extends ArgumentAssertionBuilder<string>
     implements IArgumentAssertionBuilder<string>
 {
-    /** 
-    * Ensures the string is not null, undefined or empty 
+    /**
+    * Ensures the string is not null, undefined or empty
     * @throws {ArgumentNullException}
     * @throws {ArgumentUndefinedException}
     * @throws {ArgumentException}
@@ -35,8 +35,8 @@ export default class StringArgumentAssertionBuilder
         return this;
     }
 
-    /** 
-    * Ensures the string is not empty 
+    /**
+    * Ensures the string is not empty
     * @throws {ArgumentException}
     */
     isNotEmpty(): this
