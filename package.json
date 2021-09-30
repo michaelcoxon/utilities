@@ -12,30 +12,9 @@
     "build": "npm-run-all -s build:typescript -p _build:release",
     "build:debug": "npm-run-all -s build:typescript -p _build:debug",
     "build:typescript": "tsc",
-    "coverage": "jest --coverage --coverageDirectory coverage --coverageReporters html",
-    "test": "jest",
+    "test": "jest --coverage --coverageDirectory coverage --coverageReporters html",
     "build-doc": "typedoc --logger console --out docs src&& copy .nojekyll docs\\.nojekyll",
     "prepack": "npm-run-all -s build -p test build-doc"
-  },
-  "mocha": {
-    "require": [
-      "ts-node/register",
-      "source-map-support/register"
-    ],
-    "recursive": true
-  },
-  "nyc": {
-    "extension": [
-      ".ts",
-      ".tsx"
-    ],
-    "exclude": [
-      "**/*.d.ts"
-    ],
-    "reporter": [
-      "html"
-    ],
-    "all": true
   },
   "repository": {
     "type": "git",
@@ -43,7 +22,18 @@
   },
   "keywords": [
     "utilities",
-    "typescript"
+    "typescript",
+    "collection",
+    "enumerable",
+    "linq",
+    "enumerator",
+    "ienumerable",
+    "list",
+    "array",
+    "comparer",
+    "exception",
+    "logging",
+    "format"
   ],
   "author": "Michael Coxon",
   "license": "Apache-2.0",
@@ -76,10 +66,5 @@
   },
   "dependencies": {
     "tslib": "^2.3.1"
-  },
-  "-vs-binding": {
-    "ProjectOpened": [
-      "test"
-    ]
   }
 }

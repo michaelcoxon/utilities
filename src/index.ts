@@ -24,11 +24,8 @@ export * from "./Utilities";
 
 // single classes
 export { default as AggregateDisposable } from "./AggregateDisposable";
-export { default as Event } from "./Events/Event";
 export { default as Guid } from "./Guid";
 export { default as Lazy } from "./Lazy";
-export { default as Result } from "./Result/Result";
-export { default as SingleInvokeEvent } from "./Events/SingleInvokeEvent";
 //export * from "./Timer";
 export * from "./Types";
 
