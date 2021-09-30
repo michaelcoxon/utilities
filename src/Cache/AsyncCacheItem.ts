@@ -1,7 +1,7 @@
 import { Awaitable } from '../Types';
 import { IAsyncCacheItem, IExpiryPolicyDelegate } from './_types';
 import CacheExpiredException from './CacheExpiredException';
-import { isFunction } from '..';
+import isFunction from '../TypeHelpers/isFunction';
 
 
 export default class AsyncCacheItem<T> implements IAsyncCacheItem<T>

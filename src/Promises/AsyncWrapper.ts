@@ -1,5 +1,6 @@
 ﻿import SingleInvokeEvent from "../Events/SingleInvokeEvent";
 import isFunction from '../TypeHelpers/isFunction';
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
 import { Undefinable, Awaitable } from "../Types";
 
 /**
@@ -116,7 +117,7 @@ export default class AsyncWrapper<T>
                             this.#complete = true;
                             this.#completeEvent.invoke(this, this.#value);
 
-                            if (this.#callback !== undefined)
+                            if (!isUndefinedOrNull(this.#callback))
                             {
                                 this.#callback(this);
                             }

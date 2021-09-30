@@ -79,3 +79,7 @@ tests/
 .*
 
 _config.yml
+
+
+temp/
+webpack-stats.json

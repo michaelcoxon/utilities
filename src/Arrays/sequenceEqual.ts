@@ -1,12 +1,11 @@
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
+
 /**
  * Returns true if the sequence is equal
  * @param a array 1
  * @param b array 2
  * @param anyOrder set to true if you do not care about the order of the arrays
  */
-
-import { isUndefinedOrNull } from '..';
-
 export default function sequenceEqual<T>(a: T[], b: T[], anyOrder = false)
 {    
     if (a === b)

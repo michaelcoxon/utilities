@@ -1,7 +1,7 @@
-﻿import { DefaultComparers } from '..';
-import ArgumentAssertionBuilder from './ArgumentAssertionBuilder';
+﻿import ArgumentAssertionBuilder from './ArgumentAssertionBuilder';
 import { IComparable } from '../Comparers/_types';
 import ArgumentException from '../Exceptions/ArgumentException';
+import DefaultComparers from '../Comparers/DefaultComparers';
 
 export default class CompareAssertionBuilder<T extends IComparable> extends ArgumentAssertionBuilder<T>
 {

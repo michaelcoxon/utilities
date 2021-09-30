@@ -3,7 +3,7 @@ import DefaultNumberComparer from './DefaultNumberComparer';
 import DefaultObjectComparer from './DefaultObjectComparer';
 import DefaultStringComparer from './DefaultStringComparer';
 
-export const DefaultComparers = {
+const DefaultComparers = {
     DefaultComparer: new DefaultComparer<any>(),
     StringComparer: new DefaultStringComparer(),
     NumberComparer: new DefaultNumberComparer(),

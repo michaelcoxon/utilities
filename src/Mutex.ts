@@ -1,8 +1,8 @@
-﻿import { CancellationToken } from '.';
-import MutexAlreadyAquiredException from './Exceptions/MutexAlreadyAquiredException';
+﻿import MutexAlreadyAquiredException from './Exceptions/MutexAlreadyAquiredException';
 import SingleInvokeEvent from './Events/SingleInvokeEvent';
 import isUndefined from './TypeHelpers/isUndefined';
 import { Awaitable } from './Types';
+import CancellationToken from './Promises/CancellationToken';
 
 /** Interface for a lock */
 export interface ILock

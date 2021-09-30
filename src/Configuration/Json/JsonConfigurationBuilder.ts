@@ -1,4 +1,4 @@
-import { isString } from '../..';
+import isString from '../../TypeHelpers/isString';
 import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull';
 import merge from '../../Utilities/merge';
 import { IConfiguration, IConfigurationBuilder } from '../_types';
