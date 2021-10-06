@@ -1,9 +1,9 @@
 ﻿import { ILogger, ILoggerConfig, LogLevel } from './_types';
 import testLogVerbosity from "./testLogVerbosity";
-import { IDisposable } from '../IDisposable';
 import ScopedLogger from "./ScopedLogger";
 import IndentedStringBuilder from "../IO/IndentedStringBuilder";
 import errorToLogMessage from '../errorToLogMessage';
+import { IDisposable } from '../Types';
 
 const defaultConfig: ILoggerConfig = {
     loggingVerbosity: LogLevel.Info,

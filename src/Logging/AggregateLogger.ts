@@ -1,6 +1,6 @@
 ﻿import { ILogger } from "./_types";
-import { IDisposable } from "../IDisposable";
 import AggregateDisposable from "../AggregateDisposable";
+import { IDisposable } from '../Types';
 
 export default class AggregateLogger implements ILogger
 {

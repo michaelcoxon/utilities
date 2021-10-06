@@ -1,7 +1,8 @@
 import Exception from '../../Exceptions/Exception';
-import Result, { IResult } from "../../Result";
 import { INumberValue } from './Integers.types';
 import { ensureInt } from "./ensureInt";
+import { IResult } from '../../Result/_types';
+import Result from '../../Result/Result';
 
 
 export default class UnsignedInt32 extends Number  implements INumberValue

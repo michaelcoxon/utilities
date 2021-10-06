@@ -1,8 +1,8 @@
-import { IEnumerator } from "./IEnumerator";
-import { IEnumerable } from "../Enumerables/IEnumerable";
+import { IEnumerator } from './_types';
 import EnumeratorBase from "./EnumeratorBase";
 import { Selector, Undefinable } from '../Types';
 import Exception from '../Exceptions/Exception';
+import { IEnumerable } from '../Enumerables/_types';
 
 
 export default class SelectManyEnumerator<T, TReturn> extends EnumeratorBase<TReturn> implements IEnumerator<TReturn>
@@ -54,7 +54,7 @@ export default class SelectManyEnumerator<T, TReturn> extends EnumeratorBase<TRe
         {
             this.#currentSetEnumerator = this.#selector(item).getEnumerator();
         }
-
+        
         if (this.#currentSetEnumerator.moveNext())
         {
             //

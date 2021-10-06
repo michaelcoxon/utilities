@@ -1,5 +1,5 @@
 import JsonConfigurationSection from './JsonConfigurationSection';
-import { IConfiguration, IConfigurationSection } from '../Configuration.types';
+import { IConfiguration, IConfigurationSection } from '../_types';
 import { ConfigValue } from './Json.types';
 
 export default class JsonConfiguration implements IConfiguration

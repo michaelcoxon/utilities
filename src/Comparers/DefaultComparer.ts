@@ -1,4 +1,4 @@
-import { DefaultComparers } from './DefaultComparers';
+import DefaultComparers from './DefaultComparers';
 import { IComparer, IEqualityComparer } from './_types';
 
 export default class DefaultComparer<T> implements IComparer<T>, IEqualityComparer<T> {

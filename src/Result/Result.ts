@@ -1,22 +1,10 @@
-﻿import { Undefinable } from "./Types";
+﻿import { Undefinable } from "../Types";
+import { IResultBase, IResult } from './_types';
 
-/**  */
-export interface IResultBase<TPreviousResult extends IResultBase = never>
-{
-    readonly success: boolean;
-    readonly error?: string;
-    readonly previousResult?: TPreviousResult;
-}
-
-
-export interface IResult<T, TPreviousResult extends IResultBase = never> extends IResultBase<TPreviousResult>
-{
-    readonly value?: T;
-    readonly success: boolean;
-    readonly error?: string;
-    readonly previousResult?: TPreviousResult;
-}
-
+/**
+ * Encapsulates a value allowing for returning an envelope
+ * that contains the possible outcomes of a method.
+ */
 export default class Result<T = Record<string, any>, TPreviousResult extends IResultBase = never> implements IResult<T, TPreviousResult>
 {
     readonly #value?: T;

@@ -1,7 +1,7 @@
 ﻿import Exception from './Exceptions/Exception';
-import IndentedStringBuilder from "./IO/IndentedStringBuilder";
+import { IIndentedStringBuilder } from './IO/_types';
 
-export default function errorToLogMessage(error: Error | Exception, sb: IndentedStringBuilder): void
+export default function errorToLogMessage(error: Error | Exception, sb: IIndentedStringBuilder): void
 {
     sb.appendLine(`Error '${error.name}': ${error.message}`);
     if (error.stack !== undefined)

@@ -1,6 +1,6 @@
 ﻿import CancellationToken from './CancellationToken';
 import CancellationTokenSource from './CancellationTokenSource';
-import SingleInvokeEvent from '../SingleInvokeEvent';
+import SingleInvokeEvent from '../Events/SingleInvokeEvent';
 import noop from '../Utilities/noop';
 
 export default class CancellablePromise<T> implements PromiseLike<T>

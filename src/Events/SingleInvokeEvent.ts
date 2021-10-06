@@ -1,9 +1,9 @@
-﻿import Event, { IEvent } from "./Event";
-import NullReferenceException from './Exceptions/NullReferenceException';
-import ArgumentUndefinedException from './Exceptions/ArgumentUndefinedException';
-import ArgumentNullException from './Exceptions/ArgumentNullException';
-import { EventHandler } from "./Types";
-import isUndefinedOrNull from './TypeHelpers/isUndefinedOrNull';
+﻿import Event from "./Event";
+import NullReferenceException from '../Exceptions/NullReferenceException';
+import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException';
+import ArgumentNullException from '../Exceptions/ArgumentNullException';
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
+import { EventHandler, IEvent } from './_types';
 
 /**
  * An event type that can only be invoked once. Once the event

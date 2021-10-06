@@ -1,8 +1,8 @@
-import { IEnumerator } from "./IEnumerator";
+import { IEnumerator } from './_types';
 import { KeyValuePair, Undefinable } from "../Types";
-import { IDictionary } from "../Enumerables/IDictionary";
 import ArrayEnumerator from "./ArrayEnumerator";
 import EnumeratorBase from "./EnumeratorBase";
+import { IDictionary } from '../Enumerables/_types';
 
 
 export default class DictionaryEnumerator<TKey, TValue> extends EnumeratorBase<KeyValuePair<TKey, TValue>> implements IEnumerator<KeyValuePair<TKey, TValue>>

@@ -1,8 +1,8 @@
 import errorToLogMessage from '../../src/errorToLogMessage';
-import { IDisposable } from '../../src/IDisposable';
 import IndentedStringBuilder from '../../src/IO/IndentedStringBuilder';
 import { ILogger, LogLevel } from '../../src/Logging';
 import ScopedLogger from '../../src/Logging/ScopedLogger';
+import { IDisposable } from '../../src/Types';
 
 
 export class TestLogger implements ILogger

@@ -1,3 +1,4 @@
+export * from './_types';
 export {default as AggregateEnumerator} from './AggregateEnumerator';
 export {default as AppendEnumerator} from './AppendEnumerator';
 export {default as ArrayEnumerator} from './ArrayEnumerator';

@@ -1,5 +1,5 @@
 import CancellationToken from './CancellationToken';
-import SingleInvokeEvent from '../SingleInvokeEvent';
+import SingleInvokeEvent from '../Events/SingleInvokeEvent';
 
 
 export default class CancellationTokenSource
@@ -12,7 +12,7 @@ export default class CancellationTokenSource
     {
         if (cancellationToken)
         {
-            cancellationToken.cancelledEvent.addHandler(() => this.cancel());
+            cancellationToken.onCancelled.addHandler(() => this.cancel());
         }
     }
 

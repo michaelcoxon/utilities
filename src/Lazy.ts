@@ -1,4 +1,4 @@
-﻿import { isUndefined } from '.';
+﻿import isUndefined from './TypeHelpers/isUndefined';
 import { Undefinable } from "./Types";
 
 /**

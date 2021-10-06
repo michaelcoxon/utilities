@@ -1,7 +1,7 @@
-﻿import { IDisposable } from "./IDisposable";
-import AlreadyDisposedException from './Exceptions/AlreadyDisposedException';
+﻿import AlreadyDisposedException from './Exceptions/AlreadyDisposedException';
 import Exception from './Exceptions/Exception';
 import ErrorException from './Exceptions/ErrorException';
+import { IDisposable } from './Types';
 
 /** A Disposable that can collect disposable objects and dispose then when it is disposed */
 export default class AggregateDisposable implements IDisposable
