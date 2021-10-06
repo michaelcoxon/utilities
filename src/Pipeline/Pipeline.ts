@@ -47,7 +47,7 @@ export default class Pipeline implements IPipelineTaskQueue
         {
             tasks.push({
                 name: curr?.name,
-                promise: async (ctx) => await curr?.executeAsync(ctx, next)
+                promise: async (ctx) => curr?.executeAsync(ctx, next)
             });
             next = curr;
         }

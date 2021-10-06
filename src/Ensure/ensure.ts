@@ -26,7 +26,7 @@ export default function ensure(argument: AssertionType<any>, argumentName: strin
     else if (isArray(argument))
     {
         return new ArrayLikeArgumentAssertionBuilder(argument, argumentName);
-    }    
+    }
     else if (typeof (argument) === "string")
     {
         return new StringArgumentAssertionBuilder(argument, argumentName);
