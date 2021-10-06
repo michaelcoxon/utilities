@@ -62,7 +62,7 @@ describe("Mutex.acquire", () =>
     {
         const list: number[] = [];
         const mutex = new Mutex();
-        const lock = await mutex.acquireAsync();       
+        const lock = await mutex.acquireAsync();
 
         await Promise.all([
             lockAsync(mutex, () =>

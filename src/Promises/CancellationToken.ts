@@ -1,31 +1,33 @@
-import { IEvent } from '../Event';
-import SingleInvokeEvent from '../SingleInvokeEvent';
+import SingleInvokeEvent from '../Events/SingleInvokeEvent';
+import { IEvent } from '../Events/_types';
 
 
 export default class CancellationToken
 {
-    readonly #cancelledEvent: SingleInvokeEvent<undefined> = new SingleInvokeEvent();
+    readonly #onCancelled: SingleInvokeEvent<undefined> = new SingleInvokeEvent();
     #cancelled = false;
 
     /**
      *
      */
-    constructor(cancelledEvent: IEvent<undefined>)
+    constructor(cancelledEvent?: IEvent<undefined>)
     {
-        cancelledEvent.addHandler(() =>
+        cancelledEvent?.addHandler(() =>
         {
             this.#cancelled = true;
-            this.#cancelledEvent.invoke(this, undefined);
+            this.#onCancelled.invoke(this, undefined);
         });
     }
 
-    public get cancelledEvent(): IEvent<undefined>
+    public get onCancelled(): IEvent<undefined>
     {
-        return this.#cancelledEvent;
+        return this.#onCancelled;
     }
 
     public get isCancellationRequested(): boolean
     {
         return this.#cancelled;
     }
+
+    public static default: CancellationToken = new CancellationToken();
 }

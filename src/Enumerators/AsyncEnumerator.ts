@@ -1,7 +1,7 @@
 import OutOfBoundsException from '../Exceptions/OutOfBoundsException';
 import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
 import { Awaitable } from '../Types';
-import { IAsyncEnumerator } from "./IEnumerator";
+import { IAsyncEnumerator } from './_types';
 
 
 export default class AsyncEnumerator<T> implements IAsyncEnumerator<T>

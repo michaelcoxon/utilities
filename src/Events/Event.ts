@@ -1,12 +1,5 @@
-﻿import ArgumentException from "./Exceptions/ArgumentException";
-import { EventHandler } from "./Types";
-
-export interface IEvent<TEventArgs>
-{
-    addHandler(eventHandler: EventHandler<TEventArgs>): EventHandler<TEventArgs>;
-    removeHandler(eventHandler: EventHandler<TEventArgs>): void;
-}
-
+﻿import ArgumentException from "../Exceptions/ArgumentException";
+import { IEvent, EventHandler } from './_types';
 /**
  * Class to represent an event.
  */

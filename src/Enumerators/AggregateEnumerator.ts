@@ -1,8 +1,8 @@
-import { IEnumerator } from "./IEnumerator";
 import EnumeratorBase from "./EnumeratorBase";
 import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
 import NullReferenceException from '../Exceptions/NullReferenceException';
 import { Undefinable } from '../Types';
+import { IEnumerator } from './_types';
 
 /**
  * 

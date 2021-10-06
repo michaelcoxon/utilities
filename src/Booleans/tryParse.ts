@@ -1,4 +1,5 @@
-import Result, { IResult } from '../Result';
+import Result from '../Result/Result';
+import { IResult } from '../Result/_types';
 import { _caseInsensitiveTrueString, trueString, _caseInsensitiveFalseString, falseString } from './_consts';
 
 export default function tryParse(value: string): IResult<boolean>;

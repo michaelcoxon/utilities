@@ -56,22 +56,24 @@ export default class Guid
     public toString(): string
     {
         const sb = new StringBuilder();
+        const zero = '0';
+        const spacer = '-'
 
-        sb.append(padLeft((this.#a.valueOf() >>> 0).toString(16), 8, '0'));
-        sb.append('-');
-        sb.append(padLeft((this.#b.valueOf() >>> 0).toString(16), 4, '0'));
-        sb.append('-');
-        sb.append(padLeft((this.#c.valueOf() >>> 0).toString(16), 4, '0'));
-        sb.append('-');
-        sb.append(padLeft((this.#d.valueOf() >>> 0).toString(16), 2, '0'));
-        sb.append(padLeft((this.#e.valueOf() >>> 0).toString(16), 2, '0'));
-        sb.append('-');
-        sb.append(padLeft((this.#f.valueOf() >>> 0).toString(16), 2, '0'));
-        sb.append(padLeft((this.#g.valueOf() >>> 0).toString(16), 2, '0'));
-        sb.append(padLeft((this.#h.valueOf() >>> 0).toString(16), 2, '0'));
-        sb.append(padLeft((this.#i.valueOf() >>> 0).toString(16), 2, '0'));
-        sb.append(padLeft((this.#j.valueOf() >>> 0).toString(16), 2, '0'));
-        sb.append(padLeft((this.#k.valueOf() >>> 0).toString(16), 2, '0'));
+        sb.append(padLeft((this.#a.valueOf() >>> 0).toString(16), 8, zero));
+        sb.append(spacer);
+        sb.append(padLeft((this.#b.valueOf() >>> 0).toString(16), 4, zero));
+        sb.append(spacer);
+        sb.append(padLeft((this.#c.valueOf() >>> 0).toString(16), 4, zero));
+        sb.append(spacer);
+        sb.append(padLeft((this.#d.valueOf() >>> 0).toString(16), 2, zero));
+        sb.append(padLeft((this.#e.valueOf() >>> 0).toString(16), 2, zero));
+        sb.append(spacer);
+        sb.append(padLeft((this.#f.valueOf() >>> 0).toString(16), 2, zero));
+        sb.append(padLeft((this.#g.valueOf() >>> 0).toString(16), 2, zero));
+        sb.append(padLeft((this.#h.valueOf() >>> 0).toString(16), 2, zero));
+        sb.append(padLeft((this.#i.valueOf() >>> 0).toString(16), 2, zero));
+        sb.append(padLeft((this.#j.valueOf() >>> 0).toString(16), 2, zero));
+        sb.append(padLeft((this.#k.valueOf() >>> 0).toString(16), 2, zero));
 
         return sb.toString();
     }

@@ -1,4 +1,4 @@
-import { IEnumerator } from "./IEnumerator";
+import { IEnumerator } from './_types';
 import EnumeratorBase from "./EnumeratorBase";
 import { Undefinable } from '../Types';
 import OutOfBoundsException from '../Exceptions/OutOfBoundsException';

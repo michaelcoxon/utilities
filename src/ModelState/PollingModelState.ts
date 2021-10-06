@@ -1,5 +1,4 @@
-import { IDisposable } from '../IDisposable';
-import { Awaitable } from "../Types";
+import { Awaitable, IDisposable } from "../Types";
 import BaseModelState from './BaseModelState';
 import { IModelState } from './ModelState';
 

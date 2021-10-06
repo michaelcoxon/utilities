@@ -1,5 +1,5 @@
 import { Undefinable } from '../Types';
-import { IEnumerator } from "./IEnumerator";
+import { IEnumerator } from './_types';
 
 
 export default abstract class EnumeratorBase<T> implements IEnumerator<T>

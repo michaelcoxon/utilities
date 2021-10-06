@@ -1,4 +1,4 @@
-﻿import { Undefinable } from '../Types';
+import { Undefinable } from '../Types';
 
 /**
  * Enumrates an object source for values.

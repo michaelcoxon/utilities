@@ -19,7 +19,7 @@
     "test": "jest --coverage --coverageDirectory coverage --coverageReporters html",
     "build-doc": "typedoc --logger console --out docs src&& copy .nojekyll docs\\.nojekyll",
     "prepack": "npm-run-all -s build -p test build-doc",
-    "webpack-stats": "SET NODE_ENV=production&& webpack --profile --json > webpack-stats.json"
+    "webpack-stats":"SET NODE_ENV=production&& webpack --profile --json > webpack-stats.json"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,4 @@
-import Result from '../src/Result';
+import Result from '../src/Result/Result';
 
 describe("Result.ok", () =>
 {

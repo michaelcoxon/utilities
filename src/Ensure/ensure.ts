@@ -1,4 +1,4 @@
-import { AssertionType, ArgumentAssertionBuilder, IArgumentAssertionBuilder } from '../Assertions/ArgumentAssertionBuilder';
+import ArgumentAssertionBuilder, { AssertionType, IArgumentAssertionBuilder } from '../Assertions/ArgumentAssertionBuilder';
 import ArrayLikeArgumentAssertionBuilder from '../Assertions/ArrayLikeArgumentAssertionBuilder';
 import CompareAssertionBuilder from '../Assertions/CompareAssertionBuilder';
 import GuidArgumentAssertionBuilder from '../Assertions/GuidArgumentAssertionBuilder';
@@ -26,7 +26,7 @@ export default function ensure(argument: AssertionType<any>, argumentName: strin
     else if (isArray(argument))
     {
         return new ArrayLikeArgumentAssertionBuilder(argument, argumentName);
-    }    
+    }
     else if (typeof (argument) === "string")
     {
         return new StringArgumentAssertionBuilder(argument, argumentName);
