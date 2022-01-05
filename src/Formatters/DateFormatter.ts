@@ -1,7 +1,7 @@
 import padLeft from '../Strings/padLeft';
 import { empty } from '../Strings/_consts';
 import { IFormatter, IDateFormatterConfiguration } from './_types';
-import * as DefaultConfiguration from './en-au.DateFormatterConfiguration.json';
+import * as DefaultConfiguration from '../i18n/en.DateFormatterConfiguration.strings.json';
 
 export default class DateFormatter implements IFormatter<Date>
 {

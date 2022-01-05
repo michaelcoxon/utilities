@@ -2,6 +2,8 @@
 import { IComparable } from '../Comparers/_types';
 import ArgumentException from '../Exceptions/ArgumentException';
 import DefaultComparers from '../Comparers/DefaultComparers';
+import { format } from '../Strings';
+import SR from '../i18n/en.assertions.strings.json';
 
 export default class CompareAssertionBuilder<T extends IComparable> extends ArgumentAssertionBuilder<T>
 {
@@ -15,7 +17,7 @@ export default class CompareAssertionBuilder<T extends IComparable> extends Argu
     {
         if (DefaultComparers.DefaultComparer.compare(this.argument.valueOf(), value) < 0)
         {
-            throw new ArgumentException(`The argument '${this.argumentName}' is not greater than or equal to '${value}'`, this.argumentName);
+            throw new ArgumentException(format(SR.isGreaterThanOrEqualToExceptionMessage, this.argumentName, value), this.argumentName);
         }
         return this;
     }
@@ -30,7 +32,7 @@ export default class CompareAssertionBuilder<T extends IComparable> extends Argu
     {
         if (DefaultComparers.DefaultComparer.compare(this.argument.valueOf(), value) > 0)
         {
-            throw new ArgumentException(`The argument '${this.argumentName}' is not less than or equal to '${value}'`, this.argumentName);
+            throw new ArgumentException(format(SR.isLessThanOrEqualToExceptionMessage, this.argumentName, value), this.argumentName);
         }
         return this;
     }
@@ -45,7 +47,7 @@ export default class CompareAssertionBuilder<T extends IComparable> extends Argu
     {
         if (DefaultComparers.DefaultComparer.compare(this.argument.valueOf(), value) != -1)
         {
-            throw new ArgumentException(`The argument '${this.argumentName}' is not less '${value}'`, this.argumentName);
+            throw new ArgumentException(format(SR.isLessThanExceptionMessage, this.argumentName, value), this.argumentName);
         }
         return this;
     }
@@ -60,7 +62,7 @@ export default class CompareAssertionBuilder<T extends IComparable> extends Argu
     {
         if (DefaultComparers.DefaultComparer.compare(this.argument.valueOf(), value) != 1)
         {
-            throw new ArgumentException(`The argument '${this.argumentName}' is not greater than '${value}'`, this.argumentName);
+            throw new ArgumentException(format(SR.isGreaterThanExcepetionMessage, this.argumentName, value), this.argumentName);
         }
         return this;
     }
@@ -75,7 +77,7 @@ export default class CompareAssertionBuilder<T extends IComparable> extends Argu
     {
         if (DefaultComparers.DefaultComparer.compare(this.argument.valueOf(), value) != 0)
         {
-            throw new ArgumentException(`The argument '${this.argumentName}' is not equal to '${value}'`, this.argumentName);
+            throw new ArgumentException(format(SR.isEqualToExceptionMessage, this.argumentName, value), this.argumentName);
         }
         return this;
     }

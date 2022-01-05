@@ -4,8 +4,10 @@ import ArgumentNullException from '../Exceptions/ArgumentNullException';
 import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException';
 import Exception from '../Exceptions/Exception';
 import { ConstructorFor, Func1 } from '../Types';
+import SR from '../i18n/en.assertions.strings.json';
+import { format } from '../Strings';
 
-export type AssertionType<T> = T | undefined | null
+export type AssertionType<T> = T | undefined | null;
 
 export interface IArgumentAssertionBuilder<T>
 {
@@ -51,7 +53,7 @@ export default class ArgumentAssertionBuilder<T> implements IArgumentAssertionBu
     {
         if (!(this.argument instanceof type))
         {
-            throw new ArgumentException(this.argumentName, `The argument at '${this.argumentName}' must be of type '${type}'`);
+            throw new ArgumentException(this.argumentName, format(SR.isTypeOfExceptionMessage, this.argumentName, type));
         }
         return this;
     }
@@ -90,7 +92,7 @@ export default class ArgumentAssertionBuilder<T> implements IArgumentAssertionBu
     {
         if (options.indexOf(this.argument) == -1)
         {
-            throw new ArgumentException(this.argumentName, `Argument '${this.argumentName}' must be one of ('${options.join("', '")}')`);
+            throw new ArgumentException(this.argumentName, format(SR.isOneOfExceptionMessage, this.argumentName, options.join("', '")));
         }
         return this;
     }

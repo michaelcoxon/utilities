@@ -1,6 +1,8 @@
 ﻿import ArgumentAssertionBuilder from './ArgumentAssertionBuilder';
 import ArgumentException from '../Exceptions/ArgumentException';
 import Guid from '../Guid';
+import SR from '../i18n/en.assertions.strings.json';
+import { format } from '../Strings';
 
 
 export default class GuidArgumentAssertionBuilder extends ArgumentAssertionBuilder<Guid>
@@ -39,7 +41,7 @@ export default class GuidArgumentAssertionBuilder extends ArgumentAssertionBuild
 
         if (!matched)
         {
-            throw new ArgumentException(this.argumentName, `Argument '${this.argumentName}' must be one of ('${options.join("', '")}')`);
+            throw new ArgumentException(this.argumentName, format(SR.isOneOfExceptionMessage, this.argumentName, options.join("', '")));
         }
 
         return this;

@@ -2,11 +2,11 @@ import FormatException from '../Exceptions/FormatException';
 import { IFormatter, INumberFormatterConfiguration } from './_types';
 import NumberFormatterDelegates from "./NumberFormatterDelegates";
 import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty';
-import * as DefaultConfiguration from './en.NumberFormatterConfiguration.json';
+import * as DefaultConfiguration from '../i18n/en.NumberFormatterConfiguration.strings.json';
 
 /** Formats numbers */
 
-export default  class NumberFormatter implements IFormatter<number>
+export default class NumberFormatter implements IFormatter<number>
 {
     readonly #delegates: NumberFormatterDelegates;
 
@@ -29,7 +29,7 @@ export default  class NumberFormatter implements IFormatter<number>
         }
     }
 
-    readonly #getFormatter = (specifier:string) =>
+    readonly #getFormatter = (specifier: string) =>
     {
         switch (specifier.toLowerCase())
         {
@@ -44,5 +44,5 @@ export default  class NumberFormatter implements IFormatter<number>
 
             default: throw new FormatException(`The format specifier '${specifier}' is not implemented`);
         }
-    }
+    };
 }

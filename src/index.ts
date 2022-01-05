@@ -1,3 +1,12 @@
+// i18n
+import './i18n/en.assertions.strings.json';
+import './i18n/en.DateFormatterConfiguration.strings.json';
+import './i18n/en.exceptions.strings.json';
+import './i18n/en.generic.strings.json';
+import './i18n/en.NumberFormatterConfiguration.strings.json';
+
+
+
 // types
 export * from "./Types";
 

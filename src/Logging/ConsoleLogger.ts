@@ -1,5 +1,7 @@
-﻿import { ILogger, LogLevel, IConsole, IConsoleLoggerConfig } from './_types';
+﻿import { ILogger, LogLevel, IConsoleLoggerConfig } from './_types';
+import { IConsole } from "../IConsole";
 import Logger from './Logger';
+import { NotImplementedException } from '../Exceptions';
 
 const defaultConfig: IConsoleLoggerConfig = {
     loggingVerbosity: LogLevel.Info,
@@ -30,26 +32,26 @@ export default class ConsoleLogger extends Logger implements ILogger
 
     protected _errorMethod(): void
     {
-        throw new Error("Method not implemented.");
+        throw new NotImplementedException();
     }
     protected _warnMethod(): void
     {
-        throw new Error("Method not implemented.");
+        throw new NotImplementedException();
     }
     protected _infoMethod(): void
     {
-        throw new Error("Method not implemented.");
+        throw new NotImplementedException();
     }
     protected _traceMethod(): void
     {
-        throw new Error("Method not implemented.");
+        throw new NotImplementedException();
     }
     protected _debugMethod(): void
     {
-        throw new Error("Method not implemented.");
+        throw new NotImplementedException();
     }
     protected _defaultMethod(): void
     {
-        throw new Error("Method not implemented.");
+        throw new NotImplementedException();
     }
 }
