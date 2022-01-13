@@ -2,9 +2,13 @@ import FormatException from '../Exceptions/FormatException';
 import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty';
 import { IFormatter } from './_types';
 
-/** Formats strings */
+const StringFormats = {
+    UPPERCASE: 'U',
+    LOWERCASE: 'L'
+};
 
-export default  class StringFormatter implements IFormatter<string>
+/** Formats strings */
+export default class StringFormatter implements IFormatter<string>
 {
     public format(subject: string, format: string): string
     {
@@ -17,8 +21,8 @@ export default  class StringFormatter implements IFormatter<string>
         {
             switch (format)
             {
-                case 'L': return subject.toLowerCase();
-                case 'U': return subject.toUpperCase();
+                case StringFormats.LOWERCASE: return subject.toLowerCase();
+                case StringFormats.UPPERCASE: return subject.toUpperCase();
 
                 default: throw new FormatException(`The format '${format}' is not implemented`);
             }

@@ -1,4 +1,6 @@
-import { EnumeratorEnumerable, Collection, ArrayEnumerable } from "./";
+import EnumeratorEnumerable from "./EnumeratorEnumerable";
+import Collection from "./Collection";
+import ArrayEnumerable from "./ArrayEnumerable";
 
 import AppendEnumerator from '../Enumerators/AppendEnumerator';
 import ArgumentException from '../Exceptions/ArgumentException';
@@ -7,7 +9,7 @@ import { ISet, ICollection, IEnumerable, IDictionary, IList } from './_types';
 import { IEnumerator } from '../Enumerators/_types';
 
 
-// all of this needs to be optimised
+// TODO: all of this needs to be optimised
 
 export default class Set<T> extends Collection<T> implements ISet<T>, ICollection<T>, IEnumerable<T>
 {
@@ -153,7 +155,7 @@ export default class Set<T> extends Collection<T> implements ISet<T>, ICollectio
         return this.remove(item);
     }
 
-    forEach(callback: (value: T, index: number) => boolean | void): void
+    forEach(callback: (value: T, index: number, source: ISet<T>) => boolean | void): void
     {
         this.forEach(callback);
     }

@@ -1,5 +1,5 @@
 import { IEnumerator } from './_types';
-import { LinkedList } from "../Enumerables";
+import { LinkedList } from "../LinkedList";
 import EnumeratorBase from "./EnumeratorBase";
 import Exception from '../Exceptions/Exception';
 

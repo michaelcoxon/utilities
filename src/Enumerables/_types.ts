@@ -69,12 +69,6 @@ export interface IEnumerable<T> extends Iterable<T>
      */
     firstOrDefault(predicate: Predicate<T>): T | null;
 
-    /**
-     * Iterates over the enumerable and performs the callback on each item. Return false to break.
-     * @param callback
-     */
-    forEach(callback: (value: T, index: number) => boolean | void): void;
-
     /** returns an Enumerator for the items */
     getEnumerator(): IEnumerator<T>;
 
@@ -270,6 +264,14 @@ export interface ICollection<T> extends IEnumerable<T>
      */
     copyTo(array: T[], arrayIndex: number): void;
 
+    /**
+     * Iterates over the enumerable and performs the callback on each item. Return false to break.
+     * @param callback
+     */
+     forEach(callback: (value: T) => boolean | void): void;
+     forEach(callback: (value: T, index: number) => boolean | void): void;
+     forEach(callback: (value: T, index: number, source: ICollection<T>) => boolean | void): void;
+     
     /**
      * Removes the first occurrence of a specific object from the ICollection<T>.
      * @param item
