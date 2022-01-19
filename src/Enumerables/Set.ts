@@ -1,4 +1,4 @@
-import { EnumeratorEnumerable, Collection, ArrayEnumerable } from "./";
+import { EnumeratorEnumerable, Collection, IterableEnumerable } from "./";
 
 import AppendEnumerator from '../Enumerators/AppendEnumerator';
 import ArgumentException from '../Exceptions/ArgumentException';
@@ -28,7 +28,7 @@ export default class Set<T> extends Collection<T> implements ISet<T>, ICollectio
 
     append(item: T): IEnumerable<T>
     {
-        return this.concat(new ArrayEnumerable([item]));
+        return this.concat(new IterableEnumerable([item]));
     }
 
     concat(next: IEnumerable<T>): IEnumerable<T>
@@ -38,7 +38,7 @@ export default class Set<T> extends Collection<T> implements ISet<T>, ICollectio
 
     prepend(item: T): IEnumerable<T>
     {
-        return new ArrayEnumerable([item]).concat(this);
+        return new IterableEnumerable([item]).concat(this);
     }
 
     exceptWith(enumerable: IEnumerable<T>): void

@@ -1,7 +1,6 @@
 export * from './_types';
 export {default as AggregateEnumerator} from './AggregateEnumerator';
 export {default as AppendEnumerator} from './AppendEnumerator';
-export {default as ArrayEnumerator} from './ArrayEnumerator';
 export {default as AsyncEnumerator} from './AsyncEnumerator';
 export {default as DictionaryEnumerator} from './DictionaryEnumerator';
 export {default as EnumeratorBase} from './EnumeratorBase';

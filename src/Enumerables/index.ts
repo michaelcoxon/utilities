@@ -1,10 +1,9 @@
 import DefaultComparers from "../Comparers/DefaultComparers";
 import MapComparer from "../Comparers/MapComparer";
 import ReverseComparer from "../Comparers/ReverseComparer";
-import { ConstructorFor, IEnumerableOrArray, KeyValuePair, Predicate, Selector, Undefinable } from "../Types";
+import { ConstructorFor, IEnumerableOrIterable, KeyValuePair, Predicate, Selector, Undefinable } from "../Types";
 
 import AppendEnumerator from "../Enumerators/AppendEnumerator";
-import ArrayEnumerator from "../Enumerators/ArrayEnumerator";
 
 import DictionaryEnumerator from "../Enumerators/DictionaryEnumerator";
 import RangeEnumerator from "../Enumerators/RangeEnumerator";
@@ -26,6 +25,7 @@ import equivilentToByJSON from '../Utilities/equivilentToByJSON';
 import { IComparer } from '../Comparers/_types';
 import { IEnumerable, IEnumerableGroup, IDictionary, IList, ICollection } from './_types';
 import { IEnumerator } from '../Enumerators/_types';
+import IterableEnumerator from '../Enumerators/IterableEnumerator';
 
 export class Enumerable
 {
@@ -36,41 +36,31 @@ export class Enumerable
 
     public static empty<TElement>(): IEnumerable<TElement>
     {
-        return new ArrayEnumerable<TElement>([]);
+        return new IterableEnumerable<TElement>([]);
     }
 
     public static asArray<T>(array: T[]): T[];
     public static asArray<T>(enumerable: IEnumerable<T>): T[];
-    public static asArray<T>(enumerableOrArray: IEnumerableOrArray<T>): T[];
-    public static asArray<T>(enumerableOrArray: IEnumerableOrArray<T>): T[]
+    public static asArray<T>(enumerableOrArray: IEnumerableOrIterable<T>): T[];
+    public static asArray<T>(enumerableOrArray: IEnumerableOrIterable<T>): T[]
     {
         if (Array.isArray(enumerableOrArray))
         {
             // copy the array into this
             return [...enumerableOrArray];
         }
-
         else
         {
-            return enumerableOrArray.toArray();
+            return Array.from(enumerableOrArray);
         }
     }
 
     public static asEnumerable<T>(array: T[]): IEnumerable<T>;
     public static asEnumerable<T>(enumerable: IEnumerable<T>): IEnumerable<T>;
-    public static asEnumerable<T>(enumerableOrArray: IEnumerableOrArray<T>): IEnumerable<T>;
-    public static asEnumerable<T>(enumerableOrArray: IEnumerableOrArray<T>): IEnumerable<T>
+    public static asEnumerable<T>(enumerableOrArray: IEnumerableOrIterable<T>): IEnumerable<T>;
+    public static asEnumerable<T>(enumerableOrArray: IEnumerableOrIterable<T>): IEnumerable<T>
     {
-        if (Array.isArray(enumerableOrArray))
-        {
-            // copy the array into this
-            return new ArrayEnumerable([...enumerableOrArray]);
-        }
-
-        else
-        {
-            return enumerableOrArray;
-        }
+        return new IterableEnumerable([...enumerableOrArray]);
     }
 }
 
@@ -85,7 +75,7 @@ abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public append(item: T): IEnumerable<T>
     {
-        return this.concat(new ArrayEnumerable([item]));
+        return this.concat(new IterableEnumerable([item]));
     }
 
     public concat(next: IEnumerable<T>): IEnumerable<T>
@@ -95,18 +85,14 @@ abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public contains(item: T): boolean
     {
-        let isContained = false;
-
-        this.forEach(v =>
+        for (const v of this)
         {
             if (v === item)
             {
-                isContained = true;
-                return false;
+                return true;
             }
-        });
-
-        return isContained;
+        }
+        return false;
     }
 
     public forEach(callback: (value: T, index: number) => boolean | void): void
@@ -142,7 +128,7 @@ abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public prepend(item: T): IEnumerable<T>
     {
-        return new EnumeratorEnumerable(new AppendEnumerator(new ArrayEnumerator([item]), this.getEnumerator()));
+        return new EnumeratorEnumerable(new AppendEnumerator(new IterableEnumerator([item]), this.getEnumerator()));
     }
 
     public all(predicate: Predicate<T>): boolean
@@ -181,8 +167,9 @@ abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public average(selector: Selector<T, number>): number
     {
-        const sum = this.sum(selector);
-        return sum / this.count();
+        const list = this.toList();
+        const sum = list.sum(selector);
+        return sum / list.length;
     }
 
     public count(): number
@@ -468,6 +455,9 @@ abstract class EnumerableBase<T> implements IEnumerable<T>
         return new SkipEnumerable(this, count);
     }
 
+    /** 
+     * Splits the enumerable by the predicate. True values in pTrue, false values in pFalse
+     */
     public split(predicate: Predicate<T>): { pTrue: IEnumerable<T>, pFalse: IEnumerable<T>; }
     {
         return {
@@ -495,12 +485,7 @@ abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public toArray(): T[]
     {
-        const array: T[] = [];
-        this.forEach(i =>
-        {
-            array.push(i);
-        });
-        return array;
+        return Array.from(this);
     }
 
     public toDictionary<TKey, TValue>(keySelector: (a: T) => TKey, valueSelector: (a: T) => TValue): IDictionary<TKey, TValue>
@@ -515,12 +500,7 @@ abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public toList(): IList<T>
     {
-        const list = new List<T>();
-        this.forEach(i =>
-        {
-            list.add(i);
-        });
-        return list;
+        return new List<T>(this);
     }
 
     private internalOrderBy<R>(selector: (a: T) => R, comparer: IComparer<R>): IEnumerable<T>
@@ -530,6 +510,22 @@ abstract class EnumerableBase<T> implements IEnumerable<T>
         const mapComparer = new MapComparer(selector, comparer);
         list.sort(mapComparer);
         return list;
+    }
+}
+
+export class IterableEnumerable<T> extends EnumerableBase<T>
+{
+    protected _iterable: Iterable<T>;
+
+    constructor(iterable: Iterable<T>)
+    {
+        super();
+        this._iterable = iterable;
+    }
+
+    public getEnumerator(): IEnumerator<T>
+    {
+        return new IterableEnumerator<T>(this._iterable);
     }
 }
 
@@ -553,34 +549,25 @@ export class AggregateEnumerable<T, TReturn> extends EnumerableBase<TReturn>
     }
 }
 
-export class ArrayEnumerable<T> extends EnumerableBase<T>
+export class Collection<T> extends EnumerableBase<T> implements ICollection<T>, IEnumerable<T>
 {
-    protected _array: T[];
-
-    constructor(array: T[])
-    {
-        super();
-        this._array = array;
-    }
+    protected readonly _array: T[];
 
     public getEnumerator(): IEnumerator<T>
     {
-        return new ArrayEnumerator<T>(this._array);
+        return new IterableEnumerator(this._array);
     }
-}
 
-export class Collection<T> extends ArrayEnumerable<T> implements ICollection<T>, IEnumerable<T>
-{
-    constructor(enumerableOrArray?: IEnumerableOrArray<T>)
+    constructor(enumerableOrArray?: IEnumerableOrIterable<T>)
     {
+        super();
         if (enumerableOrArray === undefined)
         {
-            super([]);
+            this._array = [];
         }
-
         else
         {
-            super(Enumerable.asArray<T>(enumerableOrArray));
+            this._array = Enumerable.asArray<T>(enumerableOrArray);
         }
     }
 
@@ -636,7 +623,7 @@ export class Dictionary<TKey, TValue> extends EnumerableBase<KeyValuePair<TKey, 
     public readonly isReadOnly: boolean = false;
 
     // constructor
-    constructor(enumerableOrArray?: IEnumerableOrArray<KeyValuePair<TKey, TValue>>)
+    constructor(enumerableOrArray?: IEnumerableOrIterable<KeyValuePair<TKey, TValue>>)
     {
         super();
         this.#hashtable = {};
@@ -796,7 +783,7 @@ export class LinkedList<T> extends EnumerableBase<T> implements ICollection<T>, 
     #current?: LinkedListItem<T>;
     #count: number;
 
-    constructor(enumerableOrArray?: IEnumerableOrArray<T>)
+    constructor(enumerableOrArray?: IEnumerableOrIterable<T>)
     {
         super();
 
@@ -813,7 +800,7 @@ export class LinkedList<T> extends EnumerableBase<T> implements ICollection<T>, 
 
     append(item: T): IEnumerable<T>
     {
-        return this.concat(new ArrayEnumerable([item]));
+        return this.concat(new IterableEnumerable([item]));
     }
 
     concat(next: IEnumerable<T>): IEnumerable<T>
@@ -823,7 +810,7 @@ export class LinkedList<T> extends EnumerableBase<T> implements ICollection<T>, 
 
     prepend(item: T): IEnumerable<T>
     {
-        return new ArrayEnumerable([item]).concat(this);
+        return new IterableEnumerable([item]).concat(this);
     }
 
     public get length(): number
@@ -882,8 +869,8 @@ export class LinkedList<T> extends EnumerableBase<T> implements ICollection<T>, 
         throw new Error("Method not implemented.");
     }
 
-     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-     remove(item: T): boolean
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    remove(item: T): boolean
     {
         // TODO:   throw new Error("Method not implemented.");
         throw new Error("Method not implemented.");
@@ -979,22 +966,20 @@ export class LinkedList<T> extends EnumerableBase<T> implements ICollection<T>, 
     }
 }
 
-
 export class List<T> extends Collection<T> implements IList<T>, ICollection<T>, IEnumerable<T>
 {
     public addRange(array: T[]): void;
     public addRange(enumerable: IEnumerable<T>): void;
-    public addRange(enumerableOrArray: IEnumerableOrArray<T>): void
+    public addRange(enumerableOrArray: IEnumerableOrIterable<T>): void
     {
-        const array = Enumerable.asArray<T>(enumerableOrArray);
-        this._array = this._array.concat(array);
+        this._array.push(...enumerableOrArray);
     }
 
     public find(obj: T, isEquivilent = false): T | undefined
     {
         if (isEquivilent)
         {
-            for (const item of this._array)
+            for (const item of this)
             {
                 if (equivilentToByJSON(item, obj))
                 {
@@ -1059,7 +1044,7 @@ export class List<T> extends Collection<T> implements IList<T>, ICollection<T>, 
 
     public prependRange(array: T[]): void;
     public prependRange(enumerable: Collection<T>): void;
-    public prependRange(enumerableOrArray: IEnumerableOrArray<T>): void
+    public prependRange(enumerableOrArray: IEnumerableOrIterable<T>): void
     {
         const array = Enumerable.asArray<T>(enumerableOrArray);
         this._array.splice(0, 0, ...array);
@@ -1074,6 +1059,11 @@ export class List<T> extends Collection<T> implements IList<T>, ICollection<T>, 
     {
         this._array.sort((a, b) => comparer.compare(a, b));
     }
+}
+
+export class ArrayEnumerable<T> extends IterableEnumerable<T>
+{
+
 }
 
 class EnumerableGroup<T, TKey> extends EnumerableBase<T> implements IEnumerableGroup<T, TKey>

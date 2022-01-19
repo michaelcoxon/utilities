@@ -1,5 +1,8 @@
 ﻿import { IEnumerable } from './Enumerables/_types';
 
+/** A type that is either an array or an iterable */
+export type IEnumerableOrIterable<T> = Iterable<T> | IEnumerable<T>;
+
 /** A type that is either an array or an enumerable */
 export type IEnumerableOrArray<T> = T[] | IEnumerable<T>;
 

@@ -1,8 +1,8 @@
 import { IEnumerator } from './_types';
 import { KeyValuePair, Undefinable } from "../Types";
-import ArrayEnumerator from "./ArrayEnumerator";
 import EnumeratorBase from "./EnumeratorBase";
 import { IDictionary } from '../Enumerables/_types';
+import IterableEnumerator from './IterableEnumerator';
 
 
 export default class DictionaryEnumerator<TKey, TValue> extends EnumeratorBase<KeyValuePair<TKey, TValue>> implements IEnumerator<KeyValuePair<TKey, TValue>>
@@ -14,7 +14,7 @@ export default class DictionaryEnumerator<TKey, TValue> extends EnumeratorBase<K
     {
         super();
         this.#dictionary = dictionary;
-        this.#keyEnumerator = new ArrayEnumerator(dictionary.keys);
+        this.#keyEnumerator = new IterableEnumerator(dictionary.keys);
     }
 
     public get current(): KeyValuePair<TKey, TValue>
