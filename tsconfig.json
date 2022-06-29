@@ -27,6 +27,7 @@
     "outDir": "./lib",
     "declaration": true,
     "declarationDir": "./lib",
+
   },
   "compileOnSave": true,
   "include": [

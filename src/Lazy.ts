@@ -34,10 +34,10 @@ export default class Lazy<T>
         {
             this.#value = this.#factory();
 
-            if (isUndefined(this.#value) && !this.#waitForValue)
-            {
-                this.#valueCreated = true;
-            }
+            // if (isUndefined(this.#value) && !this.#waitForValue)
+            // {
+            this.#valueCreated = true;
+            // }
         }
         return this.#value;
     }
