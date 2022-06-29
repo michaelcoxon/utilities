@@ -1,6 +1,7 @@
 ﻿import { throws } from 'assert';
 import { Collection } from '../../src/Enumerables';
 import ArrayEnumerator from '../../src/Enumerators/ArrayEnumerator';
+import { OutOfBoundsException } from '../../src/Exceptions';
 
 describe("ArrayEnumerator.constructor", () =>
 {
@@ -163,7 +164,7 @@ describe("ArrayEnumerator.throwOutOfBoundsException", () =>
         throws(() =>
         {
             en.current;
-        }, e => e.name == "OutOfBoundsException");
+        }, (e:OutOfBoundsException) => e.name == "OutOfBoundsException");
     });
 });
 

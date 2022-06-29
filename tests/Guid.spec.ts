@@ -1,4 +1,6 @@
 ﻿import Guid from '../src/Guid';
+import { UnsignedInt32 } from '../src/Numbers';
+import 'jest';
 
 describe("Guid.newGuid", () =>
 {
@@ -37,7 +39,7 @@ describe("Guid.newGuid", () =>
             }
             else
             {
-                fail(`guid ${guid} not unique`);
+                throw `guid ${guid} not unique`;
             }
         }
 
@@ -77,4 +79,31 @@ describe("Guid.parseString", () =>
         done();
     }, 0);
 
+});
+
+describe("Guid.equals", () =>
+{
+    it("should return true", () =>
+    {
+        const empty = Guid.empty;
+        const newGuid = new Guid();
+
+        expect(newGuid).toEqual(empty);
+    });
+
+    it("should return false", () =>
+    {
+        const empty = Guid.empty;
+        const newGuid = new Guid(new UnsignedInt32(1));
+
+        expect(newGuid).not.toEqual(empty);
+    });
+
+    it("should return true", () =>
+    {
+        const actual = Guid.parseString("123e4567-e89b-12d3-a456-426614174000");
+        const result = Guid.parseString("123e4567-e89b-12d3-a456-426614174000");
+
+        expect(result).toEqual(actual);
+    });
 });

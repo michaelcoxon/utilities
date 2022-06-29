@@ -9,6 +9,9 @@ import './i18n/en.NumberFormatterConfiguration.strings.json';
 
 // types
 export * from "./Types";
+export * from "./IConsole";
+export * from "./INotifyPropertyChanged";
+
 
 // modules
 export * as Arrays from "./Arrays";
@@ -16,10 +19,12 @@ export * as Assertions from "./Assertions";
 export * as Booleans from "./Booleans";
 export * as Cache from "./Cache";
 export * as Configuration from "./Configuration";
-export * as Exceptions from "./Exceptions";
+export * as Dates from "./Dates";
 export * as Ensure from "./Ensure";
 export * as Events from "./Events";
+export * as Exceptions from "./Exceptions";
 export * as Formatters from "./Formatters";
+//export * as HttpClient from "./HttpClient"; 
 export * as IO from "./IO";
 export * as Logging from "./Logging";
 export * as ModelState from "./ModelState";
@@ -35,14 +40,15 @@ export * as Url from "./Url";
 export * as Utilities from "./Utilities";
 
 //collections
-export * as Enumerables from './Enumerables';
 export * as Comparers from './Comparers';
+export * as Enumerables from './Enumerables';
 export * as Enumerators from './Enumerators';
 
 // single classes
 export { default as AggregateDisposable } from "./AggregateDisposable";
 export { default as Guid } from "./Guid";
 export { default as Lazy } from "./Lazy";
+export { default as Mutex } from "./Mutex";
 //export * from "./Timer";
 
 

@@ -17,7 +17,10 @@ module.exports = () =>
     return [{
         mode: isDevBuild ? 'development' : 'production',
         entry: { 'index': `./${libDir}/index.js` },
-        //resolve: { extensions: ['.js'] },
+        resolve: {
+            //extensions: ['.js'] ,
+            fallback: { "crypto": false }
+        },
         devtool: 'source-map',
         output: {
             path: path.join(__dirname, bundleOutputDir),

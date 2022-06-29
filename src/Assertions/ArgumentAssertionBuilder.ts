@@ -28,7 +28,7 @@ export default class ArgumentAssertionBuilder<T> implements IArgumentAssertionBu
     /** Ensures the argument is not null */
     isNotNull(): this
     {
-        if (this.argument == null)
+        if (this.argument === null)
         {
             throw new ArgumentNullException(this.argumentName);
         }
@@ -51,6 +51,18 @@ export default class ArgumentAssertionBuilder<T> implements IArgumentAssertionBu
      */
     isTypeOf<T2>(type: ConstructorFor<T2>): this
     {
+        if (type.name == "String" && 'string' == typeof (this.argument))
+        {
+            return this;
+        }
+        if (type.name == "Number" && 'number' == typeof (this.argument))
+        {
+            return this;
+        }       
+        if (type.name == "Boolean" && 'boolean' == typeof (this.argument))
+        {
+            return this;
+        }
         if (!(this.argument instanceof type))
         {
             throw new ArgumentException(this.argumentName, format(SR.isTypeOfExceptionMessage, this.argumentName, type));

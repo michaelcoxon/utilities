@@ -3,13 +3,16 @@ import UnsignedInt16 from './Numbers/Integers/UnsignedInt16';
 import Byte from './Numbers/Integers/Byte';
 import padLeft from './Strings/padLeft';
 import StringBuilder from './IO/StringBuilder';
+import crypto from 'crypto';
+import { isString, isUndefinedOrNull } from './TypeHelpers';
+import { empty } from './Strings';
 
 const PARSE_FILTER_REGEX = /[-{}[\]]/gi;
 
 /**
  * Represents a GUID
  */
-export default class Guid
+export default class Guid extends String
 {
     readonly #a: UnsignedInt32;
     readonly #b: UnsignedInt16;
@@ -23,6 +26,12 @@ export default class Guid
     readonly #j: Byte;
     readonly #k: Byte;
 
+
+    /** 
+     * Creates a new Guid from a string.
+     * @param strGuid  like this: 123e4567-e89b-12d3-a456-426614174000
+    */
+    constructor(strGuid?: string)
     /**
      * Creates a new Guid by specifying all the parts
      * @param a
@@ -36,9 +45,36 @@ export default class Guid
      * @param i
      * @param j
      * @param k
-     */
-    constructor(a: UnsignedInt32, b: UnsignedInt16, c: UnsignedInt16, d: Byte, e: Byte, f: Byte, g: Byte, h: Byte, i: Byte, j: Byte, k: Byte)
+     */    
+    constructor(a?: UnsignedInt32, b?: UnsignedInt16, c?: UnsignedInt16, d?: Byte, e?: Byte, f?: Byte, g?: Byte, h?: Byte, i?: Byte, j?: Byte, k?: Byte)
+    constructor(
+        a?: UnsignedInt32 | string,
+        b: UnsignedInt16 = UnsignedInt16.zero,
+        c: UnsignedInt16 = UnsignedInt16.zero,
+        d: Byte = Byte.zero,
+        e: Byte = Byte.zero,
+        f: Byte = Byte.zero,
+        g: Byte = Byte.zero,
+        h: Byte = Byte.zero,
+        i: Byte = Byte.zero,
+        j: Byte = Byte.zero,
+        k: Byte = Byte.zero)
     {
+        let stringValue = empty;
+        if (isUndefinedOrNull(a))
+        {
+            a = UnsignedInt32.zero;
+            stringValue = guidToString(a, b, c, d, e, f, g, h, i, j, k);
+        }
+        else if (isString(a))
+        {
+            stringValue = a;
+            [a,b,c,d,e,f,g,h,i,j,k] = Guid.componentsParseString(stringValue);
+        }
+        else{
+            stringValue = guidToString(a, b, c, d, e, f, g, h, i, j, k);
+        }
+        super(stringValue);
         this.#a = a;
         this.#b = b;
         this.#c = c;
@@ -50,39 +86,19 @@ export default class Guid
         this.#i = i;
         this.#j = j;
         this.#k = k;
+
     }
 
-    /** Returns the Guid as a hypen-separated string without curly braces. */
-    public toString(): string
-    {
-        const sb = new StringBuilder();
-        const zero = '0';
-        const spacer = '-'
-
-        sb.append(padLeft((this.#a.valueOf() >>> 0).toString(16), 8, zero));
-        sb.append(spacer);
-        sb.append(padLeft((this.#b.valueOf() >>> 0).toString(16), 4, zero));
-        sb.append(spacer);
-        sb.append(padLeft((this.#c.valueOf() >>> 0).toString(16), 4, zero));
-        sb.append(spacer);
-        sb.append(padLeft((this.#d.valueOf() >>> 0).toString(16), 2, zero));
-        sb.append(padLeft((this.#e.valueOf() >>> 0).toString(16), 2, zero));
-        sb.append(spacer);
-        sb.append(padLeft((this.#f.valueOf() >>> 0).toString(16), 2, zero));
-        sb.append(padLeft((this.#g.valueOf() >>> 0).toString(16), 2, zero));
-        sb.append(padLeft((this.#h.valueOf() >>> 0).toString(16), 2, zero));
-        sb.append(padLeft((this.#i.valueOf() >>> 0).toString(16), 2, zero));
-        sb.append(padLeft((this.#j.valueOf() >>> 0).toString(16), 2, zero));
-        sb.append(padLeft((this.#k.valueOf() >>> 0).toString(16), 2, zero));
-
-        return sb.toString();
-    }
-
-    /** Returns the Guid as a hypen-separated string without curly braces. */
-    public valueOf(): string
-    {
-        return this.toString();
-    }
+    // /** Returns the Guid as a hypen-separated string without curly braces. */
+    // public valueOf()
+    // {
+    //     return this;
+    // } 
+    
+    // /** Returns the Guid as a hypen-separated string without curly braces. */
+    // public toString() {
+    //     return this;        
+    // }
 
     /** An empty Guid (all zero's) */
     public static readonly empty: Guid = new Guid(
@@ -119,21 +135,32 @@ export default class Guid
      * converts astring representaion of a Guid into a Guid object.
      * @param str
      */
-    public static parseString(str: string): Guid
+    public static parseString(str: string ): Guid
     {
-        const guid = str.replace(PARSE_FILTER_REGEX, '');
-        return new Guid(
-            new UnsignedInt32(parseInt(guid.substr(0, 8), 16)),
-            new UnsignedInt16(parseInt(guid.substr(8, 4), 16)),
-            new UnsignedInt16(parseInt(guid.substr(12, 4), 16)),
-            new Byte(parseInt(guid.substr(16, 2), 16)),
-            new Byte(parseInt(guid.substr(18, 2), 16)),
-            new Byte(parseInt(guid.substr(20, 2), 16)),
-            new Byte(parseInt(guid.substr(22, 2), 16)),
-            new Byte(parseInt(guid.substr(24, 2), 16)),
-            new Byte(parseInt(guid.substr(26, 2), 16)),
-            new Byte(parseInt(guid.substr(28, 2), 16)),
-            new Byte(parseInt(guid.substr(30, 2), 16)));
+        return new Guid(str);
+    }
+
+    /**
+     * converts astring representaion of a Guid into Guid componments.
+     * @param str
+     */
+         public static componentsParseString(str: string):[a: UnsignedInt32,b: UnsignedInt16,c: UnsignedInt16,d: Byte,e: Byte,f: Byte,g: Byte,h: Byte,i: Byte,j: Byte,k: Byte]
+ 
+         {
+             const guid = str.replace(PARSE_FILTER_REGEX, '');
+             return [
+                 new UnsignedInt32(parseInt(guid.substring(0, 8), 16)),
+                 new UnsignedInt16(parseInt(guid.substring(8, 12), 16)),
+                 new UnsignedInt16(parseInt(guid.substring(12, 16), 16)),
+                 new Byte(parseInt(guid.substring(16, 18), 16)),
+                 new Byte(parseInt(guid.substring(18, 20), 16)),
+                 new Byte(parseInt(guid.substring(20, 22), 16)),
+                 new Byte(parseInt(guid.substring(22, 24), 16)),
+                 new Byte(parseInt(guid.substring(24, 26), 16)),
+                 new Byte(parseInt(guid.substring(26, 28), 16)),
+                 new Byte(parseInt(guid.substring(28, 30), 16)),
+                 new Byte(parseInt(guid.substring(30, 32), 16))
+             ];
     }
 }
 
@@ -154,7 +181,51 @@ function randomInt32(): UnsignedInt32
 // TODO: This can be better
 function randomNumber(min: number, max: number): number
 {
-    const rand = Math.random();
-    const num = Math.floor(rand * (max + 1)) + min;
-    return num > max ? max : num;
+    return crytpoRandomNumber(min, max);
+    // const rand = Math.random();
+    // const num = Math.floor(rand * (max + 1)) + min;
+    // return num > max ? max : num;
+}
+
+function crytpoRandomNumber(min: number, max: number): number
+{
+    // Create byte array and fill with 1 random number
+    return crypto.randomInt(min, max);
+}
+
+/** Returns the Guid as a hypen-separated string without curly braces. */
+function guidToString(
+    a: UnsignedInt32 = UnsignedInt32.zero,
+    b: UnsignedInt16 = UnsignedInt16.zero,
+    c: UnsignedInt16 = UnsignedInt16.zero,
+    d: Byte = Byte.zero,
+    e: Byte = Byte.zero,
+    f: Byte = Byte.zero,
+    g: Byte = Byte.zero,
+    h: Byte = Byte.zero,
+    i: Byte = Byte.zero,
+    j: Byte = Byte.zero,
+    k: Byte = Byte.zero): string
+{
+    const sb = new StringBuilder();
+    const zero = '0';
+    const spacer = '-';
+
+    sb.append(padLeft((a.valueOf() >>> 0).toString(16), 8, zero));
+    sb.append(spacer);
+    sb.append(padLeft((b.valueOf() >>> 0).toString(16), 4, zero));
+    sb.append(spacer);
+    sb.append(padLeft((c.valueOf() >>> 0).toString(16), 4, zero));
+    sb.append(spacer);
+    sb.append(padLeft((d.valueOf() >>> 0).toString(16), 2, zero));
+    sb.append(padLeft((e.valueOf() >>> 0).toString(16), 2, zero));
+    sb.append(spacer);
+    sb.append(padLeft((f.valueOf() >>> 0).toString(16), 2, zero));
+    sb.append(padLeft((g.valueOf() >>> 0).toString(16), 2, zero));
+    sb.append(padLeft((h.valueOf() >>> 0).toString(16), 2, zero));
+    sb.append(padLeft((i.valueOf() >>> 0).toString(16), 2, zero));
+    sb.append(padLeft((j.valueOf() >>> 0).toString(16), 2, zero));
+    sb.append(padLeft((k.valueOf() >>> 0).toString(16), 2, zero));
+
+    return sb.toString();
 }

@@ -7,6 +7,8 @@ import { IResult } from '../../Result/_types';
 
 export default class UnsignedInt16  extends Number implements INumberValue
 {
+    public static readonly zero: UnsignedInt16 = new UnsignedInt16(0);
+
     /** The largest number that can be represented. Equal to 65,535. */
     public static readonly maxValue: number = 65535;
 

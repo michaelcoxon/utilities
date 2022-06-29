@@ -19,7 +19,10 @@ export type Undefinable<T> = T | undefined;
 export type Awaitable<T> = T | PromiseLike<T>;
 
 /** Helper type for representing constructors */
-export type ConstructorFor<T> = { new(...args: any[]): T; };
+export type ConstructorFor<T> = { 
+    new(...args: any[]): T;
+    //new(value?: any): T;
+ };
 
 /** Shortcut for () => T */
 export type Action<T> = () => T;

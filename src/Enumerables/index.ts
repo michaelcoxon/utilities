@@ -26,6 +26,7 @@ import equivilentToByJSON from '../Utilities/equivilentToByJSON';
 import { IComparer } from '../Comparers/_types';
 import { IEnumerable, IEnumerableGroup, IDictionary, IList, ICollection } from './_types';
 import { IEnumerator } from '../Enumerators/_types';
+import { isUndefined } from '../TypeHelpers';
 
 export class Enumerable
 {
@@ -639,7 +640,7 @@ export class Dictionary<TKey, TValue> extends EnumerableBase<KeyValuePair<TKey, 
     constructor(enumerableOrArray?: IEnumerableOrArray<KeyValuePair<TKey, TValue>>)
     {
         super();
-        this.#hashtable = {};
+        this.#hashtable = {};// Object.create(null);
 
         if (enumerableOrArray)
         {
@@ -683,14 +684,38 @@ export class Dictionary<TKey, TValue> extends EnumerableBase<KeyValuePair<TKey, 
         this.add({ key: key, value: value });
     }
 
-    public itemByKey(key: TKey): TValue
+    public itemByKey(key: TKey): TValue;
+    public itemByKey(key: TKey, value: TValue): void;
+    public itemByKey(key: TKey, value?: TValue): TValue | void
     {
-        const hash = getHash(key);
-        if (this.#hashtable[hash] === undefined)
+        const get = () =>
         {
-            throw new KeyNotFoundException(key);
+            const hash = getHash(key);
+            if (this.#hashtable[hash] === undefined)
+            {
+                throw new KeyNotFoundException(key);
+            }
+            return this.#hashtable[hash].value;
+        };
+
+        const set = (value: TValue) => 
+        {
+            const hash = getHash(key);
+            if (this.#hashtable[hash] === undefined)
+            {
+                throw new KeyNotFoundException(key);
+            }
+            this.#hashtable[hash] = { key, value };
+        };
+
+        if (isUndefined(value))
+        {
+            return get();
         }
-        return this.#hashtable[hash].value;
+        else
+        {
+            return set(value);
+        }
     }
 
     public containsKey(key: TKey): boolean
@@ -882,8 +907,8 @@ export class LinkedList<T> extends EnumerableBase<T> implements ICollection<T>, 
         throw new Error("Method not implemented.");
     }
 
-     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-     remove(item: T): boolean
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    remove(item: T): boolean
     {
         // TODO:   throw new Error("Method not implemented.");
         throw new Error("Method not implemented.");

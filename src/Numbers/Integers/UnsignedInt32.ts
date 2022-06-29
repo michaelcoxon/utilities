@@ -7,9 +7,10 @@ import Result from '../../Result/Result';
 
 export default class UnsignedInt32 extends Number  implements INumberValue
 {
+    public static readonly zero: UnsignedInt32 = new UnsignedInt32(0);
+
     /** The largest number that can be represented. Equal to 4,294,967,295. */
     public static readonly maxValue: number = 4294967295;
-
     /** The lowest number that can be represented. Equal to 0. */
     public static readonly minValue: number = 0;
 

@@ -9,6 +9,8 @@ import { IResult } from '../../Result/_types';
  */
 export default class Byte extends Number  implements INumberValue
 {
+    public static readonly zero: Byte = new Byte(0);
+
     /** The largest number that can be represented. Equal to 255. */
     public static readonly maxValue: number = 255;
 
