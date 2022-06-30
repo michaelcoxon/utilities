@@ -1,5 +1,4 @@
 import { throws } from 'assert';
-import { number } from 'prop-types';
 import ArgumentAssertionBuilder from '../src/Assertions/ArgumentAssertionBuilder';
 
 describe("ArgumentAssertionBuilder.isNotNullOrUndefined", () =>

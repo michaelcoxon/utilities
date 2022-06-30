@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "noImplicitAny": false,
-    "module": "es2022",
+    "module": "CommonJS",
     "moduleResolution": "Node",
     "noEmitOnError": true,
     "noEmitHelpers": true,

@@ -1,8 +1,6 @@
 import { errorToLogMessage } from '../src';
 import { Exception } from '../src/Exceptions';
-import { IndentedStringBuilder, StringBuilder } from '../src/IO';
-
-
+import { IndentedStringBuilder } from '../src/IO';
 
 describe("errorToLogMessage", () =>
 {
