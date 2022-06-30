@@ -66,3 +66,21 @@ describe("DateFormatter.format fixed", () =>
         expect(actual).toEqual(expected);
     });
 });
+
+describe("DateFormatter.format each token", () =>
+{
+    it(`it formats d`, () =>
+    {
+        const subject = new DateFormatter();
+        const actual = subject.format(new Date("2022-12-13 23:59:00"), "d");
+        expect(actual).toEqual("13");
+    });
+
+    it(`it formats M`, () =>
+    {
+        const subject = new DateFormatter();
+        const actual = subject.format(new Date("2022-12-13 23:59:00"), "M");
+        expect(actual).toEqual("12");
+    });
+    
+});
