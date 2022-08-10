@@ -35,11 +35,7 @@ export default class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> imp
 
         if (this.#fired)
         {
-            if (isUndefinedOrNull(this.#args))
-            {
-                throw new NullReferenceException("FATAL There are no args - this is not possible. Report this bug.");
-            }
-            eventHandler.call(this.#sender, this.#sender, this.#args);
+            eventHandler.call(this.#sender, this.#sender, this.#args!);
         }
 
         return eventHandler;
@@ -56,10 +52,6 @@ export default class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> imp
         if (this.#fired)
         {
             return;
-        }
-        if (isUndefinedOrNull(args))
-        {
-            throw new ArgumentUndefinedException("args", new ArgumentNullException("args"));
         }
 
         this.#fired = true;
