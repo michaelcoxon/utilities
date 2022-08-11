@@ -1,4 +1,3 @@
-import isArray from '../../TypeHelpers/isArray';
 import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull';
 import { QueryStringItem } from './../Url.types';
 import convertArray from './convertArray';
@@ -13,7 +12,7 @@ export default function convert(name: string, value: any): QueryStringItem[]
 
     if (!isUndefinedOrNull(value))
     {
-        if (isArray(value))
+        if (Array.isArray(value))
         {
             result.push(...convertArray(`${name}`, value));
         }

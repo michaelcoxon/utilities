@@ -5,20 +5,18 @@ import './i18n/en.exceptions.strings.json';
 import './i18n/en.generic.strings.json';
 import './i18n/en.NumberFormatterConfiguration.strings.json';
 
-
-
-// types
-export * from "./Types";
-
 // modules
 export * as Arrays from "./Arrays";
 export * as Assertions from "./Assertions";
 export * as Booleans from "./Booleans";
 export * as Cache from "./Cache";
+export * as Comparers from "./Comparers";
 export * as Configuration from "./Configuration";
-export * as Exceptions from "./Exceptions";
 export * as Ensure from "./Ensure";
+export * as Enumerables from './Enumerables';
+export * as Enumerators from './Enumerators';
 export * as Events from "./Events";
+export * as Exceptions from "./Exceptions";
 export * as Formatters from "./Formatters";
 export * as IO from "./IO";
 export * as Logging from "./Logging";
@@ -30,14 +28,10 @@ export * as Result from "./Result";
 export * as Storage from "./Storage";
 export * as Strings from "./Strings";
 export * as Type from "./Type";
-export * as TypeHelpers from "./TypeHelpers";
-export * as Url from "./Url";
-export * as Utilities from "./Utilities";
-
-//collections
-export * as Enumerables from './Enumerables';
-export * as Comparers from './Comparers';
-export * as Enumerators from './Enumerators';
+export * from "./Types";
+export * from "./TypeHelpers";
+export * from "./Url";
+export * from "./Utilities";
 
 // single classes
 export { default as AggregateDisposable } from "./AggregateDisposable";

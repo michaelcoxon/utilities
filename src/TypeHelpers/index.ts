@@ -1,4 +1,5 @@
 ﻿export { default as isBoolean } from './isBoolean';
+export { default as isComparable } from './isComparable';
 export { default as isDate } from './isDate';
 export { default as isFunction } from './isFunction';
 export { default as isNull } from './isNull';

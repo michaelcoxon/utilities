@@ -5,7 +5,6 @@ import GuidArgumentAssertionBuilder from '../Assertions/GuidArgumentAssertionBui
 import StringArgumentAssertionBuilder from '../Assertions/StringArgumentAssertionBuilder';
 import NotSupportedException from '../Exceptions/NotSupportedException';
 import Guid from '../Guid';
-import isArray from '../TypeHelpers/isArray';
 import isComparable from '../TypeHelpers/isComparable';
 
 /**
@@ -23,7 +22,7 @@ export default function ensure(argument: AssertionType<any>, argumentName: strin
     {
         return new GuidArgumentAssertionBuilder(argument, argumentName);
     }
-    else if (isArray(argument))
+    else if (Array.isArray(argument))
     {
         return new ArrayLikeArgumentAssertionBuilder(argument, argumentName);
     }

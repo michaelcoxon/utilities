@@ -381,3 +381,11 @@ export interface ISet<T> extends ICollection<T>, IEnumerable<T>
      */
     unionWith(enumerable: IEnumerable<T>): void;
 }
+
+
+
+export interface LinkedListItem<T>
+{
+    value: T;
+    next?: LinkedListItem<T>;
+}

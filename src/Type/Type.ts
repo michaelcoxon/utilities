@@ -1,5 +1,4 @@
 import NotImplementedException from '../Exceptions/NotImplementedException';
-import isArray from '../TypeHelpers/isArray';
 import isBoolean from '../TypeHelpers/isBoolean';
 import isDate from '../TypeHelpers/isDate';
 import isFunction from '../TypeHelpers/isFunction';
@@ -59,7 +58,7 @@ export default class Type
             {
                 return FunctionType;
             }
-            else if (isArray(subject))
+            else if (Array.isArray(subject))
             {
                 return ArrayType;
             }
