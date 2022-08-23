@@ -1,7 +1,7 @@
-import expire from '../../src/Cache/expire';
-import MemoryCache from '../../src/Cache/MemoryCache';
 import Exception from '../Exceptions/Exception';
 import KeyNotFoundException from '../Exceptions/KeyNotFoundException';
+import expire from './expire';
+import MemoryCache from './MemoryCache';
 
 describe("MemoryCache.constructor", () =>
 {

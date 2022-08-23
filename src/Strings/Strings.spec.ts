@@ -1,10 +1,10 @@
-﻿import { empty } from '../src/Strings/_consts';
-import format from '../src/Strings/format';
-import trim from '../src/Strings/trim';
-import trimStart from '../src/Strings/trimStart';
-import trimEnd from '../src/Strings/trimEnd';
-import isNullOrWhitespace from '../src/Strings/isNullOrWhitespace';
-import toCharArray from '../src/Strings/toCharArray';
+﻿import { empty } from './_consts';
+import format from './format';
+import trim from './trim';
+import trimStart from './trimStart';
+import trimEnd from './trimEnd';
+import isNullOrWhitespace from './isNullOrWhitespace';
+import toCharArray from './toCharArray';
 
 describe("String.empty", () =>
 {

@@ -1,5 +1,4 @@
 import QueryStringCollection from './QueryStringCollection';
-import stringOrUrlToString from "./stringOrUrlToString";
 import { StringOrUrl } from './_types';
 
 /** Defines a Url */
@@ -16,14 +15,14 @@ export default class Url
      */
     constructor(baseUrl: StringOrUrl, queryStringObject?: Record<string, any>)
     {
-        const [url, query] = stringOrUrlToString(baseUrl).split('?', 2);
+        const [url, query] = baseUrl.toString().split('?', 2);
+
         this.#url = url;
 
         if (query === undefined)
         {
             this.#query = new QueryStringCollection();
         }
-
         else
         {
             this.#query = QueryStringCollection.createFromQueryString(query);
@@ -46,7 +45,6 @@ export default class Url
     {
         this.#query = value;
     }
-
 
     public toString(): string
     {

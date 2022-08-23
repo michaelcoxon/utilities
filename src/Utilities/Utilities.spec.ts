@@ -1,6 +1,6 @@
-﻿import createSelector from '../src/Utilities/createSelector';
-import equals from '../src/Utilities/equals';
-import getHash from '../src/Utilities/getHash';
+﻿import createSelector from './createSelector';
+import equals from './equals';
+import getHash from './getHash';
 
 describe("Utilities.createSelector.string", () =>
 {

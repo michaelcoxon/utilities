@@ -1,15 +1,15 @@
-﻿import ArgumentException from '../src/Exceptions/ArgumentException';
-import ArgumentNullException from '../src/Exceptions/ArgumentNullException';
-import ArgumentUndefinedException from '../src/Exceptions/ArgumentUndefinedException';
-import FileNotFoundException from '../src/Exceptions/FileNotFoundException';
-import IndexOutOfRangeException from '../src/Exceptions/IndexOutOfRangeException';
-import InvalidTypeException from '../src/Exceptions/InvalidTypeException';
-import KeyAlreadyDefinedException from '../src/Exceptions/KeyAlreadyDefinedException';
-import KeyNotFoundException from '../src/Exceptions/KeyNotFoundException';
-import NotImplementedException from '../src/Exceptions/NotImplementedException';
-import NotSupportedException from '../src/Exceptions/NotSupportedException';
-import OutOfBoundsException from '../src/Exceptions/OutOfBoundsException';
-import { ConstructorFor } from '../src/Types';
+﻿import ArgumentException from './ArgumentException';
+import ArgumentNullException from './ArgumentNullException';
+import ArgumentUndefinedException from './ArgumentUndefinedException';
+import FileNotFoundException from './FileNotFoundException';
+import IndexOutOfRangeException from './IndexOutOfRangeException';
+import InvalidTypeException from './InvalidTypeException';
+import KeyAlreadyDefinedException from './KeyAlreadyDefinedException';
+import KeyNotFoundException from './KeyNotFoundException';
+import NotImplementedException from './NotImplementedException';
+import NotSupportedException from './NotSupportedException';
+import OutOfBoundsException from './OutOfBoundsException';
+import { ConstructorFor } from '../Types';
 
 function test<T>(exceptionType: ConstructorFor<T>, exception: () => T): void
 {
