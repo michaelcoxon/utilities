@@ -1,21 +1,21 @@
 ﻿import Exception from './Exceptions/Exception';
-import { IIndentedStringBuilder } from './IO/_types';
+import { IScopedStringBuilder } from './IO/_types';
 
-export default function errorToLogMessage(error: Error | Exception, sb: IIndentedStringBuilder): void
+export default function errorToLogMessage(error: Error | Exception, sb: IScopedStringBuilder): void
 {
     sb.appendLine(`Error '${error.name}': ${error.message}`);
     if (error.stack !== undefined)
     {
-        sb.indent();
+        sb.beginScope();
         sb.appendLine(error.stack);
-        sb.unindent();
+        sb.endScope();
     }
 
     if (Exception.isException(error) && error.innerException !== undefined)
     {
         sb.appendLine("The following errors were also encountered:");
-        sb.indent();
+        sb.beginScope();
         errorToLogMessage(error.innerException, sb);
-        sb.unindent();
+        sb.endScope();
     }
 }

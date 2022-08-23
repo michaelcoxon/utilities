@@ -1,5 +1,5 @@
 import { empty } from '../../Strings/_consts';
-import { QueryStringItem } from './../Url.types';
+import { QueryStringItem } from '../_types';
 
 /**
  * Serializes a collection of {@link QueryStringItem}'s to a query string without a prepended question mark

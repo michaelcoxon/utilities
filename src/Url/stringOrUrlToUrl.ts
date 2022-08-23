@@ -1,5 +1,5 @@
 import Url from './Url';
-import { StringOrUrl } from './Url.types';
+import { StringOrUrl } from './_types';
 
 /**
  * Convert a string or a Url to a Url

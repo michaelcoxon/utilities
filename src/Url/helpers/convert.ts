@@ -1,5 +1,5 @@
 import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull';
-import { QueryStringItem } from './../Url.types';
+import { QueryStringItem } from '../_types';
 import convertArray from './convertArray';
 import convertObject from './convertObject';
 

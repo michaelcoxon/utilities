@@ -1,6 +1,6 @@
 import QueryStringCollection from './QueryStringCollection';
 import stringOrUrlToString from "./stringOrUrlToString";
-import { StringOrUrl } from './Url.types';
+import { StringOrUrl } from './_types';
 
 /** Defines a Url */
 

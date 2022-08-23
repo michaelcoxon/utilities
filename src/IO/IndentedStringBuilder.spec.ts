@@ -38,34 +38,34 @@ describe("IndentedStringBuilder indenting", () =>
     it("should return '\\t world!\\n'", () =>
     {
         const sb = new IndentedStringBuilder(0);
-        sb.indent();
+        sb.beginScope();
         {
             sb.appendLine(" world!");
         }
-        sb.unindent();
+        sb.endScope();
         expect(sb.toString()).toEqual("\t world!\n");
     });
 
     it("should return 'Hello\\n\\t world!\\n'", () =>
     {
         const sb = new IndentedStringBuilder(0, "Hello");
-        sb.indent();
+        sb.beginScope();
         {
             sb.appendLine(" world!");
         }
-        sb.unindent();
+        sb.endScope();
         expect(sb.toString()).toEqual("Hello\n\t world!\n");
     });
 
-    it("should return 'Hello\\n\\t world!\\n' (unindent too many times)", () =>
+    it("should return 'Hello\\n\\t world!\\n' (endScope too many times)", () =>
     {
         const sb = new IndentedStringBuilder(0, "Hello");
-        sb.indent();
+        sb.beginScope();
         {
             sb.appendLine(" world!");
         }
-        sb.unindent();
-        sb.unindent();
+        sb.endScope();
+        sb.endScope();
         expect(sb.toString()).toEqual("Hello\n\t world!\n");
     });
 });

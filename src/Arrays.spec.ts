@@ -1,7 +1,7 @@
-import average from '../src/Arrays/average';
-import range from '../src/Arrays/range';
-import sequenceEqual from '../src/Arrays/sequenceEqual';
-import sum from '../src/Arrays/sum';
+import average from './Arrays/average';
+import range from './Arrays/range';
+import sequenceEqual from './Arrays/sequenceEqual';
+import sum from './Arrays/sum';
 
 describe("Arrays.average", () =>
 {

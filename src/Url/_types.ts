@@ -1,4 +1,4 @@
-﻿import Url from './Url';
+﻿import type Url from './Url';
 
 /** Represents a string or a Url */
 export type StringOrUrl = Url | string;

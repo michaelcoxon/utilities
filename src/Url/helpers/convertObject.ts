@@ -1,6 +1,6 @@
 import { empty } from '../../Strings/_consts';
 import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull';
-import { QueryStringItem } from './../Url.types';
+import { QueryStringItem } from '../_types';
 import  convert  from "./convert";
 
 /**

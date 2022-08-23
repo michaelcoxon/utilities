@@ -1,4 +1,4 @@
-import { QueryStringItem } from './../Url.types';
+import { QueryStringItem } from '../_types';
 import  parseValue  from "./parseValue";
 
 /**

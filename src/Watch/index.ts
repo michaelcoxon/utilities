@@ -1,1 +1,5 @@
-export {}
+import Watch from './Watch';
+
+export {
+    Watch
+}

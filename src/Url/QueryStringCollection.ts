@@ -1,5 +1,8 @@
-import * as QueryStringHelper from "./QueryStringHelper";
-import { QueryStringItem } from './Url.types';
+import convertObject from './helpers/convertObject';
+import convertToObject from './helpers/convertToObject';
+import deserialize from './helpers/deserialize';
+import serializeQueryStringItems from './helpers/serializeQueryStringItems';
+import { QueryStringItem } from './_types';
 
 
 
@@ -32,12 +35,12 @@ export default class QueryStringCollection
 
     public toObject(): Record<string, any>
     {
-        return QueryStringHelper.convertToObject(this.#items);
+        return convertToObject(this.#items);
     }
 
     public toString(): string
     {
-        return QueryStringHelper.serializeQueryStringItems(this.#items, true);
+        return serializeQueryStringItems(this.#items, true);
     }
 
     public static merge(...queryStringCollections: QueryStringCollection[]): QueryStringCollection
@@ -47,11 +50,11 @@ export default class QueryStringCollection
 
     public static createFromQueryString(queryString: string)
     {
-        return new QueryStringCollection(QueryStringHelper.deserialize(queryString));
+        return new QueryStringCollection(deserialize(queryString));
     }
 
     public static createFromObject(queryStringObject: Record<string, any>)
     {
-        return new QueryStringCollection(QueryStringHelper.convertObject(queryStringObject));
+        return new QueryStringCollection(convertObject(queryStringObject));
     }
 }
