@@ -1,5 +1,5 @@
-import IndentedStringBuilder from '../../src/IO/IndentedStringBuilder';
-import { empty } from '../../src/Strings';
+import { empty } from '../Strings';
+import IndentedStringBuilder from './IndentedStringBuilder';
 
 describe("IndentedStringBuilder.constructor", () =>
 {
@@ -38,34 +38,34 @@ describe("IndentedStringBuilder indenting", () =>
     it("should return '\\t world!\\n'", () =>
     {
         const sb = new IndentedStringBuilder(0);
-        sb.beginScope();
+        sb.indent();
         {
             sb.appendLine(" world!");
         }
-        sb.endScope();
+        sb.unindent();
         expect(sb.toString()).toEqual("\t world!\n");
     });
 
     it("should return 'Hello\\n\\t world!\\n'", () =>
     {
         const sb = new IndentedStringBuilder(0, "Hello");
-        sb.beginScope();
+        sb.indent();
         {
             sb.appendLine(" world!");
         }
-        sb.endScope();
+        sb.unindent();
         expect(sb.toString()).toEqual("Hello\n\t world!\n");
     });
 
     it("should return 'Hello\\n\\t world!\\n' (endScope too many times)", () =>
     {
         const sb = new IndentedStringBuilder(0, "Hello");
-        sb.beginScope();
+        sb.indent();
         {
             sb.appendLine(" world!");
         }
-        sb.endScope();
-        sb.endScope();
+        sb.unindent();
+        sb.unindent();
         expect(sb.toString()).toEqual("Hello\n\t world!\n");
     });
 });

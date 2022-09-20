@@ -1,9 +1,9 @@
-﻿import combine from '../../src/IO/Path/combine';
-import getDirectory from '../../src/IO/Path/getDirectory';
-import getExtension from '../../src/IO/Path/getExtension';
-import getFileName from '../../src/IO/Path/getFileName';
-import getFileNameWithoutExtension from '../../src/IO/Path/getFileNameWithoutExtension';
-import toFriendlyUrl from '../../src/IO/Path/toFriendlyUrl';
+﻿import combine from './Path/combine';
+import getDirectory from './Path/getDirectory';
+import getExtension from './Path/getExtension';
+import getFileName from './Path/getFileName';
+import getFileNameWithoutExtension from './Path/getFileNameWithoutExtension';
+import toFriendlyUrl from './Path/toFriendlyUrl';
 
 describe("Path.combine", () =>
 {

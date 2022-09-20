@@ -82,7 +82,7 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
     {
         return this.getEnumerator();
     }
-    
+
     public abstract getEnumerator(): IEnumerator<T>;
 
     public append(item: T): IEnumerable<T>
@@ -156,19 +156,31 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
         const keySet = this.select(selector).distinct((k) => k).orderBy(k => k);
         return keySet.select((key) => new EnumerableGroup(this, key, selector, comparer));
     }
-    /*
-        public join<TInner, TKey, TResult>(
-            inner: IEnumerable<TInner>,
-            outerKeySelector: (o: T) => TKey,
-            innerKeySelector: (i: TInner) => TKey,
-            resultSelector: (o: T, i: TInner) => TResult): IEnumerable<TResult>
-        {
-            return this.select(o => ({ o, v: outerKeySelector(o) }))
-                .selectMany(o => inner.select(i => ({ i, o: o.o, v: innerKeySelector(i) })).where(i => i.v == o.v))
-                .select(j => resultSelector(j.o, j.i))
-                ;
-        }
-    */
+
+    // public join<TInner, TKey, TResult>(
+    //     inner: IEnumerable<TInner>,
+    //     outerKeySelector: (outer: T) => TKey,
+    //     innerKeySelector: (inner: TInner) => TKey,
+    //     resultSelector: (outer: T, inner: TInner) => TResult): IEnumerable<TResult>
+    // {
+    //     return this
+    //         .select(o => ({
+    //             value: o,
+    //             key: outerKeySelector(o)
+    //         }))
+    //         .selectMany(o =>
+    //             inner
+    //                 .select(i => ({
+    //                     inner: i,
+    //                     outer: o.value,
+    //                     key: innerKeySelector(i)
+    //                 }))
+    //                 .where(i => i.key == o.key)
+    //         )
+    //         .select(j => resultSelector(j.outer, j.inner))
+    //         ;
+    // }
+
     public last(predicate?: Predicate<T>): T
     {
         return last(this, predicate);

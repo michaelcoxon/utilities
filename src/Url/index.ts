@@ -1,6 +1,5 @@
 import QueryStringCollection from './QueryStringCollection';
-import stringOrUrlToString from './stringOrUrlToString';
-import stringOrUrlToUrl from './stringOrUrlToUrl';
+import stringOrUrlToUrl from './utils/stringOrUrlToUrl';
 import Url from './Url';
 
 export * from './_types';
@@ -8,6 +7,5 @@ export * from './_types';
 export {
     QueryStringCollection,
     Url,
-    stringOrUrlToString,
     stringOrUrlToUrl,
 }

@@ -1,7 +1,7 @@
-import convertObject from './helpers/convertObject';
-import convertToObject from './helpers/convertToObject';
-import deserialize from './helpers/deserialize';
-import serializeQueryStringItems from './helpers/serializeQueryStringItems';
+import convertObjectToQueryStringItem from './utils/convertObjectToQueryStringItem';
+import convertQueryStringItemToObject from './utils/convertQueryStringItemToObject';
+import deserializeQS from './utils/deserializeQS';
+import serializeQueryStringItems from './utils/serializeQueryStringItems';
 import { QueryStringItem } from './_types';
 
 
@@ -35,7 +35,7 @@ export default class QueryStringCollection
 
     public toObject(): Record<string, any>
     {
-        return convertToObject(this.#items);
+        return convertQueryStringItemToObject(this.#items);
     }
 
     public toString(): string
@@ -50,11 +50,11 @@ export default class QueryStringCollection
 
     public static createFromQueryString(queryString: string)
     {
-        return new QueryStringCollection(deserialize(queryString));
+        return new QueryStringCollection(deserializeQS(queryString));
     }
 
     public static createFromObject(queryStringObject: Record<string, any>)
     {
-        return new QueryStringCollection(convertObject(queryStringObject));
+        return new QueryStringCollection(convertObjectToQueryStringItem(queryStringObject));
     }
 }

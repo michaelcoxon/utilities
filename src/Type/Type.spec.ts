@@ -1,4 +1,4 @@
-import Type from '../../src/Type/Type';
+import Type from './Type';
 
 describe("Type.getType", () =>
 {

@@ -12,9 +12,9 @@ export interface IEnumerable<T> extends Iterable<T>
     all(predicate: Predicate<T>): boolean;
 
     /**
-         * Adds a value to the end of the sequence.
-         * @param item
-         */
+     * Adds a value to the end of the sequence.
+     * @param item
+     */
     append(item: T): IEnumerable<T>;
 
     /**
@@ -42,7 +42,7 @@ export interface IEnumerable<T> extends Iterable<T>
      */
     contains(item: T): boolean;
 
-    /** Returns the number of items in the queryable */
+    /** Returns the number of items in the enumerable */
     count(): number;
 
     /**
@@ -51,20 +51,20 @@ export interface IEnumerable<T> extends Iterable<T>
      */
     distinct<R>(selector: Selector<T, R>): IEnumerable<T>;
 
-    /** Returns the first item in the queryable */
+    /** Returns the first item in the enumerable */
     first(): T;
 
     /**
-     * Returns the first item in the queryable that matches the predicate
+     * Returns the first item in the enumerable that matches the predicate
      * @param predicate
      */
     first(predicate: Predicate<T>): T;
 
-    /** Returns the first item in the queryable or null */
+    /** Returns the first item in the enumerable or null */
     firstOrDefault(): T | null;
 
     /**
-     * Returns the first item in the queryable that matches the predicate or null
+     * Returns the first item in the enumerable that matches the predicate or null
      * @param predicate
      */
     firstOrDefault(predicate: Predicate<T>): T | null;
@@ -104,22 +104,22 @@ export interface IEnumerable<T> extends Iterable<T>
     //  * @param innerKeySelector
     //  * @param resultSelector
     //  */
-    // join<TInner, TKey, TResult>(inner: IQueryable<TInner>, outerKeySelector: (o: T) => TKey, innerKeySelector: (i: TInner) => TKey, resultSelector: (o: T, i: TInner) => TResult): IQueryable<TResult>;
+    // join<TInner, TKey, TResult>(inner: IEnumerable<TInner>, outerKeySelector: (o: T) => TKey, innerKeySelector: (i: TInner) => TKey, resultSelector: (o: T, i: TInner) => TResult): IEnumerable<TResult>;
 
-    /** Returns the last item in the queryable */
+    /** Returns the last item in the enumerable */
     last(): T;
 
     /**
-     * Returns the last item in the queryable that matches the predicate
+     * Returns the last item in the enumerable that matches the predicate
      * @param predicate
      */
     last(predicate: Predicate<T>): T;
 
-    /** Returns the last item in the queryable or null */
+    /** Returns the last item in the enumerable or null */
     lastOrDefault(): T | null;
 
     /**
-    * Returns the last item in the queryable that matches the predicate or null
+    * Returns the last item in the enumerable that matches the predicate or null
     * @param predicate
     */
     lastOrDefault(predicate: Predicate<T>): T | null;
@@ -143,14 +143,14 @@ export interface IEnumerable<T> extends Iterable<T>
     ofType<N extends T>(ctor: ConstructorFor<N>): IEnumerable<N>;
 
     /**
-     * Orders the queryable by the the selector and optional comparer ascending
+     * Orders the enumerable by the the selector and optional comparer ascending
      * @param selector
      * @param comparer
      */
     orderBy<R>(selector: Selector<T, R>, comparer?: IComparer<R>): IEnumerable<T>;
 
     /**
-     * Orders the queryable by the the selector and optional comparer descending
+     * Orders the enumerable by the the selector and optional comparer descending
      * @param selector
      * @param comparer
      */
@@ -171,54 +171,54 @@ export interface IEnumerable<T> extends Iterable<T>
     selectMany<TOut>(selector: Selector<T, IEnumerable<TOut>>): IEnumerable<TOut>;
 
     /**
-     * Returns a single element only if there is one element in the queryable
-     * @throws InvalidOperationException if there is not exactly one item in the queryable
+     * Returns a single element only if there is one element in the enumerable
+     * @throws InvalidOperationException if there is not exactly one item in the enumerable
      */
     single(): T;
 
     /**
-     * Returns a single element only if there is one element in the queryable that matches the predicate
+     * Returns a single element only if there is one element in the enumerable that matches the predicate
      * @param predicate
-     * @throws InvalidOperationException if there is not exactly one item in the queryable that matches the predicate
+     * @throws InvalidOperationException if there is not exactly one item in the enumerable that matches the predicate
      */
     single(predicate: Predicate<T>): T;
 
     /**
-     * Returns a single element only if there is one element in the queryable. If there are no items in the
-     * queryable, then null is returned
-     * @throws InvalidOperationException if there is not exactly one or zero items in the queryable
+     * Returns a single element only if there is one element in the enumerable. If there are no items in the
+     * enumerable, then null is returned
+     * @throws InvalidOperationException if there is not exactly one or zero items in the enumerable
      */
     singleOrDefault(): T | null;
 
     /**
-     * Returns a single element only if there is one element in the queryable that matches the predicate.
-     * If there are no items in the queryable, then null is returned
-     * @throws InvalidOperationException if there is not exactly one or zero item in the queryable that matches the predicate
+     * Returns a single element only if there is one element in the enumerable that matches the predicate.
+     * If there are no items in the enumerable, then null is returned
+     * @throws InvalidOperationException if there is not exactly one or zero item in the enumerable that matches the predicate
      */
     singleOrDefault(predicate: Predicate<T>): T | null;
 
     /**
      * Skips the number of items specified. If the count is larger than the size
-     * of the queryable, no items will be returned.
+     * of the enumerable, no items will be returned.
      * @param count the number of items to skip
      */
     skip(count: number): IEnumerable<T>;
 
     /**
-     * Splits a queryable into two queryables. One set is for true predicates, the other set is for false predicates.
+     * Splits a enumerable into two queryables. One set is for true predicates, the other set is for false predicates.
      * @param predicate
      */
     split(predicate: Predicate<T>): { pTrue: IEnumerable<T>, pFalse: IEnumerable<T>; };
 
     /**
-     * Sums the items in the queryable using the selector
+     * Sums the items in the enumerable using the selector
      * @param selector selector to return the number to be summed
      */
     sum(selector: Selector<T, number>): number;
 
     /**
-     * Takes the number of specified items from the queryable. If the count is
-     * larger than the size of the queryable, all items will be returned
+     * Takes the number of specified items from the enumerable. If the count is
+     * larger than the size of the enumerable, all items will be returned
      * @param count the number of items to take.
      */
     take(count: number): IEnumerable<T>;
@@ -233,7 +233,7 @@ export interface IEnumerable<T> extends Iterable<T>
     toList(): IList<T>;
 
     /**
-     * Filters the queryable by the predicate
+     * Filters the enumerable by the predicate
      * @param predicate the filter for each item.
      */
     where(predicate: Predicate<T>): IEnumerable<T>;

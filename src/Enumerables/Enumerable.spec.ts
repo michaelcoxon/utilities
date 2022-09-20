@@ -223,42 +223,48 @@ describe("Enumerable.firstOrDefault", () =>
     });
 });
 
-/*
-describe("Enumerable.join", () =>
-{
-    it("should return the items joined by the selector", () =>
-    {
-        const outer = [1, 2, 3, 4, 5, 6];
-        const inner = [2, 4, 6, 8];
-        const expected = [2, 4, 6];
 
-        const qOuter = new ArrayEnumerable(outer);
-        const qInner = new ArrayEnumerable(inner);
+// describe("Enumerable.join", () =>
+// {
+//     it("should return the items joined by the selector", () =>
+//     {
+//         const outer = [1, 2, 3, 4, 5, 6];
+//         const inner = [2, 4, 6, 8];
+//         const expected = [2, 4, 6];
 
-        const outerKeySelector: (o: number) => number = o =>
-        {
-            console.log('o', o);
-            return o;
-        };
-        const innerKeySelector: (i: number) => number = i =>
-        {
-            console.log('i', i);
-            return i;
-        };
-        const resultSelector: (o: number, i: number) => { o: number, i: number; } = (o, i) =>
-        {
-            console.log('{o,i}', { o, i });
-            return { o, i };
-        };
+//         const qOuter = new ArrayEnumerable(outer);
+//         const qInner = new ArrayEnumerable(inner);
 
-        const result = qOuter.join(qInner, outerKeySelector, innerKeySelector, resultSelector);
+//         const outerKeySelector: (o: number) => number = o =>
+//         {
+//             console.log('o', o);
+//             return o;
+//         };
+//         const innerKeySelector: (i: number) => number = i =>
+//         {
+//             console.log('i', i);
+//             return i;
+//         };
+//         const resultSelector: (o: number, i: number) => { o: number, i: number; } = (o, i) =>
+//         {
+//             console.log('{o,i}', { o, i });
+//             return { o, i };
+//         };
 
-        expect(result.count()).toEqual(expected.length);
+//         const actual = qOuter.join(qInner, outerKeySelector, innerKeySelector, resultSelector)
+//             .select(j => j.i)
+//             .toArray();
 
-        result.forEach(i => assert.equal(i.i, i.o, 'awee bugger'));
-    });
-});
-*/
+//         console.log(actual);
+
+//         expect(actual).toBe(expected);
+
+//         //expect(result.count()).toEqual(expected.length);
+
+//         // result.forEach(i => expect(i.i).toStrictEqual(i.o));
+//     });
+// });
+
 
 describe("Enumerable.groupBy", () =>
 {

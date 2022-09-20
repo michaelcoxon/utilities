@@ -8,7 +8,6 @@
     "noEmitHelpers": true,
     "importHelpers": true,
     "removeComments": false,
-    "sourceMap": true,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
