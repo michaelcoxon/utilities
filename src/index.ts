@@ -7,7 +7,7 @@ import './i18n/en.NumberFormatterConfiguration.strings.json';
 
 // modules
 export * as Arrays from "./Arrays";
-export * as Assertions from "./Assertions";
+export * as Assertions from "./Assertions";  
 export * as Booleans from "./Booleans";
 export * as Cache from "./Cache";
 export * as Comparers from "./Comparers";
