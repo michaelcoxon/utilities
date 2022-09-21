@@ -1,17 +1,15 @@
-export interface IContext<T = any, TPrevious extends any = undefined>
+export interface IContext<T = any>
 {
-    readonly frame: string;
     readonly data: T;
-    readonly previous?: IContext<TPrevious>;
 }
 
 export interface IPipelineTask
 {
     readonly name: string;
-    executeAsync<TContext>(context: TContext, next?: IPipelineTask): Promise<void>;
+    executeAsync(context: IContext): Promise<void>;
 }
 
 export interface IPipelineTaskQueue
 {
-    then<TPipelineTask extends IPipelineTask>(task: TPipelineTask): IPipelineTaskQueue;
+    then(task: IPipelineTask | ((context: IContext) => Promise<void>)): IPipelineTaskQueue;
 }

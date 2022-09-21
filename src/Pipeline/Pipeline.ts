@@ -1,4 +1,5 @@
 ﻿import { ILogger } from '../Logging/_types';
+import { isFunction } from '../TypeHelpers';
 import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
 import { IPipelineTaskQueue, IPipelineTask, IContext } from './_types';
 
@@ -13,55 +14,38 @@ export default class Pipeline implements IPipelineTaskQueue
         this.#queue = [];
     }
 
-    public start<TPipelineTask extends IPipelineTask>(task: TPipelineTask): IPipelineTaskQueue
+    public start(task: IPipelineTask | ((context: IContext) => Promise<void>)): IPipelineTaskQueue
     {
-        this.#queue.push(task);
+        this.#queue.push(isFunction(task) ? { name: task.toString(), executeAsync: task } : task);
         return this;
     }
 
-    public then<TPipelineTask extends IPipelineTask>(task: TPipelineTask): IPipelineTaskQueue
+    public then(task: IPipelineTask | ((context: IContext) => Promise<void>)): IPipelineTaskQueue
     {
-        this.#queue.push(task);
+        this.#queue.push(isFunction(task) ? { name: task.toString(), executeAsync: task } : task);
         return this;
     }
 
-    public async executeAsync<TContext extends IContext<T, TPrevious>, T = any, TPrevious extends any = undefined>(context: TContext): Promise<void>
+    public async executeAsync(context: IContext): Promise<void>
     {
-        let next = this.#queue.pop();
-        let curr = this.#queue.pop();
+        const queue = [...this.#queue];
+        const logger = this.#logger.scope('Pipeline::Execute');
 
-        if (isUndefinedOrNull(curr))
+        logger.debug(`Starting Pipeline`);
+
+        while (queue.length > 0)        
         {
-            if (isUndefinedOrNull(next))
+            const curr = queue.shift();
+            if (!isUndefinedOrNull(curr))
             {
-                return;
+                logger.debug(`Executing ${curr.name}`);
+
+                await curr.executeAsync(context);
+
+                logger.debug(`Completed ${curr.name}`);
             }
-
-            curr = next;
-            next = undefined;
         }
 
-        const tasks: { name: string; promise: (ctx: TContext) => Promise<void>; }[] = [];
-
-        do
-        {
-            tasks.push({
-                name: curr?.name,
-                promise: async (ctx) => curr?.executeAsync(ctx, next)
-            });
-            next = curr;
-        }
-        while ((curr = this.#queue.pop()));
-
-        let _ctx = context;
-
-        for (const task of tasks)
-        {
-            const newCtx: TContext = { ..._ctx, previous: _ctx, frame: task.name };
-            await task.promise(newCtx);
-            _ctx = newCtx;
-        }
-
-        context = _ctx;
+        logger.debug(`Finished Pipeline`);
     }
 }
