@@ -26,7 +26,8 @@
     "declaration": true,
     "declarationDir": "./lib",
     "isolatedModules": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": false
   },
   "compileOnSave": true,
   "include": [

@@ -1,17 +1,14 @@
 import { IEnumerable } from '../../_types';
 
-export default function contains<T>(enumerable: IEnumerable<T>, item: T): boolean
+export default function contains<T>(iterable: Iterable<T>, item: T): boolean
 {
-    let isContained = false;
-
-    enumerable.forEach(v =>
+    for (const v of iterable)
     {
         if (v === item)
         {
-            isContained = true;
-            return false;
+            return true;
         }
-    });
+    }
 
-    return isContained;
+    return false;
 }

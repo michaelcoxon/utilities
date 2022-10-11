@@ -3,23 +3,15 @@ import { IEnumerable } from '../../_types';
 
 
 
-export default function any<T>(enumerable:IEnumerable<T>, predicate?: Predicate<T>): boolean
+export default function any<T>(iterable:Iterable<T>, predicate?: Predicate<T>): boolean
 {
-    const en = enumerable.getEnumerator();
-
-    if (predicate !== undefined)
+    for (const item of iterable)
     {
-        let output = false;
-
-        while (!output && en.moveNext())
+        if(!predicate || predicate(item))
         {
-            output = predicate(en.current);
+            return true;
         }
+    }
 
-        return output;
-    }
-    else
-    {
-        return en.moveNext();
-    }
+    return false;
 }
