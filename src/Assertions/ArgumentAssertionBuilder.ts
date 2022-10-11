@@ -7,8 +7,14 @@ import { ConstructorFor, Func1 } from '../Types';
 import SR from '../i18n/en.assertions.strings.json';
 import { format } from '../Strings';
 
-export type AssertionType<T> = T | undefined | null;
+/**
+ * supported types
+ */
+ export type AssertionType<T> = T | undefined | null;
 
+/**
+ * Interface for implementing your own builder
+ */
 export interface IArgumentAssertionBuilder<T>
 {
     readonly argument: T;

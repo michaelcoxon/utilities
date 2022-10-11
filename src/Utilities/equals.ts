@@ -1,4 +1,5 @@
-﻿import equivilentToByJSON from './equivilentToByJSON';
+﻿import { isObject } from '../TypeHelpers';
+import equivilentToByJSON from './equivilentToByJSON';
 
 /**
  * returns true if the two objects are equal but not the same object. (compares public keys)
@@ -25,7 +26,7 @@ export default function equals<T>(obj1: T, obj2: T, forceJSON = false, deep = fa
 {
     let state = false;
 
-    if (typeof obj1 === 'object')
+    if (isObject(obj1))
     {
         if (!forceJSON)
         {

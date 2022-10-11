@@ -3,7 +3,11 @@ import isFunction from './isFunction';
 import isUndefinedOrNull from './isUndefinedOrNull';
 
 
-type NullOrEmptyableType =
+
+/**
+ * quick type for readability
+ */
+ type NullOrEmptyableType =
     { length: number; }
     | { count: number; }
     | IEnumerable<any>

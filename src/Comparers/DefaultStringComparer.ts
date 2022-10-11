@@ -1,6 +1,9 @@
 import { IComparer, IEqualityComparer } from './_types';
 
-export default class DefaultStringComparer implements IComparer<string>, IEqualityComparer<string> {
+/**
+ * Default implementation
+ */
+ export default class DefaultStringComparer implements IComparer<string>, IEqualityComparer<string> {
     public compare(x: string, y: string): number
     {
         if (x < y)

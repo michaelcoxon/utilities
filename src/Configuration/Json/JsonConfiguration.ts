@@ -21,7 +21,7 @@ export default class JsonConfiguration implements IConfiguration
         return this.root.getSection(key);
     }
 
-    get<T = ConfigValue>(key?: string): T
+    get<T extends ConfigValue = ConfigValue>(key?: string): T
     {
         return this.root.get(key);
     }
