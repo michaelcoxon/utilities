@@ -1,5 +1,4 @@
 import { empty } from '../../Strings/_consts';
-import { isNullOrEmpty } from '../../TypeHelpers';
 import { QueryStringItem } from '../_types';
 
 /**

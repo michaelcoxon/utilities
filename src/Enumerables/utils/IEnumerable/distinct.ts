@@ -1,4 +1,4 @@
-import { getHash } from '../../../Utilities';
+import getHash from '../../../Utilities/getHash';
 import { IEnumerable } from '../../_types';
 
 

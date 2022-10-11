@@ -1,6 +1,6 @@
-import { IDisposable } from '.';
 import { ICollection, IEnumerable } from './Enumerables/_types';
-import { IEvent } from './Events';
+import { IEvent } from './Events/_types';
+import { IDisposable } from './Types';
 
 export interface INotifyPropertyChangedEventArgs
 {

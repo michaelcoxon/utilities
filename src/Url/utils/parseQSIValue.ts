@@ -1,7 +1,6 @@
-import { tryParse } from '../../Booleans';
-import { empty } from '../../Strings';
+import tryParse from '../../Booleans/tryParse';
 import trim from '../../Strings/trim';
-import { isUndefinedOrNull } from '../../TypeHelpers';
+import { empty } from '../../Strings/_consts';
 import isNullOrEmpty from '../../TypeHelpers/isNullOrEmpty';
 
 const TEST_INTEGER_REGEX = /^\d+$/;

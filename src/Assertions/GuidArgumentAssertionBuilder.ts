@@ -2,8 +2,7 @@
 import ArgumentException from '../Exceptions/ArgumentException';
 import Guid from '../Guid';
 import SR from '../i18n/en.assertions.strings.json';
-import { format } from '../Strings';
-
+import format from '../Strings/format';
 
 export default class GuidArgumentAssertionBuilder extends ArgumentAssertionBuilder<Guid>
 {

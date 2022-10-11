@@ -1,5 +1,5 @@
 ﻿import { ILogger } from '../Logging/_types';
-import { isFunction } from '../TypeHelpers';
+import isFunction from '../TypeHelpers/isFunction';
 import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
 import { IPipelineTaskQueue, IPipelineTask, IContext } from './_types';
 

@@ -1,5 +1,5 @@
-import { ConfigValue } from '.';
 import { KEY_WORD_SEPARATOR } from '../Strings/_consts';
+import { ConfigValue } from './Json/Json.types';
 
 export interface IConfigurationSection
 {

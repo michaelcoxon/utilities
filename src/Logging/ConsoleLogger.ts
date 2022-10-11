@@ -1,7 +1,7 @@
 ﻿import { ILogger, LogLevel, IConsoleLoggerConfig } from './_types';
 import { IConsole } from "../IConsole";
 import Logger from './Logger';
-import { NotImplementedException } from '../Exceptions';
+import NotImplementedException from '../Exceptions/NotImplementedException';
 
 const defaultConfig: IConsoleLoggerConfig = {
     loggingVerbosity: LogLevel.Info,

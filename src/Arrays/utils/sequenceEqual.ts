@@ -1,4 +1,4 @@
-import { isUndefinedOrNull } from '../../TypeHelpers';
+import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull';
 
 /**
  * Returns true if the sequence is equal

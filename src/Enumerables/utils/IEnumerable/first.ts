@@ -1,4 +1,4 @@
-import { isUndefinedOrNull } from '../../../TypeHelpers';
+import isUndefinedOrNull from '../../../TypeHelpers/isUndefinedOrNull';
 import { Predicate } from '../../../Types';
 import { IEnumerable } from '../../_types';
 

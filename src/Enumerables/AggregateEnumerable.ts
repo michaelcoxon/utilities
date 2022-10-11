@@ -1,7 +1,7 @@
 import AggregateEnumerator from "../Enumerators/AggregateEnumerator";
 import { IEnumerable } from './_types';
 import { IEnumerator } from '../Enumerators/_types';
-import { EnumerableBase } from './index';
+import { EnumerableBase } from '.';
 
 
 export class AggregateEnumerable<T, TReturn> extends EnumerableBase<TReturn>

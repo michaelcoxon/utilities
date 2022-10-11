@@ -1,5 +1,6 @@
-import { InvalidOperationException, NullReferenceException } from '../../../Exceptions';
-import { isUndefinedOrNull } from '../../../TypeHelpers';
+import InvalidOperationException from '../../../Exceptions/InvalidOperationException';
+import NullReferenceException from '../../../Exceptions/NullReferenceException';
+import isUndefinedOrNull from '../../../TypeHelpers/isUndefinedOrNull';
 import { Predicate, Undefinable } from '../../../Types';
 import { IEnumerable } from '../../_types';
 

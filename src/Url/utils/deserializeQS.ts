@@ -1,4 +1,4 @@
-import { InvalidOperationException, NotSupportedException } from '../../Exceptions';
+import NotSupportedException from '../../Exceptions/NotSupportedException';
 import trimStart from '../../Strings/trimStart';
 import { QueryStringItem } from '../_types';
 import parseQSIValue from "./parseQSIValue";

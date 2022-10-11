@@ -1,4 +1,4 @@
-import { empty } from '../Strings';
+import { empty } from '../Strings/_consts';
 import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
 import { Undefinable } from '../Types';
 import { IStorageRepository } from './Storage.types';

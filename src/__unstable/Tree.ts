@@ -1,5 +1,4 @@
-import { isUndefinedOrNull } from '../TypeHelpers';
-
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
 
 export interface ITree<T>
 {

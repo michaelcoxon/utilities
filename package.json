@@ -4,7 +4,7 @@
   "description": "utilities for JS and TypeScript",
   "main": "dist/index.js",
   "types": "lib/index.d.ts",
-  "module": "lib/index.js",
+  "module": "lib",
   "sideEffects": false,
   "scripts": {
     "build:debug": "npm-run-all -s build:lib:debug -p build:dist:debug",
@@ -13,7 +13,7 @@
     "build:dist:stats": "webpack --node-env production --profile --json > webpack-stats.json",
     "build:dist:stats:debug": "webpack --node-env development --profile --json > webpack-stats.json",
     "build:docs": "npm-run-all -s build:docs:typedoc build:docs:nojekyll",
-    "build:docs:typedoc": "typedoc --logger console --out docs src",
+    "build:docs:typedoc": "typedoc --logger console --out docs src/*.ts",
     "build:docs:nojekyll": "copyfiles .nojekyll docs/",
     "build:lib": "npm-run-all -s clean:lib build:lib:typescript",
     "build:lib:debug": "npm-run-all -s clean:lib build:lib:typescript:debug",

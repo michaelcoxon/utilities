@@ -1,4 +1,4 @@
-import { NotSupportedException } from '../../Exceptions';
+import NotSupportedException from '../../Exceptions/NotSupportedException';
 import { ExpressionType } from '../ExpressionType';
 
 export default function getNodeTypeAsString(nodeType: ExpressionType): string

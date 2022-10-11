@@ -1,4 +1,4 @@
-﻿import { isObject } from '../TypeHelpers';
+﻿import isObject from '../TypeHelpers/isObject';
 import equivilentToByJSON from './equivilentToByJSON';
 
 /**
