@@ -1,6 +1,6 @@
 {
   "name": "@michaelcoxon/utilities",
-  "version": "11.0.0",
+  "version": "11.0.0-alpha",
   "description": "utilities for JS and TypeScript",
   "main": "dist/index.js",
   "types": "lib/index.d.ts",
@@ -24,8 +24,9 @@
     "clean:docs": "rimraf docs",
     "build": "npm-run-all -s build:lib -p build:dist build:docs",
     "clean": "npm-run-all -p clean:lib clean:dist clean:docs",
-    "prepack": "npm-run-all -s clean build:lib -p test build:dist build:docs ",
-    "test": "jest --coverage --coverageDirectory coverage --coverageReporters html"
+    "prepack": "npm-run-all -s clean build:lib -p test:coverage build:dist build:docs ",
+    "test:coverage": "jest --coverage --coverageDirectory coverage --coverageReporters html",
+    "test": "jest"
   },
   "repository": {
     "type": "git",

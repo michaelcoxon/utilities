@@ -1,4 +1,4 @@
-﻿import DefaultObjectComparer from '../../src/Comparers/DefaultObjectComparer';
+﻿import DefaultObjectComparer from './DefaultObjectComparer';
 
 describe("DefaultObjectComparer.compare", () =>
 {
