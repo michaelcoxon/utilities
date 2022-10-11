@@ -8,6 +8,7 @@ export interface IEnumerable<T> extends Iterable<T>
     /**
     * Returns true if all the items match the predicate, otherwise false
     * @param predicate
+    * 
     */
     all(predicate: Predicate<T>): boolean;
 
@@ -20,6 +21,18 @@ export interface IEnumerable<T> extends Iterable<T>
     /**
      * Returns true if any of the items match the predicate, otherwise false
      * @param predicate
+     * @example
+     * ```
+     * if (myEnumerable.any()) {
+     *     // do something because the enumerable has elements
+     * }
+     * ```
+     * ```
+     * let myEnumerable = new ArrayEnumerable([1, 2, 3, 4]);
+     * if (myEnumerable.any((i) => i == 2)) {
+     *     // the enumerable contains a '2'
+     * }
+     * ```
      */
     any(predicate?: Predicate<T>): boolean;
 
@@ -291,12 +304,12 @@ export interface IDictionary<TKey, TValue> extends ICollection<KeyValuePair<TKey
 
     removeByKey(key: TKey): boolean;
 
-    tryGetValue(key: TKey): { value?: TValue, success: boolean };
+    tryGetValue(key: TKey): { value?: TValue, success: boolean; };
 }
 
 export interface IEnumerableGroup<T, TKey> extends IEnumerable<T>
 {
-    readonly key: TKey
+    readonly key: TKey;
 }
 
 export interface IList<T> extends ICollection<T>, IEnumerable<T>
@@ -305,13 +318,13 @@ export interface IList<T> extends ICollection<T>, IEnumerable<T>
 
     addRange(enumerable: IEnumerable<T>): void;
 
-    indexOf(item: T): number | undefined
+    indexOf(item: T): number | undefined;
 
-    insert(item: T, index: number): void
+    insert(item: T, index: number): void;
 
-    prepend(item: T): void
+    prepend(item: T): void;
 
-    prepend(item: T): IEnumerable<T>
+    prepend(item: T): IEnumerable<T>;
 
     prependRange(array: T[]): void;
 
@@ -319,7 +332,7 @@ export interface IList<T> extends ICollection<T>, IEnumerable<T>
 
     removeAt(index: number): void;
 
-    sort(comparer: IComparer<T>): void
+    sort(comparer: IComparer<T>): void;
 }
 
 export interface IReadOnlyCollection<T> extends IEnumerable<T>
