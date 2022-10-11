@@ -44,6 +44,7 @@ import singleOrDefault from './utils/IEnumerable/singleOrDefault';
 import max from './utils/IEnumerable/max';
 import min from './utils/IEnumerable/min';
 import ofType from './utils/IEnumerable/ofType';
+import asArray from './utils/asArray';
 
 export class Enumerable
 {
@@ -54,12 +55,12 @@ export class Enumerable
 
     public static empty<TElement>(): IEnumerable<TElement>
     {
-        return new ArrayEnumerable<TElement>([]);
+        return Enumerable.asEnumerable([]);
     }
 
     public static asArray<T>(enumerableOrArray: IEnumerableOrArray<T>): T[]
     {
-        return [...enumerableOrArray];
+        return asArray(enumerableOrArray);
     }
 
     public static asEnumerable<T>(enumerableOrArray: IEnumerableOrArray<T>): IEnumerable<T>
@@ -87,7 +88,7 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public append(item: T): IEnumerable<T>
     {
-        return this.concat(new ArrayEnumerable([item]));
+        return this.concat(Enumerable.asEnumerable([item]));
     }
 
     public concat(next: IEnumerable<T>): IEnumerable<T>
@@ -549,7 +550,7 @@ export class LinkedList<T> extends EnumerableBase<T> implements ICollection<T>, 
 
     append(item: T): IEnumerable<T>
     {
-        return this.concat(new ArrayEnumerable([item]));
+        return this.concat(Enumerable.asEnumerable([item]));
     }
 
     concat(next: IEnumerable<T>): IEnumerable<T>
@@ -559,7 +560,7 @@ export class LinkedList<T> extends EnumerableBase<T> implements ICollection<T>, 
 
     prepend(item: T): IEnumerable<T>
     {
-        return new ArrayEnumerable([item]).concat(this);
+        return Enumerable.asEnumerable([item]).concat(this);
     }
 
     public get length(): number
@@ -824,7 +825,7 @@ export default class Set<T> extends Collection<T> implements ISet<T>, ICollectio
 
     append(item: T): IEnumerable<T>
     {
-        return this.concat(new ArrayEnumerable([item]));
+        return this.concat(Enumerable.asEnumerable([item]));
     }
 
     concat(next: IEnumerable<T>): IEnumerable<T>
@@ -834,7 +835,7 @@ export default class Set<T> extends Collection<T> implements ISet<T>, ICollectio
 
     prepend(item: T): IEnumerable<T>
     {
-        return new ArrayEnumerable([item]).concat(this);
+        return Enumerable.asEnumerable([item]).concat(this);
     }
 
     exceptWith(enumerable: IEnumerable<T>): void

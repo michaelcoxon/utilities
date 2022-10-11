@@ -1,6 +1,10 @@
 import { IComparer, IEqualityComparer } from './_types';
 
-export default class DefaultNumberComparer implements IComparer<number>, IEqualityComparer<number> {
+/**
+ * Default implementation
+ */
+export default class DefaultNumberComparer implements IComparer<number>, IEqualityComparer<number>
+{
     public compare(x: number, y: number): number
     {
         const result = x - y;

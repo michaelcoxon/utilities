@@ -1,5 +1,8 @@
 
-export interface IConsole
+/**
+ * Interface for implementing your own console.
+ */
+ export interface IConsole
 {
     log: (message?: any, ...optionalParams: any[]) => void;
 

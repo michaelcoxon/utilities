@@ -1,6 +1,9 @@
 ﻿import { Undefinable } from "../Types";
 import BaseModelState from './BaseModelState';
 
+/**
+ * Interface for implementing your own state
+ */
 export interface IModelState<T>
 {
     subscribe(postCallback: (value: Undefinable<T>) => void, preCallback?: (value: Undefinable<T>) => void): string;

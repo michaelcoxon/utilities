@@ -4,16 +4,13 @@ import { IEnumerable } from '../../_types';
 
 export default function item<T>(enumerable: IEnumerable<T>, index: number): Undefinable<T>
 {
-    const en = enumerable.getEnumerator();
     let count = 0;
-    while (count <= index && en.moveNext())
+    for (const item of enumerable)
     {
-        if (count === index)
+        if (count <= index && count === index)
         {
-            return en.current;
+            return item;
         }
         count++;
     }
-
-    return undefined;
 }

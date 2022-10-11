@@ -7,4 +7,4 @@ export function ensureInt(value: number, minValue: number, maxValue: number): vo
     {
         throw new OutOfBoundsException('value', minValue, maxValue);
     }
-}
+} 

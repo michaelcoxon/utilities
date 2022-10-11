@@ -1,4 +1,4 @@
-﻿import CaseInsensitiveStringComparer from '../../src/Comparers/CaseInsensitiveStringComparer';
+﻿import CaseInsensitiveStringComparer from './CaseInsensitiveStringComparer';
 
 describe("CaseInsensitiveStringComparer.compare", () =>
 {
@@ -48,11 +48,33 @@ describe("CaseInsensitiveStringComparer.equals", () =>
 
         expect(true).toEqual(result);
     });
+    
+    it("should be equal inputs reversed", () =>
+    {
+        const x = 'abC';
+        const y = 'aBc';
+        const comparer = new CaseInsensitiveStringComparer();
+
+        const result = comparer.equals(x, y);
+
+        expect(true).toEqual(result);
+    });
 
     it("should not be equal", () =>
     {
         const x = 'abC';
         const y = 'cBa';
+        const comparer = new CaseInsensitiveStringComparer();
+
+        const result = comparer.equals(x, y);
+
+        expect(false).toEqual(result);
+    });
+
+    it("should not be equal inputs reversed", () =>
+    {
+        const x = 'cBa';
+        const y = 'abC';
         const comparer = new CaseInsensitiveStringComparer();
 
         const result = comparer.equals(x, y);
