@@ -10,6 +10,7 @@ import ofType from './utils/IEnumerable/ofType';
 import ReverseComparer from '../Comparers/ReverseComparer';
 import MapComparer from '../Comparers/MapComparer';
 import { Dictionary } from '.';
+import forEach from './utils/Iterable/forEach';
 
 
 export class ArrayEnumerable<T> implements IEnumerable<T>
@@ -67,7 +68,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
         const result = this.firstOrDefault(predicate);
         if (isUndefinedOrNull(result))
         {
-            throw new Error('Error/Method not implemented.');
+            throw new Error('There are no results');
         }
         return result;
     }
@@ -79,11 +80,13 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
             : this._array.find(predicate)
             ;
 
-        return result || null;
+        return isUndefinedOrNull(result)
+            ? null
+            : result;
     }
     forEach(callback: (value: T, index: number) => boolean | void): void
     {
-        return this._array.forEach(callback);
+        return forEach(this._array, callback);
     }
     getEnumerator(): IEnumerator<T>
     {
@@ -92,18 +95,19 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     groupBy<TKey>(keySelector: Selector<T, TKey>, comparer: IComparer<TKey> = DefaultComparers.DefaultComparer): IEnumerable<IEnumerableGroup<T, TKey>>
     {
         const keySet = this.select(keySelector).distinct((k) => k).orderBy(k => k).toArray();
-        return new ArrayEnumerable(keySet.reduce(
+        const result = keySet.reduce(
             (group, key) =>
             {
-                group.push({
-                    key,
-                    ...this.where(item => comparer.equals(keySelector(item), key)),
-                });
+                const en = this.where(item => comparer.equals(keySelector(item), key));
+                en['key'] = key;
+                group.push(en as IEnumerableGroup<T, TKey>);
 
                 return group;
             },
-            {} as IEnumerableGroup<T, TKey>[]
-        ));
+            new Array<IEnumerableGroup<T, TKey>>()
+        );
+
+        return new ArrayEnumerable(result);
     }
     item(index: number): Undefinable<T>
     {
@@ -114,7 +118,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
         const result = this.lastOrDefault(predicate);
         if (isUndefinedOrNull(result))
         {
-            throw new Error('Error/Method not implemented.');
+            throw new Error('There are no results');
         }
         return result;
     }
@@ -122,10 +126,14 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     {
         if (isUndefinedOrNull(predicate))
         {
-            return this._array[this._array.length - 1];
+            return this._array[this._array.length - 1] || null;
         }
         const set = this._array.filter(predicate);
-        return set[set.length - 1];
+        const result = set[set.length - 1];
+
+        return isUndefinedOrNull(result)
+            ? null
+            : result;
     }
     max(selector: Selector<T, number>): number
     {
@@ -151,10 +159,10 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     private internalOrderBy<R>(selector: (a: T) => R, comparer: IComparer<R>): IEnumerable<T>
     {
         // HACK: this could be better...
-        const list = this.toList();
+        const array = this.toArray();
         const mapComparer = new MapComparer(selector, comparer);
-        list.sort(mapComparer);
-        return list;
+        array.sort((a, b) => mapComparer.compare(a, b));
+        return new ArrayEnumerable(array);
     }
 
     prepend(item: T): IEnumerable<T>
@@ -178,7 +186,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
 
         if (isUndefinedOrNull(result))
         {
-            throw new Error('Error/Method not implemented.');
+            throw new Error('There is no result.');
         }
 
         return result;
@@ -192,7 +200,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
 
         if (result.length > 1)
         {
-            throw new Error('Error/Method not implemented.');
+            throw new Error('More than one match in the collection.');
         }
         if (result.length !== 1)
         {
@@ -225,7 +233,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     }
     toArray(): T[]
     {
-        return this._array;
+        return [...this._array];
     }
     toDictionary<TKey, TValue>(keySelector: (a: T) => TKey, valueSelector: (a: T) => TValue): IDictionary<TKey, TValue>
     {
@@ -240,7 +248,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     }
     toList(): IList<T>
     {
-        throw new Error('Error/Method not implemented.');
+        throw new Error('toList Error/Method not implemented.');
     }
     where(predicate: Predicate<T>): IEnumerable<T>
     {

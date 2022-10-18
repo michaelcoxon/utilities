@@ -618,14 +618,14 @@ export class LinkedList<T> extends EnumerableBase<T> implements ICollection<T>, 
     copyTo(array: T[], arrayIndex: number): void
     {
         // TODO:   throw new Error("Error/Method not implemented.");
-        throw new Error("Error/Method not implemented.");
+        throw new Error("copyTo Error/Method not implemented.");
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     remove(item: T): boolean
     {
         // TODO:   throw new Error("Error/Method not implemented.");
-        throw new Error("Error/Method not implemented.");
+        throw new Error("remove Error/Method not implemented.");
     }
 
     forEach(callback: (value: T, index: number) => boolean | void): void
