@@ -1,7 +1,5 @@
 ﻿import Timer from './Timer';
 
-import { slowtest } from './_env';
-
 describe("Timer.constructor", () =>
 {
     it("should return a new Timer", () =>
@@ -24,7 +22,7 @@ describe("Timer.constructor", () =>
 
 describe("Timer.enabled", () =>
 {
-    !slowtest && it("should tick every 500ms", (done) =>
+    it("should tick every 500ms", (done) =>
     {
         const timer = new Timer(500);
         let lastEventTime: number | undefined = undefined;
@@ -56,5 +54,5 @@ describe("Timer.enabled", () =>
 
         
 
-    }, 5200);
+    }, 15200);
 });

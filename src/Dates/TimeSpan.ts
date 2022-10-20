@@ -25,42 +25,47 @@ export default class TimeSpan extends Number
 
     public get hours(): number
     {
-        return Math.trunc(this.totalHours);
+        return Math.trunc(this.totalHours) % 24;
     }
 
     public get milliseconds(): number
     {
-        return this.valueOf();
+        return Math.trunc(this.totalMilliseconds) % 1000;
     }
 
     public get minutes(): number
     {
-        return Math.trunc(this.totalMinutes);
+        return Math.trunc(this.totalMinutes) % 60;
     }
 
     public get seconds(): number
     {
-        return Math.trunc(this.totalSeconds);
+        return Math.trunc(this.totalSeconds) % 60;
     }
 
     public get totalDays(): number
     {
-        return this.milliseconds / TimeSpan.day;
+        return this.totalMilliseconds / TimeSpan.day;
     }
 
     public get totalHours(): number
     {
-        return this.milliseconds / TimeSpan.hour;
+        return this.totalMilliseconds / TimeSpan.hour;
     }
 
     public get totalMinutes(): number
     {
-        return this.milliseconds / TimeSpan.minute;
+        return this.totalMilliseconds / TimeSpan.minute;
     }
 
     public get totalSeconds(): number
     {
-        return this.milliseconds / TimeSpan.second;
+        return this.totalMilliseconds / TimeSpan.second;
+    }
+
+    public get totalMilliseconds(): number
+    {
+        return this.valueOf();
     }
 
     public add(ts: TimeSpan)
@@ -82,7 +87,7 @@ export default class TimeSpan extends Number
     {
         return new TimeSpan(value * TimeSpan.minute);
     }
-    
+
     public static fromSeconds(value: number)
     {
         return new TimeSpan(value * TimeSpan.second);

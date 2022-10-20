@@ -1,5 +1,9 @@
 import TimeSpan from '../Dates/TimeSpan';
 
+function now()
+{
+    return performance.now();
+}
 
 export default class Watch
 {
@@ -7,7 +11,7 @@ export default class Watch
 
     constructor()
     {
-        this.#start = Date.now();
+        this.#start = now();
     }
 
     /** Returns the number of days elapsed. */
@@ -23,8 +27,9 @@ export default class Watch
     /** Returns the number of milliseconds elapsed. */
     get milliseconds(): number
     {
-        return Date.now() - this.#start;
+        return now() - this.#start;
     }
+
     /** Returns the number of minutes elapsed. */
     get minutes(): number
     {
