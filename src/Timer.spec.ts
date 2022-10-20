@@ -41,8 +41,8 @@ describe("Timer.enabled", () =>
             {
                 const letim = lastEventTime + 500;
 
-                expect(e.signalTime).toBeGreaterThanOrEqual(letim - 20);
-                expect(e.signalTime).toBeLessThanOrEqual(letim + 20);
+                expect(e.signalTime).toBeGreaterThanOrEqual(letim - 50);
+                expect(e.signalTime).toBeLessThanOrEqual(letim + 50);
             }
 
             lastEventTime = e.signalTime;
@@ -50,9 +50,7 @@ describe("Timer.enabled", () =>
             ticks++;
         });
 
-        timer.start();
-
-        
+        timer.start();        
 
     }, 15200);
 });
