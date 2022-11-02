@@ -1,4 +1,5 @@
-import { constants } from 'buffer';
+import { NotSupportedException } from '../Exceptions';
+import { isUndefinedOrNull } from '../TypeHelpers';
 import { BinaryExpression } from './BinaryExpression';
 import { ConstantExpression, ConstantExpressionType } from './ConstantExpression';
 import { Expression } from './Expression';
@@ -14,9 +15,9 @@ export default class ExpressionCompiler
 
 }
 
-function getValue(expression: Expression)
+function getValue(expression?: Expression)
 {
-    switch (expression.nodeType)
+    switch (expression?.nodeType)
     {
         case ExpressionType.Add:
             {
@@ -33,15 +34,22 @@ function getValue(expression: Expression)
                 const expr = expression as ConstantExpression;
                 return constant(expr);
             }
+        default:
+            {
+                if (!isUndefinedOrNull(expression))
+                {
+                    throw new NotSupportedException(`expression '${JSON.stringify(expression)}' is not supported`);
+                }
+            }
     }
 }
 
-function add(left: Expression, right: Expression)
+function add(left?: Expression, right?: Expression)
 {
     return getValue(left) + getValue(right);
 }
 
-function andAlso(left: Expression, right: Expression)
+function andAlso(left?: Expression, right?: Expression)
 {
     return getValue(left) && getValue(right);
 }

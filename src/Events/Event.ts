@@ -1,29 +1,34 @@
-﻿import ArgumentException from "../Exceptions/ArgumentException";
+﻿import { AlreadyDisposedException } from '../Exceptions';
+import ArgumentException from "../Exceptions/ArgumentException";
+import { IDisposable } from '../Types';
 import { IEvent, EventHandler } from './_types';
 /**
  * Class to represent an event.
  */
-export default class Event<TEventArgs> implements IEvent<TEventArgs>
+export default class Event<TEventArgs> implements IEvent<TEventArgs>, IDisposable
 {
-    readonly #eventHandlers: EventHandler<TEventArgs>[];
+    #disposed = false;
 
-    /**
-     * Creates a new event
-     */
-    constructor()
-    {
-        this.#eventHandlers = [];
-    }
+    readonly #eventHandlers: EventHandler<TEventArgs>[] = [];
 
     /**
      * Invokes the event
      * @param sender the object that is calling invoke
      * @param args the arguments to send along with the event.
      */
-    public invoke(sender: any, args: TEventArgs)
+    invoke(sender: any, args: TEventArgs)
     {
+        if (this.#disposed)
+        {
+            throw new AlreadyDisposedException();
+        }
+
         for (const eventHandler of this.#eventHandlers)
         {
+            if (this.#disposed)
+            {
+                throw new AlreadyDisposedException();
+            }
             eventHandler.call(sender, sender, args);
         }
     }
@@ -32,8 +37,13 @@ export default class Event<TEventArgs> implements IEvent<TEventArgs>
      * Adds a handler to the event
      * @param eventHandler
      */
-    public addHandler(eventHandler: EventHandler<TEventArgs>): EventHandler<TEventArgs>
+    addHandler(eventHandler: EventHandler<TEventArgs>): EventHandler<TEventArgs>
     {
+        if (this.#disposed)
+        {
+            throw new AlreadyDisposedException();
+        }
+
         this.#eventHandlers.push(eventHandler);
         return eventHandler;
     }
@@ -42,8 +52,13 @@ export default class Event<TEventArgs> implements IEvent<TEventArgs>
      * removes a handler from the event.
      * @param eventHandler
      */
-    public removeHandler(eventHandler: EventHandler<TEventArgs>): void
+    removeHandler(eventHandler: EventHandler<TEventArgs>): void
     {
+        if (this.#disposed)
+        {
+            throw new AlreadyDisposedException();
+        }
+
         const index = this.#eventHandlers.indexOf(eventHandler);
 
         if (index != -1)
@@ -53,6 +68,15 @@ export default class Event<TEventArgs> implements IEvent<TEventArgs>
         else
         {
             throw new ArgumentException('eventHandler', "Handler is not in this Event");
+        }
+    }
+
+    dispose(): void
+    {
+        if (!this.#disposed)
+        {
+            this.#disposed = true;
+            this.#eventHandlers.length = 0;
         }
     }
 }

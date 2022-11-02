@@ -1,35 +1,8 @@
-import padLeft from '../Strings/padLeft';
-import { empty } from '../Strings/_consts';
-import { IFormatter, IDateFormatterConfiguration } from './_types';
-import * as DefaultConfiguration from '../i18n/en.DateFormatterConfiguration.strings.json';
-
-export default class DateFormatter implements IFormatter<Date>
-{
-    readonly #config: IDateFormatterConfiguration;
-
-    constructor(dateFormatterConfiguration: IDateFormatterConfiguration = DefaultConfiguration)
-    {
-        this.#config = dateFormatterConfiguration;
-    }
-
-    public format(subject: Date, format: string): string
-    {
-        const tokens = Object.keys(TOKEN_TO_STRING_DELEGATES);
-
-        const matcher = /([a-z]+)/ig;
-
-        const result = format.replace(matcher, (token: string) =>
-        {
-            if (tokens.indexOf(token) > -1)
-            {
-                return TOKEN_TO_STRING_DELEGATES[token](subject, this.#config);
-            }
-            return token;
-        });
-
-        return result;
-    }
-}
+import padLeft from '../../Strings/padLeft';
+import { empty } from '../../Strings/_consts';
+import { IDateFormatterConfiguration } from '../_types';
+import { getTimezoneHoursAndMinutesString } from './getTimezoneHoursAndMinutesString';
+import { getTimezoneHoursString } from './getTimezoneHoursString';
 
 const TOKEN_TO_STRING_DELEGATES: Record<string, (d: Date, config: IDateFormatterConfiguration) => string> = {
     "d": d => d.getDate().toString(),
@@ -80,46 +53,6 @@ const TOKEN_TO_STRING_DELEGATES: Record<string, (d: Date, config: IDateFormatter
 };
 
 
-function getTimezoneHoursAndMinutesString(minutes: number, config: IDateFormatterConfiguration)
-{
-    let result = empty;
+export default TOKEN_TO_STRING_DELEGATES;
 
-    if (minutes < 0)
-    {
-        result += "-";
-    }
 
-    else
-    {
-        result += "+";
-    }
-
-    const dec = minutes / 60;
-
-    result += padLeft(Math.floor(dec).toString(), 2, '0');
-    result += config.timeSeparator;
-    result += padLeft(Math.round((dec - Math.floor(dec)) * 60).toString(), 2, '0');
-
-    return result;
-};
-
-function getTimezoneHoursString(minutes: number) 
-{
-    let result = empty;
-
-    if (minutes < 0)
-    {
-        result += "-";
-    }
-
-    else
-    {
-        result += "+";
-    }
-
-    const dec = minutes / 60;
-
-    result += Math.floor(dec).toString();
-
-    return result;
-}

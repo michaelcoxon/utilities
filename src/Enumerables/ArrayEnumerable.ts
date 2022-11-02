@@ -9,9 +9,8 @@ import DefaultComparers from '../Comparers/DefaultComparers';
 import ofType from './utils/IEnumerable/ofType';
 import ReverseComparer from '../Comparers/ReverseComparer';
 import MapComparer from '../Comparers/MapComparer';
-import { Dictionary } from '.';
 import forEach from './utils/Array/forEach';
-
+import { Dictionary } from './index';
 
 export class ArrayEnumerable<T> implements IEnumerable<T>
 {
