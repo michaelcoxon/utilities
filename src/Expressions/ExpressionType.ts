@@ -1,55 +1,53 @@
 ﻿export enum ExpressionType
 {
     // An addition operation, such as a + b, without overflow checking, for numeric operands.
-    Add = 0,
+    Add = 1,
     // A conditional AND operation that evaluates the second operand only if the first operand evaluates to true. It corresponds to (a && b) in C# and (a AndAlso b) in Visual Basic.
-    AndAlso = 1,
+    AndAlso,
     // A method call, such as in the obj.sampleMethod() expression.
-    Call = 2,
+    Call,
     // A node that represents a null coalescing operation, such as (a ?? b) in C# or If(a, b) in Visual Basic.
-    Coalesce = 3,
+    Coalesce,
     // A constant value.
-    Constant = 4,
+    Constant,
     // A division operation, such as (a / b), for numeric operands.
-    Divide = 5,
+    Divide,
     // A node that represents an equality comparison, such as (a == b) in C# or (a = b) in Visual Basic.
-    Equal = 6,
+    Equal,
     // A bitwise or logical XOR operation, such as (a ^ b) in C# or (a Xor b) in Visual Basic.
-    ExclusiveOr = 7,
+    ExclusiveOr,
     // A "greater than" comparison, such as (a > b).
-    GreaterThan = 8,
+    GreaterThan,
     // A "greater than or equal to" comparison, such as (a >= b).
-    GreaterThanOrEqual = 9,
+    GreaterThanOrEqual,
     // A "less than" comparison, such as (a < b).
-    LessThan = 10,
+    LessThan,
     // A "less than or equal to" comparison, such as (a <= b).
-    LessThanOrEqual = 11,
+    LessThanOrEqual,
     // An operation that reads from a field or property, such as obj.SampleProperty.
-    MemberAccess = 12,
+    MemberAccess,
     // An arithmetic remainder operation, such as (a % b) in C# or (a Mod b) in Visual Basic.
-    Modulo = 13,
+    Modulo,
     // A multiplication operation, such as (a * b), without overflow checking, for numeric operands.
-    Multiply = 14,
+    Multiply,
     // An arithmetic negation operation, such as (-a). The object a should not be modified in place.
-    Negate = 15,
+    Negate,
     // An inequality comparison, such as (a != b) in C# or (a <> b) in Visual Basic.
-    NotEqual = 16,
+    NotEqual,
     // A short-circuiting conditional OR operation, such as (a || b) in C# or (a OrElse b) in Visual Basic.
-    OrElse = 17,
+    OrElse,
     // A mathematical operation that raises a number to a power, such as (a ^ b) in Visual Basic.
-    Power = 18,
+    Power,
     // A subtraction operation, such as (a - b), without overflow checking, for numeric operands.
-    Subtract = 19,
+    Subtract,
     // A true condition value.
-    IsTrue = 20,
+    IsTrue,
     // A false condition value.
-    IsFalse = 21,
-    // A field
-    FieldAccess = 22
+    IsFalse
 }
 
 
-export type BinaryExpressionType = 
+export type BinaryExpressionType =
     ExpressionType.Add
     | ExpressionType.AndAlso
     | ExpressionType.Coalesce

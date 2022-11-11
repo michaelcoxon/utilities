@@ -1,24 +1,23 @@
 import { BinaryExpression } from './BinaryExpression';
 import { ConstantExpression, ConstantExpressionType } from './ConstantExpression';
-import { Expression } from './Expression';
 import { ExpressionType } from './ExpressionType';
-import OutputStringExpressionVisitor from './OutputStringExpressionVisitor';
+import InstructionExpressionVisitor from './InstructionExpressionVisitor';
 
 
-describe("OutputStringExpressionVisitor.constructor", () =>
+describe("InstructionExpressionVisitor.constructor", () =>
 {
     it("should construct", () =>
     {
-        new OutputStringExpressionVisitor();
+        new InstructionExpressionVisitor();
     });
 });
 
 
-describe("OutputStringExpressionVisitor.visitAddExpression", () =>
+describe("InstructionExpressionVisitor.visitAddExpression", () =>
 {
     it("should simple visitAddExpression", () =>
     {
-        const service = new OutputStringExpressionVisitor();
+        const service = new InstructionExpressionVisitor();
         const subject: BinaryExpression = {
             nodeType: ExpressionType.Add,
             left: {
@@ -32,7 +31,11 @@ describe("OutputStringExpressionVisitor.visitAddExpression", () =>
                 value: 3
             } as ConstantExpression
         };
-        const expected = "(4 + 3)";
+        const expected = [
+            ExpressionType.Add,
+            [ExpressionType.Constant, 4],
+            [ExpressionType.Constant, 3]
+        ];
 
         service.visit(subject);
 
@@ -43,7 +46,7 @@ describe("OutputStringExpressionVisitor.visitAddExpression", () =>
 
     it("should complex visitAddExpression", () =>
     {
-        const service = new OutputStringExpressionVisitor();
+        const service = new InstructionExpressionVisitor();
         const subject: BinaryExpression = {
             nodeType: ExpressionType.Add,
             left: {
@@ -81,8 +84,21 @@ describe("OutputStringExpressionVisitor.visitAddExpression", () =>
                 value: 41
             } as ConstantExpression
         };
-        
-        const expected = "((30 + ((10 + 11) + 21)) + 41)";
+
+        const expected = [
+            ExpressionType.Add, [
+                ExpressionType.Add,
+                [ExpressionType.Constant, 30], [
+                    ExpressionType.Add, [
+                        ExpressionType.Add,
+                        [ExpressionType.Constant, 10],
+                        [ExpressionType.Constant, 11]
+                    ],
+                    [ExpressionType.Constant, 21]
+                ]
+            ],
+            [ExpressionType.Constant, 41]
+        ];
 
         service.visit(subject);
 
@@ -91,3 +107,6 @@ describe("OutputStringExpressionVisitor.visitAddExpression", () =>
         expect(actual).toEqual(expected);
     });
 });
+
+
+

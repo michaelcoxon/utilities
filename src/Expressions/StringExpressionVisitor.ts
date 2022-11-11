@@ -9,7 +9,7 @@ import ExpressionVisitor from './ExpressionVisitor';
 
 
 
-export default class OutputStringExpressionVisitor extends ExpressionVisitor
+export default class StringExpressionVisitor extends ExpressionVisitor
 {
     #regex = new RegExp("/s+", "ig");
     #sb: StringBuilder;

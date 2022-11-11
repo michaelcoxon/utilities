@@ -2,23 +2,23 @@ import { BinaryExpression } from './BinaryExpression';
 import { ConstantExpression, ConstantExpressionType } from './ConstantExpression';
 import { Expression } from './Expression';
 import { ExpressionType } from './ExpressionType';
-import OutputArrayExpressionVisitor from './OutputArrayExpressionVisitor';
+import StringExpressionVisitor from './StringExpressionVisitor';
 
 
-describe("OutputArrayExpressionVisitor.constructor", () =>
+describe("StringExpressionVisitor.constructor", () =>
 {
     it("should construct", () =>
     {
-        new OutputArrayExpressionVisitor();
+        new StringExpressionVisitor();
     });
 });
 
 
-describe("OutputArrayExpressionVisitor.visitAddExpression", () =>
+describe("StringExpressionVisitor.visitAddExpression", () =>
 {
     it("should simple visitAddExpression", () =>
     {
-        const service = new OutputArrayExpressionVisitor();
+        const service = new StringExpressionVisitor();
         const subject: BinaryExpression = {
             nodeType: ExpressionType.Add,
             left: {
@@ -32,7 +32,7 @@ describe("OutputArrayExpressionVisitor.visitAddExpression", () =>
                 value: 3
             } as ConstantExpression
         };
-        const expected = [ExpressionType.Add, 4, 3];
+        const expected = "(4 + 3)";
 
         service.visit(subject);
 
@@ -43,7 +43,7 @@ describe("OutputArrayExpressionVisitor.visitAddExpression", () =>
 
     it("should complex visitAddExpression", () =>
     {
-        const service = new OutputArrayExpressionVisitor();
+        const service = new StringExpressionVisitor();
         const subject: BinaryExpression = {
             nodeType: ExpressionType.Add,
             left: {
@@ -81,7 +81,7 @@ describe("OutputArrayExpressionVisitor.visitAddExpression", () =>
                 value: 41
             } as ConstantExpression
         };
-
+        
         const expected = "((30 + ((10 + 11) + 21)) + 41)";
 
         service.visit(subject);
