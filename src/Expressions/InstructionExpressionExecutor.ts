@@ -1,9 +1,10 @@
 import { NotImplementedException } from '../Exceptions';
+
 import { isBoolean, isNumber, isString } from '../TypeHelpers';
 import { ExpressionType } from './ExpressionType';
 import { AddInstruction, ConstantInstruction, Instruction, ValueType } from './Instruction';
 
-export default function execute(instruction: Instruction | ValueType)
+export default function execute(instruction: (Instruction | ValueType))
 {
     // number | string | boolean
     if (isNumber(instruction) || isString(instruction) || isBoolean(instruction))
