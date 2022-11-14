@@ -1,4 +1,4 @@
-import { Predicate } from '../../../Types';
+import { Predicate } from '../../../Types.js';
 
 export default function any<T>(iterable:Iterable<T>, predicate?: Predicate<T>): boolean
 {

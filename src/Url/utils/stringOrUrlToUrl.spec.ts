@@ -1,4 +1,4 @@
-import stringOrUrlToUrl from "./stringOrUrlToUrl";
+import stringOrUrlToUrl from "./stringOrUrlToUrl.js";
 
 describe('stringOrUrlToUrl', () =>
 {

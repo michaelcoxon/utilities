@@ -1,7 +1,7 @@
-import { IEnumerator } from './_types';
-import { LinkedList } from "../Enumerables";
-import EnumeratorBase from "./EnumeratorBase";
-import Exception from '../Exceptions/Exception';
+import { IEnumerator } from './_types.js';
+import { LinkedList } from "../Enumerables/index.js";
+import EnumeratorBase from "./EnumeratorBase.js";
+import Exception from '../Exceptions/Exception.js';
 
 export default class LinkedListEnumerator<T> extends EnumeratorBase<T> implements IEnumerator<T>
 {

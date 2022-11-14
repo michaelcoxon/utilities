@@ -1,5 +1,5 @@
-import format from '../Strings/format';
-import Exception from './Exception';
+import format from '../Strings/format.js';
+import Exception from './Exception.js';
 import SR from '../i18n/en.exceptions.strings.json';
 
 

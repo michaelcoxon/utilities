@@ -1,5 +1,5 @@
-﻿import Exception from './Exceptions/Exception';
-import { IIndentedStringBuilder } from './IO/_types';
+﻿import Exception from './Exceptions/Exception.js';
+import { IIndentedStringBuilder } from './IO/_types.js';
 
 export default function errorToLogMessage(error: Error | Exception, sb: IIndentedStringBuilder): void
 {

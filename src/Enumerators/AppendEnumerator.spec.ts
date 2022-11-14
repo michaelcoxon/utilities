@@ -1,5 +1,5 @@
-﻿import { Collection } from '../../src/Enumerables';
-import AppendEnumerator from '../../src/Enumerators/AppendEnumerator';
+﻿import { Collection } from '../Enumerables/index.js';
+import AppendEnumerator from '../../src/Enumerators/AppendEnumerator.js';
 
 describe("AppendEnumerator.constructor", () =>
 {

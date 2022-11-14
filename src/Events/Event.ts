@@ -1,7 +1,7 @@
-﻿import { AlreadyDisposedException } from '../Exceptions';
-import ArgumentException from "../Exceptions/ArgumentException";
-import { IDisposable } from '../Types';
-import { IEvent, EventHandler } from './_types';
+﻿import AlreadyDisposedException from '../Exceptions/AlreadyDisposedException.js';
+import ArgumentException from "../Exceptions/ArgumentException.js";
+import { IDisposable } from '../Types.js';
+import { IEvent, EventHandler } from './_types.js';
 /**
  * Class to represent an event.
  */

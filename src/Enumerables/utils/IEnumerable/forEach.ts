@@ -1,4 +1,4 @@
-import { IEnumerable } from '../../_types';
+import { IEnumerable } from '../../_types.js';
 
 
 export default function forEach<T>(iterable: Iterable<T>, callback: (value: T, index: number) => boolean | void): void

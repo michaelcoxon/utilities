@@ -1,4 +1,4 @@
-﻿import Guid from './Guid';
+﻿import Guid from './Guid.js';
 
 describe("Guid.newGuid", () =>
 {

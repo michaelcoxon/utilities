@@ -1,7 +1,7 @@
-import { IEnumerator } from './_types';
-import EnumeratorBase from "./EnumeratorBase";
-import Exception from '../Exceptions/Exception';
-import { Undefinable } from '../Types';
+import { IEnumerator } from './_types.js';
+import EnumeratorBase from "./EnumeratorBase.js";
+import Exception from '../Exceptions/Exception.js';
+import { Undefinable } from '../Types.js';
 
 
 export default class TakeEnumerator<T> extends EnumeratorBase<T> implements IEnumerator<T> {

@@ -1,8 +1,8 @@
-﻿import ArgumentAssertionBuilder from './ArgumentAssertionBuilder';
-import { IComparable } from '../Comparers/_types';
-import ArgumentException from '../Exceptions/ArgumentException';
-import DefaultComparers from '../Comparers/DefaultComparers';
-import { format } from '../Strings';
+﻿import ArgumentAssertionBuilder from './ArgumentAssertionBuilder.js';
+import { IComparable } from '../Comparers/_types.js';
+import ArgumentException from '../Exceptions/ArgumentException.js';
+import DefaultComparers from '../Comparers/DefaultComparers.js';
+import  format from '../Strings/format.js';
 import SR from '../i18n/en.assertions.strings.json';
 
 export default class CompareAssertionBuilder<T extends IComparable> extends ArgumentAssertionBuilder<T>

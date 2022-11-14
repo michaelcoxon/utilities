@@ -1,5 +1,5 @@
-import { Selector } from '../../../Types';
-import { IEnumerable } from '../../_types';
+import { Selector } from '../../../Types.js';
+import { IEnumerable } from '../../_types.js';
 
 
 

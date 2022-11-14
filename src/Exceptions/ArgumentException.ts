@@ -1,4 +1,4 @@
-import Exception from './Exception';
+import Exception from './Exception.js';
 
 /**
  * The exception that is thrown when one of the arguments provided to a method is not valid.

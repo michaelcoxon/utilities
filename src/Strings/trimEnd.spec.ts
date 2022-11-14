@@ -1,4 +1,4 @@
-import trimEnd from './trimEnd';
+import trimEnd from './trimEnd.js';
 
 describe("trimEnd", () =>
 {

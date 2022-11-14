@@ -1,4 +1,4 @@
-﻿import { IDisposable } from '../Types';
+﻿import { IDisposable } from '../Types.js';
 
 /** The log level. Used for filtering and tagging logging events */
 export enum LogLevel

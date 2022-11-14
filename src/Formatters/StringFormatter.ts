@@ -1,6 +1,6 @@
-import FormatException from '../Exceptions/FormatException';
-import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty';
-import { IFormatter } from './_types';
+import FormatException from '../Exceptions/FormatException.js';
+import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty.js';
+import { IFormatter } from './_types.js';
 
 /** Formats strings */
 

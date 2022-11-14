@@ -1,6 +1,6 @@
-import NotSupportedException from "../Exceptions/NotSupportedException";
-import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
-import tryParse from './tryParse';
+import NotSupportedException from "../Exceptions/NotSupportedException.js";
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull.js';
+import tryParse from './tryParse.js';
 
 export default function parse(value: string): boolean;
 export default function parse(value: string, caseInsensitive: boolean): boolean;

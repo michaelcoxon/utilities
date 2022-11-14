@@ -1,4 +1,4 @@
-import NumberFormatter from './NumberFormatter';
+import NumberFormatter from './NumberFormatter.js';
 
 describe("NumberFormatter.constructor", () =>
 {

@@ -1,6 +1,6 @@
-import format from '../Strings/format';
-import { empty } from '../Strings/_consts';
-import Exception from './Exception';
+import format from '../Strings/format.js';
+import { empty } from '../Strings/_consts.js';
+import Exception from './Exception.js';
 import SR from '../i18n/en.exceptions.strings.json';
 
 

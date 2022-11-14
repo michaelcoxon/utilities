@@ -1,10 +1,10 @@
-﻿import ArgumentException from '../Exceptions/ArgumentException';
-import ArgumentNullException from '../Exceptions/ArgumentNullException';
-import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException';
-import Exception from '../Exceptions/Exception';
-import { ConstructorFor, Func1, Undefinable } from '../Types';
+﻿import ArgumentException from '../Exceptions/ArgumentException.js';
+import ArgumentNullException from '../Exceptions/ArgumentNullException.js';
+import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException.js';
+import Exception from '../Exceptions/Exception.js';
+import { ConstructorFor, Func1, Undefinable } from '../Types.js';
 import SR from '../i18n/en.assertions.strings.json';
-import { format } from '../Strings';
+import format from '../Strings/format.js';
 
 /**
  * supported types

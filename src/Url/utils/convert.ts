@@ -1,7 +1,7 @@
-import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull';
-import { QueryStringItem } from '../_types';
-import convertArray from './convertArray';
-import convertObjectToQueryStringItem from './convertObjectToQueryStringItem';
+import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull.js';
+import { QueryStringItem } from '../_types.js';
+import convertArray from './convertArray.js';
+import convertObjectToQueryStringItem from './convertObjectToQueryStringItem.js';
 
 
 

@@ -1,4 +1,4 @@
-﻿import Lazy from './Lazy';
+﻿import Lazy from './Lazy.js';
 
 describe("Lazy.constructor", () =>
 {

@@ -1,4 +1,4 @@
-import TimeSpan from '../Dates/TimeSpan';
+import TimeSpan from '../Dates/TimeSpan.js';
 
 function now()
 {

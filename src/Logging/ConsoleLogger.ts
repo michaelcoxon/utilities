@@ -1,7 +1,7 @@
-﻿import { ILogger, LogLevel, IConsoleLoggerConfig } from './_types';
-import { IConsole } from "../IConsole";
-import Logger from './Logger';
-import { NotImplementedException } from '../Exceptions';
+﻿import { ILogger, LogLevel, IConsoleLoggerConfig } from './_types.js';
+import { IConsole } from "../IConsole.js";
+import Logger from './Logger.js';
+import NotImplementedException from '../Exceptions/NotImplementedException.js';
 
 const defaultConfig: IConsoleLoggerConfig = {
     loggingVerbosity: LogLevel.Info,

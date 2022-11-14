@@ -1,7 +1,7 @@
-import Type from "./Type";
-import { IType } from "./_types";
-import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty';
-import NullReferenceException from '../Exceptions/NullReferenceException';
+import Type from "./Type.js";
+import { IType } from "./_types.js";
+import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty.js';
+import NullReferenceException from '../Exceptions/NullReferenceException.js';
 export default class TypeBuilder
 {
     #name = '';

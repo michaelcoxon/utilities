@@ -1,9 +1,9 @@
-﻿import combine from './Path/combine';
-import getDirectory from './Path/getDirectory';
-import getExtension from './Path/getExtension';
-import getFileName from './Path/getFileName';
-import getFileNameWithoutExtension from './Path/getFileNameWithoutExtension';
-import toFriendlyUrl from './Path/toFriendlyUrl';
+﻿import combine from './Path/combine.js';
+import getDirectory from './Path/getDirectory.js';
+import getExtension from './Path/getExtension.js';
+import getFileName from './Path/getFileName.js';
+import getFileNameWithoutExtension from './Path/getFileNameWithoutExtension.js';
+import toFriendlyUrl from './Path/toFriendlyUrl.js';
 
 describe("Path.combine", () =>
 {

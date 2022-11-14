@@ -1,4 +1,4 @@
-import Watch from './Watch';
+import Watch from './Watch.js';
 
 export {
     Watch

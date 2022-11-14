@@ -1,4 +1,4 @@
-import toCharArray from './toCharArray';
+import toCharArray from './toCharArray.js';
 
 describe("toCharArray", () =>
 {

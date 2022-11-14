@@ -1,5 +1,5 @@
-﻿import { isObject } from '../TypeHelpers';
-import equivilentToByJSON from './equivilentToByJSON';
+﻿import isObject from '../TypeHelpers/isObject.js';
+import equivilentToByJSON from './equivilentToByJSON.js';
 
 /**
  * returns true if the two objects are equal but not the same object. (compares public keys)

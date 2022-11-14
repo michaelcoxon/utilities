@@ -1,5 +1,5 @@
-import { QueryStringItem } from '../_types';
-import  convert  from "./convert";
+import { QueryStringItem } from '../_types.js';
+import  convert  from "./convert.js";
 
 /**
  * Converts a `name=items[]` to a `name[index]=item` for a url query string.

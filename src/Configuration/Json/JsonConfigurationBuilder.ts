@@ -1,9 +1,9 @@
-import isString from '../../TypeHelpers/isString';
-import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull';
-import merge from '../../Utilities/merge';
-import { IConfiguration, IConfigurationBuilder } from '../_types';
-import { ConfigValue } from './Json.types';
-import JsonConfiguration from './JsonConfiguration';
+import isString from '../../TypeHelpers/isString.js';
+import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull.js';
+import merge from '../../Utilities/merge.js';
+import { IConfiguration, IConfigurationBuilder } from '../_types.js';
+import { ConfigValue } from './Json.types.js';
+import JsonConfiguration from './JsonConfiguration.js';
 
 export default class JsonConfigurationBuilder implements IConfigurationBuilder
 {

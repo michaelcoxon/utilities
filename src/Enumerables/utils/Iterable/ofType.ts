@@ -1,6 +1,6 @@
-import { ConstructorFor } from '../../../Types';
-import { IEnumerable } from '../../_types';
-import where from './where';
+import { ConstructorFor } from '../../../Types.js';
+import { IEnumerable } from '../../_types.js';
+import where from './where.js';
 
 
 

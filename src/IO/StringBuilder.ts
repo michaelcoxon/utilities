@@ -1,6 +1,6 @@
-﻿import { empty, newLine } from '../Strings/_consts';
-import { Undefinable } from '../Types';
-import { IStringBuilder } from './_types';
+﻿import { empty, newLine } from '../Strings/_consts.js';
+import { Undefinable } from '../Types.js';
+import { IStringBuilder } from './_types.js';
 
 /**
  * Class for building strings that will only concatenate them upon calling toString().

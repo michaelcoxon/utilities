@@ -1,4 +1,4 @@
-import { IType } from './_types';
+import { IType } from './_types.js';
 
 let __undefinedType;
 const UndefinedType: IType = __undefinedType = Object.seal({

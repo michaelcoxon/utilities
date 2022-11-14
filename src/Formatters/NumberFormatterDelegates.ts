@@ -1,6 +1,6 @@
-import format from '../Strings/format';
-import padLeft from '../Strings/padLeft';
-import { INumberFormatterConfiguration } from './_types';
+import format from '../Strings/format.js';
+import padLeft from '../Strings/padLeft.js';
+import { INumberFormatterConfiguration } from './_types.js';
 
 
 export default class NumberFormatterDelegates

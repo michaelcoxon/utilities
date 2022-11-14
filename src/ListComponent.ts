@@ -1,6 +1,6 @@
 
-import Component from './Component';
-import { List } from './Enumerables';
+import Component from './Component.js';
+import { List } from './Enumerables/index.js';
 
 interface IListComponentProps
 {

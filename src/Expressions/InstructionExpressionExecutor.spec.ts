@@ -1,6 +1,6 @@
-import { ExpressionType } from './ExpressionType';
-import InstructionExpressionExecutor from './InstructionExpressionExecutor';
-import { Instruction } from './Instruction';
+import { ExpressionType } from './ExpressionType.js';
+import InstructionExpressionExecutor from './InstructionExpressionExecutor.js';
+import { Instruction } from './Instruction.js';
 
 
 describe("InstructionExpressionExecutor", () =>

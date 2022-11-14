@@ -1,6 +1,6 @@
-import { isUndefinedOrNull } from '../../../TypeHelpers';
-import { Predicate } from '../../../Types';
-import { IEnumerable } from '../../_types';
+import isUndefinedOrNull from '../../../TypeHelpers/isUndefinedOrNull.js';
+import { Predicate } from '../../../Types.js';
+import { IEnumerable } from '../../_types.js';
 
 
 

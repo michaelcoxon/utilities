@@ -1,5 +1,5 @@
-import { NotSupportedException } from '../../Exceptions';
-import { ExpressionType } from '../ExpressionType';
+import NotSupportedException from '../../Exceptions/NotSupportedException.js';
+import { ExpressionType } from '../ExpressionType.js';
 
 export default function getNodeTypeAsString(nodeType: ExpressionType): string
 {

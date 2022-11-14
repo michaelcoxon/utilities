@@ -1,5 +1,5 @@
-import escapeRegExp from './escapeRegExp';
-import { WHITESPACE, empty } from './_consts';
+import escapeRegExp from './escapeRegExp.js';
+import { WHITESPACE, empty } from './_consts.js';
 
 
 /**

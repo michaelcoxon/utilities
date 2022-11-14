@@ -1,8 +1,8 @@
-import { BinaryExpression } from './BinaryExpression';
-import { ConstantExpression, ConstantExpressionType } from './ConstantExpression';
-import { Expression } from './Expression';
-import { ExpressionType } from './ExpressionType';
-import StringExpressionVisitor from './StringExpressionVisitor';
+import { BinaryExpression } from './BinaryExpression.js';
+import { ConstantExpression, ConstantExpressionType } from './ConstantExpression.js';
+import { Expression } from './Expression.js';
+import { ExpressionType } from './ExpressionType.js';
+import StringExpressionVisitor from './StringExpressionVisitor.js';
 
 
 describe("StringExpressionVisitor.constructor", () =>

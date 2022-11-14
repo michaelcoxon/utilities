@@ -1,4 +1,4 @@
-import select from './select';
+import select from './select.js';
 
 
 // USAGE: obj.Distinct(); or obj.Distinct(['key1'],['key2']);

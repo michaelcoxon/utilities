@@ -1,5 +1,5 @@
-﻿import DefaultComparers from './DefaultComparers';
-import testComparer from '../TestHelpers/testComparer';
+﻿import DefaultComparers from './DefaultComparers.js';
+import testComparer from '../TestHelpers/testComparer.js';
 
 const createComparer = () => DefaultComparers.NumberComparer;
 

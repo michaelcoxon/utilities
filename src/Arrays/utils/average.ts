@@ -1,4 +1,4 @@
-import sum from './sum';
+import sum from './sum.js';
 
 /**
  * Returns the average of all numbers in the array

@@ -1,4 +1,4 @@
-import { ConstructorFor } from '../../../Types';
+import { ConstructorFor } from '../../../Types.js';
 
 
 export default function ofType<T, N extends T>(array: T[], ctor: ConstructorFor<N>): N[]

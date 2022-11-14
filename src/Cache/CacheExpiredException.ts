@@ -1,4 +1,4 @@
-import Exception from '../Exceptions/Exception';
+import Exception from '../Exceptions/Exception.js';
 
 
 export default class CacheExpiredException extends Exception

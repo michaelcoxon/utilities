@@ -1,8 +1,8 @@
-import padLeft from '../../Strings/padLeft';
-import { empty } from '../../Strings/_consts';
-import { IDateFormatterConfiguration } from '../_types';
-import { getTimezoneHoursAndMinutesString } from './getTimezoneHoursAndMinutesString';
-import { getTimezoneHoursString } from './getTimezoneHoursString';
+import padLeft from '../../Strings/padLeft.js';
+import { empty } from '../../Strings/_consts.js';
+import { IDateFormatterConfiguration } from '../_types.js';
+import { getTimezoneHoursAndMinutesString } from './getTimezoneHoursAndMinutesString.js';
+import { getTimezoneHoursString } from './getTimezoneHoursString.js';
 
 const TOKEN_TO_STRING_DELEGATES: Record<string, (d: Date, config: IDateFormatterConfiguration) => string> = {
     "d": d => d.getDate().toString(),

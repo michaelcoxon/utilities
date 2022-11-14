@@ -1,8 +1,10 @@
-import { NotImplementedException } from '../Exceptions';
+import NotImplementedException from '../Exceptions/NotImplementedException.js';
 
-import { isBoolean, isNumber, isString } from '../TypeHelpers';
-import { ExpressionType } from './ExpressionType';
-import { AddInstruction, ConstantInstruction, Instruction, ValueType } from './Instruction';
+import isBoolean from '../TypeHelpers/isBoolean.js';
+import isNumber from '../TypeHelpers/isNumber.js';
+import isString from '../TypeHelpers/isString.js';
+import { ExpressionType } from './ExpressionType.js';
+import { AddInstruction, ConstantInstruction, Instruction, ValueType } from './Instruction.js';
 
 export default function execute(instruction: (Instruction | ValueType))
 {

@@ -1,4 +1,4 @@
-﻿import DefaultStringComparer from './DefaultStringComparer';
+﻿import DefaultStringComparer from './DefaultStringComparer.js';
 
 const comparer = new DefaultStringComparer();
 

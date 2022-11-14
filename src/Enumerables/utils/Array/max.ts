@@ -1,5 +1,5 @@
-import { Selector } from '../../../Types';
-import select from './select';
+import { Selector } from '../../../Types.js';
+import select from './select.js';
 
 
 

@@ -1,5 +1,5 @@
-import { isUndefinedOrNull } from '../../../TypeHelpers';
-import { Predicate } from '../../../Types';
+import isUndefinedOrNull from '../../../TypeHelpers/isUndefinedOrNull.js';
+import { Predicate } from '../../../Types.js';
 
 export default function any<T>(array: T[], predicate?: Predicate<T>): boolean
 {

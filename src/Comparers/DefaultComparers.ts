@@ -1,7 +1,7 @@
-﻿import DefaultComparer from './DefaultComparer';
-import DefaultNumberComparer from './DefaultNumberComparer';
-import DefaultObjectComparer from './DefaultObjectComparer';
-import DefaultStringComparer from './DefaultStringComparer';
+﻿import DefaultComparer from './DefaultComparer.js';
+import DefaultNumberComparer from './DefaultNumberComparer.js';
+import DefaultObjectComparer from './DefaultObjectComparer.js';
+import DefaultStringComparer from './DefaultStringComparer.js';
 
 const DefaultComparers = {
     DefaultComparer: new DefaultComparer<any>(),

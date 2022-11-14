@@ -1,7 +1,7 @@
-import { Selector } from '../../../Types';
-import distinct from './distinct';
-import select from './select';
-import where from './where';
+import { Selector } from '../../../Types.js';
+import distinct from './distinct.js';
+import select from './select.js';
+import where from './where.js';
 
 
 

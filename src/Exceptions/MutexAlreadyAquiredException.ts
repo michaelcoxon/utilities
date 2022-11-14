@@ -1,4 +1,4 @@
-import  Exception  from './Exception';
+import  Exception  from './Exception.js';
 import SR from '../i18n/en.exceptions.strings.json';
 
 

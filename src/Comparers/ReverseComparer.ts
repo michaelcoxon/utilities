@@ -1,4 +1,4 @@
-﻿import { IComparer, IEqualityComparer } from './_types';
+﻿import { IComparer, IEqualityComparer } from './_types.js';
 
 /** reverses the comparer provided */
 export default class ReverseComparer<T> implements IComparer<T>, IEqualityComparer<T>

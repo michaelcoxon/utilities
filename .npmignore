@@ -68,7 +68,7 @@ _NCrunch_collections/
 
 dts/
 src/
-tests/
+*.spec.*
 
 .npmignore
 *.sln

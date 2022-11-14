@@ -1,6 +1,6 @@
-import { IEnumerable } from '../Enumerables/_types';
-import isFunction from './isFunction';
-import isUndefinedOrNull from './isUndefinedOrNull';
+import { IEnumerable } from '../Enumerables/_types.js';
+import isFunction from './isFunction.js';
+import isUndefinedOrNull from './isUndefinedOrNull.js';
 
 
 

@@ -1,10 +1,10 @@
-﻿import ArgumentAssertionBuilder, { IArgumentAssertionBuilder } from './ArgumentAssertionBuilder';
-import ArgumentException from '../Exceptions/ArgumentException';
-import ArgumentNullException from '../Exceptions/ArgumentNullException';
-import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException';
-import { empty } from '../Strings/_consts';
-import DefaultComparers from '../Comparers/DefaultComparers';
-import { IComparable } from '../Comparers/_types';
+﻿import ArgumentAssertionBuilder, { IArgumentAssertionBuilder } from './ArgumentAssertionBuilder.js';
+import ArgumentException from '../Exceptions/ArgumentException.js';
+import ArgumentNullException from '../Exceptions/ArgumentNullException.js';
+import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException.js';
+import empty from '../Utilities/empty.js';
+import DefaultComparers from '../Comparers/DefaultComparers.js';
+import { IComparable } from '../Comparers/_types.js';
 
 
 export default class StringArgumentAssertionBuilder

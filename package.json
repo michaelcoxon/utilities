@@ -6,6 +6,7 @@
   "types": "lib/index.d.ts",
   "module": "lib/index.js",
   "sideEffects": false,
+  "type": "module",
   "scripts": {
     "build:debug": "npm-run-all -s build:lib:debug -p build:dist:debug",
     "build:dist": "webpack --node-env production",

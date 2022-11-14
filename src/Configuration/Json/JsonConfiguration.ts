@@ -1,6 +1,6 @@
-import JsonConfigurationSection from './JsonConfigurationSection';
-import { IConfiguration, IConfigurationSection } from '../_types';
-import { ConfigValue } from './Json.types';
+import JsonConfigurationSection from './JsonConfigurationSection.js';
+import { IConfiguration, IConfigurationSection } from '../_types.js';
+import { ConfigValue } from './Json.types.js';
 
 export default class JsonConfiguration implements IConfiguration
 {

@@ -1,8 +1,8 @@
-import { BinaryExpression } from '../BinaryExpression';
-import { ConstantExpression, ConstantExpressionType } from '../ConstantExpression';
-import { ExpressionType } from '../ExpressionType';
-import createAdd from './createAdd';
-import createConstant from './createConstant';
+import { BinaryExpression } from '../BinaryExpression.js';
+import { ConstantExpression, ConstantExpressionType } from '../ConstantExpression.js';
+import { ExpressionType } from '../ExpressionType.js';
+import createAdd from './createAdd.js';
+import createConstant from './createConstant.js';
 
 
 describe("createAdd", () =>

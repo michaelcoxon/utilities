@@ -1,9 +1,9 @@
-import { StringBuilder } from '../IO';
-import { BinaryExpression } from './BinaryExpression';
-import { ConstantExpression } from './ConstantExpression';
-import { Expression } from './Expression';
-import { UnaryExpression } from './UnaryExpression';
-import ExpressionVisitor from './ExpressionVisitor';
+import StringBuilder from '../IO/StringBuilder.js';
+import { BinaryExpression } from './BinaryExpression.js';
+import { ConstantExpression } from './ConstantExpression.js';
+import { Expression } from './Expression.js';
+import { UnaryExpression } from './UnaryExpression.js';
+import ExpressionVisitor from './ExpressionVisitor.js';
 
 
 

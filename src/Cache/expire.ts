@@ -1,4 +1,4 @@
-import { IExpiryPolicyDelegate } from './_types';
+import { IExpiryPolicyDelegate } from './_types.js';
 
 
 export default function expire<T>(): IExpiryPolicyDelegate<T> 

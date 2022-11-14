@@ -1,5 +1,5 @@
-import Logger from '../../src/Logging/Logger';
-import { ILoggerConfig, LogLevel } from '../../src/Logging/_types';
+import Logger from '../../src/Logging/Logger.js';
+import { ILoggerConfig, LogLevel } from '../../src/Logging/_types.js';
 
 
 export class TestLogger extends Logger

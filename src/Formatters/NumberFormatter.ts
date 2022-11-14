@@ -1,8 +1,8 @@
-import FormatException from '../Exceptions/FormatException';
-import { IFormatter, INumberFormatterConfiguration } from './_types';
-import NumberFormatterDelegates from "./NumberFormatterDelegates";
-import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty';
-import * as DefaultConfiguration from '../i18n/en.NumberFormatterConfiguration.strings.json';
+import FormatException from '../Exceptions/FormatException.js';
+import { IFormatter, INumberFormatterConfiguration } from './_types.js';
+import NumberFormatterDelegates from "./NumberFormatterDelegates.js";
+import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty.js';
+import DefaultConfiguration from '../i18n/en.NumberFormatterConfiguration.strings.json';
 
 /** Formats numbers */
 

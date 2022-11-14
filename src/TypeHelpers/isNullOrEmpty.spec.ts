@@ -1,5 +1,5 @@
-import { List } from '../../src/Enumerables';
-import isNullOrEmpty from '../../src/TypeHelpers/isNullOrEmpty';
+import { List } from '../Enumerables/index.js';
+import isNullOrEmpty from '../../src/TypeHelpers/isNullOrEmpty.js';
 
 describe("isNullOrEmpty", () =>
 {

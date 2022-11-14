@@ -1,7 +1,7 @@
-﻿import { IComparer, IEqualityComparer } from './_types';
-import ArgumentException from '../Exceptions/ArgumentException';
-import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException';
-import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
+﻿import { IComparer, IEqualityComparer } from './_types.js';
+import ArgumentException from '../Exceptions/ArgumentException.js';
+import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException.js';
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull.js';
 
 export default class CustomComparer<T> implements IComparer<T>, IEqualityComparer<T>
 {

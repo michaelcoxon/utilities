@@ -1,6 +1,6 @@
-import padLeft from '../../Strings/padLeft';
-import { empty } from '../../Strings/_consts';
-import { IDateFormatterConfiguration } from '../_types';
+import padLeft from '../../Strings/padLeft.js';
+import { empty } from '../../Strings/_consts.js';
+import { IDateFormatterConfiguration } from '../_types.js';
 
 export function getTimezoneHoursAndMinutesString(minutes: number, config: IDateFormatterConfiguration)
 {

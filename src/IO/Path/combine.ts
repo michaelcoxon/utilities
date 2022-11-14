@@ -1,6 +1,6 @@
-import ArgumentException from "../../Exceptions/ArgumentException";
-import trim from '../../Strings/trim';
-import trimEnd from '../../Strings/trimEnd';
+import ArgumentException from "../../Exceptions/ArgumentException.js";
+import trim from '../../Strings/trim.js';
+import trimEnd from '../../Strings/trimEnd.js';
 
 /**
  * Combines path segments into a path. Auto-senses 'slash' direction.

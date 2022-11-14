@@ -1,6 +1,6 @@
-import { isUndefinedOrNull } from '../../../TypeHelpers';
-import { Predicate } from '../../../Types';
-import where from './where';
+import isUndefinedOrNull from '../../../TypeHelpers/isUndefinedOrNull.js';
+import { Predicate } from '../../../Types.js';
+import where from './where.js';
 
 
 export default function lastOrDefault<T>(array: T[], predicate?: Predicate<T>): T | null

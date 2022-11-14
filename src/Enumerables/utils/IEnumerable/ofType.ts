@@ -1,5 +1,5 @@
-import { ConstructorFor } from '../../../Types';
-import { IEnumerable } from '../../_types';
+import { ConstructorFor } from '../../../Types.js';
+import { IEnumerable } from '../../_types.js';
 
 
 

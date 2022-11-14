@@ -1,7 +1,7 @@
-import { InvalidOperationException, NotSupportedException } from '../../Exceptions';
-import trimStart from '../../Strings/trimStart';
-import { QueryStringItem } from '../_types';
-import parseQSIValue from "./parseQSIValue";
+import NotSupportedException from '../../Exceptions/NotSupportedException.js';
+import trimStart from '../../Strings/trimStart.js';
+import { QueryStringItem } from '../_types.js';
+import parseQSIValue from "./parseQSIValue.js";
 
 /**
  * Deserializes a query string into an array of {@link QueryStringItem}'s

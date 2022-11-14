@@ -1,5 +1,5 @@
-﻿import AggregateLogger from './AggregateLogger';
-import ConsoleLogger from './ConsoleLogger';
+﻿import AggregateLogger from './AggregateLogger.js';
+import ConsoleLogger from './ConsoleLogger.js';
 
 describe("AggregateLogger.constructor", () =>
 {

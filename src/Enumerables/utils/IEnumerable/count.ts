@@ -1,4 +1,4 @@
-import { IEnumerable } from '../../_types';
+import { IEnumerable } from '../../_types.js';
 
 
 

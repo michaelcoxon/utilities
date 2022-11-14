@@ -1,8 +1,7 @@
-import { tryParse } from '../../Booleans';
-import { empty } from '../../Strings';
-import trim from '../../Strings/trim';
-import { isUndefinedOrNull } from '../../TypeHelpers';
-import isNullOrEmpty from '../../TypeHelpers/isNullOrEmpty';
+import tryParse from '../../Booleans/tryParse.js';
+import trim from '../../Strings/trim.js';
+import isNullOrEmpty from '../../TypeHelpers/isNullOrEmpty.js';
+import empty from '../../Utilities/empty.js';
 
 const TEST_INTEGER_REGEX = /^\d+$/;
 const TEST_FLOAT_REGEX = /^\d+.\d+$/;

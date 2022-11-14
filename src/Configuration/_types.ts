@@ -1,5 +1,5 @@
-import { KEY_WORD_SEPARATOR } from '../Strings/_consts';
-import { ConfigValue } from './Json';
+import { KEY_WORD_SEPARATOR } from '../Strings/_consts.js';
+import { ConfigValue } from './Json/Json.types.js';
 
 export interface IConfigurationSection
 {

@@ -1,9 +1,9 @@
-import NumberFormatter from '../Formatters/NumberFormatter';
-import StringFormatter from '../Formatters/StringFormatter';
-import { empty } from '../Strings/_consts';
-import isNumber from '../TypeHelpers/isNumber';
-import isDate from '../TypeHelpers/isDate';
-import DateFormatter from '../Formatters/DateFormatter/DateFormatter';
+import NumberFormatter from '../Formatters/NumberFormatter.js';
+import StringFormatter from '../Formatters/StringFormatter.js';
+import { empty } from '../Strings/_consts.js';
+import isNumber from '../TypeHelpers/isNumber.js';
+import isDate from '../TypeHelpers/isDate.js';
+import DateFormatter from '../Formatters/DateFormatter/DateFormatter.js';
 
 
 export default function convertToString(subject: any, format: string = empty): string

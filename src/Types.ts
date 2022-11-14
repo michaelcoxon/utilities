@@ -1,5 +1,5 @@
-﻿import { IEnumerable } from './Enumerables/_types';
-//import {} from './Url';
+﻿import { IEnumerable } from './Enumerables/_types.js';
+//import {} from './Url.js';
 
 /** A type that is either an array or an enumerable */
 export type IEnumerableOrArray<T> = T[] | IEnumerable<T>;

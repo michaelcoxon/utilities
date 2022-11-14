@@ -1,5 +1,5 @@
-﻿import { Undefinable } from "../Types";
-import BaseModelState from './BaseModelState';
+﻿import { Undefinable } from "../Types.js";
+import BaseModelState from './BaseModelState.js';
 
 /**
  * Interface for implementing your own state

@@ -1,9 +1,9 @@
-﻿import Event from "./Event";
-import NullReferenceException from '../Exceptions/NullReferenceException';
-import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException';
-import ArgumentNullException from '../Exceptions/ArgumentNullException';
-import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
-import { EventHandler, IEvent } from './_types';
+﻿import Event from "./Event.js";
+import NullReferenceException from '../Exceptions/NullReferenceException.js';
+import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException.js';
+import ArgumentNullException from '../Exceptions/ArgumentNullException.js';
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull.js';
+import { EventHandler, IEvent } from './_types.js';
 
 /**
  * An event type that can only be invoked once. Once the event

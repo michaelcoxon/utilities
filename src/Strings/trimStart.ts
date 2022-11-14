@@ -3,8 +3,8 @@
  * @param str The string to trim
  */
 
-import escapeRegExp from './escapeRegExp';
-import { empty, WHITESPACE } from './_consts';
+import escapeRegExp from './escapeRegExp.js';
+import { empty, WHITESPACE } from './_consts.js';
 
 
 export default function trimStart(str: string): string;

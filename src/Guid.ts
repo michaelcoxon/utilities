@@ -1,8 +1,8 @@
-﻿import UnsignedInt32 from './Numbers/Integers/UnsignedInt32';
-import UnsignedInt16 from './Numbers/Integers/UnsignedInt16';
-import Byte from './Numbers/Integers/Byte';
-import padLeft from './Strings/padLeft';
-import StringBuilder from './IO/StringBuilder';
+﻿import UnsignedInt32 from './Numbers/Integers/UnsignedInt32.js';
+import UnsignedInt16 from './Numbers/Integers/UnsignedInt16.js';
+import Byte from './Numbers/Integers/Byte.js';
+import padLeft from './Strings/padLeft.js';
+import StringBuilder from './IO/StringBuilder.js';
 
 const PARSE_FILTER_REGEX = /[-{}[\]]/gi;
 

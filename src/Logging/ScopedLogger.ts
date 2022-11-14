@@ -1,5 +1,5 @@
-﻿import { IDisposable } from '../Types';
-import { ILogger } from "./_types";
+﻿import { IDisposable } from '../Types.js';
+import { ILogger } from "./_types.js";
 import SR from '../i18n/en.generic.strings.json';
 
 export default class ScopedLogger implements ILogger, IDisposable

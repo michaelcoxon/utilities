@@ -1,5 +1,5 @@
-import Url from '../Url';
-import { StringOrUrl } from '../_types';
+import Url from '../Url.js';
+import { StringOrUrl } from '../_types.js';
 
 /**
  * Convert a string or a Url to a Url

@@ -1,7 +1,7 @@
-import { IEnumerator } from './_types';
-import EnumeratorBase from "./EnumeratorBase";
-import { Undefinable } from '../Types';
-import OutOfBoundsException from '../Exceptions/OutOfBoundsException';
+import { IEnumerator } from './_types.js';
+import EnumeratorBase from "./EnumeratorBase.js";
+import { Undefinable } from '../Types.js';
+import OutOfBoundsException from '../Exceptions/OutOfBoundsException.js';
 
 
 export default class ArrayEnumerator<T> extends EnumeratorBase<T> implements IEnumerator<T>

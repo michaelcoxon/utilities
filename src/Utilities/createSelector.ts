@@ -1,5 +1,5 @@
-import isString from '../TypeHelpers/isString';
-import { Selector } from '../Types';
+import isString from '../TypeHelpers/isString.js';
+import { Selector } from '../Types.js';
 
 /**
  * Returns a Selector for the given type.

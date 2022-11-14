@@ -1,7 +1,7 @@
-import { IEnumerator } from './_types';
-import EnumeratorBase from "./EnumeratorBase";
-import { Selector, Undefinable } from '../Types';
-import Exception from '../Exceptions/Exception';
+import { IEnumerator } from './_types.js';
+import EnumeratorBase from "./EnumeratorBase.js";
+import { Selector, Undefinable } from '../Types.js';
+import Exception from '../Exceptions/Exception.js';
 
 
 export default class SelectEnumerator<T, TReturn> extends EnumeratorBase<TReturn> implements IEnumerator<TReturn>

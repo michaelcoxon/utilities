@@ -1,4 +1,4 @@
-﻿import { IComparer, IEqualityComparer } from './_types';
+﻿import { IComparer, IEqualityComparer } from './_types.js';
 
 /**
  * Compares objects of the same type using a custom selector and 

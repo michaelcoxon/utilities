@@ -1,4 +1,4 @@
-import { IEvent } from './Events';
+import { IEvent } from './Events/_types.js';
 
 export interface INotifyPropertyChangedEventArgs
 {

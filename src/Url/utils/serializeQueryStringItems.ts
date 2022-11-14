@@ -1,6 +1,5 @@
-import { empty } from '../../Strings/_consts';
-import { isNullOrEmpty } from '../../TypeHelpers';
-import { QueryStringItem } from '../_types';
+import { empty } from '../../Strings/_consts.js';
+import { QueryStringItem } from '../_types.js';
 
 /**
  * Serializes a {@link QueryStringItem[]} to a query string. 

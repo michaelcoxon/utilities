@@ -1,4 +1,4 @@
-import StringFormatter from './StringFormatter';
+import StringFormatter from './StringFormatter.js';
 
 
 describe("StringFormatter.format", () =>

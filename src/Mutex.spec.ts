@@ -1,4 +1,4 @@
-﻿import Mutex, { lockAsync } from './Mutex';
+﻿import Mutex, { lockAsync } from './Mutex.js';
 
 describe("Mutex.acquire", () =>
 {

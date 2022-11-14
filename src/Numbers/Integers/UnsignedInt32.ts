@@ -1,8 +1,8 @@
-import Exception from '../../Exceptions/Exception';
-import { INumberValue } from './Integers.types';
-import { ensureInt } from "./ensureInt";
-import { IResult } from '../../Result/_types';
-import Result from '../../Result/Result';
+import Exception from '../../Exceptions/Exception.js';
+import { INumberValue } from './Integers.types.js';
+import { ensureInt } from "./ensureInt.js";
+import { IResult } from '../../Result/_types.js';
+import Result from '../../Result/Result.js';
 
 
 export default class UnsignedInt32 extends Number  implements INumberValue

@@ -1,8 +1,8 @@
-import Event from "../Events/Event";
-import { EventHandler } from '../Events/_types';
-import Guid from '../Guid';
-import { Undefinable } from "../Types";
-import { IModelState } from './ModelState';
+import Event from "../Events/Event.js";
+import { EventHandler } from '../Events/_types.js';
+import Guid from '../Guid.js';
+import { Undefinable } from "../Types.js";
+import { IModelState } from './ModelState.js';
 
 
 export default abstract class BaseModelState<T extends any> implements IModelState<T>

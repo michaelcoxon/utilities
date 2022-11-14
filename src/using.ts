@@ -1,4 +1,4 @@
-import { IDisposable } from './Types';
+import { IDisposable } from './Types.js';
 
 /**
  * Creates a disposable object then cleans it up after inner has finished execution.

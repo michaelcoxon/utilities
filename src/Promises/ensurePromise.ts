@@ -1,4 +1,4 @@
-import { Awaitable } from '../Types';
+import { Awaitable } from '../Types.js';
 
 
 /**

@@ -1,53 +1,52 @@
-export * from './_types';
+export * from './_types.js';
 
-import DefaultComparers from "../Comparers/DefaultComparers";
-import MapComparer from "../Comparers/MapComparer";
-import ReverseComparer from "../Comparers/ReverseComparer";
-import { ConstructorFor, IEnumerableOrArray, KeyValuePair, Predicate, Selector, Undefinable } from "../Types";
+import DefaultComparers from "../Comparers/DefaultComparers.js";
+import MapComparer from "../Comparers/MapComparer.js";
+import ReverseComparer from "../Comparers/ReverseComparer.js";
+import { ConstructorFor, IEnumerableOrArray, KeyValuePair, Predicate, Selector, Undefinable } from "../Types.js";
 
-import AppendEnumerator from "../Enumerators/AppendEnumerator";
-import ArrayEnumerator from "../Enumerators/ArrayEnumerator";
+import AppendEnumerator from "../Enumerators/AppendEnumerator.js";
+import ArrayEnumerator from "../Enumerators/ArrayEnumerator.js";
 
-import DictionaryEnumerator from "../Enumerators/DictionaryEnumerator";
-import RangeEnumerator from "../Enumerators/RangeEnumerator";
-import SelectEnumerator from "../Enumerators/SelectEnumerator";
-import SelectManyEnumerator from "../Enumerators/SelectManyEnumerator";
-import SkipEnumerator from "../Enumerators/SkipEnumerator";
-import TakeEnumerator from "../Enumerators/TakeEnumerator";
-import WhereEnumerator from "../Enumerators/WhereEnumerator";
-import LinkedListEnumerator from "../Enumerators/LinkedListEnumerator";
-import getHash from '../Utilities/getHash';
-import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
-import ArgumentException from '../Exceptions/ArgumentException';
-import KeyAlreadyDefinedException from '../Exceptions/KeyAlreadyDefinedException';
-import KeyNotFoundException from '../Exceptions/KeyNotFoundException';
-import equivilentToByJSON from '../Utilities/equivilentToByJSON';
+import DictionaryEnumerator from "../Enumerators/DictionaryEnumerator.js";
+import RangeEnumerator from "../Enumerators/RangeEnumerator.js";
+import SelectEnumerator from "../Enumerators/SelectEnumerator.js";
+import SelectManyEnumerator from "../Enumerators/SelectManyEnumerator.js";
+import SkipEnumerator from "../Enumerators/SkipEnumerator.js";
+import TakeEnumerator from "../Enumerators/TakeEnumerator.js";
+import WhereEnumerator from "../Enumerators/WhereEnumerator.js";
+import LinkedListEnumerator from "../Enumerators/LinkedListEnumerator.js";
+import getHash from '../Utilities/getHash.js';
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull.js';
+import ArgumentException from '../Exceptions/ArgumentException.js';
+import KeyAlreadyDefinedException from '../Exceptions/KeyAlreadyDefinedException.js';
+import KeyNotFoundException from '../Exceptions/KeyNotFoundException.js';
+import equivilentToByJSON from '../Utilities/equivilentToByJSON.js';
 
-import { IComparer } from '../Comparers/_types';
-import { IEnumerable, IEnumerableGroup, IDictionary, IList, ICollection, ISet, LinkedListItem } from './_types';
-import { IEnumerator } from '../Enumerators/_types';
+import { IComparer } from '../Comparers/_types.js';
+import { IEnumerable, IEnumerableGroup, IDictionary, IList, ICollection, ISet, LinkedListItem } from './_types.js';
+import { IEnumerator } from '../Enumerators/_types.js';
 
-import contains from './utils/IEnumerable/contains';
-import forEach from './utils/IEnumerable/forEach';
-import item from './utils/IEnumerable/item';
-import all from './utils/IEnumerable/all';
-import any from './utils/IEnumerable/any';
-import distinct from './utils/IEnumerable/distinct';
-import count from './utils/IEnumerable/count';
-import average from './utils/IEnumerable/average';
-import first from './utils/IEnumerable/first';
-import firstOrDefault from './utils/IEnumerable/firstOrDefault';
-import last from './utils/IEnumerable/last';
-import lastOrDefault from './utils/IEnumerable/lastOrDefault';
-import single from './utils/IEnumerable/single';
-import singleOrDefault from './utils/IEnumerable/singleOrDefault';
-import max from './utils/IEnumerable/max';
-import min from './utils/IEnumerable/min';
-import ofType from './utils/IEnumerable/ofType';
-import asArray from './utils/asArray';
-import { ArrayEnumerable } from './ArrayEnumerable';
+import contains from './utils/IEnumerable/contains.js';
+import forEach from './utils/IEnumerable/forEach.js';
+import item from './utils/IEnumerable/item.js';
+import all from './utils/IEnumerable/all.js';
+import any from './utils/IEnumerable/any.js';
+import distinct from './utils/IEnumerable/distinct.js';
+import count from './utils/IEnumerable/count.js';
+import average from './utils/IEnumerable/average.js';
+import first from './utils/IEnumerable/first.js';
+import firstOrDefault from './utils/IEnumerable/firstOrDefault.js';
+import last from './utils/IEnumerable/last.js';
+import lastOrDefault from './utils/IEnumerable/lastOrDefault.js';
+import single from './utils/IEnumerable/single.js';
+import singleOrDefault from './utils/IEnumerable/singleOrDefault.js';
+import max from './utils/IEnumerable/max.js';
+import min from './utils/IEnumerable/min.js';
+import ofType from './utils/IEnumerable/ofType.js';
+import asArray from './utils/asArray.js';
+import { ArrayEnumerable } from './ArrayEnumerable.js';
 
-export { ArrayEnumerable } from './ArrayEnumerable';
 export class Enumerable
 {
     public static range(start: number, count: number): IEnumerable<number>

@@ -1,4 +1,4 @@
-import { WHITESPACE } from './_consts';
+import { WHITESPACE } from './_consts.js';
 
 /**
  * Returns true if the string is undefined, null or whitespace

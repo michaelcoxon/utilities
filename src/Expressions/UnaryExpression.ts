@@ -1,4 +1,4 @@
-﻿import { Expression } from './Expression';
+﻿import { Expression } from './Expression.js';
 
 export interface UnaryExpression extends Expression
 {

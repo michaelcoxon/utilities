@@ -1,9 +1,9 @@
-import { BinaryExpression } from '../BinaryExpression';
-import { ConstantExpression, ConstantExpressionType } from '../ConstantExpression';
-import { ExpressionType } from '../ExpressionType';
-import createAndAlso from './createAndAlso';
-import createBinaryExpression from './createBinaryExpression';
-import createConstant from './createConstant';
+import { BinaryExpression } from '../BinaryExpression.js';
+import { ConstantExpression, ConstantExpressionType } from '../ConstantExpression.js';
+import { ExpressionType } from '../ExpressionType.js';
+import createAndAlso from './createAndAlso.js';
+import createBinaryExpression from './createBinaryExpression.js';
+import createConstant from './createConstant.js';
 
 
 describe("createAndAlso", () =>

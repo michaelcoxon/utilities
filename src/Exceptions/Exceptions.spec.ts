@@ -1,15 +1,15 @@
-﻿import ArgumentException from './ArgumentException';
-import ArgumentNullException from './ArgumentNullException';
-import ArgumentUndefinedException from './ArgumentUndefinedException';
-import FileNotFoundException from './FileNotFoundException';
-import IndexOutOfRangeException from './IndexOutOfRangeException';
-import InvalidTypeException from './InvalidTypeException';
-import KeyAlreadyDefinedException from './KeyAlreadyDefinedException';
-import KeyNotFoundException from './KeyNotFoundException';
-import NotImplementedException from './NotImplementedException';
-import NotSupportedException from './NotSupportedException';
-import OutOfBoundsException from './OutOfBoundsException';
-import { ConstructorFor } from '../Types';
+﻿import ArgumentException from './ArgumentException.js';
+import ArgumentNullException from './ArgumentNullException.js';
+import ArgumentUndefinedException from './ArgumentUndefinedException.js';
+import FileNotFoundException from './FileNotFoundException.js';
+import IndexOutOfRangeException from './IndexOutOfRangeException.js';
+import InvalidTypeException from './InvalidTypeException.js';
+import KeyAlreadyDefinedException from './KeyAlreadyDefinedException.js';
+import KeyNotFoundException from './KeyNotFoundException.js';
+import NotImplementedException from './NotImplementedException.js';
+import NotSupportedException from './NotSupportedException.js';
+import OutOfBoundsException from './OutOfBoundsException.js';
+import { ConstructorFor } from '../Types.js';
 
 function test<T>(exceptionType: ConstructorFor<T>, exception: () => T): void
 {

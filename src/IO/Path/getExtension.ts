@@ -1,4 +1,4 @@
-import getFileName from './getFileName';
+import getFileName from './getFileName.js';
 
 /**
  * Returns the extension portion of a path

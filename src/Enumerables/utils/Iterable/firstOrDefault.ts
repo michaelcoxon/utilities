@@ -1,7 +1,7 @@
-import isUndefinedOrNull from '../../../TypeHelpers/isUndefinedOrNull';
-import { Predicate } from '../../../Types';
-import { IEnumerable } from '../../_types';
-import where from './where';
+import isUndefinedOrNull from '../../../TypeHelpers/isUndefinedOrNull.js';
+import { Predicate } from '../../../Types.js';
+import { IEnumerable } from '../../_types.js';
+import where from './where.js';
 
 
 export default function firstOrDefault<T>(iterable: Iterable<T>, predicate?: Predicate<T>): T | null

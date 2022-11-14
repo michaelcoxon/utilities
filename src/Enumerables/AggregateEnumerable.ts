@@ -1,7 +1,7 @@
-import AggregateEnumerator from "../Enumerators/AggregateEnumerator";
-import { IEnumerable } from './_types';
-import { IEnumerator } from '../Enumerators/_types';
-import { EnumerableBase } from './index';
+import AggregateEnumerator from "../Enumerators/AggregateEnumerator.js";
+import { IEnumerable } from './_types.js';
+import { IEnumerator } from '../Enumerators/_types.js';
+import { EnumerableBase } from './index.js';
 
 
 export class AggregateEnumerable<T, TReturn> extends EnumerableBase<TReturn>

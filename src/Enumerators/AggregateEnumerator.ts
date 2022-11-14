@@ -1,8 +1,8 @@
-import EnumeratorBase from "./EnumeratorBase";
-import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
-import NullReferenceException from '../Exceptions/NullReferenceException';
-import { Undefinable } from '../Types';
-import { IEnumerator } from './_types';
+import EnumeratorBase from "./EnumeratorBase.js";
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull.js';
+import NullReferenceException from '../Exceptions/NullReferenceException.js';
+import { Undefinable } from '../Types.js';
+import { IEnumerator } from './_types.js';
 
 /**
  * 

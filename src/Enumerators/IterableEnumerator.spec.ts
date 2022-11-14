@@ -1,6 +1,6 @@
-﻿import { throws } from 'assert';
-import { Collection } from '../../src/Enumerables';
-import IterableEnumerator from '../../src/Enumerators/IterableEnumerator';
+﻿import { Collection } from '../Enumerables/index.js';
+import IterableEnumerator from '../../src/Enumerators/IterableEnumerator.js';
+import { throws } from 'assert';
 
 describe("IterableEnumerator.constructor", () =>
 {

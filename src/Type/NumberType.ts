@@ -1,5 +1,5 @@
-import { IType } from './_types';
-import ObjectType from './ObjectType';
+import { IType } from './_types.js';
+import ObjectType from './ObjectType.js';
 
 const NumberType: IType = Object.seal({
     fullName: 'Number',

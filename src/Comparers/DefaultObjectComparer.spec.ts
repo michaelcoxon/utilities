@@ -1,4 +1,4 @@
-﻿import DefaultObjectComparer from './DefaultObjectComparer';
+﻿import DefaultObjectComparer from './DefaultObjectComparer.js';
 
 describe("DefaultObjectComparer.compare", () =>
 {

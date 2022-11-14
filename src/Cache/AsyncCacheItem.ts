@@ -1,7 +1,7 @@
-import { Awaitable } from '../Types';
-import { IAsyncCacheItem, IExpiryPolicyDelegate } from './_types';
-import CacheExpiredException from './CacheExpiredException';
-import isFunction from '../TypeHelpers/isFunction';
+import { Awaitable } from '../Types.js';
+import { IAsyncCacheItem, IExpiryPolicyDelegate } from './_types.js';
+import CacheExpiredException from './CacheExpiredException.js';
+import isFunction from '../TypeHelpers/isFunction.js';
 
 
 export default class AsyncCacheItem<T> implements IAsyncCacheItem<T>

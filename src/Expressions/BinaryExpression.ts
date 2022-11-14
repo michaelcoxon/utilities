@@ -1,5 +1,5 @@
-﻿import { Expression } from './Expression';
-import { BinaryExpressionType } from './ExpressionType';
+﻿import { Expression } from './Expression.js';
+import { BinaryExpressionType } from './ExpressionType.js';
 
 export interface BinaryExpression extends Expression
 {

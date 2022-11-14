@@ -1,4 +1,4 @@
-import { Undefinable } from '../Types';
+import { Undefinable } from '../Types.js';
 
 /**
  * Enumrates an object source for values.

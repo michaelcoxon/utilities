@@ -1,5 +1,5 @@
-import { isUndefinedOrNull } from '../../../TypeHelpers';
-import { Selector } from '../../../Types';
+import isUndefinedOrNull from '../../../TypeHelpers/isUndefinedOrNull.js';
+import { Selector } from '../../../Types.js';
 
 
 

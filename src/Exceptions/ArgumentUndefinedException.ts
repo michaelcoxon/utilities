@@ -1,6 +1,6 @@
-import format from '../Strings/format';
-import ArgumentException from './ArgumentException';
-import Exception from './Exception';
+import format from '../Strings/format.js';
+import ArgumentException from './ArgumentException.js';
+import Exception from './Exception.js';
 import SR from '../i18n/en.exceptions.strings.json';
 
 

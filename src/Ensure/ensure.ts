@@ -1,11 +1,11 @@
-import ArgumentAssertionBuilder, { AssertionType, IArgumentAssertionBuilder } from '../Assertions/ArgumentAssertionBuilder';
-import ArrayLikeArgumentAssertionBuilder from '../Assertions/ArrayLikeArgumentAssertionBuilder';
-import CompareAssertionBuilder from '../Assertions/CompareAssertionBuilder';
-import GuidArgumentAssertionBuilder from '../Assertions/GuidArgumentAssertionBuilder';
-import StringArgumentAssertionBuilder from '../Assertions/StringArgumentAssertionBuilder';
-import NotSupportedException from '../Exceptions/NotSupportedException';
-import Guid from '../Guid';
-import isComparable from '../TypeHelpers/isComparable';
+import ArgumentAssertionBuilder, { AssertionType, IArgumentAssertionBuilder } from '../Assertions/ArgumentAssertionBuilder.js';
+import ArrayLikeArgumentAssertionBuilder from '../Assertions/ArrayLikeArgumentAssertionBuilder.js';
+import CompareAssertionBuilder from '../Assertions/CompareAssertionBuilder.js';
+import GuidArgumentAssertionBuilder from '../Assertions/GuidArgumentAssertionBuilder.js';
+import StringArgumentAssertionBuilder from '../Assertions/StringArgumentAssertionBuilder.js';
+import NotSupportedException from '../Exceptions/NotSupportedException.js';
+import Guid from '../Guid.js';
+import isComparable from '../TypeHelpers/isComparable.js';
 
 /**
  * Provides the helpers for validation

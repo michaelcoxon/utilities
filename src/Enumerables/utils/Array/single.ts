@@ -1,9 +1,8 @@
-import { InvalidOperationException, NullReferenceException } from '../../../Exceptions';
-import { isUndefinedOrNull } from '../../../TypeHelpers';
-import { Predicate, Undefinable } from '../../../Types';
-import { IEnumerable } from '../../_types';
-import take from './take';
-import where from './where';
+import  InvalidOperationException  from '../../../Exceptions/InvalidOperationException.js';
+import isUndefinedOrNull from '../../../TypeHelpers/isUndefinedOrNull.js';
+import { Predicate } from '../../../Types.js';
+import take from './take.js';
+import where from './where.js';
 
 
 export default function single<T>(iterable: T[], predicate?: Predicate<T>): T

@@ -1,5 +1,5 @@
-import { getHash } from '../../../Utilities';
-import where from './where';
+import getHash from '../../../Utilities/getHash.js';
+import where from './where.js';
 
 
 // USAGE: obj.Distinct(); or obj.Distinct(['key1'],['key2']);

@@ -1,5 +1,5 @@
-﻿import isUndefined from './TypeHelpers/isUndefined';
-import { Undefinable } from "./Types";
+﻿import isUndefined from './TypeHelpers/isUndefined.js';
+import { Undefinable } from "./Types.js";
 
 /**
  * Lazy wrapper for a factory.

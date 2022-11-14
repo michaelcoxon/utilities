@@ -1,4 +1,4 @@
-﻿import { Awaitable } from '../Types';
+﻿import { Awaitable } from '../Types.js';
 
 /**
  * A function that returns true if the value is expired.

@@ -1,9 +1,8 @@
-import { OutOfBoundsException } from '../Exceptions';
-import InvalidOperationException from '../Exceptions/InvalidOperationException';
-import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
-import { Undefinable } from '../Types';
-import EnumeratorBase from './EnumeratorBase';
-import { IEnumerator } from './_types';
+import OutOfBoundsException from '../Exceptions/OutOfBoundsException.js';
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull.js';
+import { Undefinable } from '../Types.js';
+import EnumeratorBase from './EnumeratorBase.js';
+import { IEnumerator } from './_types.js';
 
 export default class IterableEnumerator<T> extends EnumeratorBase<T> implements IEnumerator<T>
 {

@@ -1,6 +1,6 @@
-import { isUndefinedOrNull } from '../../../TypeHelpers';
-import { Predicate,  } from '../../../Types';
-import lastOrDefault from './lastOrDefault';
+import isUndefinedOrNull from '../../../TypeHelpers/isUndefinedOrNull.js';
+import { Predicate,  } from '../../../Types.js';
+import lastOrDefault from './lastOrDefault.js';
 
 
 

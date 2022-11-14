@@ -1,4 +1,4 @@
-import { empty } from './_consts';
+import { empty } from './_consts.js';
 
 describe("empty", () =>
 {

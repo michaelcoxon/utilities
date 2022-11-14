@@ -3,7 +3,7 @@
  * @param o
  */
 
-import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty';
+import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty.js';
 
 export default function getType(o: any): string
 {

@@ -1,5 +1,5 @@
-import escapeRegExp from './escapeRegExp';
-import { empty, WHITESPACE } from './_consts';
+import escapeRegExp from './escapeRegExp.js';
+import { empty, WHITESPACE } from './_consts.js';
 
 /**
  * Trims the whitespace from the start and end of a string

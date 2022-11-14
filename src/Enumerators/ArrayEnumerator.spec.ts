@@ -1,6 +1,6 @@
 ﻿import { throws } from 'assert';
-import { Collection } from '../../src/Enumerables';
-import ArrayEnumerator from '../../src/Enumerators/ArrayEnumerator';
+import { Collection } from '../Enumerables/index.js';
+import ArrayEnumerator from '../../src/Enumerators/ArrayEnumerator.js';
 
 describe("ArrayEnumerator.constructor", () =>
 {

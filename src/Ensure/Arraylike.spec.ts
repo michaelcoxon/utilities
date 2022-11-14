@@ -1,4 +1,4 @@
-﻿import ensure from '../../src/Ensure/ensure';
+﻿import ensure from '../../src/Ensure/ensure.js';
 
 describe("Ensure a ArrayLike isNotNull", () =>
 {

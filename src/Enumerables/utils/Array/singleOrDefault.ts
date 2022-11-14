@@ -1,9 +1,9 @@
-import InvalidOperationException from '../../../Exceptions/InvalidOperationException';
-import { isUndefinedOrNull } from '../../../TypeHelpers';
-import { Predicate, Undefinable } from '../../../Types';
-import { IEnumerable } from '../../_types';
-import take from './take';
-import where from './where';
+import InvalidOperationException from '../../../Exceptions/InvalidOperationException.js';
+import isUndefinedOrNull from '../../../TypeHelpers/isUndefinedOrNull.js';
+import { Predicate, Undefinable } from '../../../Types.js';
+import { IEnumerable } from '../../_types.js';
+import take from './take.js';
+import where from './where.js';
 
 
 

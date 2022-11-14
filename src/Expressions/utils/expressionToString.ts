@@ -1,8 +1,8 @@
-import { BinaryExpression } from '../BinaryExpression';
-import { ConstantExpression } from '../ConstantExpression';
-import { Expression } from '../Expression';
-import { ExpressionType } from '../ExpressionType';
-import binaryExpressionToString from './binaryExpressionToString';
+import { BinaryExpression } from '../BinaryExpression.js';
+import { ConstantExpression } from '../ConstantExpression.js';
+import { Expression } from '../Expression.js';
+import { ExpressionType } from '../ExpressionType.js';
+import binaryExpressionToString from './binaryExpressionToString.js';
 
 export default function expressionToString(expression: Expression): string
 {

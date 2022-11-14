@@ -1,9 +1,9 @@
-import { NotSupportedException } from '../Exceptions';
-import { isUndefinedOrNull } from '../TypeHelpers';
-import { BinaryExpression } from './BinaryExpression';
-import { ConstantExpression, ConstantExpressionType } from './ConstantExpression';
-import { Expression } from './Expression';
-import { ExpressionType } from './ExpressionType';
+import NotSupportedException from '../Exceptions/NotSupportedException.js';
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull.js';
+import { BinaryExpression } from './BinaryExpression.js';
+import { ConstantExpression, ConstantExpressionType } from './ConstantExpression.js';
+import { Expression } from './Expression.js';
+import { ExpressionType } from './ExpressionType.js';
 
 
 

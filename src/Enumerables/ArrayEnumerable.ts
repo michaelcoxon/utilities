@@ -1,16 +1,16 @@
-import { ConstructorFor, Predicate, Selector, Undefinable } from "../Types";
-import { IComparer } from '../Comparers/_types';
-import { IEnumerable, IEnumerableGroup, IDictionary, IList } from './_types';
-import { IEnumerator } from '../Enumerators/_types';
-import { isUndefinedOrNull } from '../TypeHelpers';
-import { ArrayEnumerator } from '../Enumerators';
-import distinct from './utils/IEnumerable/distinct';
-import DefaultComparers from '../Comparers/DefaultComparers';
-import ofType from './utils/IEnumerable/ofType';
-import ReverseComparer from '../Comparers/ReverseComparer';
-import MapComparer from '../Comparers/MapComparer';
-import forEach from './utils/Array/forEach';
-import { Dictionary } from './index';
+import { ConstructorFor, Predicate, Selector, Undefinable } from "../Types.js";
+import { IComparer } from '../Comparers/_types.js';
+import { IEnumerable, IEnumerableGroup, IDictionary, IList } from './_types.js';
+import { IEnumerator } from '../Enumerators/_types.js';
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull.js';
+import ArrayEnumerator from '../Enumerators/ArrayEnumerator.js';
+import distinct from './utils/IEnumerable/distinct.js';
+import DefaultComparers from '../Comparers/DefaultComparers.js';
+import ofType from './utils/IEnumerable/ofType.js';
+import ReverseComparer from '../Comparers/ReverseComparer.js';
+import MapComparer from '../Comparers/MapComparer.js';
+import forEach from './utils/Array/forEach.js';
+import { Dictionary } from './index.js';
 
 export class ArrayEnumerable<T> implements IEnumerable<T>
 {

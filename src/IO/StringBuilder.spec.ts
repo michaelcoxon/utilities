@@ -1,5 +1,5 @@
-import StringBuilder from '../../src/IO/StringBuilder';
-import { empty } from '../../src/Strings';
+import StringBuilder from '../../src/IO/StringBuilder.js';
+import empty from '../Utilities/empty.js';
 
 describe("StringBuilder.constructor", () =>
 {

@@ -1,6 +1,6 @@
-import { Awaitable, IDisposable } from "../Types";
-import BaseModelState from './BaseModelState';
-import { IModelState } from './ModelState';
+import { Awaitable, IDisposable } from "../Types.js";
+import BaseModelState from './BaseModelState.js';
+import { IModelState } from './ModelState.js';
 
 
 export default class PollingModelState<T> extends BaseModelState<T> implements IDisposable, IModelState<T>

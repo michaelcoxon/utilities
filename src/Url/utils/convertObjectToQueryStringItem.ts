@@ -1,7 +1,7 @@
-import { empty } from '../../Strings/_consts';
-import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull';
-import { QueryStringItem } from '../_types';
-import convert from "./convert";
+import { empty } from '../../Strings/_consts.js';
+import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull.js';
+import { QueryStringItem } from '../_types.js';
+import convert from "./convert.js";
 
 /**
  * Converts and {@link Object} to a collection of {@link QueryStringItem}'s.

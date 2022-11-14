@@ -1,5 +1,6 @@
-﻿import { ArrayEnumerable, Enumerable } from '../../src/Enumerables';
-import { getDefaultLogger } from '../../src/Logging/defaultLogger';
+﻿import { Enumerable } from './index.js';
+import { getDefaultLogger } from '../Logging/defaultLogger.js';
+import { ArrayEnumerable } from './ArrayEnumerable.js';
 
 /*
 setDefaultLogger(new ConsoleLogger(console, {

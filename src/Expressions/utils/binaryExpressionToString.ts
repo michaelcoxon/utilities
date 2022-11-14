@@ -1,8 +1,8 @@
-import { isUndefinedOrNull } from '../../TypeHelpers';
-import { BinaryExpression } from '../BinaryExpression';
-import expressionToString from './expressionToString';
-import getNodeTypeAsString from './getNodeTypeAsString';
-import strNotSet from './strNotSet';
+import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull.js';
+import { BinaryExpression } from '../BinaryExpression.js';
+import expressionToString from './expressionToString.js';
+import getNodeTypeAsString from './getNodeTypeAsString.js';
+import strNotSet from './strNotSet.js';
 
 export default function binaryExpressionToString(expression: BinaryExpression): string
 {

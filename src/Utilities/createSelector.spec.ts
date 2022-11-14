@@ -1,4 +1,4 @@
-import createSelector from './createSelector';
+import createSelector from './createSelector.js';
 
 describe("createSelector.string", () =>
 {

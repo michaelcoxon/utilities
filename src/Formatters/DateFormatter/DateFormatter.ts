@@ -1,6 +1,6 @@
-import { IFormatter, IDateFormatterConfiguration } from '../_types';
-import * as DefaultConfiguration from '../../i18n/en.DateFormatterConfiguration.strings.json';
-import TOKEN_TO_STRING_DELEGATES from './TOKEN_TO_STRING_DELEGATES';
+import { IFormatter, IDateFormatterConfiguration } from '../_types.js';
+import DefaultConfiguration from '../../i18n/en.DateFormatterConfiguration.strings.json';
+import TOKEN_TO_STRING_DELEGATES from './TOKEN_TO_STRING_DELEGATES.js';
 
 
 export default class DateFormatter implements IFormatter<Date>

@@ -1,4 +1,4 @@
-import { IEnumerable } from '../../_types';
+import { IEnumerable } from '../../_types.js';
 
 export default function contains<T>(iterable: Iterable<T>, item: T): boolean
 {

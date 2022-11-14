@@ -1,5 +1,5 @@
-import { Predicate } from '../../../Types';
-import { IEnumerable } from '../../_types';
+import { Predicate } from '../../../Types.js';
+import { IEnumerable } from '../../_types.js';
 
 
 

@@ -1,4 +1,4 @@
-import isNullOrWhitespace from './isNullOrWhitespace';
+import isNullOrWhitespace from './isNullOrWhitespace.js';
 
 describe("isNullOrWhitespace", () =>
 {

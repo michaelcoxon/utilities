@@ -1,8 +1,9 @@
-import { IDisposable, Undefinable } from './Types';
-import { IEnumerable } from './Enumerables/_types';
-import { IEvent, Event } from './Events';
-import { INotifyPropertyChanged, INotifyComponentPropertyChangedEventArgs, INotifyPropertyChangedEventArgs } from './INotifyPropertyChanged';
-import { Collection, Enumerable } from './Enumerables';
+import { IDisposable, Undefinable } from './Types.js';
+import { IEnumerable } from './Enumerables/_types.js';
+import Event from './Events/Event.js';
+import { IEvent } from './Events/_types.js';
+import { INotifyPropertyChanged, INotifyComponentPropertyChangedEventArgs, INotifyPropertyChangedEventArgs } from './INotifyPropertyChanged.js';
+import { Collection, Enumerable } from './Enumerables/index.js';
 
 type Props = Undefinable<{}>;
 
@@ -54,10 +55,10 @@ export default abstract class Component<TProps extends Props> implements ICompon
             this.#components = new Collection(this.#components.toArray());
             // subscribe to their changes
             for (const component of this.#components)
-            {                
+            {
                 component.propertyChanged.addHandler((s, e) =>
                 {
-                    this.#propertyChanged.invoke(this, {...e, instance: s });
+                    this.#propertyChanged.invoke(this, { ...e, instance: s });
                 });
                 component.init();
             }

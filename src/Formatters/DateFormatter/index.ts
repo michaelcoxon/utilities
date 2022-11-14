@@ -1,4 +1,4 @@
-import DateFormatter from './DateFormatter';
+import DateFormatter from './DateFormatter.js';
 0;
 export
 {

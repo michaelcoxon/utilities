@@ -1,5 +1,5 @@
-import { empty } from '../Strings';
-import { JsonConfigurationBuilder } from './Json';
+import empty from '../Utilities/empty.js';
+import JsonConfigurationBuilder from './Json/JsonConfigurationBuilder.js';
 
 describe("JsonConfigurationBuilder.build", () =>
 {

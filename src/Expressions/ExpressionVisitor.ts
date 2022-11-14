@@ -1,10 +1,10 @@
-import { NotImplementedException } from '../Exceptions';
-import { isUndefinedOrNull } from '../TypeHelpers';
-import { BinaryExpression } from './BinaryExpression';
-import { ConstantExpression } from './ConstantExpression';
-import { Expression } from './Expression';
-import { ExpressionType } from './ExpressionType';
-import { UnaryExpression } from './UnaryExpression';
+import NotImplementedException from '../Exceptions/NotImplementedException.js';
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull.js';
+import { BinaryExpression } from './BinaryExpression.js';
+import { ConstantExpression } from './ConstantExpression.js';
+import { Expression } from './Expression.js';
+import { ExpressionType } from './ExpressionType.js';
+import { UnaryExpression } from './UnaryExpression.js';
 
 
 export default abstract class ExpressionVisitor
@@ -41,7 +41,7 @@ export default abstract class ExpressionVisitor
             default: throw new NotImplementedException(`Node type '${node.nodeType}' is not implemented.`);
         }
     }
-    
+
     public abstract visitNegateExpression(node: UnaryExpression): void;
     public abstract visitMemberAccessExpression(node: BinaryExpression): void;
     public abstract visitCallExpression(node: Expression): void;

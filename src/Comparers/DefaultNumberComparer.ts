@@ -1,4 +1,4 @@
-import { IComparer, IEqualityComparer } from './_types';
+import { IComparer, IEqualityComparer } from './_types.js';
 
 /**
  * Default implementation

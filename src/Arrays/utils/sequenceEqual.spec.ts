@@ -1,4 +1,4 @@
-import sequenceEqual from './sequenceEqual';
+import sequenceEqual from './sequenceEqual.js';
 
 describe("sequenceEqual", () =>
 {

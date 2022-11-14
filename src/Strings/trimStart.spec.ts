@@ -1,4 +1,4 @@
-import trimStart from './trimStart';
+import trimStart from './trimStart.js';
 
 describe("trimStart", () =>
 {

@@ -1,5 +1,5 @@
-import { QueryStringItem } from '../_types';
-import  buildObjectTree  from "./buildObjectTree";
+import { QueryStringItem } from '../_types.js';
+import  buildObjectTree  from "./buildObjectTree.js";
 
 /**
  * Converts a collection of {@link QueryStringItem}'s to an object

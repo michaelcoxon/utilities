@@ -1,5 +1,5 @@
-import { Predicate } from '../../../Types';
-import { IEnumerable } from '../../_types';
+import { Predicate } from '../../../Types.js';
+import { IEnumerable } from '../../_types.js';
 
 
 export default function firstOrDefault<T>(enumerable: IEnumerable<T>, predicate?: Predicate<T>): T | null

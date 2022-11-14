@@ -1,5 +1,5 @@
-import { ConstantExpressionType, ConstantExpression } from '../ConstantExpression';
-import { ExpressionType } from '../ExpressionType';
+import { ConstantExpressionType, ConstantExpression } from '../ConstantExpression.js';
+import { ExpressionType } from '../ExpressionType.js';
 
 export default function createConstant(value: any, type: ConstantExpressionType): ConstantExpression
 {

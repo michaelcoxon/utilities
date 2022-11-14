@@ -1,7 +1,7 @@
-import { BinaryExpression } from '../BinaryExpression';
-import { Expression } from '../Expression';
-import { ExpressionType } from '../ExpressionType';
-import { UnaryExpression } from '../UnaryExpression';
+import { BinaryExpression } from '../BinaryExpression.js';
+import { Expression } from '../Expression.js';
+import { ExpressionType } from '../ExpressionType.js';
+import { UnaryExpression } from '../UnaryExpression.js';
 
 export default function createUnaryExpression(nodeType: ExpressionType, operand: Expression): UnaryExpression
 {

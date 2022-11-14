@@ -1,4 +1,4 @@
-import { falseString, trueString } from '../src/Booleans/_consts';
+import { falseString, trueString } from './Booleans/_consts.js';
 
 
 describe("Booleans consts", () =>

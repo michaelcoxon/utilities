@@ -1,8 +1,8 @@
-import KeyNotFoundException from '../Exceptions/KeyNotFoundException';
-import KeyAlreadyDefinedException from '../Exceptions/KeyAlreadyDefinedException';
-import { IAsyncCacheItem, ICache, IExpiryPolicyDelegate } from './_types';
-import AsyncCacheItem from './AsyncCacheItem';
-import { Awaitable } from '../Types';
+import KeyNotFoundException from '../Exceptions/KeyNotFoundException.js';
+import KeyAlreadyDefinedException from '../Exceptions/KeyAlreadyDefinedException.js';
+import { IAsyncCacheItem, ICache, IExpiryPolicyDelegate } from './_types.js';
+import AsyncCacheItem from './AsyncCacheItem.js';
+import { Awaitable } from '../Types.js';
 
 /**
  * Creates an in-memory cache. This cache will be forgotten on disposal.

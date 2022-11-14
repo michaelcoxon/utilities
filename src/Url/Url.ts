@@ -1,5 +1,5 @@
-import QueryStringCollection from './QueryStringCollection';
-import { StringOrUrl } from './_types';
+import QueryStringCollection from './QueryStringCollection.js';
+import { StringOrUrl } from './_types.js';
 
 /** Defines a Url */
 

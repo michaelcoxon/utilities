@@ -1,10 +1,10 @@
-import { empty } from '../Strings';
-import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
-import { Undefinable } from '../Types';
-import { IStorageRepository } from './Storage.types';
-import createStorageKey from './utilities/createStorageKey';
-import read from './utilities/read';
-import write from './utilities/write';
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull.js';
+import { Undefinable } from '../Types.js';
+import empty from '../Utilities/empty.js';
+import { IStorageRepository } from './Storage.types.js';
+import createStorageKey from './utilities/createStorageKey.js';
+import read from './utilities/read.js';
+import write from './utilities/write.js';
 
 export default class StorageRepository<T> implements IStorageRepository<string, T>
 {

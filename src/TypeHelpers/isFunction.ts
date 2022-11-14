@@ -1,4 +1,4 @@
-import { AnyFunction } from '../Types';
+import { AnyFunction } from '../Types.js';
 
 /**
  * Returns true if the subject is a Function.

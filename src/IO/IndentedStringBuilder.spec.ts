@@ -1,5 +1,5 @@
-import { empty } from '../Strings';
-import IndentedStringBuilder from './IndentedStringBuilder';
+import  empty  from '../Utilities/empty.js';
+import IndentedStringBuilder from './IndentedStringBuilder.js';
 
 describe("IndentedStringBuilder.constructor", () =>
 {

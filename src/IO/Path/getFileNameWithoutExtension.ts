@@ -1,4 +1,4 @@
-import getFileName from './getFileName';
+import getFileName from './getFileName.js';
 
 /**
  * Returns the filename portion of a path without the file extension.

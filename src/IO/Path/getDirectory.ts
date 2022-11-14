@@ -1,4 +1,4 @@
-import combine from "./combine";
+import combine from "./combine.js";
 
 /**
  * Return the directory portion of a path

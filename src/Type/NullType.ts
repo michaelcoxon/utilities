@@ -1,4 +1,4 @@
-import { IType } from "./_types";
+import { IType } from "./_types.js";
 
 let __nullType;
 const NullType: IType = __nullType = Object.seal({

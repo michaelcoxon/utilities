@@ -1,6 +1,6 @@
-﻿import { ILogger } from "./_types";
-import AggregateDisposable from "../AggregateDisposable";
-import { IDisposable } from '../Types';
+﻿import { ILogger } from "./_types.js";
+import AggregateDisposable from "../AggregateDisposable.js";
+import { IDisposable } from '../Types.js';
 
 export default class AggregateLogger implements ILogger
 {

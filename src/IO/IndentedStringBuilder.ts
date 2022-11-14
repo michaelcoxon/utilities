@@ -1,6 +1,6 @@
-import { empty, newLine } from '../Strings/_consts';
-import { Undefinable } from '../Types';
-import { IIndentedStringBuilder } from './_types';
+import { empty, newLine } from '../Strings/_consts.js';
+import { Undefinable } from '../Types.js';
+import { IIndentedStringBuilder } from './_types.js';
 
 
 /**

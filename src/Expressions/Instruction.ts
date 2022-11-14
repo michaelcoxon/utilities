@@ -1,4 +1,4 @@
-import { ExpressionType } from './ExpressionType';
+import { ExpressionType } from './ExpressionType.js';
 
 /*
 

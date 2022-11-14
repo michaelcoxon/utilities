@@ -1,5 +1,5 @@
-﻿import CaseInsensitiveStringComparer from './CaseInsensitiveStringComparer';
-import ReverseComparer from './ReverseComparer';
+﻿import CaseInsensitiveStringComparer from './CaseInsensitiveStringComparer.js';
+import ReverseComparer from './ReverseComparer.js';
 
 describe("ReverseComparer.compare", () =>
 {

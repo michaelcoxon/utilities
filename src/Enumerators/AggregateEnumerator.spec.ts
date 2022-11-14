@@ -1,6 +1,6 @@
-﻿import { Collection } from '../../src/Enumerables';
-import AggregateEnumerator from '../../src/Enumerators/AggregateEnumerator';
-import isNumber from '../../src/TypeHelpers/isNumber';
+﻿import { Collection } from '../Enumerables/index.js';
+import AggregateEnumerator from '../Enumerators/AggregateEnumerator.js';
+import isNumber from '../TypeHelpers/isNumber.js';
 
 describe("AggregateEnumerator.constructor", () =>
 {
@@ -9,7 +9,7 @@ describe("AggregateEnumerator.constructor", () =>
         const array1 = [1, 2, 3, 4];
         const expected = [1, 3, 6, 10];
         const coll1 = new Collection<number>(array1);
-        const en = new AggregateEnumerator(coll1.getEnumerator(), (a, c) => a + c, 0);
+        const en = new AggregateEnumerator<number,number>(coll1.getEnumerator(), (a, c) => a + c, 0);
 
         let count = 0;
 
@@ -25,7 +25,7 @@ describe("AggregateEnumerator.constructor", () =>
         const array1 = [1, 2, 3, 4];
         const expected = [1, 3, 6, 10];
         const coll1 = new Collection<number>(array1);
-        const en = new AggregateEnumerator(coll1.getEnumerator(), (a, c) => isNumber(a) ? a + c : c);
+        const en = new AggregateEnumerator<number,number>(coll1.getEnumerator(), (a, c) => isNumber(a) ? a + c : c);
 
         let count = 0;
 
@@ -44,7 +44,7 @@ describe("AggregateEnumerator.peek", () =>
         const array1 = [1, 2, 3, 4];
         const expected = [1, 3, 6, 10];
         const coll1 = new Collection<number>(array1);
-        const en = new AggregateEnumerator(coll1.getEnumerator(), (a, c) => a + c, 0);
+        const en = new AggregateEnumerator<number,number>(coll1.getEnumerator(), (a, c) => a + c, 0);
 
         let count = 0;
 
@@ -62,7 +62,7 @@ describe("AggregateEnumerator.peek", () =>
         const array1 = [1, 2, 3, 4];
         const expected = [1, 3, 6, 10];
         const coll1 = new Collection<number>(array1);
-        const en = new AggregateEnumerator(coll1.getEnumerator(), (a, c) => a + c, 0);
+        const en = new AggregateEnumerator<number,number>(coll1.getEnumerator(), (a, c) => a + c, 0);
 
         let count = 0;
 
@@ -88,7 +88,7 @@ describe("AggregateEnumerator.reset", () =>
         const array1 = [1, 2, 3, 4];
         const expected = [1, 3, 6, 10];
         const coll1 = new Collection<number>(array1);
-        const en = new AggregateEnumerator(coll1.getEnumerator(), (a, c) => a + c, 0);
+        const en = new AggregateEnumerator<number,number>(coll1.getEnumerator(), (a, c) => a + c, 0);
 
         let count = 0;
 

@@ -1,4 +1,4 @@
-import TimeSpan from './TimeSpan';
+import TimeSpan from './TimeSpan.js';
 
 
 

@@ -1,5 +1,5 @@
-﻿import { Undefinable } from "../Types";
-import { IResultBase, IResult } from './_types';
+﻿import { Undefinable } from "../Types.js";
+import { IResultBase, IResult } from './_types.js';
 
 /**
  * Encapsulates a value allowing for returning an envelope

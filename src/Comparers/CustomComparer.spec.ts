@@ -1,5 +1,5 @@
-﻿import CustomComparer from './CustomComparer';
-import testComparer from '../TestHelpers/testComparer';
+﻿import CustomComparer from './CustomComparer.js';
+import testComparer from '../TestHelpers/testComparer.js';
 
 const numberComparer = (x: number, y: number) => x - y;
 const numberEqualityComparer = (x: number, y: number) => x == y;

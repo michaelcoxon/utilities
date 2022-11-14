@@ -1,5 +1,5 @@
-import { getHash } from '../../../Utilities';
-import { IEnumerable } from '../../_types';
+import  getHash  from '../../../Utilities/getHash.js';
+import { IEnumerable } from '../../_types.js';
 
 
 // USAGE: obj.Distinct(); or obj.Distinct(['key1'],['key2']);

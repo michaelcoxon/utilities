@@ -1,8 +1,8 @@
-import { IEnumerator } from './_types';
-import { KeyValuePair, Undefinable } from "../Types";
-import ArrayEnumerator from "./ArrayEnumerator";
-import EnumeratorBase from "./EnumeratorBase";
-import { IDictionary } from '../Enumerables/_types';
+import { IEnumerator } from './_types.js';
+import { KeyValuePair, Undefinable } from "../Types.js";
+import ArrayEnumerator from "./ArrayEnumerator.js";
+import EnumeratorBase from "./EnumeratorBase.js";
+import { IDictionary } from '../Enumerables/_types.js';
 
 
 export default class DictionaryEnumerator<TKey, TValue> extends EnumeratorBase<KeyValuePair<TKey, TValue>> implements IEnumerator<KeyValuePair<TKey, TValue>>

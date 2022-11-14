@@ -1,5 +1,5 @@
-import DefaultComparers from './DefaultComparers';
-import { IComparer, IEqualityComparer } from './_types';
+import DefaultComparers from './DefaultComparers.js';
+import { IComparer, IEqualityComparer } from './_types.js';
 
 /**
  * Default implementation

@@ -1,4 +1,4 @@
-﻿import emptyImpl from '../Utilities/empty';
+﻿import emptyImpl from '../Utilities/empty.js';
 
 export const empty = emptyImpl;
 export const newLine = "\n";

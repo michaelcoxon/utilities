@@ -4,7 +4,7 @@
     "noImplicitAny": false,
     "module": "ESNext",
     "target": "ES2019",
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "noEmitOnError": true,
     "noEmitHelpers": true,
     "importHelpers": true,
@@ -12,7 +12,6 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true,
     "strict": true,
     "lib": [
       "esnext",
@@ -32,8 +31,5 @@
   "compileOnSave": true,
   "include": [
     "./src/**/*"
-  ],
-  "exclude": [
-    "./src/**/*.spec.*"
   ],
 }

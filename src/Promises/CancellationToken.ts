@@ -1,5 +1,5 @@
-import SingleInvokeEvent from '../Events/SingleInvokeEvent';
-import { IEvent } from '../Events/_types';
+import SingleInvokeEvent from '../Events/SingleInvokeEvent.js';
+import { IEvent } from '../Events/_types.js';
 
 
 export default class CancellationToken

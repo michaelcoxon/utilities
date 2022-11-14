@@ -1,5 +1,5 @@
-﻿import { Expression } from './Expression';
-import { ExpressionType } from './ExpressionType';
+﻿import { Expression } from './Expression.js';
+import { ExpressionType } from './ExpressionType.js';
 
 export enum ConstantExpressionType
 {

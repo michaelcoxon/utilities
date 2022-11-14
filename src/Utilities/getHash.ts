@@ -1,5 +1,5 @@
-import { empty, KEY_VALUE_SEPARATOR } from '../Strings/_consts';
-import hashString from "./hashString";
+import { empty, KEY_VALUE_SEPARATOR } from '../Strings/_consts.js';
+import hashString from "./hashString.js";
 
 /**
  * returns a hash of the object

@@ -1,7 +1,7 @@
-import OutOfBoundsException from '../Exceptions/OutOfBoundsException';
-import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
-import { Awaitable } from '../Types';
-import { IAsyncEnumerator } from './_types';
+import OutOfBoundsException from '../Exceptions/OutOfBoundsException.js';
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull.js';
+import { Awaitable } from '../Types.js';
+import { IAsyncEnumerator } from './_types.js';
 
 
 export default class AsyncEnumerator<T> implements IAsyncEnumerator<T>

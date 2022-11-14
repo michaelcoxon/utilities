@@ -1,4 +1,4 @@
-import { IComparable } from '../Comparers/_types';
+import { IComparable } from '../Comparers/_types.js';
 
 export default function isComparable(subject: any): subject is IComparable
 {

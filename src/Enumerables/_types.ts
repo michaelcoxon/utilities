@@ -1,6 +1,6 @@
-﻿import { ConstructorFor, KeyValuePair, Predicate, Selector, Undefinable } from '../Types';
-import { IComparer } from '../Comparers/_types';
-import { IEnumerator } from '../Enumerators/_types';
+﻿import { ConstructorFor, KeyValuePair, Predicate, Selector, Undefinable } from '../Types.js';
+import { IComparer } from '../Comparers/_types.js';
+import { IEnumerator } from '../Enumerators/_types.js';
 
 
 export interface IEnumerable<T> extends Iterable<T>

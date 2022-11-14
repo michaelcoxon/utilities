@@ -1,7 +1,7 @@
-import equals from '../Utilities/equals';
-import getHash from '../Utilities/getHash';
-import DefaultStringComparer from './DefaultStringComparer';
-import { IComparer, IEqualityComparer } from './_types';
+import equals from '../Utilities/equals.js';
+import getHash from '../Utilities/getHash.js';
+import DefaultStringComparer from './DefaultStringComparer.js';
+import { IComparer, IEqualityComparer } from './_types.js';
 
 /**
  * Default implementation

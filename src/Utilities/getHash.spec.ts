@@ -1,4 +1,4 @@
-﻿import getHash from './getHash';
+﻿import getHash from './getHash.js';
 
 describe("getHash", () =>
 {

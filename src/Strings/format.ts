@@ -1,7 +1,7 @@
-import { FORMAT_REGEX, empty } from './_consts';
-import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
-import convertToString from '../Utilities/convertToString';
-import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty';
+import { FORMAT_REGEX, empty } from './_consts.js';
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull.js';
+import convertToString from '../Utilities/convertToString.js';
+import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty.js';
 
 
 export default function format(format: string, ...args: any[]): string

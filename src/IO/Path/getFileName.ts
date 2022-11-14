@@ -1,4 +1,4 @@
-import trimStart from '../../Strings/trimStart';
+import trimStart from '../../Strings/trimStart.js';
 
 const URI_REGEX = /^(([^:]+:\\)|([^:/?#]+:)?(\/\/([^/?#]*)[\\/])?)(([^\\/]+[\\/])*)([^/?#]*)(\?[^#]*)?(#.*)?$/gi;
 

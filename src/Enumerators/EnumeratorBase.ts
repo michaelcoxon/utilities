@@ -1,5 +1,5 @@
-import { Undefinable } from '../Types';
-import { IEnumerator } from './_types';
+import { Undefinable } from '../Types.js';
+import { IEnumerator } from './_types.js';
 
 
 export default abstract class EnumeratorBase<T> implements IEnumerator<T>

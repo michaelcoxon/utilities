@@ -1,9 +1,9 @@
-import ArgumentException from '../../Exceptions/ArgumentException';
-import isNullOrEmpty from '../../TypeHelpers/isNullOrEmpty';
-import isObject from '../../TypeHelpers/isObject';
-import { Undefinable } from '../../Types';
-import { IConfigurationSection, parseKey } from '../_types';
-import { ConfigValue } from './Json.types';
+import ArgumentException from '../../Exceptions/ArgumentException.js';
+import isNullOrEmpty from '../../TypeHelpers/isNullOrEmpty.js';
+import isObject from '../../TypeHelpers/isObject.js';
+import { Undefinable } from '../../Types.js';
+import { IConfigurationSection, parseKey } from '../_types.js';
+import { ConfigValue } from './Json.types.js';
 
 
 export default class JsonConfigurationSection implements IConfigurationSection

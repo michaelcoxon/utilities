@@ -1,4 +1,4 @@
-﻿import QueryStringCollection from "./QueryStringCollection";
+﻿import QueryStringCollection from "./QueryStringCollection.js";
 
 describe('QueryStringCollection.constructor', () =>
 {

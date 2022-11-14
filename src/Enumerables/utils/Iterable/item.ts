@@ -1,5 +1,5 @@
-import { Undefinable } from '../../../Types';
-import { IEnumerable } from '../../_types';
+import { Undefinable } from '../../../Types.js';
+import { IEnumerable } from '../../_types.js';
 
 
 export default function item<T>(iterable: Iterable<T>, index: number): Undefinable<T>

@@ -1,4 +1,4 @@
-import Int32 from '../../src/Numbers/Integers/Int32';
+import Int32 from './Integers/Int32.js';
 
 interface IComplexObject
 {

@@ -1,8 +1,8 @@
-﻿import ArgumentAssertionBuilder from './ArgumentAssertionBuilder';
-import ArgumentException from '../Exceptions/ArgumentException';
-import Guid from '../Guid';
+﻿import ArgumentAssertionBuilder from './ArgumentAssertionBuilder.js';
+import ArgumentException from '../Exceptions/ArgumentException.js';
+import Guid from '../Guid.js';
 import SR from '../i18n/en.assertions.strings.json';
-import { format } from '../Strings';
+import format from '../Strings/format.js';
 
 
 export default class GuidArgumentAssertionBuilder extends ArgumentAssertionBuilder<Guid>

@@ -1,8 +1,8 @@
-import QueryStringCollection from './QueryStringCollection';
-import stringOrUrlToUrl from './utils/stringOrUrlToUrl';
-import Url from './Url';
+import QueryStringCollection from './QueryStringCollection.js';
+import stringOrUrlToUrl from './utils/stringOrUrlToUrl.js';
+import Url from './Url.js';
 
-export * from './_types';
+export * from './_types.js';
 
 export {
     QueryStringCollection,

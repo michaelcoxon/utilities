@@ -1,6 +1,6 @@
-import Result from '../Result/Result';
-import { IResult } from '../Result/_types';
-import { _caseInsensitiveTrueString, trueString, _caseInsensitiveFalseString, falseString } from './_consts';
+import Result from '../Result/Result.js';
+import { IResult } from '../Result/_types.js';
+import { _caseInsensitiveTrueString, trueString, _caseInsensitiveFalseString, falseString } from './_consts.js';
 
 export default function tryParse(value: string): IResult<boolean>;
 export default function tryParse(value: string, caseInsensitive: boolean): IResult<boolean>;

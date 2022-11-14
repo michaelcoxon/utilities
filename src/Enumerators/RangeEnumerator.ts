@@ -1,8 +1,8 @@
-import { IEnumerator } from './_types';
-import EnumeratorBase from "./EnumeratorBase";
-import ArgumentException from '../Exceptions/ArgumentException';
-import Exception from '../Exceptions/Exception';
-import { Undefinable } from '../Types';
+import { IEnumerator } from './_types.js';
+import EnumeratorBase from "./EnumeratorBase.js";
+import ArgumentException from '../Exceptions/ArgumentException.js';
+import Exception from '../Exceptions/Exception.js';
+import { Undefinable } from '../Types.js';
 
 
 export default class RangeEnumerator extends EnumeratorBase<number> implements IEnumerator<number>

@@ -1,5 +1,5 @@
-﻿import ensure from '../../src/Ensure/ensure';
-import Guid from '../../src/Guid';
+﻿import ensure from '../../src/Ensure/ensure.js';
+import Guid from '../../src/Guid.js';
 
 describe("Ensure a Guid isNotNull", () =>
 {

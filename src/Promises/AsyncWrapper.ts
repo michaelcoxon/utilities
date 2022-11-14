@@ -1,7 +1,7 @@
-﻿import SingleInvokeEvent from "../Events/SingleInvokeEvent";
-import isFunction from '../TypeHelpers/isFunction';
-import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
-import { Undefinable, Awaitable } from "../Types";
+﻿import SingleInvokeEvent from "../Events/SingleInvokeEvent.js";
+import isFunction from '../TypeHelpers/isFunction.js';
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull.js';
+import { Undefinable, Awaitable } from "../Types.js";
 
 /**
  * The AsyncWrapper is provided to monitor the state of a promise.

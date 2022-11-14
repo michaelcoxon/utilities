@@ -1,4 +1,4 @@
-import { empty } from '../../Strings/_consts';
+import { empty } from '../../Strings/_consts.js';
 
 export function getTimezoneHoursString(minutes: number)
 {

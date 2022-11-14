@@ -1,7 +1,7 @@
-import { BinaryExpression } from './BinaryExpression';
-import { ConstantExpression, ConstantExpressionType } from './ConstantExpression';
-import { ExpressionType } from './ExpressionType';
-import InstructionExpressionVisitor from './InstructionExpressionVisitor';
+import { BinaryExpression } from './BinaryExpression.js';
+import { ConstantExpression, ConstantExpressionType } from './ConstantExpression.js';
+import { ExpressionType } from './ExpressionType.js';
+import InstructionExpressionVisitor from './InstructionExpressionVisitor.js';
 
 
 describe("InstructionExpressionVisitor.constructor", () =>

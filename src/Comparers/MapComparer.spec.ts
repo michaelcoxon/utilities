@@ -1,6 +1,6 @@
-﻿import DefaultComparers from './DefaultComparers';
-import MapComparer from './MapComparer';
-import testComparer from '../TestHelpers/testComparer';
+﻿import DefaultComparers from './DefaultComparers.js';
+import MapComparer from './MapComparer.js';
+import testComparer from '../TestHelpers/testComparer.js';
 
 interface ITestObject
 {
