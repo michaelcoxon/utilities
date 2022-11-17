@@ -7,3 +7,5 @@ export default function isBoolean<T>(subject: T | boolean): subject is boolean
 {
     return typeof subject === 'boolean';
 }
+
+

@@ -23,6 +23,7 @@ function test<T>(exceptionType: ConstructorFor<T>, exception: () => T): void
             }
             catch (e)
             {
+                e['message'];
                 if (!(e instanceof exceptionType))
                 {
                     fail(e);

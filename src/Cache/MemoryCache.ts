@@ -3,6 +3,7 @@ import KeyAlreadyDefinedException from '../Exceptions/KeyAlreadyDefinedException
 import { IAsyncCacheItem, ICache, IExpiryPolicyDelegate } from './_types.js';
 import AsyncCacheItem from './AsyncCacheItem.js';
 import { Awaitable } from '../Types.js';
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull.js';
 
 /**
  * Creates an in-memory cache. This cache will be forgotten on disposal.
@@ -65,7 +66,7 @@ export default class MemoryCache<TKey = string> implements ICache<TKey>
     {
         const cacheItem = this.#internalCache.get(key);
 
-        if (cacheItem === undefined)
+        if (isUndefinedOrNull(cacheItem))
         {
             throw new KeyNotFoundException(key);
         }
@@ -83,7 +84,7 @@ export default class MemoryCache<TKey = string> implements ICache<TKey>
     {
         const cacheItem = this.#internalCache.get(key);
 
-        if (cacheItem === undefined)
+        if (isUndefinedOrNull(cacheItem))
         {
             return { success: false };
         }

@@ -1,8 +1,8 @@
-import ArgumentAssertionBuilder, { AssertionType, IArgumentAssertionBuilder } from '../Assertions/ArgumentAssertionBuilder.js';
-import ArrayLikeArgumentAssertionBuilder from '../Assertions/ArrayLikeArgumentAssertionBuilder.js';
-import CompareAssertionBuilder from '../Assertions/CompareAssertionBuilder.js';
-import GuidArgumentAssertionBuilder from '../Assertions/GuidArgumentAssertionBuilder.js';
-import StringArgumentAssertionBuilder from '../Assertions/StringArgumentAssertionBuilder.js';
+import ArgumentAssertionBuilder, { AssertionType, IArgumentAssertionBuilder } from './Assertions/ArgumentAssertionBuilder.js';
+import ArrayLikeArgumentAssertionBuilder from './Assertions/ArrayLikeArgumentAssertionBuilder.js';
+import CompareAssertionBuilder from './Assertions/CompareAssertionBuilder.js';
+import GuidArgumentAssertionBuilder from './Assertions/GuidArgumentAssertionBuilder.js';
+import StringArgumentAssertionBuilder from './Assertions/StringArgumentAssertionBuilder.js';
 import NotSupportedException from '../Exceptions/NotSupportedException.js';
 import Guid from '../Guid.js';
 import isComparable from '../TypeHelpers/isComparable.js';

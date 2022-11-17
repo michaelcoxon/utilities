@@ -1,5 +1,5 @@
 ﻿import ArgumentAssertionBuilder from './ArgumentAssertionBuilder.js';
-import ArgumentException from '../Exceptions/ArgumentException.js';
+import ArgumentException from '../../Exceptions/ArgumentException.js';
 
 
 export default class ArrayLikeArgumentAssertionBuilder<T> extends ArgumentAssertionBuilder<ArrayLike<T>>

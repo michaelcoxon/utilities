@@ -1,4 +1,4 @@
-﻿import ensure from '../../src/Ensure/ensure.js';
+﻿import ensure from './index.js';
 
 describe("Ensure a string isNotNull", () =>
 {
