@@ -4,9 +4,9 @@ import { IFormatter } from './_types';
 
 /** Formats strings */
 
-export default  class StringFormatter implements IFormatter<string>
+export default class StringFormatter implements IFormatter<string>
 {
-    public format(subject: string, format: string): string
+    public format(subject: string, format?: string): string
     {
         if (isNullOrEmpty(format))
         {

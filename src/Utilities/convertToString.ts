@@ -1,9 +1,9 @@
 import NumberFormatter from '../Formatters/NumberFormatter';
-import DateFormatter from '../Formatters/DateFormatter';
 import StringFormatter from '../Formatters/StringFormatter';
 import { empty } from '../Strings/_consts';
 import isNumber from '../TypeHelpers/isNumber';
 import isDate from '../TypeHelpers/isDate';
+import DateFormatter from '../Formatters/DateFormatter/DateFormatter';
 
 
 export default function convertToString(subject: any, format: string = empty): string

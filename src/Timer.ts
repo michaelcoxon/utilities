@@ -1,7 +1,7 @@
-﻿import Event from '../Events/Event';
-import { IEvent } from '../Events/_types';
-import ArgumentException from '../Exceptions/ArgumentException';
-import { IDisposable } from '../Types';
+﻿import Event from './Events/Event';
+import { IEvent } from './Events/_types';
+import ArgumentException from './Exceptions/ArgumentException';
+import { IDisposable } from './Types';
 
 declare function clearInterval(intervalId: any): void;
 declare function setInterval(callback: (...args: any[]) => void, ms: number, ...args: any[]): any;
@@ -35,7 +35,7 @@ export default class Timer implements IDisposable
 
         this.#autoReset = true;
         this.#enabled = false;
-        this.#interval = Math.ceil(interval);
+        this.#interval = Math.round(interval);
 
         this.#elapsedEvent = new Event();
     }
@@ -64,38 +64,23 @@ export default class Timer implements IDisposable
     /** Sets a value indicating whether the Timer should raise the Elapsed event. */
     set enabled(value: boolean)
     {
+        // multiple call protection
+        if (this.#enabled === value)
+        {
+            return;
+        }
+        
         this.#enabled = value;
 
         if (this.#enabled)
         {
-            this.#intervalPointer = setInterval(() =>
-            {
-                if (!this.#enabled)
-                {
-                    if (this.#intervalPointer !== undefined)
-                    {
-                        clearInterval(this.#intervalPointer);
-                        this.#intervalPointer = undefined;
-                    }
-                }
-                if (!this.autoReset)
-                {
-                    this.enabled = false;
-                }
-
-                this.#elapsedEvent.invoke(this, { signalTime: new Date().getTime() });
-
-            }, this.interval);
+            this.#createInterval();
         }
         else
         {
-            if (this.#intervalPointer !== undefined)
-            {
-                clearInterval(this.#intervalPointer);
-                this.#intervalPointer = undefined;
-            }
+            this.#destroyInterval();
         }
-    }
+    }   
 
     /** Gets the interval, expressed in milliseconds, at which to raise the Elapsed event. */
     get interval(): number
@@ -125,4 +110,35 @@ export default class Timer implements IDisposable
         this.stop();
     }
 
+    #createInterval()
+    {
+        this.#intervalPointer = setInterval(() =>
+        {
+            // has been disabled but the interval wasn't cancelled or, disable after this run
+            if (!this.#enabled || !this.autoReset)
+            {
+                this.#destroyInterval();
+                return;
+            }
+
+            // disable after this run
+            if (!this.autoReset)
+            {
+                this.#enabled = false;
+                this.#destroyInterval();
+            }
+
+            this.#elapsedEvent.invoke(this, { signalTime: Date.now() });
+
+        }, this.interval);
+    }
+
+    #destroyInterval()
+    {
+        if (this.#intervalPointer !== undefined)
+        {
+            clearInterval(this.#intervalPointer);
+            this.#intervalPointer = undefined;
+        }
+    }
 }

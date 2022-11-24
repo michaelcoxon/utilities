@@ -1,7 +1,5 @@
 ﻿import Timer from './Timer';
 
-import { slowtest } from './_env';
-
 describe("Timer.constructor", () =>
 {
     it("should return a new Timer", () =>
@@ -24,7 +22,7 @@ describe("Timer.constructor", () =>
 
 describe("Timer.enabled", () =>
 {
-    !slowtest && it("should tick every 500ms", (done) =>
+    it("should tick every 500ms", (done) =>
     {
         const timer = new Timer(500);
         let lastEventTime: number | undefined = undefined;
@@ -43,8 +41,8 @@ describe("Timer.enabled", () =>
             {
                 const letim = lastEventTime + 500;
 
-                expect(e.signalTime).toBeGreaterThanOrEqual(letim - 20);
-                expect(e.signalTime).toBeLessThanOrEqual(letim + 20);
+                expect(e.signalTime).toBeGreaterThanOrEqual(letim - 50);
+                expect(e.signalTime).toBeLessThanOrEqual(letim + 50);
             }
 
             lastEventTime = e.signalTime;
@@ -52,9 +50,7 @@ describe("Timer.enabled", () =>
             ticks++;
         });
 
-        timer.start();
+        timer.start();        
 
-        
-
-    }, 5200);
+    }, 15200);
 });

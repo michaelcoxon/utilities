@@ -203,7 +203,7 @@ describe("Enumerable.firstOrDefault", () =>
         const array = [1, 2, 3, 4];
         const result = new ArrayEnumerable(array);
 
-        expect(1).toEqual(result.firstOrDefault());
+        expect(result.firstOrDefault()).toEqual(1);
     });
 
     it("should return the first item in the Enumerable after applying the filter", () =>
@@ -211,7 +211,7 @@ describe("Enumerable.firstOrDefault", () =>
         const array = [1, 2, 3, 4];
         const result = new ArrayEnumerable(array);
 
-        expect(2).toEqual(result.firstOrDefault(i => i % 2 === 0));
+        expect(result.firstOrDefault(i => i % 2 === 0)).toEqual(2);
     });
 
     it("should return null if the Enumerable is empty", () =>
@@ -219,7 +219,7 @@ describe("Enumerable.firstOrDefault", () =>
         const array = [];
         const result = new ArrayEnumerable(array);
 
-        expect(null).toEqual(result.firstOrDefault());
+        expect(result.firstOrDefault()).toEqual(null);
     });
 });
 
@@ -277,9 +277,16 @@ describe("Enumerable.groupBy", () =>
 
         expect(2).toEqual(result.count());
 
-        expect(result.where(g => g.key === 0).single().toArray()).toEqual([2, 4, 6, 8, 10]);
-        expect(result.where(g => g.key === 1).single().toArray()).toEqual([1, 3, 5, 7, 9]);
+        const evens = result.where(g => g.key === 0)
+            .single()
+            .toArray();
 
+        const odds = result.where(g => g.key === 1)
+            .single()
+            .toArray();
+
+        expect(evens).toEqual([2, 4, 6, 8, 10]);
+        expect(odds).toEqual([1, 3, 5, 7, 9]);
     });
 });
 
@@ -341,7 +348,7 @@ describe("Enumerable.lastOrDefault", () =>
         const array = [];
         const result = new ArrayEnumerable(array);
 
-        expect(null).toEqual(result.lastOrDefault());
+        expect(result.lastOrDefault()).toEqual(null);
     });
 });
 

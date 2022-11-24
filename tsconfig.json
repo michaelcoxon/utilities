@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "noImplicitAny": false,
-    "module": "ES2015",
+    "module": "ESNext",
+    "target": "ES2019",
     "moduleResolution": "node",
     "noEmitOnError": true,
     "noEmitHelpers": true,
@@ -17,7 +18,6 @@
       "esnext",
       "dom"
     ],
-    "target": "ES2015",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "pretty": true,

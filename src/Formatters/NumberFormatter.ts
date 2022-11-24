@@ -15,7 +15,7 @@ export default class NumberFormatter implements IFormatter<number>
         this.#delegates = numberFormatterDelegates;
     }
 
-    public format(subject: number, format: string): string
+    public format(subject: number, format?: string): string
     {
         if (isNullOrEmpty(format))
         {
@@ -29,12 +29,12 @@ export default class NumberFormatter implements IFormatter<number>
         }
     }
 
-    readonly #getFormatter = (specifier: string) =>
+    readonly #getFormatter = (specifier: string): (subject: number, precision?: number) => string =>
     {
         switch (specifier.toLowerCase())
         {
             case 'c': return this.#delegates.formatCurrency;
-            case 'd': return this.#delegates.formatDecimal;
+            case 'd': return this.#delegates.formatInteger;
             case 'e': return this.#delegates.formatExponential;
             case 'f': return this.#delegates.formatFixed;
             case 'g': return this.#delegates.formatGeneral;

@@ -45,7 +45,9 @@ import max from './utils/IEnumerable/max';
 import min from './utils/IEnumerable/min';
 import ofType from './utils/IEnumerable/ofType';
 import asArray from './utils/asArray';
+import { ArrayEnumerable } from './ArrayEnumerable';
 
+export { ArrayEnumerable } from './ArrayEnumerable';
 export class Enumerable
 {
     public static range(start: number, count: number): IEnumerable<number>
@@ -297,21 +299,21 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
     }
 }
 
-export class ArrayEnumerable<T> extends EnumerableBase<T>
-{
-    protected _array: T[];
+// export class ArrayEnumerable<T> extends EnumerableBase<T>
+// {
+//     protected _array: T[];
 
-    constructor(array: T[])
-    {
-        super();
-        this._array = array;
-    }
+//     constructor(array: T[])
+//     {
+//         super();
+//         this._array = array;
+//     }
 
-    public getEnumerator(): IEnumerator<T>
-    {
-        return new ArrayEnumerator<T>(this._array);
-    }
-}
+//     public getEnumerator(): IEnumerator<T>
+//     {
+//         return new ArrayEnumerator<T>(this._array);
+//     }
+// }
 
 export class Collection<T> extends ArrayEnumerable<T> implements ICollection<T>, IEnumerable<T>
 {
@@ -615,15 +617,15 @@ export class LinkedList<T> extends EnumerableBase<T> implements ICollection<T>, 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     copyTo(array: T[], arrayIndex: number): void
     {
-        // TODO:   throw new Error("Method not implemented.");
-        throw new Error("Method not implemented.");
+        // TODO:   throw new Error("Error/Method not implemented.");
+        throw new Error("copyTo Error/Method not implemented.");
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     remove(item: T): boolean
     {
-        // TODO:   throw new Error("Method not implemented.");
-        throw new Error("Method not implemented.");
+        // TODO:   throw new Error("Error/Method not implemented.");
+        throw new Error("remove Error/Method not implemented.");
     }
 
     forEach(callback: (value: T, index: number) => boolean | void): void
