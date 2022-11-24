@@ -1,5 +1,6 @@
 ﻿import Exception from './Exceptions/Exception.js';
 import { IIndentedStringBuilder } from './IO/_types.js';
+import isException from './TypeHelpers/isException.js';
 
 export default function errorToLogMessage(error: Error | Exception, sb: IIndentedStringBuilder): void
 {
@@ -11,7 +12,7 @@ export default function errorToLogMessage(error: Error | Exception, sb: IIndente
         sb.unindent();
     }
 
-    if (Exception.isException(error) && error.innerException !== undefined)
+    if (isException(error) && error.innerException !== undefined)
     {
         sb.appendLine("The following errors were also encountered:");
         sb.indent();

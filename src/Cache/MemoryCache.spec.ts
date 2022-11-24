@@ -40,6 +40,7 @@ describe("MemoryCache + expire", () =>
         }
         catch (ex)
         {
+            console.error(ex);
             expect(ex).toBeInstanceOf(KeyNotFoundException);
             expect((ex as Exception).message).toEqual("Key 'key' is not found");
         }

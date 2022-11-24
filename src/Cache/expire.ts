@@ -28,7 +28,9 @@ function expireAt(date: Date)
 {
     return expireWhen(() => date <= new Date());
 };
-
+/**
+ * Time in milliseconds
+ */
 function expireIn(time: number)
 {
     const expires = new Date();

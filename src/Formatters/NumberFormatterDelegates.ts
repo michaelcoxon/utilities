@@ -1,3 +1,4 @@
+import ensure from '../ensure/index.js';
 import format from '../Strings/format.js';
 import padLeft from '../Strings/padLeft.js';
 import { INumberFormatterConfiguration } from './_types.js';
@@ -9,6 +10,9 @@ export default class NumberFormatterDelegates
 
     constructor(numberFormatterConfiguration: INumberFormatterConfiguration)
     {
+        ensure(numberFormatterConfiguration, "numberFormatterConfiguration")
+            .isNotNullOrUndefined();
+
         this.#config = numberFormatterConfiguration;
     }
 

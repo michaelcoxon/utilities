@@ -154,9 +154,9 @@ describe("ArrayEnumerator.reset", () =>
 
 describe("ArrayEnumerator.throwOutOfBoundsException", () =>
 {
-    it("should throw OutOfBoundsException", () =>
+    it("should throw OutOfBoundsException if not moveNext first", () =>
     {
-        const array = [1, 2, 3, 4];
+        const array = [];
         const coll = new Collection(array);
         const en = new ArrayEnumerator(coll.toArray());
 

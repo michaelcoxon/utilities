@@ -1,7 +1,7 @@
 import OutOfBoundsException from '../../Exceptions/OutOfBoundsException.js';
 
 
-export function ensureInt(value: number, minValue: number, maxValue: number): void
+export default function ensureInt(value: number, minValue: number, maxValue: number): void
 {
     if (value > maxValue || value < minValue)
     {

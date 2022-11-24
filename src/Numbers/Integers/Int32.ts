@@ -1,6 +1,6 @@
 import Exception from '../../Exceptions/Exception.js';
 import { INumberValue } from './Integers.types.js';
-import { ensureInt } from "./ensureInt.js";
+import ensureInt  from "./ensureInt.js";
 import Result from '../../Result/Result.js';
 import { IResult } from '../../Result/_types.js';
 
