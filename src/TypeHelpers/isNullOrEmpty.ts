@@ -7,19 +7,27 @@ import isUndefinedOrNull from './isUndefinedOrNull';
 /**
  * quick type for readability
  */
- type NullOrEmptyableType =
+type NullOrEmptyableType =
     { length: number; }
     | { count: number; }
-    | IEnumerable<any>
+    | IEnumerable<unknown>
     | string
-    | any[]
+    | unknown[]
     | null
     | undefined;
+
+type NullOrEmptyType =
+    NullOrEmptyableType & { length: 0; }
+    | NullOrEmptyableType & { count: 0; }
+    | NullOrEmptyableType & IEnumerable<unknown> & { count(): () => 0; }
+    | NullOrEmptyableType & unknown[]
+    | NullOrEmptyableType & null
+    | NullOrEmptyableType & undefined;
 
 /**
  * Returns true if the value is undefined, null or empty.
  * 
- * Also behaves as a type guard that will treat empty subjects as null|undefined.
+ * NOTE: if you need empty, do this seperately 
  * 
  * @param subject 
  */

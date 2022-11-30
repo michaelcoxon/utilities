@@ -14,13 +14,13 @@ export default class Pipeline implements IPipelineTaskQueue
         this.#queue = [];
     }
 
-    public start(task: IPipelineTask | ((context: IContext) => Promise<void>)): IPipelineTaskQueue
+    public start(task: IPipelineTask | ((context: IContext) => Promise<void>)): this
     {
         this.#queue.push(isFunction(task) ? { name: task.toString(), executeAsync: task } : task);
         return this;
     }
 
-    public then(task: IPipelineTask | ((context: IContext) => Promise<void>)): IPipelineTaskQueue
+    public then(task: IPipelineTask | ((context: IContext) => Promise<void>)): this
     {
         this.#queue.push(isFunction(task) ? { name: task.toString(), executeAsync: task } : task);
         return this;

@@ -7,5 +7,6 @@ import { AnyFunction } from '../Types';
 
 export default function isFunction<T>(subject: T | AnyFunction): subject is AnyFunction
 {
-    return Object.prototype.toString.call(subject) === '[object Function]';
+    return typeof subject === 'function';
+    //return Object.prototype.toString.call(subject) === '[object Function]';
 }

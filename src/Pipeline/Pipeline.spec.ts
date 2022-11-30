@@ -33,11 +33,11 @@ describe("Pipeline", () =>
         let outsideValue = "not changed";
         subject.start(async (ctx) =>
         {
-            outsideValue = "changed";
+            outsideValue = ctx.data;
         });
 
         await subject.executeAsync({
-            data: {},
+            data: "changed",
         });
 
         expect(outsideValue).toEqual("changed");
