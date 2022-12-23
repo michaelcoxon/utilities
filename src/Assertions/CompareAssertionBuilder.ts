@@ -3,7 +3,7 @@ import { IComparable } from '../Comparers/_types';
 import ArgumentException from '../Exceptions/ArgumentException';
 import DefaultComparers from '../Comparers/DefaultComparers';
 import { format } from '../Strings';
-import SR from '../i18n/en.assertions.strings.json';
+import SR from '../i18n/en/assertions.strings.json';
 
 export default class CompareAssertionBuilder<T extends IComparable> extends ArgumentAssertionBuilder<T>
 {

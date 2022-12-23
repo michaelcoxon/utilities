@@ -46,6 +46,8 @@ import min from './utils/IEnumerable/min';
 import ofType from './utils/IEnumerable/ofType';
 import asArray from './utils/asArray';
 import { ArrayEnumerable } from './ArrayEnumerable';
+import remove from './utils/Collection/remove';
+import copyTo from './utils/Collection/copyTo';
 
 export { ArrayEnumerable } from './ArrayEnumerable';
 export class Enumerable
@@ -299,22 +301,6 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
     }
 }
 
-// export class ArrayEnumerable<T> extends EnumerableBase<T>
-// {
-//     protected _array: T[];
-
-//     constructor(array: T[])
-//     {
-//         super();
-//         this._array = array;
-//     }
-
-//     public getEnumerator(): IEnumerator<T>
-//     {
-//         return new ArrayEnumerator<T>(this._array);
-//     }
-// }
-
 export class Collection<T> extends ArrayEnumerable<T> implements ICollection<T>, IEnumerable<T>
 {
     constructor(enumerableOrArray?: IEnumerableOrArray<T>)
@@ -351,26 +337,12 @@ export class Collection<T> extends ArrayEnumerable<T> implements ICollection<T>,
 
     public copyTo(array: T[], arrayIndex: number): void
     {
-        if (this.length > (array.length - arrayIndex))
-        {
-            throw new ArgumentException("array", "Array is not big enough to store the collection");
-        }
-        array.splice(arrayIndex, this.length, ...this._array);
+        return copyTo(this._array, array, arrayIndex);
     }
 
     public remove(item: T): boolean
     {
-        const index = this._array.indexOf(item);
-
-        if (index != undefined)
-        {
-            this._array.splice(index, 1);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return remove(this._array, item);
     }
 }
 

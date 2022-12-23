@@ -11,6 +11,7 @@ import ReverseComparer from '../Comparers/ReverseComparer';
 import MapComparer from '../Comparers/MapComparer';
 import forEach from './utils/Array/forEach';
 import { Dictionary } from './index';
+import { InvalidOperationException, NotImplementedException } from '../Exceptions';
 
 export class ArrayEnumerable<T> implements IEnumerable<T>
 {
@@ -67,7 +68,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
         const result = this.firstOrDefault(predicate);
         if (isUndefinedOrNull(result))
         {
-            throw new Error('There are no results');
+            throw new InvalidOperationException('There are no results');
         }
         return result;
     }
@@ -117,7 +118,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
         const result = this.lastOrDefault(predicate);
         if (isUndefinedOrNull(result))
         {
-            throw new Error('There are no results');
+            throw new InvalidOperationException('There are no results');
         }
         return result;
     }
@@ -185,7 +186,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
 
         if (isUndefinedOrNull(result))
         {
-            throw new Error('There is no result.');
+            throw new InvalidOperationException('There is no result.');
         }
 
         return result;
@@ -199,7 +200,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
 
         if (result.length > 1)
         {
-            throw new Error('More than one match in the collection.');
+            throw new InvalidOperationException('More than one match in the collection.');
         }
         if (result.length !== 1)
         {
@@ -247,7 +248,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     }
     toList(): IList<T>
     {
-        throw new Error('toList Error/Method not implemented.');
+        throw new NotImplementedException();
     }
     where(predicate: Predicate<T>): IEnumerable<T>
     {
