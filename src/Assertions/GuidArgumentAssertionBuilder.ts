@@ -17,7 +17,7 @@ export default class GuidArgumentAssertionBuilder extends ArgumentAssertionBuild
         if (this.argument == Guid.empty)
         {
             throw new ArgumentException(this.argumentName);
-        }
+        }        
         return this;
     }
 

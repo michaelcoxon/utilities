@@ -12,7 +12,7 @@ export * as Booleans from "./Booleans";
 export * as Cache from "./Cache";
 export * as Comparers from "./Comparers";
 export * as Configuration from "./Configuration";
-export * as Ensure from "./Ensure";
+export * as ensure from "./ensure";
 export * as Enumerables from './Enumerables';
 export * as Enumerators from './Enumerators';
 export * as Events from "./Events";
