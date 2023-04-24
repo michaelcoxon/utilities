@@ -12,7 +12,7 @@ import { format } from '../Strings';
  export type AssertionType<T> = T | undefined | null;
 
 /**
- * Interface for implementing your own builder
+ * Interface for implementing your own builder.  @see ArgumentAssertionBuilder<T>
  */
 export interface IArgumentAssertionBuilder<T>
 {
@@ -20,6 +20,9 @@ export interface IArgumentAssertionBuilder<T>
     readonly argumentName: string;
 }
 
+/**
+ * Instance of @see IArgumentAssertionBuilder<T> 
+ */
 export default class ArgumentAssertionBuilder<T> implements IArgumentAssertionBuilder<T>
 {
     constructor(readonly argument: T, readonly argumentName: string) { }

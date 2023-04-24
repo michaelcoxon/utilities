@@ -4,14 +4,34 @@ import { IEnumerable, IEnumerableGroup, IDictionary, IList } from './_types';
 import { IEnumerator } from '../Enumerators/_types';
 import { isUndefinedOrNull } from '../TypeHelpers';
 import { ArrayEnumerator } from '../Enumerators';
-import distinct from './utils/IEnumerable/distinct';
 import DefaultComparers from '../Comparers/DefaultComparers';
-import ofType from './utils/IEnumerable/ofType';
 import ReverseComparer from '../Comparers/ReverseComparer';
 import MapComparer from '../Comparers/MapComparer';
-import forEach from './utils/Array/forEach';
 import { Dictionary } from './index';
 import { InvalidOperationException, NotImplementedException } from '../Exceptions';
+
+import all from './utils/Array/all';
+import any from './utils/Array/any';
+import average from './utils/Array/average';
+import contains from './utils/Array/contains';
+import count from './utils/Array/count';
+import distinct from './utils/Array/distinct';
+import first from './utils/Array/first';
+import firstOrDefault from './utils/Array/firstOrDefault';
+import forEach from './utils/Array/forEach';
+import groupBy from './utils/Array/groupBy';
+import item from './utils/Array/item';
+import last from './utils/Array/last';
+import lastOrDefault from './utils/Array/lastOrDefault';
+import max from './utils/Array/max';
+import min from './utils/Array/min';
+import ofType from './utils/Array/ofType';
+import select from './utils/Array/select';
+import single from './utils/Array/single';
+import singleOrDefault from './utils/Array/singleOrDefault';
+import sum from './utils/Array/sum';
+import take from './utils/Array/take';
+import where from './utils/Array/where';
 
 export class ArrayEnumerable<T> implements IEnumerable<T>
 {
@@ -27,42 +47,47 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
         this._array = array;
     }
 
+    /**@inheritDoc */
     all(predicate: Predicate<T>): boolean
     {
-        return this._array.every(predicate);
+        return all(this._array, predicate);
     }
+    /**@inheritDoc */
     append(item: T): IEnumerable<T>
     {
         return new ArrayEnumerable([...this, item]);
     }
+    /**@inheritDoc */
     any(predicate?: Predicate<T> | undefined): boolean
     {
-        if (isUndefinedOrNull(predicate))
-        {
-            return this._array.length > 0;
-        }
-        return this._array.some(predicate);
+        return any(this._array, predicate);
     }
+    /**@inheritDoc */
     average(selector: Selector<T, number>): number
     {
-        return this._array.reduce((p, c) => p + selector(c), 0) / this._array.length;
+        return average(this._array, selector);
     }
+    /**@inheritDoc */
     concat(next: IEnumerable<T>): IEnumerable<T>
     {
         return new ArrayEnumerable([...this._array, ...next]);
     }
+    /**@inheritDoc */
     contains(item: T): boolean
     {
-        return this._array.indexOf(item) > -1;
+        return contains(this._array, item);
     }
+    /**@inheritDoc */
     count(): number
     {
-        return this._array.length;
+        return count(this._array);
     }
+    /**@inheritDoc */
     distinct<R>(selector: Selector<T, R>): IEnumerable<T>
     {
-        return distinct(this, selector);
+        return new ArrayEnumerable(distinct(this._array, selector));
     }
+    /**@inheritDoc */
     first(predicate?: Predicate<T>): T
     {
         const result = this.firstOrDefault(predicate);
@@ -73,6 +98,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
         return result;
     }
 
+    /**@inheritDoc */
     firstOrDefault(predicate?: Predicate<T>): T | null
     {
         let result = isUndefinedOrNull(predicate)
@@ -84,14 +110,17 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
             ? null
             : result;
     }
+    /**@inheritDoc */
     forEach(callback: (value: T, index: number) => boolean | void): void
     {
         return forEach(this._array, callback);
     }
+    /**@inheritDoc */
     getEnumerator(): IEnumerator<T>
     {
         return new ArrayEnumerator(this._array);
     }
+    /**@inheritDoc */
     groupBy<TKey>(keySelector: Selector<T, TKey>, comparer: IComparer<TKey> = DefaultComparers.DefaultComparer): IEnumerable<IEnumerableGroup<T, TKey>>
     {
         const keySet = this.select(keySelector).distinct((k) => k).orderBy(k => k).toArray();
@@ -109,10 +138,12 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
 
         return new ArrayEnumerable(result);
     }
+    /**@inheritDoc */
     item(index: number): Undefinable<T>
     {
         return this._array[index];
     }
+    /**@inheritDoc */
     last(predicate?: Predicate<T>): T
     {
         const result = this.lastOrDefault(predicate);
@@ -122,6 +153,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
         }
         return result;
     }
+    /**@inheritDoc */
     lastOrDefault(predicate?: Predicate<T>): T | null
     {
         if (isUndefinedOrNull(predicate))
@@ -135,22 +167,27 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
             ? null
             : result;
     }
+    /**@inheritDoc */
     max(selector: Selector<T, number>): number
     {
         return Math.max(...this._array.map(selector));
     }
+    /**@inheritDoc */
     min(selector: Selector<T, number>): number
     {
         return Math.min(...this._array.map(selector));
     }
+    /**@inheritDoc */
     ofType<N extends T>(ctor: ConstructorFor<N>): IEnumerable<N>
     {
-        return ofType(this, ctor);
+        return new ArrayEnumerable(ofType(this._array, ctor));
     }
+    /**@inheritDoc */
     orderBy<R>(selector: Selector<T, R>, comparer?: IComparer<R> | undefined): IEnumerable<T>
     {
         return this.internalOrderBy(selector, comparer || DefaultComparers.DefaultComparer);
     }
+    /**@inheritDoc */
     orderByDescending<R>(selector: Selector<T, R>, comparer?: IComparer<R> | undefined): IEnumerable<T>
     {
         return this.internalOrderBy(selector, new ReverseComparer(comparer || DefaultComparers.DefaultComparer));
@@ -165,14 +202,17 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
         return new ArrayEnumerable(array);
     }
 
+    /**@inheritDoc */
     prepend(item: T): IEnumerable<T>
     {
         return new ArrayEnumerable([item, ...this._array]);
     }
+    /**@inheritDoc */
     select<TOut>(selector: Selector<T, TOut>): IEnumerable<TOut>
     {
         return new ArrayEnumerable(this._array.map(selector));
     }
+    /**@inheritDoc */
     selectMany<TOut>(selector: Selector<T, IEnumerable<TOut>>): IEnumerable<TOut>
     {
         return new ArrayEnumerable(this._array.reduce(
@@ -180,6 +220,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
             []
         ));
     }
+    /**@inheritDoc */
     single(predicate?: Predicate<T>): T
     {
         const result = this.singleOrDefault(predicate);
@@ -191,6 +232,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
 
         return result;
     }
+    /**@inheritDoc */
     singleOrDefault(predicate?: Predicate<T>): T | null
     {
         const result = isUndefinedOrNull(predicate)
@@ -209,10 +251,12 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
 
         return result[0];
     }
+    /**@inheritDoc */
     skip(count: number): IEnumerable<T>
     {
         return new ArrayEnumerable(this._array.slice(count));
     }
+    /**@inheritDoc */
     split(predicate: Predicate<T>): { pTrue: IEnumerable<T>; pFalse: IEnumerable<T>; }
     {
         return {
@@ -220,6 +264,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
             pFalse: this.where(i => !predicate(i))
         };
     }
+    /**@inheritDoc */
     sum(selector: Selector<T, number>): number
     {
         return this._array
@@ -227,14 +272,17 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
             .reduce((a, c) => a + c, 0)
             ;
     }
+    /**@inheritDoc */
     take(count: number): IEnumerable<T>
     {
         return new ArrayEnumerable(this._array.slice(0, count));
     }
+    /**@inheritDoc */
     toArray(): T[]
     {
         return [...this._array];
     }
+    /**@inheritDoc */
     toDictionary<TKey, TValue>(keySelector: (a: T) => TKey, valueSelector: (a: T) => TValue): IDictionary<TKey, TValue>
     {
         return this._array.reduce(
@@ -246,13 +294,15 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
             new Dictionary<TKey, TValue>()
         );
     }
+    /**@inheritDoc */
     toList(): IList<T>
     {
         throw new NotImplementedException();
     }
+    /**@inheritDoc */
     where(predicate: Predicate<T>): IEnumerable<T>
     {
-        return new ArrayEnumerable(this._array.filter(predicate));
+        return new  ArrayEnumerable(where(this._array, predicate));
     }
 }
 

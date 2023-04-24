@@ -15,11 +15,15 @@ import max from './max';
 import min from './min';
 import ofType from './ofType';
 import select from './select';
+import selectMany from './selectMany';
 import single from './single';
 import singleOrDefault from './singleOrDefault';
 import sum from './sum';
 import take from './take';
 import where from './where';
+import orderBy from './orderBy';
+import orderByDescending from './orderByDescending';
+import skip from './skip';
 
 
 
@@ -233,49 +237,6 @@ describe("Array.firstOrDefault", () =>
     });
 });
 
-
-// describe("Array.join", () =>
-// {
-//     it("should return the items joined by the selector", () =>
-//     {
-//         const outer = [1, 2, 3, 4, 5, 6];
-//         const inner = [2, 4, 6, 8];
-//         const expected = [2, 4, 6];
-
-//         const qOuter = new ArrayArray(outer);
-//         const qInner = new ArrayArray(inner);
-
-//         const outerKeySelector: (o: number) => number = o =>
-//         {
-//             console.log('o', o);
-//             return o;
-//         };
-//         const innerKeySelector: (i: number) => number = i =>
-//         {
-//             console.log('i', i);
-//             return i;
-//         };
-//         const resultSelector: (o: number, i: number) => { o: number, i: number; } = (o, i) =>
-//         {
-//             console.log('{o,i}', { o, i });
-//             return { o, i };
-//         };
-
-//         const actual = qOuter.join(qInner, outerKeySelector, innerKeySelector, resultSelector)
-//             .select(j => j.i)
-//             .toArray();
-
-//         console.log(actual);
-
-//         expect(actual).toBe(expected);
-
-//         //expect(count(result)).toEqual(expected.length);
-
-//         // result.forEach(i => expect(i.i).toStrictEqual(i.o));
-//     });
-// });
-
-
 describe("Array.groupBy", () =>
 {
     it("should return the items grouped by whether they are even or odd", () =>
@@ -411,7 +372,7 @@ describe("Array.ofType", () =>
         ];
 
         const query = array;
-        const result = ofType(query, DerivedClass);        
+        const result = ofType(query, DerivedClass);
 
         expect(count(result)).toEqual(3);
 
@@ -422,81 +383,81 @@ describe("Array.ofType", () =>
     });
 });
 
-// describe("Array.orderBy", () =>
-// {
-//     it("should return the items in ascending order", () =>
-//     {
-//         const array = [1, 4, 2, 3];
-//         const query = array;
-//         const expected = [1, 2, 3, 4];
+describe("Array.orderBy", () =>
+{
+    it("should return the items in ascending order", () =>
+    {
+        const array = [1, 4, 2, 3];
+        const query = array;
+        const expected = [1, 2, 3, 4];
 
-//         const result = orderBy(query, (i) => i);
+        const result = orderBy(query, (i) => i);
 
-//         for (let i = 0; i < count(result); i++)
-//         {
-//             expect(expected[i]).toEqual(item(result, i));
-//         }
-//     });
+        for (let i = 0; i < count(result); i++)
+        {
+            expect(expected[i]).toEqual(item(result, i));
+        }
+    });
 
-//     it("should return the items in descending order", () =>
-//     {
-//         const array = [1, 4, 2, 3];
-//         const query = array;
-//         const expected = [4, 3, 2, 1];
+    it("should return the items in descending order", () =>
+    {
+        const array = [1, 4, 2, 3];
+        const query = array;
+        const expected = [4, 3, 2, 1];
 
-//         const result = orderByDescending(query, (i) => i);
+        const result = orderByDescending(query, (i) => i);
 
-//         for (let i = 0; i < count(result); i++)
-//         {
-//             expect(expected[i]).toEqual(item(result, i));
-//         }
-//     });
-// });
+        for (let i = 0; i < count(result); i++)
+        {
+            expect(expected[i]).toEqual(item(result, i));
+        }
+    });
+});
 
-// describe("Array.skip", () =>
-// {
-//     it("should return the items after the skip length (2)", () =>
-//     {
-//         const array = [1, 2, 3, 4];
-//         const query = array;
-//         const expected = [3, 4];
+describe("Array.skip", () =>
+{
+    it("should return the items after the skip length (2)", () =>
+    {
+        const array = [1, 2, 3, 4];
+        const query = array;
+        const expected = [3, 4];
 
-//         const result = skip(query, 2);
+        const result = skip(query, 2);
 
-//         for (let i = 0; i < count(result); i++)
-//         {
-//             expect(item(result, i)).toEqual(expected[i]);
-//         }
-//     });
+        for (let i = 0; i < count(result); i++)
+        {
+            expect(item(result, i)).toEqual(expected[i]);
+        }
+    });
 
-//     it("should return the items after the skip length (0)", () =>
-//     {
-//         const array = [1, 2, 3, 4];
-//         const query = array;
-//         const expected = [1, 2, 3, 4];
+    it("should return the items after the skip length (0)", () =>
+    {
+        const array = [1, 2, 3, 4];
+        const query = array;
+        const expected = [1, 2, 3, 4];
 
-//         const result = skip(query, 0);
+        const result = skip(query, 0);
 
-//         for (let i = 0; i < count(result); i++)
-//         {
-//             expect(item(result, i)).toEqual(expected[i]);
-//         }
-//     });
+        for (let i = 0; i < count(result); i++)
+        {
+            expect(item(result, i)).toEqual(expected[i]);
+        }
+    });
 
-//     it("should return the items after the skip length (4)", () =>
-//     {
-//         const array = [1, 2, 3, 4];
-//         const query = array;
-//         const expected = [];
+    it("should return the items after the skip length (4)", () =>
+    {
+        const array = [1, 2, 3, 4];
+        const query = array;
+        const expected = [];
 
-//         const result = skip(query, 4);
+        const result = skip(query, 4);
 
-//         for (let i = 0; i < count(result); i++)
-//         {
-//             expect(item(result, i)).toEqual(expected[i]);
-//         }
-//     });
-// });
+        for (let i = 0; i < count(result); i++)
+        {
+            expect(item(result, i)).toEqual(expected[i]);
+        }
+    });
+});
 
 describe("Array.select", () =>
 {
@@ -529,51 +490,51 @@ describe("Array.select", () =>
     });
 });
 
-// describe("Array.selectMany", () =>
-// {
-//     it("should return a flat map of the set 1", () =>
-//     {
-//         const array = [[1], [2], [3], [4]];
-//         const query = array;
-//         const expected = [1, 2, 3, 4];
+describe("Array.selectMany", () =>
+{
+    it("should return a flat map of the set 1", () =>
+    {
+        const array = [[1], [2], [3], [4]];
+        const query = array;
+        const expected = [1, 2, 3, 4];
 
-//         const result = selectMany(query, i => new ArrayArray(i));
+        const result = selectMany(query, i => i);
 
-//         for (let i = 0; i < count(result); i++)
-//         {
-//             expect(item(result, i)).toEqual(expected[i]);
-//         }
-//     });
+        for (let i = 0; i < count(result); i++)
+        {
+            expect(item(result, i)).toEqual(expected[i]);
+        }
+    });
 
-//     it("should return a flat map of the set 1.2", () =>
-//     {
-//         const array = [new ArrayArray([1, 2, 3]), new ArrayArray([4, 5])];
-//         const query = array;
-//         const expected = [1, 2, 3, 4, 5];
+    it("should return a flat map of the set 1.2", () =>
+    {
+        const array = [new Array([1, 2, 3]), new Array([4, 5])];
+        const query = array;
+        const expected = [1, 2, 3, 4, 5];
 
-//         const result = selectMany(query, i => i);
+        const result = selectMany(query, i => selectMany(i, i1=>i1));
 
-//         for (let i = 0; i < count(result); i++)
-//         {
-//             expect(item(result, i)).toEqual(expected[i]);
-//         }
-//     });
+        for (let i = 0; i < count(result); i++)
+        {
+            expect(item(result, i)).toEqual(expected[i]);
+        }
+    });
 
-//     it("should return a flat map of the set 2", () =>
-//     {
-//         const array = [[1, 2], [2, 3], [3, 4], [4, 5]];
-//         const query = array;
-//         const expected = [1, 2, 2, 3, 3, 4, 4, 5];
+    it("should return a flat map of the set 2", () =>
+    {
+        const array = [[1, 2], [2, 3], [3, 4], [4, 5]];
+        const query = array;
+        const expected = [1, 2, 2, 3, 3, 4, 4, 5];
 
-//         const result = selectMany(query, i => new ArrayArray(i));
+        const result = selectMany(query, i => i);
 
-//         for (let i = 0; i < count(result); i++)
-//         {
-//             expect(expected[i]).toEqual(item(result, i));
-//         }
-//     });
+        for (let i = 0; i < count(result); i++)
+        {
+            expect(expected[i]).toEqual(item(result, i));
+        }
+    });
 
-// });
+});
 
 
 describe("Array.sum", () =>
@@ -648,90 +609,18 @@ describe("Array.where", () =>
     });
 });
 
-// describe("Array Big sets", () =>
-// {
-//     it("should select all even numbers", (done) =>
-//     {
+describe("Array Big sets", () =>
+{
+    it("should select all even numbers (built-in)", (done) =>
+    {
+        const array = Array.from(Array(1000001).keys());
 
-//         const enumerable = Array.range(1, 1000000);
+        array.shift();
 
-//         const query = enumerable;
+        array.filter(i => i % 2 == 0);
 
-//         const evenNumbers = where(query,i => i % 2 == 0);
+        done();
+    });
+});
 
-//         evenNumbers.toArray();
 
-//         done();
-//     });
-
-//     it("should select all even numbers (built-in)", (done) =>
-//     {
-//         const array = Array.from(Array(1000001).keys());
-
-//         array.shift();
-
-//         array.filter(i => i % 2 == 0);
-
-//         done();
-//     });
-// });
-
-// describe("Array.range", () =>
-// {
-//     it("should return an enumerable of numbers from 1 to 10 (slow)", () =>
-//     {
-//         const expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-//         const actual = Array.range(1, 10);
-
-//         for (let i = 0; i < expected.length; i++)
-//         {
-//             expect(actual.item(i)).toEqual(expected[i]);
-//         }
-//     });
-
-//     it("should return an enumerable of numbers from -10 to 10 (slow)", () =>
-//     {
-//         const expected = [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-//         const actual = Array.range(-10, 21);
-
-//         for (let i = 0; i < expected.length; i++)
-//         {
-//             expect(actual.item(i)).toEqual(expected[i]);
-//         }
-//     });
-
-//     it("should return an enumerable of numbers from 1 to 10 (fast)", () =>
-//     {
-//         const expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-//         const actual = Array.range(1, 10).toArray();
-
-//         for (let i = 0; i < expected.length; i++)
-//         {
-//             expect(actual[i]).toEqual(expected[i]);
-//         }
-//     });
-
-//     it("should return an enumerable of numbers from -10 to 10 (slow)", () =>
-//     {
-//         const expected = [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-//         const actual = Array.range(-10, 21).toArray();
-
-//         for (let i = 0; i < expected.length; i++)
-//         {
-//             expect(actual[i]).toEqual(expected[i]);
-//         }
-//     });
-
-//     it("should throw an exception saying that only integers are supported", (done) =>
-//     {
-//         try
-//         {
-//             Array.range(1.1, 10);
-//             fail();
-//         }
-//         catch
-//         {
-//             done();
-//         }
-//     });
-// });
