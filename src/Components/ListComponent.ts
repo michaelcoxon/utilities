@@ -1,6 +1,6 @@
 
 import Component from './Component';
-import { List } from '../Enumerables';
+import { List } from "src/Enumerables/List";
 
 interface IListComponentProps
 {

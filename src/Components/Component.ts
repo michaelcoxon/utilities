@@ -2,7 +2,8 @@ import { IDisposable, Undefinable } from '../Types';
 import { IEnumerable } from '../Enumerables/_types';
 import { IEvent, Event } from '../Events';
 import { INotifyPropertyChanged, INotifyComponentPropertyChangedEventArgs, INotifyPropertyChangedEventArgs } from '../INotifyPropertyChanged';
-import { Collection, Enumerable } from '../Enumerables';
+import { Enumerable } from "src/Enumerables/Enumerable";
+import { Collection } from "src/Enumerables/Collection";
 
 type Props = Undefinable<{}>;
 

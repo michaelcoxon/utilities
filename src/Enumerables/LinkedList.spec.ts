@@ -1,4 +1,4 @@
-﻿import { LinkedList } from '../../src/Enumerables';
+﻿import LinkedList from './LinkedList';
 
 describe("LinkedList.constructor", () =>
 {

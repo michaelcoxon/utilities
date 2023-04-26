@@ -1,4 +1,4 @@
-import { Dictionary } from '../../src/Enumerables';
+import  Dictionary  from './Dictionary';
 
 describe("Dictionary.constructor", () =>
 {

@@ -1,4 +1,5 @@
-﻿import { ArrayEnumerable, Enumerable } from '../../src/Enumerables';
+﻿import ArrayEnumerable from './ArrayEnumerable';
+import  Enumerable  from './Enumerable';
 import { getDefaultLogger } from '../../src/Logging/defaultLogger';
 
 /*

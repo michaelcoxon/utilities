@@ -1,6 +1,5 @@
-import { IEnumerableOrArray } from '../../Types';
 
-export default function asArray<T>(enumerableOrArray: IEnumerableOrArray<T>): T[]
+export default function asArray<T>(iterable: Iterable<T>): T[]
 {
-    return [...enumerableOrArray];
+    return [...iterable];
 }

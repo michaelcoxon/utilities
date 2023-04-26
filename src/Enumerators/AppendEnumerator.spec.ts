@@ -1,4 +1,4 @@
-﻿import { Collection } from '../../src/Enumerables';
+﻿import  Collection  from '../../src/Enumerables/Collection';
 import AppendEnumerator from '../../src/Enumerators/AppendEnumerator';
 
 describe("AppendEnumerator.constructor", () =>

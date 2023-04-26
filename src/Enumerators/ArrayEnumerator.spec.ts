@@ -1,5 +1,5 @@
 ﻿import { throws } from 'assert';
-import { Collection } from '../../src/Enumerables';
+import  Collection  from '../../src/Enumerables/Collection';
 import ArrayEnumerator from '../../src/Enumerators/ArrayEnumerator';
 
 describe("ArrayEnumerator.constructor", () =>

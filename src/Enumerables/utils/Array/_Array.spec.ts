@@ -248,11 +248,12 @@ describe("Array.groupBy", () =>
 
         expect(2).toEqual(count(result));
 
-        const evens = single(where(result, g => g.key === 0)).items;
-        const odds = single(where(result, g => g.key === 1)).items;
+        const evens = single(where(result, g => g.key === 0));
+        const odds = single(where(result, g => g.key === 1));
 
-        expect(evens).toEqual([2, 4, 6, 8, 10]);
-        expect(odds).toEqual([1, 3, 5, 7, 9]);
+        // copy cause of the `key` property
+        expect([...evens]).toEqual([2, 4, 6, 8, 10]);
+        expect([...odds]).toEqual([1, 3, 5, 7, 9]);
     });
 });
 

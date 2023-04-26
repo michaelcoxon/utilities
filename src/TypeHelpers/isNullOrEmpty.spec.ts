@@ -1,4 +1,4 @@
-import { List } from '../../src/Enumerables';
+import List  from '../Enumerables/List';
 import isNullOrEmpty from '../../src/TypeHelpers/isNullOrEmpty';
 
 describe("isNullOrEmpty", () =>

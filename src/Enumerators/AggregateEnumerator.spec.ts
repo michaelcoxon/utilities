@@ -1,4 +1,4 @@
-﻿import { Collection } from '../../src/Enumerables';
+﻿import Collection from '../../src/Enumerables/Collection';
 import AggregateEnumerator from '../../src/Enumerators/AggregateEnumerator';
 import isNumber from '../../src/TypeHelpers/isNumber';
 
@@ -75,9 +75,10 @@ describe("AggregateEnumerator.peek", () =>
         {
             en.peek();
             fail(); //assert.fail(undefined, undefined, "Should not be able to see past end of enumerable");
-        } catch (ex) {
+        } catch (ex)
+        {
             //do nothing
-         }
+        }
     });
 });
 

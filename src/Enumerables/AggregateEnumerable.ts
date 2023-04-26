@@ -1,10 +1,10 @@
 import AggregateEnumerator from "../Enumerators/AggregateEnumerator";
 import { IEnumerable } from './_types';
 import { IEnumerator } from '../Enumerators/_types';
-import { EnumerableBase } from './index';
+import EnumerableBase from './utils/IEnumerable/EnumerableBase';
 
 
-export class AggregateEnumerable<T, TReturn> extends EnumerableBase<TReturn>
+export default class AggregateEnumerable<T, TReturn> extends EnumerableBase<TReturn>
 {
     readonly #enumerable: IEnumerable<T>;
     readonly #aggregateFunction: (acumulate: TReturn, current: T) => TReturn;

@@ -2,13 +2,11 @@ import { ConstructorFor, Predicate, Selector, Undefinable } from "../Types";
 import { IComparer } from '../Comparers/_types';
 import { IEnumerable, IEnumerableGroup, IDictionary, IList } from './_types';
 import { IEnumerator } from '../Enumerators/_types';
-import { isUndefinedOrNull } from '../TypeHelpers';
 import { ArrayEnumerator } from '../Enumerators';
 import DefaultComparers from '../Comparers/DefaultComparers';
-import ReverseComparer from '../Comparers/ReverseComparer';
-import MapComparer from '../Comparers/MapComparer';
-import { Dictionary } from './index';
-import { InvalidOperationException, NotImplementedException } from '../Exceptions';
+import List from "./List";
+import Dictionary from "./Dictionary";
+import { NotImplementedException } from '../Exceptions';
 
 import all from './utils/Array/all';
 import any from './utils/Array/any';
@@ -32,8 +30,11 @@ import singleOrDefault from './utils/Array/singleOrDefault';
 import sum from './utils/Array/sum';
 import take from './utils/Array/take';
 import where from './utils/Array/where';
+import selectMany from './utils/Array/selectMany';
+import orderByDescending from './utils/Array/orderByDescending';
+import orderBy from './utils/Array/orderBy';
 
-export class ArrayEnumerable<T> implements IEnumerable<T>
+export default class ArrayEnumerable<T> implements IEnumerable<T>
 {
     [Symbol.iterator](): Iterator<T, any, undefined>
     {
@@ -90,26 +91,15 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     /**@inheritDoc */
     first(predicate?: Predicate<T>): T
     {
-        const result = this.firstOrDefault(predicate);
-        if (isUndefinedOrNull(result))
-        {
-            throw new InvalidOperationException('There are no results');
-        }
-        return result;
+        return first(this._array, predicate);
     }
 
     /**@inheritDoc */
     firstOrDefault(predicate?: Predicate<T>): T | null
     {
-        let result = isUndefinedOrNull(predicate)
-            ? this._array[0]
-            : this._array.find(predicate)
-            ;
-
-        return isUndefinedOrNull(result)
-            ? null
-            : result;
+        return firstOrDefault(this._array, predicate);
     }
+
     /**@inheritDoc */
     forEach(callback: (value: T, index: number) => boolean | void): void
     {
@@ -123,59 +113,40 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     /**@inheritDoc */
     groupBy<TKey>(keySelector: Selector<T, TKey>, comparer: IComparer<TKey> = DefaultComparers.DefaultComparer): IEnumerable<IEnumerableGroup<T, TKey>>
     {
-        const keySet = this.select(keySelector).distinct((k) => k).orderBy(k => k).toArray();
-        const result = keySet.reduce(
-            (group, key) =>
-            {
-                const en = this.where(item => comparer.equals(keySelector(item), key));
-                en['key'] = key;
-                group.push(en as IEnumerableGroup<T, TKey>);
+        const result = groupBy(this._array, keySelector, comparer);
+        const en = select(result, r =>
+        {
+            const ar = new ArrayEnumerable(r) as {};
+            ar['key'] = r.key;
+            return ar as IEnumerableGroup<T, TKey>;
+        });
 
-                return group;
-            },
-            new Array<IEnumerableGroup<T, TKey>>()
-        );
-
-        return new ArrayEnumerable(result);
+        return new ArrayEnumerable(en);
     }
     /**@inheritDoc */
     item(index: number): Undefinable<T>
     {
-        return this._array[index];
+        return item(this._array, index);
     }
     /**@inheritDoc */
     last(predicate?: Predicate<T>): T
     {
-        const result = this.lastOrDefault(predicate);
-        if (isUndefinedOrNull(result))
-        {
-            throw new InvalidOperationException('There are no results');
-        }
-        return result;
+        return last(this._array, predicate);
     }
     /**@inheritDoc */
     lastOrDefault(predicate?: Predicate<T>): T | null
     {
-        if (isUndefinedOrNull(predicate))
-        {
-            return this._array[this._array.length - 1] || null;
-        }
-        const set = this._array.filter(predicate);
-        const result = set[set.length - 1];
-
-        return isUndefinedOrNull(result)
-            ? null
-            : result;
+        return lastOrDefault(this._array, predicate);
     }
     /**@inheritDoc */
     max(selector: Selector<T, number>): number
     {
-        return Math.max(...this._array.map(selector));
+        return max(this._array, selector);
     }
     /**@inheritDoc */
     min(selector: Selector<T, number>): number
     {
-        return Math.min(...this._array.map(selector));
+        return min(this._array, selector);
     }
     /**@inheritDoc */
     ofType<N extends T>(ctor: ConstructorFor<N>): IEnumerable<N>
@@ -185,21 +156,12 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     /**@inheritDoc */
     orderBy<R>(selector: Selector<T, R>, comparer?: IComparer<R> | undefined): IEnumerable<T>
     {
-        return this.internalOrderBy(selector, comparer || DefaultComparers.DefaultComparer);
+        return new ArrayEnumerable(orderBy(this._array, selector, comparer || DefaultComparers.DefaultComparer));
     }
     /**@inheritDoc */
     orderByDescending<R>(selector: Selector<T, R>, comparer?: IComparer<R> | undefined): IEnumerable<T>
     {
-        return this.internalOrderBy(selector, new ReverseComparer(comparer || DefaultComparers.DefaultComparer));
-    }
-
-    private internalOrderBy<R>(selector: (a: T) => R, comparer: IComparer<R>): IEnumerable<T>
-    {
-        // HACK: this could be better...
-        const array = this.toArray();
-        const mapComparer = new MapComparer(selector, comparer);
-        array.sort((a, b) => mapComparer.compare(a, b));
-        return new ArrayEnumerable(array);
+        return new ArrayEnumerable(orderByDescending(this._array, selector, comparer || DefaultComparers.DefaultComparer));
     }
 
     /**@inheritDoc */
@@ -210,46 +172,22 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     /**@inheritDoc */
     select<TOut>(selector: Selector<T, TOut>): IEnumerable<TOut>
     {
-        return new ArrayEnumerable(this._array.map(selector));
+        return new ArrayEnumerable(select(this._array, selector));
     }
     /**@inheritDoc */
     selectMany<TOut>(selector: Selector<T, IEnumerable<TOut>>): IEnumerable<TOut>
     {
-        return new ArrayEnumerable(this._array.reduce(
-            (results: TOut[], t: T) => [...results, ...selector(t)],
-            []
-        ));
+        return new ArrayEnumerable(selectMany(this._array, v => selector(v).toArray()));
     }
     /**@inheritDoc */
     single(predicate?: Predicate<T>): T
     {
-        const result = this.singleOrDefault(predicate);
-
-        if (isUndefinedOrNull(result))
-        {
-            throw new InvalidOperationException('There is no result.');
-        }
-
-        return result;
+        return single(this._array, predicate);
     }
     /**@inheritDoc */
     singleOrDefault(predicate?: Predicate<T>): T | null
     {
-        const result = isUndefinedOrNull(predicate)
-            ? this._array
-            : this._array.filter(predicate)
-            ;
-
-        if (result.length > 1)
-        {
-            throw new InvalidOperationException('More than one match in the collection.');
-        }
-        if (result.length !== 1)
-        {
-            return null;
-        }
-
-        return result[0];
+        return singleOrDefault(this._array, predicate);
     }
     /**@inheritDoc */
     skip(count: number): IEnumerable<T>
@@ -267,15 +205,12 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     /**@inheritDoc */
     sum(selector: Selector<T, number>): number
     {
-        return this._array
-            .map((item) => selector(item))
-            .reduce((a, c) => a + c, 0)
-            ;
+        return sum(this._array, selector);
     }
     /**@inheritDoc */
     take(count: number): IEnumerable<T>
     {
-        return new ArrayEnumerable(this._array.slice(0, count));
+        return new ArrayEnumerable(take(this._array, count));
     }
     /**@inheritDoc */
     toArray(): T[]
@@ -297,12 +232,12 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     /**@inheritDoc */
     toList(): IList<T>
     {
-        throw new NotImplementedException();
+        return new List(this._array);
     }
     /**@inheritDoc */
     where(predicate: Predicate<T>): IEnumerable<T>
     {
-        return new  ArrayEnumerable(where(this._array, predicate));
+        return new ArrayEnumerable(where(this._array, predicate));
     }
 }
 

@@ -1,16 +1,17 @@
 import { IEnumerable } from '../../_types';
 
 
-export default function forEach<T>(iterable: Iterable<T>, callback: (value: T, index: number) => boolean | void): void
+export default function forEach<T>(source: IEnumerable<T>, callback: (value: T, index: number) => boolean | void): void
 {
-    let index = 0;
-    for (const item of iterable)
+    const en = source.getEnumerator();
+    let count = 0;
+    while(en.moveNext())
     {
-        const value = callback(item, index);
+        const value = callback(en.current, count);
         if (value === false)
         {
             break;
         }
-        index++;
+        count++;
     }
 }

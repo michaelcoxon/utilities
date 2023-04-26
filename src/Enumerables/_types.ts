@@ -5,6 +5,8 @@ import { IEnumerator } from '../Enumerators/_types';
 
 export interface IEnumerable<T> extends Iterable<T>
 {
+    [Symbol.iterator](): Iterator<T>;
+    
     /**
     * Returns true if all the items match the predicate, otherwise false
     * @param predicate
@@ -252,7 +254,6 @@ export interface IEnumerable<T> extends Iterable<T>
     where(predicate: Predicate<T>): IEnumerable<T>;
 }
 
-
 export interface ICollection<T> extends IEnumerable<T>
 {
     /** Gets the number of elements contained in the ICollection<T>. */
@@ -394,8 +395,6 @@ export interface ISet<T> extends ICollection<T>, IEnumerable<T>
      */
     unionWith(enumerable: IEnumerable<T>): void;
 }
-
-
 
 export interface LinkedListItem<T>
 {
