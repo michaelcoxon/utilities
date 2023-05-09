@@ -1,4 +1,3 @@
-import format from '../Strings/format';
 import padLeft from '../Strings/padLeft';
 import { INumberFormatterConfiguration } from './_types';
 
@@ -6,15 +5,17 @@ import { INumberFormatterConfiguration } from './_types';
 export default class NumberFormatterDelegates
 {
     readonly #config: INumberFormatterConfiguration;
+    readonly #format: (format: string, ...args: any[]) => string;
 
-    constructor(numberFormatterConfiguration: INumberFormatterConfiguration)
+    constructor(numberFormatterConfiguration: INumberFormatterConfiguration, format:(format: string, ...args: any[])=> string)
     {
         this.#config = numberFormatterConfiguration;
+        this.#format = format;
     }
 
     public formatCurrency(subject: number, precision: number = this.#config.currencyDecimalDigits): string
     {
-        return format(this.#config.currencyFormat, this.formatFixed(Math.abs(subject), precision), subject < 0 ? "-" : "");
+        return this.#format(this.#config.currencyFormat, this.formatFixed(Math.abs(subject), precision), subject < 0 ? "-" : "");
     }
 
     public formatInteger(subject: number, minDigits = 0): string

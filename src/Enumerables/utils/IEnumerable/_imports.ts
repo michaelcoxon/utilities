@@ -31,4 +31,3 @@ import './toList';
 import './any';
 import './average';
 import './sum';
-import '../../List';

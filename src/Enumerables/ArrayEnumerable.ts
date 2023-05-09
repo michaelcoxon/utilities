@@ -33,6 +33,8 @@ import where from './utils/Array/where';
 import selectMany from './utils/Array/selectMany';
 import orderByDescending from './utils/Array/orderByDescending';
 import orderBy from './utils/Array/orderBy';
+import toDictionary from './utils/Array/toDictionary';
+import toList from './utils/Array/toList';
 
 export default class ArrayEnumerable<T> implements IEnumerable<T>
 {
@@ -220,19 +222,12 @@ export default class ArrayEnumerable<T> implements IEnumerable<T>
     /**@inheritDoc */
     toDictionary<TKey, TValue>(keySelector: (a: T) => TKey, valueSelector: (a: T) => TValue): IDictionary<TKey, TValue>
     {
-        return this._array.reduce(
-            (dict, val) =>
-            {
-                dict.addKeyValue(keySelector(val), valueSelector(val));
-                return dict;
-            },
-            new Dictionary<TKey, TValue>()
-        );
+        return toDictionary(this._array, keySelector, valueSelector);
     }
     /**@inheritDoc */
     toList(): IList<T>
     {
-        return new List(this._array);
+        return toList(this._array);
     }
     /**@inheritDoc */
     where(predicate: Predicate<T>): IEnumerable<T>

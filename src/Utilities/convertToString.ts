@@ -10,9 +10,9 @@ export default function convertToString(subject: any, format: string = empty): s
 {
     if (isNumber(subject))
     {
-        return new NumberFormatter().format(subject, format);
+        return new NumberFormatter(convertToString).format(subject, format);
     }
-    if (isDate(subject))
+    if (isDate(subject)) 
     {
         return new DateFormatter().format(subject, format);
     }

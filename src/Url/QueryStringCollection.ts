@@ -1,8 +1,8 @@
-import convertObjectToQueryStringItem from './utils/convertObjectToQueryStringItem';
 import convertQueryStringItemToObject from './utils/convertQueryStringItemToObject';
 import deserializeQS from './utils/deserializeQS';
 import serializeQueryStringItems from './utils/serializeQueryStringItems';
 import { QueryStringItem } from './_types';
+import convert from './utils/convert';
 
 
 
@@ -55,6 +55,6 @@ export default class QueryStringCollection
 
     public static createFromObject(queryStringObject: Record<string, any>)
     {
-        return new QueryStringCollection(convertObjectToQueryStringItem(queryStringObject));
+        return new QueryStringCollection(convert(undefined, queryStringObject));
     }
 }

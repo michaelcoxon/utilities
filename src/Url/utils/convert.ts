@@ -1,12 +1,7 @@
 import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull';
 import { QueryStringItem } from '../_types';
-import convertArray from './convertArray';
-import convertObjectToQueryStringItem from './convertObjectToQueryStringItem';
 
-
-
-
-export default function convert(name: string, value: any): QueryStringItem[]
+export default function convert(name?: string, value?: any): QueryStringItem[]
 {
     const result: QueryStringItem[] = [];
 
@@ -14,16 +9,27 @@ export default function convert(name: string, value: any): QueryStringItem[]
     {
         if (Array.isArray(value))
         {
-            result.push(...convertArray(`${name}`, value));
+            for (let i = 0; i < value.length; i++)
+            {
+                const dkey = name && `${name}[${i}]` || i.toString();
+                result.push(...convert(dkey,  value[i]));
+            }
         }
         else if (typeof value === 'object')
         {
-            result.push(...convertObjectToQueryStringItem(value as Record<string, any>, `${name}.`));
+            for (const key in value)
+            {
+                if (!isUndefinedOrNull(value[key]))
+                {
+                    const dkey = name && `${name}.${key}` || key
+                    result.push(...convert(dkey, value[key]));
+                }
+            }
         }
         else
         {
             result.push({
-                name: name,
+                name: name ?? 'name',
                 value: value as string | number | boolean,
             });
         }

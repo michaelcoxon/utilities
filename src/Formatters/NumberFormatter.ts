@@ -10,7 +10,7 @@ export default class NumberFormatter implements IFormatter<number>
 {
     readonly #delegates: NumberFormatterDelegates;
 
-    constructor(numberFormatterDelegates: NumberFormatterDelegates = new NumberFormatterDelegates(DefaultConfiguration))
+    constructor(format: (format: string, ...args: any[]) => string, numberFormatterDelegates: NumberFormatterDelegates = new NumberFormatterDelegates(DefaultConfiguration, format))
     {
         this.#delegates = numberFormatterDelegates;
     }

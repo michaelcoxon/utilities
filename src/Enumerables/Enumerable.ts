@@ -4,9 +4,16 @@ import { IEnumerable } from './_types';
 import asArray from './utils/asArray';
 import asEnumerable from './utils/asEnumerable';
 import { RangeEnumerable } from './RangeEnumerable';
+import EnumerableBase from './utils/IEnumerable/EnumerableBase';
+import { IEnumerator } from '../Enumerators';
 
-export default class Enumerable
+export default class Enumerable extends EnumerableBase<unknown>
 {
+    public getEnumerator(): IEnumerator<unknown>
+    {
+        return Enumerable.empty().getEnumerator();
+    }
+
     public static range(start: number, count: number): IEnumerable<number>
     {
         return new RangeEnumerable(start, count);
