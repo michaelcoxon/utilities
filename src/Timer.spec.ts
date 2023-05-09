@@ -29,7 +29,7 @@ describe("Timer.enabled", () =>
         let ticks = 0;
 
         let resolve;
-        let promise = new Promise((_r)=> resolve = _r);
+        const promise = new Promise((_r)=> resolve = _r);
 
 
         timer.onElapsed.addHandler((_,e) =>
