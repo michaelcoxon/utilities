@@ -1,5 +1,5 @@
 ﻿
-export type INumberValue  = number &
+export interface INumberValue extends Number
 {
     [Symbol.toPrimitive]: (hint: string) => number;
     valueOf(): number;

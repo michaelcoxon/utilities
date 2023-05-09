@@ -22,18 +22,22 @@ describe("Timer.constructor", () =>
 
 describe("Timer.enabled", () =>
 {
-    it("should tick every 500ms", (done) =>
+    it("should tick every 500ms", async () =>
     {
         const timer = new Timer(500);
         let lastEventTime: number | undefined = undefined;
         let ticks = 0;
+
+        let resolve;
+        let promise = new Promise((_r)=> resolve = _r);
+
 
         timer.onElapsed.addHandler((_,e) =>
         {
             if (ticks == 10)
             {
                 timer.stop();
-                done();
+                resolve();
                 return;
             }
             
@@ -51,6 +55,8 @@ describe("Timer.enabled", () =>
         });
 
         timer.start();        
+
+        await promise;
 
     }, 15200);
 });
