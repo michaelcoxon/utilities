@@ -1,10 +1,6 @@
 import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull';
+import { empty } from '../../Utilities';
 import { QueryStringItem } from '../_types';
-import convertArray from './convertArray';
-import convertObjectToQueryStringItem from './convertObjectToQueryStringItem';
-
-
-
 
 export default function convert(name: string, value: any): QueryStringItem[]
 {
@@ -26,6 +22,47 @@ export default function convert(name: string, value: any): QueryStringItem[]
                 name: name,
                 value: value as string | number | boolean,
             });
+        }
+    }
+
+    return result;
+}
+
+/**
+ * Converts a `name=items[]` to a `name[index]=item` for a url query string.
+ */
+export function convertArray(name: string, arr: any[]): QueryStringItem[]
+{
+    const result: QueryStringItem[] = [];
+
+    for (let i = 0; i < arr.length; i++)
+    {
+        const item = arr[i];
+
+        result.push(...convert(`${name}[${i}]`, item));
+    }
+
+    return result;
+}
+/**
+ * Converts and {@link Object} to a collection of {@link QueryStringItem}'s.
+ * @param obj
+ */
+export function convertObjectToQueryStringItem(obj: Record<string, any>): QueryStringItem[];
+/**
+ * Converts and {@link Object} to a collection of {@link QueryStringItem}'s with the specified {@param prefix} for the key.
+ * @param obj
+ */
+export function convertObjectToQueryStringItem(obj: Record<string, any>, prefix: string): QueryStringItem[];
+export function convertObjectToQueryStringItem(obj: Record<string, any>, prefix: string = empty): QueryStringItem[]
+{
+    const result: QueryStringItem[] = [];
+
+    for (const key in obj)
+    {
+        if (!isUndefinedOrNull(obj[key]))
+        {
+            result.push(...convert(`${prefix}${key}`, obj[key]));
         }
     }
 

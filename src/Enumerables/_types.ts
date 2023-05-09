@@ -2,6 +2,8 @@
 import { IComparer } from '../Comparers/_types';
 import { IEnumerator } from '../Enumerators/_types';
 
+/** A type that is either an array or an enumerable */
+export type IEnumerableOrArray<T> = T[] | IEnumerable<T>;
 
 export interface IEnumerable<T> extends Iterable<T>
 {

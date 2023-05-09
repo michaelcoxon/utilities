@@ -1,4 +1,4 @@
-import format from '../Strings/format';
+import { format } from '../Strings';
 import padLeft from '../Strings/padLeft';
 import { INumberFormatterConfiguration } from './_types';
 
