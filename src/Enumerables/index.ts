@@ -370,7 +370,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     /**@inheritDoc */
     firstOrDefault(predicate?: Predicate<T>): T | null
     {
-        let result = isUndefinedOrNull(predicate)
+        const result = isUndefinedOrNull(predicate)
             ? this._array[0]
             : this._array.find(predicate)
             ;
