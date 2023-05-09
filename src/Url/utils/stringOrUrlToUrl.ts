@@ -1,12 +1,11 @@
 import Url from '../Url';
-import { StringOrUrl } from '../_types';
 
 /**
  * Convert a string or a Url to a Url
  * @param stringOrUrl
  */
 
-export default function stringOrUrlToUrl(stringOrUrl: StringOrUrl): Url
+export default function stringOrUrlToUrl(stringOrUrl: string | Url): Url
 {
     if (stringOrUrl instanceof Url)
     {

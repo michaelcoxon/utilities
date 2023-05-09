@@ -3,7 +3,7 @@
  * @param obj the {@link Object} to serialize
  */
 
-import convertObjectToQueryStringItem from './convertObjectToQueryStringItem';
+import { convertObjectToQueryStringItem } from './convert';
 import  serializeQueryStringItems  from './serializeQueryStringItems';
 
 /**

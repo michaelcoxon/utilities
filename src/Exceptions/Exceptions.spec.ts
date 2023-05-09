@@ -10,6 +10,11 @@ import NotImplementedException from './NotImplementedException';
 import NotSupportedException from './NotSupportedException';
 import OutOfBoundsException from './OutOfBoundsException';
 import { ConstructorFor } from '../Types';
+import AlreadyDisposedException from './AlreadyDisposedException';
+import FormatException from './FormatException';
+import ErrorException from './ErrorException';
+import InvalidOperationException from './InvalidOperationException';
+import MutexAlreadyAquiredException from './MutexAlreadyAquiredException';
 
 function test<T>(exceptionType: ConstructorFor<T>, exception: () => T): void
 {
@@ -32,14 +37,21 @@ function test<T>(exceptionType: ConstructorFor<T>, exception: () => T): void
     });
 }
 
+test(AlreadyDisposedException, () => new AlreadyDisposedException('asdf'));
 test(ArgumentException, () => new ArgumentException('asdf'));
-test(ArgumentUndefinedException, () => new ArgumentUndefinedException('asdf'));
 test(ArgumentNullException, () => new ArgumentNullException('asdf'));
-test(InvalidTypeException, () => new InvalidTypeException('asdf', 'asdf'));
-test(NotImplementedException, () => new NotImplementedException());
-test(NotSupportedException, () => new NotSupportedException());
-test(OutOfBoundsException, () => new OutOfBoundsException('asdf', 0, 1));
-test(IndexOutOfRangeException, () => new IndexOutOfRangeException('asdf', -1, 0, 1));
+test(ArgumentUndefinedException, () => new ArgumentUndefinedException('asdf'));
+test(ErrorException, () => new ErrorException(new Error()));
 test(FileNotFoundException, () => new FileNotFoundException('asdf'));
+test(FormatException, () => new FormatException('asdf'));
+test(IndexOutOfRangeException, () => new IndexOutOfRangeException('asdf', - 1, 0, 1));
+test(InvalidOperationException, () => new InvalidOperationException('asdf'));
+test(InvalidTypeException, () => new InvalidTypeException('asdf', 'asdf'));
 test(KeyNotFoundException, () => new KeyNotFoundException('asdf'));
 test(KeyAlreadyDefinedException, () => new KeyAlreadyDefinedException('asdf'));
+test(MutexAlreadyAquiredException, () => new MutexAlreadyAquiredException('asdf'));
+test(NotImplementedException, () => new NotImplementedException());
+test(NotSupportedException, () => new NotSupportedException());
+test(InvalidTypeException, () => new InvalidTypeException('asdf', 'asdf'));
+test(OutOfBoundsException, () => new OutOfBoundsException('asdf', 0, 1));
+test(IndexOutOfRangeException, () => new IndexOutOfRangeException('asdf', -1, 0, 1));

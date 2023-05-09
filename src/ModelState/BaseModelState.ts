@@ -2,7 +2,7 @@ import Event from "../Events/Event";
 import { EventHandler } from '../Events/_types';
 import Guid from '../Guid';
 import { Undefinable } from "../Types";
-import { IModelState } from './ModelState';
+import { IModelState } from "./IModelState";
 
 
 export default abstract class BaseModelState<T extends any> implements IModelState<T>

@@ -1,8 +1,8 @@
-import convertObjectToQueryStringItem from './utils/convertObjectToQueryStringItem';
 import convertQueryStringItemToObject from './utils/convertQueryStringItemToObject';
 import deserializeQS from './utils/deserializeQS';
 import serializeQueryStringItems from './utils/serializeQueryStringItems';
 import { QueryStringItem } from './_types';
+import { convertObjectToQueryStringItem } from './utils/convert';
 
 
 

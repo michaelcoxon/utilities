@@ -26,7 +26,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">IReadOnlyCollection</span></li></ul></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L338">src/Enumerables/_types.ts:338</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L340">src/Enumerables/_types.ts:340</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -80,7 +80,7 @@
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>length</span><a href="#length" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></h3>
 <div class="tsd-signature">length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L340">src/Enumerables/_types.ts:340</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L342">src/Enumerables/_types.ts:342</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a id="_iterator_" class="tsd-anchor"></a>
@@ -107,7 +107,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#all">all</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L13">src/Enumerables/_types.ts:13</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L15">src/Enumerables/_types.ts:15</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="any" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>any</span><a href="#any" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -115,9 +115,9 @@
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Returns true if any of the items match the predicate, otherwise false</p>
 
-<h3>Example</h3><pre><code><span class="hl-8">if</span><span class="hl-1"> (</span><span class="hl-0">myEnumerable</span><span class="hl-1">.</span><span class="hl-4">any</span><span class="hl-1">()) {</span><br/><span class="hl-1">    </span><span class="hl-6">// do something because the enumerable has elements</span><br/><span class="hl-1">}</span>
+<h3>Example</h3><pre><code><span class="hl-2">if</span><span class="hl-1"> (</span><span class="hl-0">myEnumerable</span><span class="hl-1">.</span><span class="hl-3">any</span><span class="hl-1">()) {</span><br/><span class="hl-1">    </span><span class="hl-4">// do something because the enumerable has elements</span><br/><span class="hl-1">}</span>
 </code></pre>
-<pre><code><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-0">myEnumerable</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-4">ArrayEnumerable</span><span class="hl-1">([</span><span class="hl-3">1</span><span class="hl-1">, </span><span class="hl-3">2</span><span class="hl-1">, </span><span class="hl-3">3</span><span class="hl-1">, </span><span class="hl-3">4</span><span class="hl-1">]);</span><br/><span class="hl-8">if</span><span class="hl-1"> (</span><span class="hl-0">myEnumerable</span><span class="hl-1">.</span><span class="hl-4">any</span><span class="hl-1">((</span><span class="hl-0">i</span><span class="hl-1">) </span><span class="hl-2">=&gt;</span><span class="hl-1"> </span><span class="hl-0">i</span><span class="hl-1"> == </span><span class="hl-3">2</span><span class="hl-1">)) {</span><br/><span class="hl-1">    </span><span class="hl-6">// the enumerable contains a &#39;2&#39;</span><br/><span class="hl-1">}</span>
+<pre><code><span class="hl-5">let</span><span class="hl-1"> </span><span class="hl-0">myEnumerable</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-3">ArrayEnumerable</span><span class="hl-1">([</span><span class="hl-6">1</span><span class="hl-1">, </span><span class="hl-6">2</span><span class="hl-1">, </span><span class="hl-6">3</span><span class="hl-1">, </span><span class="hl-6">4</span><span class="hl-1">]);</span><br/><span class="hl-2">if</span><span class="hl-1"> (</span><span class="hl-0">myEnumerable</span><span class="hl-1">.</span><span class="hl-3">any</span><span class="hl-1">((</span><span class="hl-0">i</span><span class="hl-1">) </span><span class="hl-5">=&gt;</span><span class="hl-1"> </span><span class="hl-0">i</span><span class="hl-1"> == </span><span class="hl-6">2</span><span class="hl-1">)) {</span><br/><span class="hl-1">    </span><span class="hl-4">// the enumerable contains a &#39;2&#39;</span><br/><span class="hl-1">}</span>
 </code></pre>
 </div>
 <div class="tsd-parameters">
@@ -128,7 +128,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#any">any</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L37">src/Enumerables/_types.ts:37</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L39">src/Enumerables/_types.ts:39</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="append" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>append</span><a href="#append" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -144,7 +144,7 @@
 <h4 class="tsd-returns-title">Returns <a href="Enumerables.IEnumerable.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#append">append</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L19">src/Enumerables/_types.ts:19</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L21">src/Enumerables/_types.ts:21</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="average" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>average</span><a href="#average" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -160,7 +160,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#average">average</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L43">src/Enumerables/_types.ts:43</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L45">src/Enumerables/_types.ts:45</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="concat" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>concat</span><a href="#concat" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -176,7 +176,7 @@
 <h4 class="tsd-returns-title">Returns <a href="Enumerables.IEnumerable.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#concat">concat</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L50">src/Enumerables/_types.ts:50</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L52">src/Enumerables/_types.ts:52</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="contains" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>contains</span><a href="#contains" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -194,7 +194,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#contains">contains</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L56">src/Enumerables/_types.ts:56</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L58">src/Enumerables/_types.ts:58</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="count" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>count</span><a href="#count" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -205,7 +205,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#count">count</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L59">src/Enumerables/_types.ts:59</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L61">src/Enumerables/_types.ts:61</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="distinct" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>distinct</span><a href="#distinct" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -226,7 +226,7 @@
 <h4 class="tsd-returns-title">Returns <a href="Enumerables.IEnumerable.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#distinct">distinct</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L65">src/Enumerables/_types.ts:65</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L67">src/Enumerables/_types.ts:67</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="first" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>first</span><a href="#first" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -237,7 +237,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#first">first</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L68">src/Enumerables/_types.ts:68</a></li></ul></aside></li>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L70">src/Enumerables/_types.ts:70</a></li></ul></aside></li>
 <li class="tsd-signature tsd-anchor-link" id="first.first-2">first<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><a href="../types/Predicate.html" class="tsd-signature-type" data-tsd-kind="Type alias">Predicate</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><a href="#first.first-2" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Returns the first item in the enumerable that matches the predicate</p>
@@ -250,7 +250,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#first">first</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L74">src/Enumerables/_types.ts:74</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L76">src/Enumerables/_types.ts:76</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="firstOrDefault" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>first<wbr/>Or<wbr/>Default</span><a href="#firstOrDefault" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -261,7 +261,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#firstOrDefault">firstOrDefault</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L77">src/Enumerables/_types.ts:77</a></li></ul></aside></li>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L79">src/Enumerables/_types.ts:79</a></li></ul></aside></li>
 <li class="tsd-signature tsd-anchor-link" id="firstOrDefault.firstOrDefault-2">first<wbr/>Or<wbr/>Default<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><a href="../types/Predicate.html" class="tsd-signature-type" data-tsd-kind="Type alias">Predicate</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><a href="#firstOrDefault.firstOrDefault-2" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Returns the first item in the enumerable that matches the predicate or null</p>
@@ -274,7 +274,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#firstOrDefault">firstOrDefault</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L83">src/Enumerables/_types.ts:83</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L85">src/Enumerables/_types.ts:85</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="forEach" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>for<wbr/>Each</span><a href="#forEach" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -303,7 +303,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#forEach">forEach</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L89">src/Enumerables/_types.ts:89</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L91">src/Enumerables/_types.ts:91</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="getEnumerator" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>get<wbr/>Enumerator</span><a href="#getEnumerator" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -314,7 +314,7 @@
 <h4 class="tsd-returns-title">Returns <a href="Enumerators.IEnumerator.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerator</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#getEnumerator">getEnumerator</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L92">src/Enumerables/_types.ts:92</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L94">src/Enumerables/_types.ts:94</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="groupBy" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>group<wbr/>By</span><a href="#groupBy" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -335,7 +335,7 @@
 <h4 class="tsd-returns-title">Returns <a href="Enumerables.IEnumerable.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerable</a><span class="tsd-signature-symbol">&lt;</span><a href="Enumerables.IEnumerableGroup.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerableGroup</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">TKey</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#groupBy">groupBy</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L98">src/Enumerables/_types.ts:98</a></li></ul></aside></li>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L100">src/Enumerables/_types.ts:100</a></li></ul></aside></li>
 <li class="tsd-signature tsd-anchor-link" id="groupBy.groupBy-2">group<wbr/>By<span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">TKey</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span>keySelector<span class="tsd-signature-symbol">: </span><a href="../types/Selector.html" class="tsd-signature-type" data-tsd-kind="Type alias">Selector</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">TKey</span><span class="tsd-signature-symbol">&gt;</span>, comparer<span class="tsd-signature-symbol">: </span><a href="Comparers.IComparer.html" class="tsd-signature-type" data-tsd-kind="Interface">IComparer</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">TKey</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Enumerables.IEnumerable.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerable</a><span class="tsd-signature-symbol">&lt;</span><a href="Enumerables.IEnumerableGroup.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerableGroup</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">TKey</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><a href="#groupBy.groupBy-2" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Groups the items by the key selector using the specified comparer</p>
@@ -355,7 +355,7 @@
 <h4 class="tsd-returns-title">Returns <a href="Enumerables.IEnumerable.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerable</a><span class="tsd-signature-symbol">&lt;</span><a href="Enumerables.IEnumerableGroup.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerableGroup</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">TKey</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#groupBy">groupBy</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L105">src/Enumerables/_types.ts:105</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L107">src/Enumerables/_types.ts:107</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="item" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>item</span><a href="#item" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -373,7 +373,7 @@
 <h4 class="tsd-returns-title">Returns <a href="../types/Undefinable.html" class="tsd-signature-type" data-tsd-kind="Type alias">Undefinable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#item">item</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L111">src/Enumerables/_types.ts:111</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L113">src/Enumerables/_types.ts:113</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="last" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>last</span><a href="#last" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -384,7 +384,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#last">last</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L123">src/Enumerables/_types.ts:123</a></li></ul></aside></li>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L125">src/Enumerables/_types.ts:125</a></li></ul></aside></li>
 <li class="tsd-signature tsd-anchor-link" id="last.last-2">last<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><a href="../types/Predicate.html" class="tsd-signature-type" data-tsd-kind="Type alias">Predicate</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><a href="#last.last-2" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Returns the last item in the enumerable that matches the predicate</p>
@@ -397,7 +397,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#last">last</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L129">src/Enumerables/_types.ts:129</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L131">src/Enumerables/_types.ts:131</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="lastOrDefault" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>last<wbr/>Or<wbr/>Default</span><a href="#lastOrDefault" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -408,7 +408,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#lastOrDefault">lastOrDefault</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L132">src/Enumerables/_types.ts:132</a></li></ul></aside></li>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L134">src/Enumerables/_types.ts:134</a></li></ul></aside></li>
 <li class="tsd-signature tsd-anchor-link" id="lastOrDefault.lastOrDefault-2">last<wbr/>Or<wbr/>Default<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><a href="../types/Predicate.html" class="tsd-signature-type" data-tsd-kind="Type alias">Predicate</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><a href="#lastOrDefault.lastOrDefault-2" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Returns the last item in the enumerable that matches the predicate or null</p>
@@ -421,7 +421,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#lastOrDefault">lastOrDefault</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L138">src/Enumerables/_types.ts:138</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L140">src/Enumerables/_types.ts:140</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="max" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>max</span><a href="#max" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -437,7 +437,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#max">max</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L144">src/Enumerables/_types.ts:144</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L146">src/Enumerables/_types.ts:146</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="min" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>min</span><a href="#min" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -453,7 +453,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#min">min</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L150">src/Enumerables/_types.ts:150</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L152">src/Enumerables/_types.ts:152</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="ofType" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>of<wbr/>Type</span><a href="#ofType" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -476,7 +476,7 @@
 <h4 class="tsd-returns-title">Returns <a href="Enumerables.IEnumerable.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">N</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#ofType">ofType</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L156">src/Enumerables/_types.ts:156</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L158">src/Enumerables/_types.ts:158</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="orderBy" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>order<wbr/>By</span><a href="#orderBy" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -499,7 +499,7 @@
 <h4 class="tsd-returns-title">Returns <a href="Enumerables.IEnumerable.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#orderBy">orderBy</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L163">src/Enumerables/_types.ts:163</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L165">src/Enumerables/_types.ts:165</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="orderByDescending" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>order<wbr/>By<wbr/>Descending</span><a href="#orderByDescending" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -522,7 +522,7 @@
 <h4 class="tsd-returns-title">Returns <a href="Enumerables.IEnumerable.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#orderByDescending">orderByDescending</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L170">src/Enumerables/_types.ts:170</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L172">src/Enumerables/_types.ts:172</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="prepend" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>prepend</span><a href="#prepend" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -538,7 +538,7 @@
 <h4 class="tsd-returns-title">Returns <a href="Enumerables.IEnumerable.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#prepend">prepend</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L176">src/Enumerables/_types.ts:176</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L178">src/Enumerables/_types.ts:178</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="select" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>select</span><a href="#select" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -559,7 +559,7 @@
 <h4 class="tsd-returns-title">Returns <a href="Enumerables.IEnumerable.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">TOut</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#select">select</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L182">src/Enumerables/_types.ts:182</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L184">src/Enumerables/_types.ts:184</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="selectMany" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>select<wbr/>Many</span><a href="#selectMany" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -578,7 +578,7 @@
 <h4 class="tsd-returns-title">Returns <a href="Enumerables.IEnumerable.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">TOut</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#selectMany">selectMany</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L184">src/Enumerables/_types.ts:184</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L186">src/Enumerables/_types.ts:186</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="single" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>single</span><a href="#single" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -591,7 +591,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#single">single</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L190">src/Enumerables/_types.ts:190</a></li></ul></aside></li>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L192">src/Enumerables/_types.ts:192</a></li></ul></aside></li>
 <li class="tsd-signature tsd-anchor-link" id="single.single-2">single<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><a href="../types/Predicate.html" class="tsd-signature-type" data-tsd-kind="Type alias">Predicate</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><a href="#single.single-2" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Returns a single element only if there is one element in the enumerable that matches the predicate</p>
@@ -606,7 +606,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#single">single</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L197">src/Enumerables/_types.ts:197</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L199">src/Enumerables/_types.ts:199</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="singleOrDefault" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>single<wbr/>Or<wbr/>Default</span><a href="#singleOrDefault" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -620,7 +620,7 @@ enumerable, then null is returned</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#singleOrDefault">singleOrDefault</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L204">src/Enumerables/_types.ts:204</a></li></ul></aside></li>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L206">src/Enumerables/_types.ts:206</a></li></ul></aside></li>
 <li class="tsd-signature tsd-anchor-link" id="singleOrDefault.singleOrDefault-2">single<wbr/>Or<wbr/>Default<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><a href="../types/Predicate.html" class="tsd-signature-type" data-tsd-kind="Type alias">Predicate</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><a href="#singleOrDefault.singleOrDefault-2" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Returns a single element only if there is one element in the enumerable that matches the predicate.
@@ -636,7 +636,7 @@ If there are no items in the enumerable, then null is returned</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#singleOrDefault">singleOrDefault</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L211">src/Enumerables/_types.ts:211</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L213">src/Enumerables/_types.ts:213</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="skip" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>skip</span><a href="#skip" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -655,7 +655,7 @@ of the enumerable, no items will be returned.</p>
 <h4 class="tsd-returns-title">Returns <a href="Enumerables.IEnumerable.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#skip">skip</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L218">src/Enumerables/_types.ts:218</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L220">src/Enumerables/_types.ts:220</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="split" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>split</span><a href="#split" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -676,7 +676,7 @@ of the enumerable, no items will be returned.</p>
 <h5>p<wbr/>True<span class="tsd-signature-symbol">: </span><a href="Enumerables.IEnumerable.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h5></li></ul><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#split">split</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L224">src/Enumerables/_types.ts:224</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L226">src/Enumerables/_types.ts:226</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="sum" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>sum</span><a href="#sum" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -694,7 +694,7 @@ of the enumerable, no items will be returned.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#sum">sum</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L230">src/Enumerables/_types.ts:230</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L232">src/Enumerables/_types.ts:232</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="take" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>take</span><a href="#take" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -713,7 +713,7 @@ larger than the size of the enumerable, all items will be returned</p>
 <h4 class="tsd-returns-title">Returns <a href="Enumerables.IEnumerable.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#take">take</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L237">src/Enumerables/_types.ts:237</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L239">src/Enumerables/_types.ts:239</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="toArray" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>to<wbr/>Array</span><a href="#toArray" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -724,7 +724,7 @@ larger than the size of the enumerable, all items will be returned</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">[]</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#toArray">toArray</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L240">src/Enumerables/_types.ts:240</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L242">src/Enumerables/_types.ts:242</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="toDictionary" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>to<wbr/>Dictionary</span><a href="#toDictionary" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -771,7 +771,7 @@ larger than the size of the enumerable, all items will be returned</p>
 <h4 class="tsd-returns-title">Returns <a href="Enumerables.IDictionary.html" class="tsd-signature-type" data-tsd-kind="Interface">IDictionary</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">TKey</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type" data-tsd-kind="Type parameter">TValue</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#toDictionary">toDictionary</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L243">src/Enumerables/_types.ts:243</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L245">src/Enumerables/_types.ts:245</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="toList" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>to<wbr/>List</span><a href="#toList" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -782,7 +782,7 @@ larger than the size of the enumerable, all items will be returned</p>
 <h4 class="tsd-returns-title">Returns <a href="Enumerables.IList.html" class="tsd-signature-type" data-tsd-kind="Interface">IList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#toList">toList</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L246">src/Enumerables/_types.ts:246</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L248">src/Enumerables/_types.ts:248</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a id="where" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>where</span><a href="#where" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
@@ -800,7 +800,7 @@ larger than the size of the enumerable, all items will be returned</p>
 <h4 class="tsd-returns-title">Returns <a href="Enumerables.IEnumerable.html" class="tsd-signature-type" data-tsd-kind="Interface">IEnumerable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type" data-tsd-kind="Type parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="Enumerables.IEnumerable.html">IEnumerable</a>.<a href="Enumerables.IEnumerable.html#where">where</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/b0b066e/src/Enumerables/_types.ts#L252">src/Enumerables/_types.ts:252</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/michaelcoxon/utilities/blob/1481962/src/Enumerables/_types.ts#L254">src/Enumerables/_types.ts:254</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
@@ -830,7 +830,6 @@ larger than the size of the enumerable, all items will be returned</p>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/Cache.expire.html">expire</a></li></ul></li>
 <li class="tsd-kind-namespace"><a href="../modules/Comparers.html">Comparers</a></li>
 <li class="tsd-kind-namespace"><a href="../modules/Configuration.html">Configuration</a></li>
-<li class="tsd-kind-namespace"><a href="../modules/Ensure.html">Ensure</a></li>
 <li class="current tsd-kind-namespace"><a href="../modules/Enumerables.html">Enumerables</a></li>
 <li class="tsd-kind-namespace"><a href="../modules/Enumerators.html">Enumerators</a></li>
 <li class="tsd-kind-namespace"><a href="../modules/Events.html">Events</a></li>
@@ -845,7 +844,8 @@ larger than the size of the enumerable, all items will be returned</p>
 <li class="tsd-kind-namespace"><a href="../modules/Result.html">Result</a></li>
 <li class="tsd-kind-namespace"><a href="../modules/Storage.html">Storage</a></li>
 <li class="tsd-kind-namespace"><a href="../modules/Strings.html">Strings</a></li>
-<li class="tsd-kind-namespace"><a href="../modules/Type.html">Type</a></li></ul></li></ul></div></details></nav>
+<li class="tsd-kind-namespace"><a href="../modules/Type.html">Type</a></li>
+<li class="tsd-kind-namespace"><a href="../modules/ensure.html">ensure</a></li></ul></li></ul></div></details></nav>
 <nav class="tsd-navigation secondary menu-sticky">
 <ul>
 <li class="current tsd-kind-interface tsd-parent-kind-namespace"><a href="Enumerables.IReadOnlyCollection.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-interface)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-256-path"></rect><path d="M9.51 16V15.016H11.298V8.224H9.51V7.24H14.19V8.224H12.402V15.016H14.19V16H9.51Z" fill="var(--color-text)" id="icon-256-text"></path></svg><span>IRead<wbr/>Only<wbr/>Collection</span></a>

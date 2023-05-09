@@ -1,6 +1,6 @@
-import { BinaryExpression, BinaryExpressionType } from '../BinaryExpression';
+import { BinaryExpression } from '../BinaryExpression';
 import { Expression } from '../Expression';
-import { ExpressionType } from '../ExpressionType';
+import { BinaryExpressionType } from '../ExpressionType';
 
 export default function createBinaryExpression(nodeType: BinaryExpressionType, left: Expression, right: Expression): BinaryExpression
 {

@@ -1,6 +1,6 @@
 import format from '../Strings/format';
 import Exception from './Exception';
-import SR from '../i18n/en.exceptions.strings.json';
+import SR from '../i18n/en/exceptions.strings.json';
 
 
 export default class KeyNotFoundException<TKey> extends Exception

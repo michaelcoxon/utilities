@@ -12,9 +12,26 @@ export enum ConstantExpressionType
     Date = 4,
 }
 
+
+// type ConstantExpressionTypeMap<T extends ConstantExpressionType> = T extends ConstantExpressionType.Object
+//     ? object
+//     : T extends ConstantExpressionType.Array
+//     ? []
+//     : T extends ConstantExpressionType.Null
+//     ? undefined
+//     : T extends ConstantExpressionType.Boolean
+//     ? boolean
+//     : T extends ConstantExpressionType.Number
+//     ? number
+//     : T extends ConstantExpressionType.String
+//     ? string
+//     : T extends ConstantExpressionType.Date
+//     ? Date
+//     : never;
+
 export interface ConstantExpression extends Expression
-{
-    value: any;
+{ 
+    value: unknown;
     type: ConstantExpressionType;
 }
 

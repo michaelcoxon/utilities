@@ -1,4 +1,4 @@
-import format from '../Strings/format';
+import { format } from '../Strings';
 import padLeft from '../Strings/padLeft';
 import { INumberFormatterConfiguration } from './_types';
 
@@ -17,7 +17,7 @@ export default class NumberFormatterDelegates
         return format(this.#config.currencyFormat, this.formatFixed(Math.abs(subject), precision), subject < 0 ? "-" : "");
     }
 
-    public formatDecimal(subject: number, minDigits = 0): string
+    public formatInteger(subject: number, minDigits = 0): string
     {
         if (subject < 0)
         {

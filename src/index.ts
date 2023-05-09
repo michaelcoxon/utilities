@@ -1,18 +1,18 @@
 // i18n
-import './i18n/en.assertions.strings.json';
-import './i18n/en.DateFormatterConfiguration.strings.json';
-import './i18n/en.exceptions.strings.json';
-import './i18n/en.generic.strings.json';
-import './i18n/en.NumberFormatterConfiguration.strings.json';
+import './i18n/en/assertions.strings.json';
+import './i18n/en/DateFormatterConfiguration.strings.json';
+import './i18n/en/exceptions.strings.json';
+import './i18n/en/DateFormatterConfiguration.strings.json';
+import './i18n/en/NumberFormatterConfiguration.strings.json';
 
 // modules
 export * as Arrays from "./Arrays";
-export * as Assertions from "./Assertions";  
+export * as Assertions from "./Assertions";
 export * as Booleans from "./Booleans";
 export * as Cache from "./Cache";
 export * as Comparers from "./Comparers";
 export * as Configuration from "./Configuration";
-export * as Ensure from "./Ensure";
+export { ensure } from "./ensure";
 export * as Enumerables from './Enumerables';
 export * as Enumerators from './Enumerators';
 export * as Events from "./Events";

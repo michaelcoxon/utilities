@@ -1,9 +1,8 @@
-﻿import { IArgumentAssertionBuilder } from './ArgumentAssertionBuilder';
+﻿import ArgumentAssertionBuilder, { IArgumentAssertionBuilder } from './ArgumentAssertionBuilder';
 import ArgumentException from '../Exceptions/ArgumentException';
 import ArgumentNullException from '../Exceptions/ArgumentNullException';
 import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException';
 import { empty } from '../Strings/_consts';
-import { ArgumentAssertionBuilder } from '.';
 import DefaultComparers from '../Comparers/DefaultComparers';
 import { IComparable } from '../Comparers/_types';
 

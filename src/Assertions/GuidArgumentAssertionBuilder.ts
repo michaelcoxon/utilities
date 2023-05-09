@@ -1,7 +1,7 @@
 ﻿import ArgumentAssertionBuilder from './ArgumentAssertionBuilder';
 import ArgumentException from '../Exceptions/ArgumentException';
 import Guid from '../Guid';
-import SR from '../i18n/en.assertions.strings.json';
+import SR from '../i18n/en/assertions.strings.json';
 import { format } from '../Strings';
 
 
@@ -17,7 +17,7 @@ export default class GuidArgumentAssertionBuilder extends ArgumentAssertionBuild
         if (this.argument == Guid.empty)
         {
             throw new ArgumentException(this.argumentName);
-        }
+        }        
         return this;
     }
 

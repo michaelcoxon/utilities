@@ -1,10 +1,9 @@
-﻿import { Undefinable } from '..';
-import ArgumentException from '../Exceptions/ArgumentException';
+﻿import ArgumentException from '../Exceptions/ArgumentException';
 import ArgumentNullException from '../Exceptions/ArgumentNullException';
 import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException';
 import Exception from '../Exceptions/Exception';
-import { ConstructorFor, Func1 } from '../Types';
-import SR from '../i18n/en.assertions.strings.json';
+import { ConstructorFor, Func1, Undefinable } from '../Types';
+import SR from '../i18n/en/assertions.strings.json';
 import { format } from '../Strings';
 
 /**
@@ -13,7 +12,7 @@ import { format } from '../Strings';
  export type AssertionType<T> = T | undefined | null;
 
 /**
- * Interface for implementing your own builder
+ * Interface for implementing your own builder.  @see ArgumentAssertionBuilder<T>
  */
 export interface IArgumentAssertionBuilder<T>
 {
@@ -21,6 +20,9 @@ export interface IArgumentAssertionBuilder<T>
     readonly argumentName: string;
 }
 
+/**
+ * Instance of @see IArgumentAssertionBuilder<T> 
+ */
 export default class ArgumentAssertionBuilder<T> implements IArgumentAssertionBuilder<T>
 {
     constructor(readonly argument: T, readonly argumentName: string) { }
