@@ -1,7 +1,3 @@
----
-layout: default
----
-
 # About
 
 There are a few things in JavaScript that turn out be annoying to write
