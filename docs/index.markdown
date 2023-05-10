@@ -1,3 +1,11 @@
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+layout: home
+---
+
+
 # About
 
 There are a few things in JavaScript that turn out be annoying to write
@@ -25,4 +33,3 @@ the code more readable.
 
 All examples given in the documentation are JavaScript examples so that no-one
 gets confused - unless it is generic.
-
