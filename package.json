@@ -19,16 +19,20 @@
     "build:lib:debug": "npm-run-all -s clean:lib build:lib:typescript:debug",
     "build:lib:typescript": "tsc",
     "build:lib:typescript:debug": "tsc --sourceMap",
+    "build": "npm-run-all -s build:lib -p build:dist build:docs",
+ 
     "clean:lib": "rimraf lib",
     "clean:dist": "rimraf dist",
     "clean:docs": "rimraf docs",
-    "build": "npm-run-all -s build:lib -p build:dist build:docs",
     "clean": "npm-run-all -p clean:lib clean:dist clean:docs",
-    "prepack": "npm-run-all -s clean build:lib -p test:coverage build:dist build:docs",
+ 
+    "prepack": "npm-run-all -s clean build:lib -p test:prepack build:dist build:docs",
+ 
     "test:coverage": "jest --coverage --coverageDirectory coverage --coverageReporters html",
-    "test:madge": "madge --extensions ts --circular .",
     "test:jest": "jest",
-    "test": "npm-run-all -s test:coverage test:madge"
+    "test:madge": "madge --extensions ts --circular .",
+    "test:prepack": "npm-run-all -s test:coverage test:madge",
+    "test": "npm-run-all -s test:jest test:madge"
   },
   "repository": {
     "type": "git",
