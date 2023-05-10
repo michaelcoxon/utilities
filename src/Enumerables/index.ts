@@ -48,7 +48,7 @@ import asArray from './utils/asArray';
 import remove from './utils/Collection/remove';
 import copyTo from './utils/Collection/copyTo';
 import { InvalidOperationException, NotImplementedException } from '../Exceptions';
-import where from './utils/Array/where';
+import { where } from '../Arrays';
 
 export class Enumerable
 {
