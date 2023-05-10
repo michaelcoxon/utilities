@@ -12,9 +12,7 @@
     "build:dist:debug": "webpack --node-env development",
     "build:dist:stats": "webpack --node-env production --profile --json > webpack-stats.json",
     "build:dist:stats:debug": "webpack --node-env development --profile --json > webpack-stats.json",
-    "build:docs": "npm-run-all -s build:docs:typedoc build:docs:markdown build:docs:nojekyll",
-    "build:docs:markdown": "copyfiles -u 1 src/**/*.md docs",
-    "build:docs:nojekyll": "copyfiles .nojekyll docs/api",
+    "build:docs": "npm-run-all -s build:docs:typedoc",
     "build:docs:typedoc": "typedoc --logger console --out docs/api src",
     "build:lib": "npm-run-all -s clean:lib build:lib:typescript",
     "build:lib:debug": "npm-run-all -s clean:lib build:lib:typescript:debug",
@@ -24,7 +22,7 @@
  
     "clean:lib": "rimraf lib",
     "clean:dist": "rimraf dist",
-    "clean:docs": "rimraf docs",
+    "clean:docs": "rimraf docs/api/**/*",
     "clean": "npm-run-all -p clean:lib clean:dist clean:docs",
  
     "prepack": "npm-run-all -s clean build:lib -p test:prepack build:dist build:docs",
