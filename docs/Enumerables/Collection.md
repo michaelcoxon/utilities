@@ -4,8 +4,11 @@ parent: Enumerables
 ---
 
 # Collection
+{: .no_toc }
 
 This is the base class for [`List`](List.md).
+
+{% include article-toc.html %}
 
 ## Constructors
 

@@ -7,16 +7,10 @@ has_children: false
 # Enumerator
 {: .no_toc }
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
-
 The enumerator class allows iteration of a collection or array.
+
+{% include article-toc.html %}
+
 
 An enumerator allows you to move incrementally through a collection or array
 giving you the ability to `peek` at the next element or move to it.
