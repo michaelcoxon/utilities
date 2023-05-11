@@ -15,7 +15,7 @@ has_children: false
     Table of contents
   </summary>
   {: .text-delta }
-TOC
+- TOC
 {:toc}
 </details>
 
