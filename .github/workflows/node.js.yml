@@ -4,35 +4,30 @@
 name: Node.js CI
 
 on:
-    push:
-        branches:
-            - master
-        paths:
-            exclude:
-                - docs/*
-
-    pull_request:
-        branches:
-            - master
-        paths:
-            exclude:
-                - docs/*
-
+  push:
+    branches: [ "master" ]
+    paths-ignore:
+      - 'docs/**'
+  pull_request:
+    branches: [ "master" ]
+    paths-ignore:
+      - 'docs/**'
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
 
-        strategy:
-            matrix:
-                node-version: [16.18.1]
-                # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v3
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v3
-              with:
-                  node-version: ${{ matrix.node-version }}
-                  cache: 'npm'
-            - run: npm ci
-            - run: npm run prepack
+    strategy:
+      matrix:
+        node-version: [16.18.1]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run prepack
