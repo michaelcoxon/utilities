@@ -40,7 +40,7 @@ include:
 # External navigation links
 nav_external_links:
   - title: Api documentation
-    url: /utilities/api
+    url: /api
     hide_icon: false # set to true to hide the external link icon - defaults to false
 
 
