@@ -8,7 +8,7 @@ parent: Enumerables
 A list is a level above a collection. It allows you to add, remove, insert and
 prepend items. Think of it as a mutable collection.
 
-It inherits from Collection.
+It inherits from [`Collection`](Collection.md).
 
 ## Constructors
 

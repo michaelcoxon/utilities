@@ -5,7 +5,7 @@ parent: Enumerables
 
 # Collection
 
-This is the base class for `List`.
+This is the base class for [`List`](List.md).
 
 ## Constructors
 
