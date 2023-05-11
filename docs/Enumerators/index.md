@@ -1,3 +1,9 @@
+---
+layout: default
+title: Enumerator
+has_children: true
+---
+
 # Enumerator
 
 The enumerator class allows iteration of a collection or array.
