@@ -7,9 +7,6 @@ has_children: false
 # Enumerator
 {: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
-
 <details open markdown="block">
   <summary>
     Table of contents
