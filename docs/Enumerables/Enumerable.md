@@ -1,4 +1,9 @@
-# utilities/Enumerable
+---
+layout: default
+parent: Enumerables
+---
+
+# Enumerable
 
 The Enumerable class is mostly fluent by design and allows chaining of
 _query-like_ methods to filter or aggregate an array or collection.

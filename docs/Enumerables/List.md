@@ -1,4 +1,9 @@
-# utilities/List
+---
+layout: default
+parent: Enumerables
+---
+
+# List
 
 A list is a level above a collection. It allows you to add, remove, insert and
 prepend items. Think of it as a mutable collection.

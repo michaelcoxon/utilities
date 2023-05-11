@@ -1,3 +1,8 @@
+---
+layout: default
+parent: Enumerables
+---
+
 # Collection
 
 This is the base class for `List`.
