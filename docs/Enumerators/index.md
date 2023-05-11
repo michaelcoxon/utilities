@@ -5,6 +5,13 @@ has_children: false
 ---
 
 # Enumerator
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 
 The enumerator class allows iteration of a collection or array.
 
