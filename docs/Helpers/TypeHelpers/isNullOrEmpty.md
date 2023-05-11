@@ -30,7 +30,7 @@ const hiGreg = greet('Greg', 'Hi');
 This example shows how you can use and array or Iterable.
 
 <div class="code-example">
-    <script src="{{ site.baseurl }}{% link assets/dist/index.js %}" </script>
+    <script src="{{ site.baseurl }}{% link assets/dist/index.js %}"></script>
     <script>
         function greet(name, greeting) {
             if (!isNullOrEmpty(greeting)) {
