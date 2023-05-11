@@ -20,7 +20,7 @@ describe("isNullOrEmpty (String)", () =>
     {
         expect(isNullOrEmpty('')).toEqual(true);
     });
-
+ 
     it("should return false if the string is valid", () =>
     {
         expect(isNullOrEmpty('a')).toEqual(false);
