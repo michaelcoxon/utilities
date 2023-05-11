@@ -8,12 +8,12 @@ on:
     branches: [ "master" ]
     paths:
       exclude:
-        - "docs/**"
+      - "docs/**"
   pull_request:
     branches: [ "master" ]
     paths:
       exclude:
-        - "docs/**"
+      - "docs/**"
 
 jobs:
   build:
