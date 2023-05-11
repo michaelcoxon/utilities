@@ -1,3 +1,8 @@
+---
+layout: default
+parent: Utilities
+---
+
 # using
 
 Can be used on any `IDisposable` objects. Will call `IDisposable.dispose()` when the scope ends.
