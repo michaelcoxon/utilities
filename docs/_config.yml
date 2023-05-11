@@ -34,15 +34,13 @@ plugins:
 include: 
   - api/
 
-# aux_links:
-#   Template Repository: https://github.com/just-the-docs/just-the-docs-template
+# Aux links for the upper right navigation
+aux_links:
+  "Api documentation":
+    - /utilities/api
 
 # External navigation links
-nav_external_links:
-  - title: Api documentation
-    url: /api
-    hide_icon: false # set to true to hide the external link icon - defaults to false
-
+# nav_external_links:
 
 # Exclude from processing.
 # The following items will not be processed, by default.
