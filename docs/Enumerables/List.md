@@ -11,7 +11,7 @@ prepend items. Think of it as a mutable collection.
 
 It inherits from [`Collection`](Collection.md).
 
-{% include article-toc.html %}
+{% include article-toc.md %}
 
 ## Constructors
 

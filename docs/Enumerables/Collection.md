@@ -8,7 +8,7 @@ parent: Enumerables
 
 This is the base class for [`List`](List.md).
 
-{% include article-toc.html %}
+{% include article-toc.md %}
 
 ## Constructors
 

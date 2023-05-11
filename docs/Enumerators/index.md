@@ -9,7 +9,7 @@ has_children: false
 
 The enumerator class allows iteration of a collection or array.
 
-{% include article-toc.html %}
+{% include article-toc.md %}
 
 
 An enumerator allows you to move incrementally through a collection or array
