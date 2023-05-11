@@ -10,8 +10,14 @@ has_children: false
 ## Table of contents
 {: .no_toc .text-delta }
 
-1. TOC
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+TOC
 {:toc}
+</details>
 
 The enumerator class allows iteration of a collection or array.
 
