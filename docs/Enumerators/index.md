@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Enumerator
-has_children: true
+has_children: false
 ---
 
 # Enumerator
