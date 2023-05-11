@@ -1,6 +1,6 @@
 ---
 layout: default
-parent: Utilities
+parent: Utility functions
 ---
 
 # usingAsync
