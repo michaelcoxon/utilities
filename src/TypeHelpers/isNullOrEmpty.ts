@@ -16,13 +16,13 @@ type NullOrEmptyableType =
     | null
     | undefined;
 
-type NullOrEmptyType =
-    NullOrEmptyableType & { length: 0; }
-    | NullOrEmptyableType & { count: 0; }
-    | NullOrEmptyableType & IEnumerable<unknown> & { count(): () => 0; }
-    | NullOrEmptyableType & unknown[]
-    | NullOrEmptyableType & null
-    | NullOrEmptyableType & undefined;
+// type NullOrEmptyType =
+//     NullOrEmptyableType & { length: 0; }
+//     | NullOrEmptyableType & { count: 0; }
+//     | NullOrEmptyableType & IEnumerable<unknown> & { count(): () => 0; }
+//     | NullOrEmptyableType & unknown[]
+//     | NullOrEmptyableType & null
+//     | NullOrEmptyableType & undefined;
 
 /**
  * Returns true if the value is undefined, null or empty.

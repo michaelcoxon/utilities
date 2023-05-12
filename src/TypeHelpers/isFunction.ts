@@ -1,5 +1,4 @@
 import { AnyFunction } from '../Types';
-
 /**
  * Returns true if the subject is a Function.
  * @param subject
