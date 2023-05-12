@@ -3,6 +3,21 @@ import isFunction from './isFunction';
 import isUndefinedOrNull from './isUndefinedOrNull';
 
 
+/**
+ * Notes:
+ * 
+ * Have tried to do Iterable but the problem is that in the
+ * spec iterable has no guarantee that it is re-playable so
+ * any type of iteration on it to see if it is empty will
+ * move it next. 
+ * 
+ * I need to build an iterable buffer lol.* 
+ * 
+ * 
+
+
+
+
 
 /**
  * quick type for readability

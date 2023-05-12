@@ -11,15 +11,33 @@ title: isNullOrEmpty
 # Assert a lack of content
 
 `isNullOrEmpty` works on objects that 'have items', so it can be used to check if
-`Array`s or `string`s are empty or `null` (or `undefined`).
+things like arrays or strings are empty, null or undefined.
 
-Here is an example using a `string`. We detect that `greeting` has no value then
-set a default value of `'Hello'`.
+It works on the following types:
+ - string
+ - array
+ - [Enumerable](../../Enumerables/index.md)
+ - anything that implements `{ length: number; }`
+ - anything that implements `{ count: number; }`
+
+
+Empty can be defined easily with examples.
+
+> Note: Using TypeScript here for brevity.  
+
+``` ts
+ const empty: string = '';
+ const empty: [] = [];
+ const empty: IEnumerable<number> = Enumerable.empty();
+```
+
+Here is an example using a string. When `greeting` has no value, we set a *default*
+value of `'Hello'`.
 
 <div class="code-example">
     <div>
-        <button type="button" onclick="executeisNullOrEmptyStringExample(() => greet('world'))" >Execute helloWorld</button>
-        <button type="button" onclick="executeisNullOrEmptyStringExample(() => greet('Greg', 'Hi'))" >Execute hiGreg</button>
+        <button type="button" class="btn" onclick="executeisNullOrEmptyStringExample(() => greet('world'))" >Execute helloWorld</button>
+        <button type="button" class="btn" onclick="executeisNullOrEmptyStringExample(() => greet('Greg', 'Hi'))" >Execute hiGreg</button>
         <p>
             <strong>Results</strong><br>
             <span id="isNullOrEmpty-string-example-result"></span>
@@ -54,14 +72,16 @@ const helloWorld = greet('world');
 const hiGreg = greet('Greg', 'Hi');
 ```
 
-This example shows how you can use an array.
+This example shows how you can use an array. When the datasource returns null or undefined, 
+`getItems` will return an empty array. It does this so that the for-of does not need a null check.
+Execution will pass through the for-of if the result is empty.
 
 <div class="code-example">
     <div>
-        <button type="button" onclick="executeisNullOrEmptyArrayExample(() => getItemsisNullOrEmptyArrayExample())" >Get Items</button>
-        <button type="button" onclick="executeisNullOrEmptyArrayExample(() => clearItemsisNullOrEmptyArrayExample())" >Clear Items</button>
-        <button type="button" onclick="executeisNullOrEmptyArrayExample(() => createItemsisNullOrEmptyArrayExample())" >Create Items</button>
-        <button type="button" onclick="executeisNullOrEmptyArrayExample(() => removeItemisNullOrEmptyArrayExample())" >Remove Items</button>
+        <button type="button" class="btn" onclick="executeisNullOrEmptyArrayExample(() => getItemsisNullOrEmptyArrayExample())" >Get Items</button>
+        <button type="button" class="btn" onclick="executeisNullOrEmptyArrayExample(() => clearItemsisNullOrEmptyArrayExample())" >Clear Items</button>
+        <button type="button" class="btn" onclick="executeisNullOrEmptyArrayExample(() => createItemsisNullOrEmptyArrayExample())" >Create Items</button>
+        <button type="button" class="btn" onclick="executeisNullOrEmptyArrayExample(() => removeItemisNullOrEmptyArrayExample())" >Remove Items</button>
         <p>
             <strong>Results</strong><br>
             <span id="isNullOrEmpty-array-example-result"></span>
