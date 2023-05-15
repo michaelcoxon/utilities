@@ -11,7 +11,9 @@ export interface IEnumerator<T> extends Iterator<T>
     /** move to the next element. Returns false if there is no next element */
     moveNext(): boolean
 
-    /** returns the next element without moving the pointer forwards */
+    /** 
+     * returns the next element without moving the pointer forwards 
+    */
     peek(): Undefinable<T>
 
     /** reset the pointer to the start */

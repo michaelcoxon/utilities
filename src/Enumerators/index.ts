@@ -5,6 +5,7 @@ export {default as ArrayEnumerator} from './ArrayEnumerator';
 export {default as AsyncEnumerator} from './AsyncEnumerator';
 export {default as DictionaryEnumerator} from './DictionaryEnumerator';
 export {default as EnumeratorBase} from './EnumeratorBase';
+export {default as IterableEnumerator} from './IterableEnumerator';
 export {default as LinkedListEnumerator} from './LinkedListEnumerator';
 export {default as RangeEnumerator} from './RangeEnumerator';
 export {default as SelectEnumerator} from './SelectEnumerator';

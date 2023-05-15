@@ -1,4 +1,4 @@
-import { OutOfBoundsException } from '../Exceptions';
+import { NotSupportedException, OutOfBoundsException } from '../Exceptions';
 import InvalidOperationException from '../Exceptions/InvalidOperationException';
 import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
 import { Undefinable } from '../Types';
@@ -21,7 +21,6 @@ export default class IterableEnumerator<T> extends EnumeratorBase<T> implements 
         this.#items = IterableEnumerator.items<T>(this.#iterable);
     }
 
-    // returns the current element
     public get current(): T
     {
         if (!isUndefinedOrNull(this.#current))
@@ -51,7 +50,6 @@ export default class IterableEnumerator<T> extends EnumeratorBase<T> implements 
         return !this.#current.done;
     }
 
-    // returns the next element without moving the pointer forwards
     public peek(): Undefinable<T>
     {
         if (isUndefinedOrNull(this.#peak))
@@ -65,10 +63,13 @@ export default class IterableEnumerator<T> extends EnumeratorBase<T> implements 
         return this.#peak.value ?? undefined;
     }
 
-    // reset the pointer to the start
+    /**
+     * reset the pointer to the start
+     * @throws {NotSupportedException} Iterables cannot be reset. Consider using BufferedIterableEnumerator.
+     */
     public reset(): void
     {
-        this.#items = IterableEnumerator.items<T>(this.#iterable);
+        throw new NotSupportedException("Iterables cannot be reset. Consider using BufferedIterableEnumerator.");
     }
 
     private static *items<T>(iterable: Iterable<T>)

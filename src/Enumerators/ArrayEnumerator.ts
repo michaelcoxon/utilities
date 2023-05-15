@@ -15,7 +15,8 @@ export default class ArrayEnumerator<T> extends EnumeratorBase<T> implements IEn
     constructor(array: T[])
     {
         super();
-        this.#baseArray = array;
+        // copy the array to make this immutable.
+        this.#baseArray = [...array];
     }
 
     // returns the current element

@@ -30,14 +30,22 @@ Empty can be defined easily with examples.
  const empty: [] = [];
  const empty: IEnumerable<number> = Enumerable.empty();
 ```
+<script>
+    function executeExample(resultId, fn) {
+        const el = document.getElementById(resultId);
+        const value = fn();
+        el.innerText += value+'\n';
+    }
+</script>
+
 
 Here is an example using a string. When `greeting` has no value, we set a *default*
 value of `'Hello'`.
 
 <div class="code-example">
     <div>
-        <button type="button" class="btn" onclick="executeisNullOrEmptyStringExample(() => greet('world'))" >Execute helloWorld</button>
-        <button type="button" class="btn" onclick="executeisNullOrEmptyStringExample(() => greet('Greg', 'Hi'))" >Execute hiGreg</button>
+        <button type="button" class="btn" onclick="executeExample('isNullOrEmpty-string-example-result', () => greet('world'))">Execute helloWorld</button>
+        <button type="button" class="btn" onclick="executeExample('isNullOrEmpty-string-example-result', () => greet('Hi'))">Execute hiGreg</button>
         <p>
             <strong>Results</strong><br>
             <span id="isNullOrEmpty-string-example-result"></span>
@@ -50,13 +58,7 @@ value of `'Hello'`.
             }
             return `${greeting} ${name}.`;
         }
-        function executeisNullOrEmptyStringExample(fn) {
-            const el = document.getElementById('isNullOrEmpty-string-example-result');
-            const value = fn();
-            el.innerText += value+'\n';
-        }
     </script>
-
 </div>
 
 ```ts
@@ -78,10 +80,10 @@ Execution will pass through the for-of if the result is empty.
 
 <div class="code-example">
     <div>
-        <button type="button" class="btn" onclick="executeisNullOrEmptyArrayExample(() => getItemsisNullOrEmptyArrayExample())" >Get Items</button>
-        <button type="button" class="btn" onclick="executeisNullOrEmptyArrayExample(() => clearItemsisNullOrEmptyArrayExample())" >Clear Items</button>
-        <button type="button" class="btn" onclick="executeisNullOrEmptyArrayExample(() => createItemsisNullOrEmptyArrayExample())" >Create Items</button>
-        <button type="button" class="btn" onclick="executeisNullOrEmptyArrayExample(() => removeItemisNullOrEmptyArrayExample())" >Remove Items</button>
+        <button type="button" class="btn" onclick="executeExample('isNullOrEmpty-array-example-result', () => getItems())">Get Items</button>
+        <button type="button" class="btn" onclick="executeExample('isNullOrEmpty-array-example-result', () => clearItems())">Clear Items</button>
+        <button type="button" class="btn" onclick="executeExample('isNullOrEmpty-array-example-result', () => createItems())">Create Items</button>
+        <button type="button" class="btn" onclick="executeExample('isNullOrEmpty-array-example-result', () => removeItem())">Remove Items</button>
         <p>
             <strong>Results</strong><br>
             <span id="isNullOrEmpty-array-example-result"></span>
@@ -89,41 +91,37 @@ Execution will pass through the for-of if the result is empty.
     </div>    
     <script>
        let itemsisNullOrEmptyArrayExample = [1,2,3,4,5,6];       
-       function getItemsisNullOrEmptyArrayExample() {
+       function getItems() {
             if (utilities.isNullOrEmpty(itemsisNullOrEmptyArrayExample)) {
-                executeisNullOrEmptyArrayExample(()=>"[LOG] `items` is null or empty. Returning empty array `[]`...");
+                executeExample('isNullOrEmpty-array-example-result', ()=>"[LOG] `items` is null or empty. Returning empty array `[]`...");
                 return itemsisNullOrEmptyArrayExample = [];
             }
             return itemsisNullOrEmptyArrayExample;
         }
-        function createItemsisNullOrEmptyArrayExample() {
+        function createItems() {
             getItemsisNullOrEmptyArrayExample().push(1,2,3,4,5,6);
             return getItemsisNullOrEmptyArrayExample();
         }
-        function clearItemsisNullOrEmptyArrayExample() {
+        function clearItems() {
             return itemsisNullOrEmptyArrayExample = undefined;
         }
-        function removeItemisNullOrEmptyArrayExample() {
+        function removeItem() {
             itemsisNullOrEmptyArrayExample.pop();
             return getItemsisNullOrEmptyArrayExample();
         }
-        function executeisNullOrEmptyArrayExample(fn) {
-            const el = document.getElementById('isNullOrEmpty-array-example-result');
-            const value = fn();
-            el.innerText += JSON.stringify(value)+'\n';
-        }
-        executeisNullOrEmptyArrayExample(() => getItems())
+        execute('isNullOrEmpty-array-example-result', () => getItems());
     </script>
 </div>
 
 ```ts
 function getItems(name) {
-    const items = dataSource.get(name);
+    let items = dataSource.get(name);
     if (isNullOrEmpty(items)) {
         // return an empty arry regardless.
         // this method is always an Array.
-        return [];
+        items = [];
     }
+    // do other things
     return mapper.map(items);
 }
 // always has a value. It cannot be null.

@@ -4,7 +4,7 @@ import Exception from '../Exceptions/Exception';
 import { Undefinable } from '../Types';
 
 
-export default class SkipEnumerator<T> extends EnumeratorBase<T> implements IEnumerator<T> {
+export default class SkipEnumerator<T> extends EnumeratorBase<T> {
 
     readonly #enumerator: IEnumerator<T>;
     readonly #itemsToSkip: number;
