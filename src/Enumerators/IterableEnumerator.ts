@@ -50,17 +50,13 @@ export default class IterableEnumerator<T> extends EnumeratorBase<T> implements 
         return !this.#current.done;
     }
 
+    /**
+     * returns the next element without moving the pointer forwards 
+     * @throws {NotSupportedException} Iterables cannot be peeked. Consider using BufferedIterableEnumerator.
+     */
     public peek(): Undefinable<T>
     {
-        if (isUndefinedOrNull(this.#peak))
-        {
-            this.#peak = this.#items.next();
-            if (isUndefinedOrNull(this.#peak))
-            {
-                return undefined;
-            }
-        }
-        return this.#peak.value ?? undefined;
+        throw new NotSupportedException("Iterables cannot be peeked. Consider using BufferedIterableEnumerator.");
     }
 
     /**

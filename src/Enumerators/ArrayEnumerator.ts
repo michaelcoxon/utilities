@@ -12,11 +12,24 @@ export default class ArrayEnumerator<T> extends EnumeratorBase<T> implements IEn
     // current pointer location
     #pointer = -1;
 
-    constructor(array: T[])
+    /**
+     * Enumerate an array.
+     * @param array The array to enumerate.
+     * @param immutable True means the enumerator takes a copy of the array. False uses the array.
+     */
+    constructor(array: T[], immutable: boolean = true)
     {
         super();
-        // copy the array to make this immutable.
-        this.#baseArray = [...array];
+
+        if (immutable)
+        {
+            // copy the array to make this immutable.
+            this.#baseArray = [...array];
+        }
+        else
+        {
+            this.#baseArray = array;
+        }
     }
 
     // returns the current element

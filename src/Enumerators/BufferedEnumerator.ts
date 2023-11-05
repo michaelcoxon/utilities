@@ -10,6 +10,7 @@ export default class BufferedEnumerator<T> extends EnumeratorBase<T> implements 
 {
     readonly #enumerator: IEnumerator<T>;
     readonly #bufferedItems: T[];
+    /** Reads the buffered items */
     #bufferedItemsEnumerator: IEnumerator<T>;
 
     #current: Undefinable<T>;
@@ -18,8 +19,9 @@ export default class BufferedEnumerator<T> extends EnumeratorBase<T> implements 
     {
         super();
         this.#enumerator = enumerator;
+
         this.#bufferedItems = [];
-        this.#bufferedItemsEnumerator = new ArrayEnumerator(this.#bufferedItems);
+        this.#bufferedItemsEnumerator = new ArrayEnumerator(this.#bufferedItems, false);
     }
 
     public get current(): T
@@ -40,7 +42,7 @@ export default class BufferedEnumerator<T> extends EnumeratorBase<T> implements 
         }
         else if (this.#enumerator.moveNext())
         {
-            this.#current = this.#enumerator.current;
+            this.#bufferedItems.push(this.#current = this.#enumerator.current);
             return true;
         }
         else
@@ -58,19 +60,16 @@ export default class BufferedEnumerator<T> extends EnumeratorBase<T> implements 
         {
             return value;
         }
-        else if (!isUndefinedOrNull(value = this.#enumerator.peek()))
+        else if(this.#enumerator.moveNext())
         {
-            return value;
-        }
-
-        else
-        {
+            this.#bufferedItems.push(value = this.#enumerator.current);
             return value;
         }
     }
 
     public reset(): void
     {
-        this.#bufferedItemsEnumerator = new ArrayEnumerator(this.#bufferedItems);
+        this.#bufferedItemsEnumerator.reset();
+        this.#enumerator.reset();
     }
 }

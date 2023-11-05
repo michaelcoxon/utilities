@@ -26,6 +26,7 @@
     "clean:docs": "rimraf docs/api/**/*",
     "clean": "npm-run-all -p clean:lib clean:dist clean:docs",
     "prepack": "npm-run-all -s clean build:lib -p test:prepack build:dist build:docs",
+    "start:jekyll": "cd docs && bundle exec jekyll serve docs/",
     "test:coverage": "jest --coverage --coverageDirectory coverage --coverageReporters html",
     "test:jest": "jest",
     "test:madge": "madge --extensions ts --circular .",

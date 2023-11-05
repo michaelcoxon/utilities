@@ -116,11 +116,7 @@ describe("IterableEnumerator.peek", () =>
             expect(coll.item(count)).toEqual(en.current);
             count++;
         }
-        try
-        {
-            en.peek();
-            fail("Should not be able to see past end of enumerable");
-        } catch (ex) { /**/ }
+        throws(() => en.peek(), "Should not be able to see past end of enumerable");
     });
 });
 
