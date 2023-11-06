@@ -62,7 +62,7 @@ value of `'Hello'`.
 </div>
 
 ```ts
-function greet(name, greeting) {
+function greet(name:string, greeting?:string) :string {
     if (!isNullOrEmpty(greeting)) {
         greeting = 'Hello';
     }
@@ -99,22 +99,22 @@ Execution will pass through the for-of if the result is empty.
             return itemsisNullOrEmptyArrayExample;
         }
         function createItems() {
-            getItemsisNullOrEmptyArrayExample().push(1,2,3,4,5,6);
-            return getItemsisNullOrEmptyArrayExample();
+            itemsisNullOrEmptyArrayExample.push(1,2,3,4,5,6);
+            return itemsisNullOrEmptyArrayExample;
         }
         function clearItems() {
             return itemsisNullOrEmptyArrayExample = undefined;
         }
         function removeItem() {
             itemsisNullOrEmptyArrayExample.pop();
-            return getItemsisNullOrEmptyArrayExample();
+            return itemsisNullOrEmptyArrayExample;
         }
         execute('isNullOrEmpty-array-example-result', () => getItems());
     </script>
 </div>
 
 ```ts
-function getItems(name) {
+function getItems(name:string):[] {
     let items = dataSource.get(name);
     if (isNullOrEmpty(items)) {
         // return an empty arry regardless.
@@ -126,7 +126,7 @@ function getItems(name) {
 }
 // always has a value. It cannot be null.
 const products = getItems('products');
-// will never throw an exception
+// will not throw an exception for products being null
 for (const product of products){
     ...
 }
