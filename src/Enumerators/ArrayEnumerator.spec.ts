@@ -163,7 +163,7 @@ describe("ArrayEnumerator.throwOutOfBoundsException", () =>
         throws(() =>
         {
             en.current;
-        }, e => e.name == "OutOfBoundsException");
+        }, (e: Error) => e.name == "OutOfBoundsException");
     });
 });
 

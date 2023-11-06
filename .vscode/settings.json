@@ -45,5 +45,6 @@
     "mocha.files.glob": "test/**/*.spec.ts",
     "mocha.showInExplorer": true,
     "mocha.runTestsOnSave": "true",
-    "mocha.sideBarOptions": {}
+    "mocha.sideBarOptions": {},
+    "jest.jestCommandLine": "npm run test:jest --"
 }

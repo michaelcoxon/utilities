@@ -3,7 +3,7 @@ import AggregateEnumerator from '../../src/Enumerators/AggregateEnumerator';
 import isNumber from '../../src/TypeHelpers/isNumber';
 
 describe("AggregateEnumerator.constructor", () =>
-{
+{ 
     it("should return an enumerator from a collection", () =>
     {
         const array1 = [1, 2, 3, 4];
@@ -13,7 +13,7 @@ describe("AggregateEnumerator.constructor", () =>
 
         let count = 0;
 
-        while (en.moveNext())
+        while (en.moveNext( ))
         {
             expect(expected[count]).toEqual(en.current);
             count++;

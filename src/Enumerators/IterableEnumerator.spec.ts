@@ -1,6 +1,7 @@
 ﻿import { throws } from 'assert';
 import { Collection } from '../../src/Enumerables';
 import IterableEnumerator from '../../src/Enumerators/IterableEnumerator';
+import { NotImplementedException, NotSupportedException } from '../Exceptions';
 
 describe("IterableEnumerator.constructor", () =>
 {
@@ -92,18 +93,13 @@ describe("IterableEnumerator.peek", () =>
         const coll = new Collection(array);
         const en = new IterableEnumerator(coll.toArray());
 
-        let count = 0;
-
-        expect(1).toEqual(en.peek());
-
-        while (en.moveNext())
+        throws(() =>
         {
-            expect(coll.item(count)).toEqual(en.current);
-            count++;
-        }
+            en.peek();
+        }, (e: Error) => e.name == "NotSupportedException");
     });
 
-    it("should throw an execption when cannot peek", () =>
+    it("should throw an exception when cannot peek", () =>
     {
         const array = [1, 2, 3, 4];
         const coll = new Collection(array);
@@ -128,23 +124,10 @@ describe("IterableEnumerator.reset", () =>
         const coll = new Collection(array);
         const en = new IterableEnumerator(coll.toArray());
 
-        let count = 0;
-
-        while (en.moveNext())
+        throws(() =>
         {
-            expect(coll.item(count)).toEqual(en.current);
-            count++;
-        }
-
-        en.reset();
-
-        count = 0;
-
-        while (en.moveNext())
-        {
-            expect(coll.item(count)).toEqual(en.current);
-            count++;
-        }
+            en.reset();
+        }, (e: Error) => e.name == "NotSupportedException");
     });
 });
 
@@ -159,7 +142,7 @@ describe("IterableEnumerator.throwOutOfBoundsException", () =>
         throws(() =>
         {
             en.current;
-        }, e => e.name == "OutOfBoundsException");
+        }, (e: Error) => e.name == "OutOfBoundsException");
     });
 });
 
