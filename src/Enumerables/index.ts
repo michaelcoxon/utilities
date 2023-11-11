@@ -49,12 +49,15 @@ import remove from './utils/Collection/remove';
 import copyTo from './utils/Collection/copyTo';
 import { InvalidOperationException, NotImplementedException } from '../Exceptions';
 import { where } from '../Arrays';
+import sum from './utils/IEnumerable/sum';
+import toArray from './utils/IEnumerable/toArray';
 
 export class Enumerable
 {
     public static range(start: number, count: number): IEnumerable<number>
     {
-        return new RangeEnumerable(start, count);
+        //return new EnumeratorEnumerable(new RangeEnumerator(start, count));
+        return new RangeEnumerable(start,count);
     }
 
     public static empty<TElement>(): IEnumerable<TElement>
@@ -223,12 +226,12 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public select<TOut>(selector: Selector<T, TOut>): IEnumerable<TOut>
     {
-        return new SelectEnumerable<T, TOut>(this, selector);
+        return new EnumeratorEnumerable(new SelectEnumerator(this.getEnumerator(), selector));
     }
 
     public selectMany<TOut>(selector: Selector<T, IEnumerable<TOut>>): IEnumerable<TOut>
     {
-        return new SelectManyEnumerable<T, TOut>(this, selector);
+        return new EnumeratorEnumerable(new SelectManyEnumerator(this.getEnumerator(), selector));
     }
 
     public single(predicate?: Predicate<T>): T
@@ -243,7 +246,7 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public skip(count: number): IEnumerable<T>
     {
-        return new SkipEnumerable(this, count);
+        return new EnumeratorEnumerable(new SkipEnumerator<T>(this.getEnumerator(), count));
     }
 
     public split(predicate: Predicate<T>): { pTrue: IEnumerable<T>, pFalse: IEnumerable<T>; }
@@ -256,24 +259,22 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public sum(selector: Selector<T, number>): number
     {
-        return this.select<number>((item) => selector(item))
-            .toArray()
-            .reduce((a, c) => a + c, 0);
+        return sum(this, selector);
     }
 
     public take(count: number): IEnumerable<T>
     {
-        return new TakeEnumerable(this, count);
+        return new EnumeratorEnumerable(new TakeEnumerator<T>(this.getEnumerator(), count));
     }
 
     public where(predicate: Predicate<T>): IEnumerable<T>
     {
-        return new WhereEnumerable(this, predicate);
+        return new EnumeratorEnumerable(new WhereEnumerator(this.getEnumerator(), predicate));
     }
 
     public toArray(): T[]
     {
-        return [...this];
+        return toArray(this);
     }
 
     public toDictionary<TKey, TValue>(keySelector: (a: T) => TKey, valueSelector: (a: T) => TValue): IDictionary<TKey, TValue>
@@ -571,7 +572,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     /**@inheritDoc */
     where(predicate: Predicate<T>): IEnumerable<T>
     {
-        return new  ArrayEnumerable(where(this._array, predicate));
+        return new ArrayEnumerable(where(this._array, predicate));
     }
 }
 
@@ -1275,95 +1276,5 @@ class RangeEnumerable extends EnumerableBase<number>
     public getEnumerator(): IEnumerator<number>
     {
         return new RangeEnumerator(this.#start, this.#count);
-    }
-}
-
-class SelectEnumerable<T, TReturn> extends EnumerableBase<TReturn>
-{
-    readonly #enumerable: IEnumerable<T>;
-    readonly #selector: Selector<T, TReturn>;
-
-    constructor(enumerable: IEnumerable<T>, selector: Selector<T, TReturn>)
-    {
-        super();
-        this.#enumerable = enumerable;
-        this.#selector = selector;
-    }
-
-    public getEnumerator(): IEnumerator<TReturn>
-    {
-        return new SelectEnumerator<T, TReturn>(this.#enumerable.getEnumerator(), this.#selector);
-    }
-}
-
-class SelectManyEnumerable<T, TReturn> extends EnumerableBase<TReturn>
-{
-    readonly #enumerable: IEnumerable<T>;
-    readonly #selector: Selector<T, IEnumerable<TReturn>>;
-
-    constructor(enumerable: IEnumerable<T>, selector: Selector<T, IEnumerable<TReturn>>)
-    {
-        super();
-        this.#enumerable = enumerable;
-        this.#selector = selector;
-    }
-
-    public getEnumerator(): IEnumerator<TReturn>
-    {
-        return new SelectManyEnumerator<T, TReturn>(this.#enumerable.getEnumerator(), this.#selector);
-    }
-}
-
-class SkipEnumerable<T> extends EnumerableBase<T>
-{
-    readonly #enumerable: IEnumerable<T>;
-    #itemsToSkip: number;
-
-    constructor(enumerable: IEnumerable<T>, itemsToSkip: number)
-    {
-        super();
-        this.#enumerable = enumerable;
-        this.#itemsToSkip = itemsToSkip;
-    }
-
-    public getEnumerator(): IEnumerator<T>
-    {
-        return new SkipEnumerator<T>(this.#enumerable.getEnumerator(), this.#itemsToSkip);
-    }
-}
-
-class TakeEnumerable<T> extends EnumerableBase<T>
-{
-    readonly #enumerable: IEnumerable<T>;
-    #itemsToTake: number;
-
-    constructor(enumerable: IEnumerable<T>, itemsToTake: number)
-    {
-        super();
-        this.#enumerable = enumerable;
-        this.#itemsToTake = itemsToTake;
-    }
-
-    public getEnumerator(): IEnumerator<T>
-    {
-        return new TakeEnumerator<T>(this.#enumerable.getEnumerator(), this.#itemsToTake);
-    }
-}
-
-class WhereEnumerable<T> extends EnumerableBase<T>
-{
-    readonly #enumerable: IEnumerable<T>;
-    readonly #predicate: Predicate<T>;
-
-    constructor(enumerable: IEnumerable<T>, predicate: Predicate<T>)
-    {
-        super();
-        this.#enumerable = enumerable;
-        this.#predicate = predicate;
-    }
-
-    public getEnumerator(): IEnumerator<T>
-    {
-        return new WhereEnumerator<T>(this.#enumerable.getEnumerator(), this.#predicate);
     }
 }
