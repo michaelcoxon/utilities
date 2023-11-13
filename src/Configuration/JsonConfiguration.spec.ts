@@ -99,6 +99,65 @@ describe("JsonConfigurationBuilder.build", () =>
         }
     });
 
+    it("should return from object array", () =>
+    {
+        const builder = new JsonConfigurationBuilder();
+
+        builder.append({
+            key: [{
+                age: 35,
+                name: "mike"
+            }]
+        });
+
+        const config = builder.build();
+
+        const actual = config.get('key');
+        expect(actual).toEqual([{
+            name: 'mike',
+            age: 35,
+        }]);
+
+        expect((actual as any[]).find(i => i.name === 'mike')).toEqual({
+            name: 'mike',
+            age: 35,
+        });
+    });
+
+    it("should return merged object array", () =>
+    {
+        const builder = new JsonConfigurationBuilder();
+
+        builder.append({
+            key: [{
+                age: 35,
+                name: "mike"
+            }]
+        });
+
+        builder.append({
+            key: [{
+                hairColor: 'brown',
+                name: 'dave',
+            }]
+        });
+        {
+            const config = builder.build();
+
+            const actual = config.get('key');
+            expect(actual).toContainEqual({
+                age: 35,
+                name: 'mike',
+            });
+
+            expect(actual).toContainEqual({
+                hairColor: 'brown',
+                name: 'dave',
+            });
+
+        }
+    });
+
 });
 
 describe("JsonConfiguration.get", () =>
