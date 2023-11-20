@@ -23,18 +23,15 @@ export default function create<T>(factory: () => T): Promise<T>;
 export default function create<T>(promiseFactory: () => Promise<T>): Promise<T>;
 export default function create<T>(awaitableFactory: () => Awaitable<T>): Promise<T>
 {
-    return new Promise((resolve, reject) =>
+    return new Promise(async (resolve, reject) =>
     {
-        (async () =>
+        try
         {
-            try
-            {
-                resolve(await awaitableFactory());
-            }
-            catch (error)
-            {
-                reject(error);
-            }
-        })();
+            resolve(await awaitableFactory());
+        }
+        catch (error)
+        {
+            reject(error);
+        }
     });
 }

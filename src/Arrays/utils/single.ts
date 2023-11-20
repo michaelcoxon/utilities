@@ -5,14 +5,14 @@ import take from './take';
 import where from './where';
 
 
-export default function single<T>(iterable: T[], predicate?: Predicate<T>): T
+export default function single<T>(array: T[], predicate?: Predicate<T>): T
 {
     if (!isUndefinedOrNull(predicate))
     {
-        iterable = where(iterable, predicate);
+        array = where(array, predicate);
     }
 
-    const top2 = take(iterable, 2);
+    const top2 = take(array, 2);
 
     if (top2.length == 1)
     {

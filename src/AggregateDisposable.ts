@@ -63,7 +63,7 @@ export default class AggregateDisposable implements IDisposable
             {
                 for (const disposable of this.#disposables)
                 {
-                    return disposable.dispose();
+                    disposable.dispose();
                 }
                 resolve();
             }

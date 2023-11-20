@@ -91,7 +91,6 @@ export default abstract class BaseModelState<T extends any> implements IModelSta
                 {
                     reject(ex);
                 }
-
                 finally
                 {
                     this.unsubscribe(subscription);

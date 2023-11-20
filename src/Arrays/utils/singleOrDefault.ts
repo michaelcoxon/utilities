@@ -6,7 +6,7 @@ import where from './where';
 
 
 
-export default function singleOrDefault<T>(array: T[], predicate?: Predicate<T>): T | null
+export default function singleOrDefault<T>(array: T[], predicate?: Predicate<T>, defaultValue = null): T | typeof defaultValue
 {
     if (!isUndefinedOrNull(predicate))
     {
@@ -25,6 +25,6 @@ export default function singleOrDefault<T>(array: T[], predicate?: Predicate<T>)
     }
     else
     {
-        return null;
+        return defaultValue;
     }
 }

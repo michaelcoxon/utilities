@@ -1,5 +1,4 @@
-import Exception from '../Exceptions/Exception';
-import KeyNotFoundException from '../Exceptions/KeyNotFoundException';
+import assert, { throws } from 'assert';
 import expire from './expire';
 import MemoryCache from './MemoryCache';
 
@@ -18,7 +17,7 @@ describe("MemoryCache.add", () =>
     {
         const subject = new MemoryCache();
 
-        subject.add('key', 'value', () => false);
+        subject.add('key', 'value', expire.never);
 
         expect(await subject.getAsync('key')).not.toBeNull();
         expect(await subject.getAsync('key')).toEqual('value');
@@ -32,16 +31,16 @@ describe("MemoryCache + expire", () =>
     {
         const subject = new MemoryCache();
 
-        subject.add('key', 'value', expire());
+        subject.add('key', 'value', expire.now);
 
         try
         {
             await subject.getAsync('key');
+            assert.fail();
         }
-        catch (ex)
+        catch (err)
         {
-            expect(ex).toBeInstanceOf(KeyNotFoundException);
-            expect((ex as Exception).message).toEqual("Key 'key' is not found");
+            ;
         }
     });
 

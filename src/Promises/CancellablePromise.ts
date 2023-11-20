@@ -13,40 +13,37 @@ export default class CancellablePromise<T> implements PromiseLike<T>
     {
         this.#cancellationTokenSource = new CancellationTokenSource(cancellationToken);
 
-        this.#watcherPromise = new Promise<T>((resolve, reject) =>
+        this.#watcherPromise = new Promise<T>(async (resolve, reject) =>
         {
-            (async () =>
+            try
             {
-                try
+                if (this.#cancellationTokenSource.isCancellationRequested)
                 {
-                    if (this.#cancellationTokenSource.isCancellationRequested)
+                    return;
+                }
+
+                resolve(await promise);
+            }
+            catch (error)
+            {
+                reject(error);
+            }
+            finally
+            {
+                const cancelled = () => this.cancelled;
+
+                this.#finallyEvent.invoke(this,
                     {
-                        return;
-                    }
-
-                    resolve(await promise);
-                }
-                catch (error)
-                {
-                    reject(error);
-                }
-                finally
-                {
-                    const cancelled = () => this.cancelled;
-
-                    this.#finallyEvent.invoke(this,
+                        get promise(): PromiseLike<T>
                         {
-                            get promise(): PromiseLike<T>
-                            {
-                                return promise;
-                            },
-                            get cancelled(): boolean
-                            {
-                                return cancelled();
-                            }
-                        });
-                }
-            })();
+                            return promise;
+                        },
+                        get cancelled(): boolean
+                        {
+                            return cancelled();
+                        }
+                    });
+            }
         });
     }
 

@@ -1,15 +1,31 @@
+import { any } from '../Arrays';
+import { ArgumentNullException, NullReferenceException } from '../Exceptions';
 import { IExpiryPolicyDelegate } from './_types';
 
 
-export default function expire<T>(): IExpiryPolicyDelegate<T> 
+export default function expire<T>(...predicates: IExpiryPolicyDelegate<T>[]): IExpiryPolicyDelegate<T> 
 {
-    return () => true;
+    if (predicates.length === 0)
+    {
+        throw new ArgumentNullException("predicates");
+    }
+    else
+    {
+        let isExpired = false;
+        const delegate = (value?: T) =>
+        {
+            return isExpired || (isExpired = predicates.some(p => p(value)));
+        };
+
+        return delegate;
+    }
 }
 
-expire.when = expireWhen;
+expire.when = expire;
 expire.at = expireAt;
 expire.in = expireIn;
-expire.now = expireNow;
+expire.now = expire(() => true);
+expire.never = expire(() => false);
 expire.tomorrow = expireTomorrow;
 expire.inSeconds = expireInSeconds;
 expire.inMinutes = expireInMinutes;
@@ -18,15 +34,9 @@ expire.inDays = expireInDays;
 expire.inMonths = expireInMonths;
 expire.inYears = expireInYears;
 
-
-function expireWhen<T>(predicate: IExpiryPolicyDelegate<T>)
-{
-    return predicate;
-};
-
 function expireAt(date: Date) 
 {
-    return expireWhen(() => date <= new Date());
+    return expire(() => date <= new Date());
 };
 
 function expireIn(time: number)
@@ -35,12 +45,6 @@ function expireIn(time: number)
     expires.setTime(expires.getTime() + time);
     return expireAt(expires);
 };
-
-function expireNow()
-{
-    return expireWhen(() => true);
-};
-
 
 function expireTomorrow()
 {

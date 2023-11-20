@@ -3,6 +3,7 @@ import KeyAlreadyDefinedException from '../Exceptions/KeyAlreadyDefinedException
 import { IAsyncCacheItem, ICache, IExpiryPolicyDelegate } from './_types';
 import AsyncCacheItem from './AsyncCacheItem';
 import { Awaitable } from '../Types';
+import { isUndefinedOrNull } from '../TypeHelpers';
 
 /**
  * Creates an in-memory cache. This cache will be forgotten on disposal.
@@ -28,18 +29,19 @@ export default class MemoryCache<TKey = string> implements ICache<TKey>
 
     async addOrGetAsync<T>(key: TKey, factory: (key: TKey) => Awaitable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): Promise<T>
     {
-        const cacheItem = this.#internalCache.get(key);
+        const cacheItem = this.#internalCache.get(key) as IAsyncCacheItem<T> | undefined;
+        let value = await cacheItem?.getValueAsync();
 
-        if (cacheItem !== undefined && !cacheItem.expiredAsync)
+        if (!isUndefinedOrNull(value))
         {
-            return (await cacheItem.valueAsync) as T;
+            return value;
         }
-
-        const value = factory(key);
-
-        this.#internalCache.set(key, new AsyncCacheItem(value, expiryPolicy));
-
-        return await value;
+        else
+        {
+            const value = factory(key);
+            this.#internalCache.set(key, new AsyncCacheItem(value, expiryPolicy));
+            return await value;
+        }
     }
 
     addOrReplace<T>(key: TKey, value: Awaitable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): void
@@ -54,7 +56,7 @@ export default class MemoryCache<TKey = string> implements ICache<TKey>
             const value = item[1];
             const key = item[0];
 
-            if (await value.expiredAsync)
+            if (!isUndefinedOrNull(await value.getValueAsync()))
             {
                 this.#internalCache.delete(key);
             }
@@ -65,18 +67,19 @@ export default class MemoryCache<TKey = string> implements ICache<TKey>
     {
         const cacheItem = this.#internalCache.get(key);
 
-        if (cacheItem === undefined)
+        if (isUndefinedOrNull(cacheItem))
         {
             throw new KeyNotFoundException(key);
         }
 
-        if (await cacheItem.expiredAsync)
+        const value = await cacheItem.getValueAsync();
+        if (isUndefinedOrNull(value))
         {
             this.#internalCache.delete(key);
             throw new KeyNotFoundException(key);
         }
 
-        return (await cacheItem.valueAsync) as T;
+        return value;
     }
 
     async tryGetAsync<T>(key: TKey): Promise<{ success: boolean; value?: T; }>
@@ -88,13 +91,14 @@ export default class MemoryCache<TKey = string> implements ICache<TKey>
             return { success: false };
         }
 
-        if (await cacheItem.expiredAsync)
+        const value = await cacheItem.getValueAsync();
+        if (isUndefinedOrNull(value))
         {
             this.#internalCache.delete(key);
             return { success: false };
         }
 
-        return { success: true, value: await (cacheItem.valueAsync as Promise<T>) };
+        return { success: true, value };
     }
 
     replace<T>(key: TKey, value: Awaitable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): void

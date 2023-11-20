@@ -29,10 +29,10 @@ describe("Timer.enabled", () =>
         let ticks = 0;
 
         let resolve;
-        const promise = new Promise((_r)=> resolve = _r);
+        const promise = new Promise((_r) => resolve = _r);
 
 
-        timer.onElapsed.addHandler((_,e) =>
+        timer.onElapsed.addHandler((_, e) =>
         {
             if (ticks == 10)
             {
@@ -40,7 +40,7 @@ describe("Timer.enabled", () =>
                 resolve();
                 return;
             }
-            
+
             if (lastEventTime !== undefined)
             {
                 const letim = lastEventTime + 500;
@@ -50,13 +50,13 @@ describe("Timer.enabled", () =>
             }
 
             lastEventTime = e.signalTime;
-            
+
             ticks++;
         });
 
-        timer.start();        
+        timer.start();
 
         await promise;
 
-    },10000);
+    }, 10000);
 });

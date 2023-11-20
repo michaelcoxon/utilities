@@ -1,5 +1,5 @@
 
-export default function contains<T>(iterable: T[], item: T): boolean
+export default function contains<T>(array: T[], item: T): boolean
 {
-    return iterable.indexOf(item) > -1;
+    return array.indexOf(item) > -1;
 }

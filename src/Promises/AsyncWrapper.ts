@@ -81,49 +81,46 @@ export default class AsyncWrapper<T>
                 this.#promise = Promise.resolve(this.#promiseOrValueOrFactory);
             }
 
-            this.#awaitable = new Promise<T>((resolve, reject) =>
+            this.#awaitable = new Promise<T>(async (resolve, reject) =>
             {
-                (async () =>
+                let cancelled = false;
+                const promise = this.#promise;
+                try
                 {
-                    let cancelled = false;
-                    const promise = this.#promise;
-                    try
+                    const value = await promise;
+                    if (this.#promise !== promise)
                     {
-                        const value = await promise;
-                        if (this.#promise !== promise)
-                        {
-                            cancelled = true;
-                            return;
-                        }
-                        this.#value = value;
-                        resolve(value as Awaitable<T>);
-                        this.#success = true;
+                        cancelled = true;
+                        return;
                     }
-                    catch (error)
+                    this.#value = value;
+                    resolve(value as Awaitable<T>);
+                    this.#success = true;
+                }
+                catch (error)
+                {
+                    if (this.#promise !== promise)
                     {
-                        if (this.#promise !== promise)
-                        {
-                            cancelled = true;
-                            return;
-                        }
-                        this.#error = error;
-                        reject(error);
-                        this.#success = false;
+                        cancelled = true;
+                        return;
                     }
-                    finally
+                    this.#error = error;
+                    reject(error);
+                    this.#success = false;
+                }
+                finally
+                {
+                    if (!cancelled)
                     {
-                        if (!cancelled)
-                        {
-                            this.#complete = true;
-                            this.#completeEvent.invoke(this, this.#value);
+                        this.#complete = true;
+                        this.#completeEvent.invoke(this, this.#value);
 
-                            if (!isUndefinedOrNull(this.#callback))
-                            {
-                                this.#callback(this);
-                            }
+                        if (!isUndefinedOrNull(this.#callback))
+                        {
+                            this.#callback(this);
                         }
                     }
-                })();
+                }
             });
         }
     }
