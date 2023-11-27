@@ -1,4 +1,4 @@
-import assert, { throws } from 'assert';
+import assert from 'assert';
 import expire from './expire';
 import MemoryCache from './MemoryCache';
 

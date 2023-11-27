@@ -16,7 +16,6 @@ export default function tryParse(value: string, caseInsensitive = false): IResul
     {
         return Result.ok(false);
     }
-
     else
     {
         return Result.fail(`Value is not a boolean. value: ${value} (${caseInsensitive ? "case-insensitive" : "case-sensitive"})`);
