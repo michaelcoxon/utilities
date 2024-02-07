@@ -3,7 +3,7 @@
 /** The log level. Used for filtering and tagging logging events */
 export enum LogLevel
 {
-    /** Debug. Should only be used for logging to help development */
+    /** Debug. Should only be used for logging to help development. Debug is the lowest level. */
     Debug = "DEBG",
     /** Error. Used to log out errors and exceptions */
     Error = "EROR",
