@@ -21,81 +21,81 @@ export interface ILogger
      * Log a message flagged at the Debug log level
      * @param msg
      */
-    debug(msg: string): void;
+    debug(msg: string, ...args: unknown[]): void;
     /**
      * Log an error flagged at the Debug log level
      * @param err
      */
-    debugError(err: Error): void;
+    debugError(err: Error, ...args: unknown[]): void;
     /**
      * Log an error and a message flagged at the Debug log level
      * @param err
      */
-    debugError(err: Error, msg: string): void;
+    debugError(err: Error, msg: string, ...args: unknown[]): void;
 
     /**
     * Log a message flagged at the Error log level
     * @param msg
     */
-    error(msg: string): void;
+    error(msg: string, ...args: unknown[]): void;
     /**
      * Log an error flagged at the Error log level
      * @param err
      */
-    errorError(err: Error): void;
+    errorError(err: Error, ...args: unknown[]): void;
     /**
      * Log an error and a message flagged at the Error log level
      * @param err
      */
-    errorError(err: Error, msg: string): void;
+    errorError(err: Error, msg: string, ...args: unknown[]): void;
 
     /**
     * Log a message flagged at the Informational log level
     * @param msg
     */
-    info(msg: string): void;
+    info(msg: string, ...args: unknown[]): void;
     /**
      * Log an error flagged at the Informational log level
      * @param err
      */
-    infoError(err: Error): void;
+    infoError(err: Error, ...args: unknown[]): void;
     /**
      * Log an error and a message flagged at the Informational log level
      * @param err
      */
-    infoError(err: Error, msg: string): void;
+    infoError(err: Error, msg: string, ...args: unknown[]): void;
 
     /**
     * Log a message flagged at the Trace log level
     * @param msg
     */
-    trace(msg: string): void;
+    trace(msg: string, ...args: unknown[]): void;
     /**
      * Log an error flagged at the Trace log level
      * @param err
      */
-    traceError(err: Error): void;
+    traceError(err: Error, ...args: unknown[]): void;
     /**
      * Log an error and a message flagged at the Trace log level
      * @param err
      */
-    traceError(err: Error, msg: string): void;
+    traceError(err: Error, msg: string, ...args: unknown[]): void;
 
     /**
     * Log a message flagged at the Warning log level
     * @param msg
     */
-    warn(msg: string): void;
+    warn(msg: string, ...args: unknown[]): void;
     /**
      * Log an error flagged at the Warning log level
      * @param err
      */
-    warnError(err: Error): void;
+    warnError(err: Error, ...args: unknown[]): void;
     /**
      * Log an error and a message flagged at the Warning log level
      * @param err
      */
-    warnError(err: Error, msg: string): void;
+    warnError(err: Error, msg: string, ...args: unknown[]): void;
 
     /**
      * Rescope the logger with the provided name. Used for tagging the logger.

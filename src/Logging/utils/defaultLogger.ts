@@ -1,5 +1,5 @@
-import noop from '../Utilities/noop';
-import { ILogger } from './_types';
+import noop from '../../Utilities/noop';
+import { ILogger } from '../_types';
 
 export const NullLogger: ILogger = Object.freeze({
     debug: noop,

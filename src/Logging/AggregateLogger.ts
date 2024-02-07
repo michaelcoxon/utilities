@@ -12,103 +12,93 @@ export default class AggregateLogger implements ILogger
     }
 
 
-    debug(msg: string): void
+    debug(msg: string, ...args: unknown[]): void
     {
-        for (const logger of this.#loggers) logger.debug(msg);
+        for (const logger of this.#loggers) logger.debug(msg, ...args);
     }
-    debugError(err: Error): void;
-    debugError(err: Error, msg: string): void;
-    debugError(err: Error, msg?: string)
+    debugError(err: Error, msg?: string, ...args: unknown[])
     {
         for (const logger of this.#loggers)
         {
             if (msg)
             {
-                logger.debugError(err, msg);
+                logger.debugError(err, msg, ...args);
             }
             else
             {
-                logger.debugError(err);
+                logger.debugError(err, ...args);
             }
         }
     }
-    error(msg: string): void
+    error(msg: string, ...args: unknown[]): void
     {
-        for (const logger of this.#loggers) logger.error(msg);
+        for (const logger of this.#loggers) logger.error(msg, ...args);
     }
-    errorError(err: Error): void;
-    errorError(err: Error, msg: string): void;
-    errorError(err: Error, msg?: string)
+    errorError(err: Error, msg?: string, ...args: unknown[])
     {
         for (const logger of this.#loggers)
         {
             if (msg)
             {
-                logger.errorError(err, msg);
+                logger.errorError(err, msg, ...args);
             }
             else
             {
-                logger.errorError(err);
+                logger.errorError(err, ...args);
             }
         }
     }
-    info(msg: string): void
+    info(msg: string, ...args: unknown[]): void
     {
-        for (const logger of this.#loggers) logger.info(msg);
+        for (const logger of this.#loggers) logger.info(msg, ...args);
     }
-    infoError(err: Error): void;
-    infoError(err: Error, msg: string): void;
-    infoError(err: Error, msg?: string)
+    infoError(err: Error, msg?: string, ...args: unknown[])
     {
         for (const logger of this.#loggers)
         {
             if (msg)
             {
-                logger.infoError(err, msg);
+                logger.infoError(err, msg, ...args);
             }
             else
             {
-                logger.infoError(err);
+                logger.infoError(err, ...args);
             }
         }
     }
-    trace(msg: string): void
+    trace(msg: string, ...args: unknown[]): void
     {
-        for (const logger of this.#loggers) logger.trace(msg);
+        for (const logger of this.#loggers) logger.trace(msg, ...args);
     }
-    traceError(err: Error): void;
-    traceError(err: Error, msg: string): void;
-    traceError(err: Error, msg?: string)
+    traceError(err: Error, msg?: string, ...args: unknown[])
     {
         for (const logger of this.#loggers)
         {
             if (msg)
             {
-                logger.traceError(err, msg);
+                logger.traceError(err, msg, ...args);
             }
             else
             {
-                logger.traceError(err);
+                logger.traceError(err, ...args);
             }
         }
     }
-    warn(msg: string): void
+    warn(msg: string, ...args: unknown[]): void
     {
-        for (const logger of this.#loggers) logger.warn(msg);
+        for (const logger of this.#loggers) logger.warn(msg, ...args);
     }
-    warnError(err: Error): void;
-    warnError(err: Error, msg: string): void;
-    warnError(err: Error, msg?: string)
+    warnError(err: Error, msg?: string, ...args: unknown[])
     {
         for (const logger of this.#loggers)
         {
             if (msg)
             {
-                logger.warnError(err, msg);
+                logger.warnError(err, msg, ...args);
             }
             else
             {
-                logger.warnError(err);
+                logger.warnError(err, ...args);
             }
         }
     }

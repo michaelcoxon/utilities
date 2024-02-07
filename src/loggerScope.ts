@@ -1,10 +1,9 @@
-import { ILogger } from './_types';
+import { ILogger } from './Logging/_types';
 
 /**
  * Decorator for setting the logger scope of an ILogger instance
  * @param name
  */
-
 export default function loggerScope(name: string): (target: Record<string, any>, key: string) => void
 {
     return (target: Record<string, any>, key: string) =>
