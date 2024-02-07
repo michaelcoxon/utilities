@@ -7,7 +7,7 @@ export default class ScopedLogger implements ILogger, IDisposable
     static openScope = '[';
     static closeScope = ']';
 
-    readonly #scope: string[];
+    private readonly _scope: string[];
     readonly #name: string;
     readonly #logger: ILogger;
 
@@ -18,18 +18,18 @@ export default class ScopedLogger implements ILogger, IDisposable
         this.#logger = logger;
         this.#name = name;
 
-        if (ScopedLogger.#isScopedLogger(logger))
+        if (ScopedLogger.isScopedLogger(logger))
         {
-            this.#scope = [...logger.#scope, name];
+            this._scope = [...logger._scope, name];
         } else
         {
-            this.#scope = [name];
+            this._scope = [name];
         }
     }
     
-    static #isScopedLogger<T>(subject: T | ScopedLogger): subject is ScopedLogger
+    static isScopedLogger<T>(subject: T | ScopedLogger): subject is ScopedLogger
     {
-        return (subject as ScopedLogger).#scope !== undefined;
+        return subject["_scope"] !== undefined;
     }
 
     debug(msg: string, ...args: unknown[]): void
