@@ -1,4 +1,4 @@
-import Int32 from './Numbers/Integers/Int32';
+import Int32 from './Integers/Int32';
 
 
 
