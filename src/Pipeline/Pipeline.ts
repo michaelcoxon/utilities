@@ -10,7 +10,7 @@ export default class Pipeline implements IPipelineTaskQueue
 
     constructor(logger: ILogger)
     {
-        this.#logger = logger;
+        this.#logger = logger.scope('Pipeline');
         this.#queue = [];
     }
 
@@ -29,7 +29,7 @@ export default class Pipeline implements IPipelineTaskQueue
     public async executeAsync(context: IContext): Promise<void>
     {
         const queue = [...this.#queue];
-        const logger = this.#logger.scope('Pipeline::Execute');
+        const logger = this.#logger.scope('Execute');
 
         logger.debug(`Starting Pipeline`);
 
