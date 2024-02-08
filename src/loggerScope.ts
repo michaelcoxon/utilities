@@ -4,9 +4,9 @@ import { ILogger } from './Logging/_types';
  * Decorator for setting the logger scope of an ILogger instance
  * @param name
  */
-export default function loggerScope(name: string): (target: Record<string, any>, key: string) => void
+export default function loggerScope(name: string): (target: Record<string, unknown>, key: string) => void
 {
-    return (target: Record<string, any>, key: string) =>
+    return (target: Record<string, unknown>, key: string) =>
     {
         const logger = target[key] as ILogger;
         if (!logger)

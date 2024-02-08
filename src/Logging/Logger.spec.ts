@@ -1,5 +1,5 @@
-import { LogLevel } from '../src/Logging/_types';
-import testLogVerbosity from './Logging/utils/testLogVerbosity';
+import { LogLevel } from './_types';
+import testLogVerbosity from './utils/testLogVerbosity';
 
 function testLogVerbosityTest(expected: boolean, desiredLevel: LogLevel, loggingVerbosity: LogLevel)
 {

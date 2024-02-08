@@ -1,33 +1,7 @@
-
-
-import { assert } from 'console';
 import { IConsole } from '../IConsole';
 import ConsoleLogger from './ConsoleLogger';
-import { mock } from 'node:test';
 import { LogLevel } from './_types';
 
-const ___consoleImpl: IConsole = {
-    log(message, ...optionalParams)
-    {
-
-    },
-    error(message, ...optionalParams)
-    {
-
-    },
-    info(message, ...optionalParams)
-    {
-
-    },
-    trace(message, ...optionalParams)
-    {
-
-    },
-    warn(message, ...optionalParams)
-    {
-
-    }
-};
 
 
 describe("ConsoleLogger.constructor", () =>
@@ -45,7 +19,7 @@ describe("ConsoleLogger.log", () =>
     it("should always log", () =>
     {
         const consoleImpl: IConsole = {
-            log: jest.fn((message, ...optionalParams) => { })
+            log: jest.fn(_ => { })
         };
 
         const actual = new ConsoleLogger(consoleImpl, {

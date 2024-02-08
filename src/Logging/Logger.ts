@@ -3,7 +3,6 @@ import testLogVerbosity from "./utils/testLogVerbosity";
 import ScopedLogger from "./ScopedLogger";
 import { IDisposable } from '../Types';
 import errorAndMessageToString from './utils/errorAndMessageToString';
-import { NullLogger, getDefaultLogger } from './utils/defaultLogger';
 
 const defaultConfig: ILoggerConfig = {
     loggingVerbosity: LogLevel.Info,
