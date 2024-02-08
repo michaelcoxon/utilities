@@ -1,5 +1,4 @@
-﻿import MutexAlreadyAquiredException from './Exceptions/MutexAlreadyAquiredException';
-import SingleInvokeEvent from './Events/SingleInvokeEvent';
+﻿import SingleInvokeEvent from './Events/SingleInvokeEvent';
 import isUndefined from './TypeHelpers/isUndefined';
 import { Awaitable } from './Types';
 import CancellationToken from './Promises/CancellationToken';
@@ -32,7 +31,7 @@ class Lock implements ILock
  */
 export default class Mutex
 {
-    #onRelease?: SingleInvokeEvent<any>;
+    #onRelease?: SingleInvokeEvent<unknown>;
 
     /** Acquires a lock on this mutex. Only one lock can be kept at a time; calling multiple times will create dependent locks */
     public async acquireAsync(cancellationToken: CancellationToken = CancellationToken.default)

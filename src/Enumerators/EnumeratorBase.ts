@@ -9,7 +9,7 @@ export default abstract class EnumeratorBase<T> implements IEnumerator<T>
     abstract peek(): Undefinable<T>;
     abstract reset(): void;
 
-    public next(...args: []): IteratorResult<T, T>
+    public next(/*...args: []*/): IteratorResult<T, T>
     {
         //args.length;
         const done = !this.moveNext();

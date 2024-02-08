@@ -1,10 +1,7 @@
 import { Awaitable } from '../Types';
 import { IAsyncCacheItem, IExpiryPolicyDelegate } from './_types';
-import CacheExpiredException from './CacheExpiredException';
 import isFunction from '../TypeHelpers/isFunction';
-import { cat } from 'shelljs';
 import { Promises } from '..';
-import { error } from 'console';
 
 
 export default class AsyncCacheItem<T> implements IAsyncCacheItem<T>
@@ -27,24 +24,27 @@ export default class AsyncCacheItem<T> implements IAsyncCacheItem<T>
 
     public getValueAsync(): Promise<T>
     {
-        return new Promise<T>(async (resolve, reject) =>
+        return new Promise<T>((resolve, reject) =>
         {
-            try
+            (async () =>
             {
-                const value = await Promises.ensurePromise(this.#promiseOrValue);
-                if (this.#expiryPolicy(value))
+                try
                 {
-                    reject();
+                    const value = await Promises.ensurePromise(this.#promiseOrValue);
+                    if (this.#expiryPolicy(value))
+                    {
+                        reject();
+                    }
+                    else
+                    {
+                        resolve(value);
+                    }
                 }
-                else
+                catch (error)
                 {
-                    resolve(value);
+                    reject(error);
                 }
-            } 
-            catch (error)
-            {
-                reject(error);
-            }
+            })();
         });
     }
 }

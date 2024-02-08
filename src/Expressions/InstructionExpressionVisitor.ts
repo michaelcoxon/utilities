@@ -1,6 +1,5 @@
 import { BinaryExpression } from './BinaryExpression';
 import { ConstantExpression } from './ConstantExpression';
-import { Expression } from './Expression';
 import { UnaryExpression } from './UnaryExpression';
 import ExpressionVisitor from './ExpressionVisitor';
 
@@ -92,21 +91,21 @@ export default class InstructionExpressionVisitor extends ExpressionVisitor
     {
         this.#stack.push(...visitBinaryExpression(node));
     }
-    public visitCallExpression(node: Expression): void
+    public visitCallExpression(/*node: Expression*/): void
     {
         throw new Error('Method not implemented.');
     }
     public visitConstantExpression(node: ConstantExpression): void
     {
-        this.#stack.push(...[node.nodeType,node.value]);
+        this.#stack.push(...[node.nodeType, node.value]);
     }
 }
 
 
-function simplify(v: string): string
-{
-    return v;
-}
+// function simplify(v: string): string
+// {
+//     return v;
+// }
 
 function visitBinaryExpression(node: BinaryExpression): unknown[]
 {

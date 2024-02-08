@@ -5,7 +5,7 @@ describe("JsonConfigurationBuilder.build", () =>
 {
     it("should return value", () =>
     {
-        var builder = new JsonConfigurationBuilder();
+        const builder = new JsonConfigurationBuilder();
         builder.append({ key: 'value' });
 
         const config = builder.build();
@@ -14,7 +14,7 @@ describe("JsonConfigurationBuilder.build", () =>
 
     it("should return overridden value", () =>
     {
-        var builder = new JsonConfigurationBuilder();
+        const builder = new JsonConfigurationBuilder();
         builder.append({ key: 'value' });
         builder.append({ key: 'value2' });
 
@@ -24,7 +24,7 @@ describe("JsonConfigurationBuilder.build", () =>
 
     it("should return overridden object", () =>
     {
-        var builder = new JsonConfigurationBuilder();
+        const builder = new JsonConfigurationBuilder();
 
         builder.append({
             key: {
@@ -63,7 +63,7 @@ describe("JsonConfigurationBuilder.build", () =>
 
     it("should return merged object", () =>
     {
-        var builder = new JsonConfigurationBuilder();
+        const builder = new JsonConfigurationBuilder();
 
         builder.append({
             key: {
@@ -118,7 +118,7 @@ describe("JsonConfigurationBuilder.build", () =>
             age: 35,
         }]);
 
-        expect((actual as any[]).find(i => i.name === 'mike')).toEqual({
+        expect((actual as unknown[]).find(i => i.name === 'mike')).toEqual({
             name: 'mike',
             age: 35,
         });
@@ -164,7 +164,7 @@ describe("JsonConfiguration.get", () =>
 {
     it("should return value", () =>
     {
-        var builder = new JsonConfigurationBuilder();
+        const builder = new JsonConfigurationBuilder();
         builder.append({ key: 'value' });
 
         const config = builder.build();
@@ -174,7 +174,7 @@ describe("JsonConfiguration.get", () =>
 
     it("should return overridden value", () =>
     {
-        var builder = new JsonConfigurationBuilder();
+        const builder = new JsonConfigurationBuilder();
         builder.append({ key: 'value' });
         builder.append({ key: 'value2' });
 
@@ -185,7 +185,7 @@ describe("JsonConfiguration.get", () =>
 
     it("should return object", () =>
     {
-        var builder = new JsonConfigurationBuilder();
+        const builder = new JsonConfigurationBuilder();
 
         builder.append({
             key: {
@@ -204,7 +204,7 @@ describe("JsonConfiguration.get", () =>
 
     it("should return overridden object", () =>
     {
-        var builder = new JsonConfigurationBuilder();
+        const builder = new JsonConfigurationBuilder();
 
         builder.append({
             key: {
@@ -232,7 +232,7 @@ describe("JsonConfiguration.get", () =>
 
     it("should return value from json", () =>
     {
-        var builder = new JsonConfigurationBuilder();
+        const builder = new JsonConfigurationBuilder();
         builder.append(`{ "key": "value" }`);
 
         const config = builder.build();
@@ -242,7 +242,7 @@ describe("JsonConfiguration.get", () =>
 
     it("should return overridden value from json", () =>
     {
-        var builder = new JsonConfigurationBuilder();
+        const builder = new JsonConfigurationBuilder();
         builder.append(`{ "key": "value" }`);
         builder.append(`{ "key": "value2" }`);
 
@@ -256,7 +256,7 @@ describe("JsonConfigurationSection.get", () =>
 {
     it("should return value", () =>
     {
-        var builder = new JsonConfigurationBuilder();
+        const builder = new JsonConfigurationBuilder();
         builder.append({ key: 'value' });
 
         const config = builder.build();
@@ -266,7 +266,7 @@ describe("JsonConfigurationSection.get", () =>
 
     it("should return overridden value", () =>
     {
-        var builder = new JsonConfigurationBuilder();
+        const builder = new JsonConfigurationBuilder();
         builder.append({ key: 'value' });
         builder.append({ key: 'value2' });
 
@@ -277,7 +277,7 @@ describe("JsonConfigurationSection.get", () =>
 
     it("should return object", () =>
     {
-        var builder = new JsonConfigurationBuilder();
+        const builder = new JsonConfigurationBuilder();
 
         builder.append({
             key: {
@@ -295,7 +295,7 @@ describe("JsonConfigurationSection.get", () =>
 
     it("should return overridden object", () =>
     {
-        var builder = new JsonConfigurationBuilder();
+        const builder = new JsonConfigurationBuilder();
 
         builder.append({
             key: {
@@ -323,7 +323,7 @@ describe("JsonConfigurationSection.get", () =>
 
     it("should return value from json", () =>
     {
-        var builder = new JsonConfigurationBuilder();
+        const builder = new JsonConfigurationBuilder();
         builder.append(`{ "key": "value" }`);
 
         const config = builder.build();
@@ -333,7 +333,7 @@ describe("JsonConfigurationSection.get", () =>
 
     it("should return overridden value from json", () =>
     {
-        var builder = new JsonConfigurationBuilder();
+        const builder = new JsonConfigurationBuilder();
         builder.append(`{ "key": "value" }`);
         builder.append(`{ "key": "value2" }`);
 

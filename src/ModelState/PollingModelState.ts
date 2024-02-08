@@ -5,7 +5,7 @@ import { IModelState } from "./IModelState";
 
 export default class PollingModelState<T> extends BaseModelState<T> implements IDisposable, IModelState<T>
 {
-    #timeout?: any;
+    #timeout?: NodeJS.Timeout;
 
     /**
     * Creates a new PollingModelState
@@ -39,7 +39,7 @@ export default class PollingModelState<T> extends BaseModelState<T> implements I
     {
         if (this.#timeout)
         {
-            clearTimeout(this.#timeout as any);
+            clearTimeout(this.#timeout);
         }
     }
 }

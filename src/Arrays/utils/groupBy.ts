@@ -1,9 +1,4 @@
 import { Selector } from '../../Types';
-import distinct from './distinct';
-import select from './select';
-import where from './where';
-
-
 
 export default function groupBy<T, TKey>(array: T[], keySelector: Selector<T, TKey>): Map<TKey, T[]>
 {

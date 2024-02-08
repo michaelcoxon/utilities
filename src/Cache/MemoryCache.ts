@@ -10,11 +10,11 @@ import { isUndefinedOrNull } from '../TypeHelpers';
  */
 export default class MemoryCache<TKey = string> implements ICache<TKey>
 {
-    readonly #internalCache: Map<TKey, IAsyncCacheItem<any>>;
+    readonly #internalCache: Map<TKey, IAsyncCacheItem<unknown>>;
 
     constructor()
     {
-        this.#internalCache = new Map<TKey, IAsyncCacheItem<any>>();
+        this.#internalCache = new Map<TKey, IAsyncCacheItem<unknown>>();
     }
 
     add<T>(key: TKey, value: Awaitable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): void
@@ -30,7 +30,7 @@ export default class MemoryCache<TKey = string> implements ICache<TKey>
     async addOrGetAsync<T>(key: TKey, factory: (key: TKey) => Awaitable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): Promise<T>
     {
         const cacheItem = this.#internalCache.get(key) as IAsyncCacheItem<T> | undefined;
-        let value = await cacheItem?.getValueAsync();
+        const value = await cacheItem?.getValueAsync();
 
         if (!isUndefinedOrNull(value))
         {
@@ -51,7 +51,7 @@ export default class MemoryCache<TKey = string> implements ICache<TKey>
 
     async cleanAsync(): Promise<void>
     {
-        for (var item of this.#internalCache)
+        for (const item of this.#internalCache)
         {
             const value = item[1];
             const key = item[0];

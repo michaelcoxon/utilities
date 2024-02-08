@@ -1,7 +1,4 @@
 import { Predicate } from '../../../Types';
-import { IEnumerable } from '../../_types';
-
-
 
 export default function any<T>(iterable:Iterable<T>, predicate?: Predicate<T>): boolean
 {

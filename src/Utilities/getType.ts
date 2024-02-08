@@ -5,7 +5,7 @@
 
 import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty';
 
-export default function getType(o: any): string
+export default function getType(o: unknown): string
 {
     // null
     if (o === null)

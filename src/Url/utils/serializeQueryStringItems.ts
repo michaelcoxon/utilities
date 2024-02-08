@@ -1,5 +1,4 @@
 import { empty } from '../../Strings/_consts';
-import { isNullOrEmpty } from '../../TypeHelpers';
 import { QueryStringItem } from '../_types';
 
 /**
@@ -16,5 +15,5 @@ export default function serializeQueryStringItems(queryStringItems: QueryStringI
 
     return queryStringItems.length === 0 ? empty : (useQuestionMark ? '?' : empty) + queryStringItems
         .map(kvp => `${kvp.name}=${encodeURIComponent(kvp.value)}`)
-        .join("&");;
+        .join("&");
 }

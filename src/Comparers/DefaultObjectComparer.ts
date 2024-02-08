@@ -6,7 +6,7 @@ import { IComparer, IEqualityComparer } from './_types';
 /**
  * Default implementation
  */
- export default class DefaultObjectComparer<T extends any = any> implements IComparer<T>, IEqualityComparer<T> {
+ export default class DefaultObjectComparer<T = unknown> implements IComparer<T>, IEqualityComparer<T> {
     public compare(x: T, y: T): number
     {
         const toStringMethodName = 'toString';

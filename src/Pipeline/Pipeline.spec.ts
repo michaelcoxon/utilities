@@ -18,7 +18,7 @@ describe("Pipeline", () =>
 
         subject.start({
             name: "Task 1",
-            executeAsync: async (ctx) =>
+            executeAsync: async () =>
             {
                 fail();
             }

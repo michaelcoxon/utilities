@@ -16,7 +16,7 @@ export default class Event<TEventArgs> implements IEvent<TEventArgs>, IDisposabl
      * @param sender the object that is calling invoke
      * @param args the arguments to send along with the event.
      */
-    invoke(sender: any, args: TEventArgs)
+    invoke(sender: unknown, args: TEventArgs)
     {
         if (this.#disposed)
         {

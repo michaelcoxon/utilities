@@ -1,4 +1,4 @@
-export interface IContext<T = any>
+export interface IContext<T = unknown>
 {
     readonly data: T;
 }

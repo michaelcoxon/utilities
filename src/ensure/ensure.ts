@@ -16,7 +16,7 @@ export default function ensure(argument: AssertionType<string>, argumentName: st
 export default function ensure(argument: AssertionType<Guid>, argumentName: string): GuidArgumentAssertionBuilder;
 export default function ensure<TElement>(argument: AssertionType<ArrayLike<TElement>>, argumentName: string): ArrayLikeArgumentAssertionBuilder<TElement>;
 export default function ensure<T>(argument: AssertionType<T>, argumentName: string): ArgumentAssertionBuilder<T>;
-export default function ensure(argument: AssertionType<any>, argumentName: string): IArgumentAssertionBuilder<any>
+export default function ensure(argument: AssertionType<unknown>, argumentName: string): IArgumentAssertionBuilder<unknown>
 {
     if (argument instanceof Guid)
     {

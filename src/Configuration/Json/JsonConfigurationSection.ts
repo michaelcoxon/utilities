@@ -25,7 +25,7 @@ export default class JsonConfigurationSection implements IConfigurationSection
         const keys = parseKey(key);
 
         let i = 0;
-        let result: Record<string, any> = this.#source;
+        let result: Record<string, ConfigValue> = this.#source;
 
         while (i < keys.length)
         {
@@ -34,7 +34,7 @@ export default class JsonConfigurationSection implements IConfigurationSection
             {
                 throw new ArgumentException("key", "Key is not a section. Try using get");
             }
-            result = partial;
+            result = partial as Record<string, ConfigValue>;
             i++;
         }
 
@@ -47,14 +47,14 @@ export default class JsonConfigurationSection implements IConfigurationSection
     {
         if (isNullOrEmpty(key))
         {
-            return this.#source as any;
+            return this.#source as T;
         }
         else
         {
             const keys = parseKey(key);
 
             let i = 0;
-            let result: Record<string, any> = this.#source;
+            let result: Record<string, unknown> = this.#source;
 
             while (i < keys.length)
             {
@@ -66,13 +66,13 @@ export default class JsonConfigurationSection implements IConfigurationSection
                 }
                 else
                 {
-                    return value;
+                    return value as T;
                 }
 
                 i++;
             }
 
-            return result as any;
+            return result as T;
         } 
     }
 }

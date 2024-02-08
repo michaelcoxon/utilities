@@ -3,7 +3,7 @@
 
 export interface IComparable
 {
-    valueOf(): any;
+    valueOf(): unknown;
 }
 
 export interface IComparer<T>

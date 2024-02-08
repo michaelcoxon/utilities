@@ -305,7 +305,7 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
 export class ArrayEnumerable<T> implements IEnumerable<T>
 {
-    [Symbol.iterator](): Iterator<T, any, undefined>
+    [Symbol.iterator](): Iterator<T, unknown, undefined>
     {
         return this._array[Symbol.iterator]();
     }
@@ -924,7 +924,7 @@ export class LinkedList<T> extends EnumerableBase<T> implements ICollection<T>, 
         }
     }
 
-    ofType<N extends T>(ctor: new (...args: any[]) => N): IEnumerable<N>
+    ofType<N extends T>(ctor: new (...args: unknown[]) => N): IEnumerable<N>
     {
         return this.where((item) => item instanceof ctor).select((item) => item as N);
     }
@@ -1106,7 +1106,7 @@ export default class Set<T> extends Collection<T> implements ISet<T>, ICollectio
     intersectWith(enumerable: IEnumerable<T>): void
     {
         const array = enumerable.toArray();
-        this.forEach((value, index) =>
+        this.forEach((value/*, index*/) =>
         {
             if (array.indexOf(value) == -1)
             {
@@ -1217,7 +1217,7 @@ export default class Set<T> extends Collection<T> implements ISet<T>, ICollectio
         return this.item(index);
     }
 
-    ofType<N extends T>(ctor: new (...args: any[]) => N): IEnumerable<N>
+    ofType<N extends T>(ctor: new (...args: unknown[]) => N): IEnumerable<N>
     {
         return this.ofType(ctor);
     }

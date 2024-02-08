@@ -4,7 +4,7 @@ import select from './select';
 // USAGE: obj.Distinct(); or obj.Distinct(['key1'],['key2']);
 export default function* distinct<T, R>(iterable: Iterable<T>, selector: (a: T) => R): Iterable<T>
 {
-    const temp = new Map<any,boolean>();
+    const temp = new Map<unknown,boolean>();
 
     for (const item of select(iterable, i => ({ value: selector(i), original: i })))
     {

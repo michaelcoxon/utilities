@@ -5,7 +5,7 @@ import { IResultBase, IResult } from './_types';
  * Encapsulates a value allowing for returning an envelope
  * that contains the possible outcomes of a method.
  */
-export default class Result<T = Record<string, any>, TPreviousResult extends IResultBase = never> implements IResult<T, TPreviousResult>
+export default class Result<T = Record<string, unknown>, TPreviousResult extends IResultBase = never> implements IResult<T, TPreviousResult>
 {
     readonly #value?: T;
     readonly #success: boolean;

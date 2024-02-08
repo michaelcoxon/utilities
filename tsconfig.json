@@ -4,7 +4,7 @@
     "noImplicitAny": false,
     "module": "ESNext",
     "target": "ES2019",
-    "moduleResolution": "node",
+    "moduleResolution": "node",    
     "noEmitOnError": true,
     "noEmitHelpers": true,
     "importHelpers": true,

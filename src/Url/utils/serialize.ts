@@ -11,7 +11,7 @@ import  serializeQueryStringItems  from './serializeQueryStringItems';
  * @param obj the {@link Object} to serialize
  * @param useQuestionMark Prepend a question mark '?' when true.
  */
-export default function serialize(obj: Record<string, any>, useQuestionMark = false): string
+export default function serialize(obj: Record<string, unknown>, useQuestionMark = false): string
 {
     return serializeQueryStringItems(convertObjectToQueryStringItem(obj), useQuestionMark);
 }

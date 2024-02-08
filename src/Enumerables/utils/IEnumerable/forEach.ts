@@ -1,5 +1,3 @@
-import { IEnumerable } from '../../_types';
-
 
 export default function forEach<T>(iterable: Iterable<T>, callback: (value: T, index: number) => boolean | void): void
 {

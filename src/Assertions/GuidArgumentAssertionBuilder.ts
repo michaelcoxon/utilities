@@ -29,7 +29,7 @@ export default class GuidArgumentAssertionBuilder extends ArgumentAssertionBuild
     {
         let matched = false;
 
-        for (let option of options)
+        for (const option of options)
         {
             matched = option.toString() === this.argument.toString();
 

@@ -64,7 +64,7 @@ export class DefaultComparer<T> implements IComparer<T>, IEqualityComparer<T> {
 
 
 const DefaultComparers = {
-    DefaultComparer: new DefaultComparer<any>(),
+    DefaultComparer: new DefaultComparer<unknown>(),
     StringComparer: new DefaultStringComparer(),
     NumberComparer: new DefaultNumberComparer(),
     ObjectComparer: new DefaultObjectComparer(),
