@@ -118,7 +118,9 @@ describe("JsonConfigurationBuilder.build", () =>
             age: 35,
         }]);
 
-        expect((actual as unknown[]).find(i => i.name === 'mike')).toEqual({
+        
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        expect((actual as any[]).find(i => i.name === 'mike')).toEqual({
             name: 'mike',
             age: 35,
         });

@@ -10,11 +10,11 @@ import { isUndefinedOrNull } from '../TypeHelpers';
  */
 export default class MemoryCache<TKey = string> implements ICache<TKey>
 {
-    readonly #internalCache: Map<TKey, IAsyncCacheItem<unknown>>;
+    readonly #internalCache: Map<TKey, IAsyncCacheItem>;
 
     constructor()
     {
-        this.#internalCache = new Map<TKey, IAsyncCacheItem<unknown>>();
+        this.#internalCache = new Map<TKey, IAsyncCacheItem>();
     }
 
     add<T>(key: TKey, value: Awaitable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): void
@@ -29,8 +29,8 @@ export default class MemoryCache<TKey = string> implements ICache<TKey>
 
     async addOrGetAsync<T>(key: TKey, factory: (key: TKey) => Awaitable<T>, expiryPolicy: IExpiryPolicyDelegate<T>): Promise<T>
     {
-        const cacheItem = this.#internalCache.get(key) as IAsyncCacheItem<T> | undefined;
-        const value = await cacheItem?.getValueAsync();
+        const cacheItem = this.#internalCache.get(key) as IAsyncCacheItem | undefined;
+        const value = await cacheItem?.getValueAsync<T>();
 
         if (!isUndefinedOrNull(value))
         {
@@ -72,7 +72,7 @@ export default class MemoryCache<TKey = string> implements ICache<TKey>
             throw new KeyNotFoundException(key);
         }
 
-        const value = await cacheItem.getValueAsync();
+        const value = await cacheItem.getValueAsync<T>();
         if (isUndefinedOrNull(value))
         {
             this.#internalCache.delete(key);
@@ -91,7 +91,7 @@ export default class MemoryCache<TKey = string> implements ICache<TKey>
             return { success: false };
         }
 
-        const value = await cacheItem.getValueAsync();
+        const value = await cacheItem.getValueAsync<T>();
         if (isUndefinedOrNull(value))
         {
             this.#internalCache.delete(key);

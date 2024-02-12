@@ -4,7 +4,7 @@ import isFunction from '../TypeHelpers/isFunction';
 import { Promises } from '..';
 
 
-export default class AsyncCacheItem<T> implements IAsyncCacheItem<T>
+export default class AsyncCacheItem<T> implements IAsyncCacheItem
 {
     readonly #promiseOrValue: Awaitable<T>;
     readonly #expiryPolicy: IExpiryPolicyDelegate<T>;
@@ -22,9 +22,9 @@ export default class AsyncCacheItem<T> implements IAsyncCacheItem<T>
         this.#expiryPolicy = expiryPolicy;
     }
 
-    public getValueAsync(): Promise<T>
-    {
-        return new Promise<T>((resolve, reject) =>
+    public getValueAsync<T1 = T>(): Promise<T1>
+    {        
+        return new Promise<T1>((resolve, reject) =>
         {
             (async () =>
             {
@@ -37,7 +37,7 @@ export default class AsyncCacheItem<T> implements IAsyncCacheItem<T>
                     }
                     else
                     {
-                        resolve(value);
+                        resolve(value as T1);
                     }
                 }
                 catch (error)

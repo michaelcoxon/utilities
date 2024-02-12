@@ -2,6 +2,7 @@ import { BinaryExpression } from './BinaryExpression';
 import { ConstantExpression } from './ConstantExpression';
 import { UnaryExpression } from './UnaryExpression';
 import ExpressionVisitor from './ExpressionVisitor';
+import { Instruction } from './Instruction';
 
 
 
@@ -11,9 +12,9 @@ export default class InstructionExpressionVisitor extends ExpressionVisitor
 {
     #stack: unknown[] = [];
 
-    get value(): unknown[]
+    get value(): Instruction
     {
-        return this.#stack;
+        return this.#stack as Instruction;
     }
 
     public visitAddExpression(node: BinaryExpression): void

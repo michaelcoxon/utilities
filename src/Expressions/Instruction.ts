@@ -14,7 +14,8 @@ const instruction =
 */
 
 export type ValueType = number | string | boolean;
-export type Instruction = [ExpressionType, ...((Instruction | ValueType)[])];
-export type AddInstruction = [ExpressionType.Add, ...(Instruction[])];
-export type AndAlsoInstruction = [ExpressionType.AndAlso, ...(Instruction[])];
-export type ConstantInstruction = [ExpressionType.Constant, ValueType];
+export type InstructionParameterType = Instruction | ValueType;
+export type Instruction = [ExpressionType, ...InstructionParameterType[]];
+export type AddInstruction = [ExpressionType.Add, ...InstructionParameterType[]];
+export type AndAlsoInstruction = [ExpressionType.AndAlso, ...InstructionParameterType[]];
+export type ConstantInstruction = [ExpressionType.Constant, InstructionParameterType];

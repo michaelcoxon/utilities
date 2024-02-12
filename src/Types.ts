@@ -14,7 +14,8 @@ export type Undefinable<T> = T | undefined;
 export type Awaitable<T> = T | PromiseLike<T>;
 
 /** Helper type for representing constructors */
-export type ConstructorFor<T> = { new(...args: unknown[]): T; };
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ConstructorFor<T> = { new(...args: any[]): T; };
 
 /** Shortcut for () => T */
 export type Action<T> = () => T;
