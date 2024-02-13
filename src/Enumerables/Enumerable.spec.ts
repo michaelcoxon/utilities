@@ -1,12 +1,15 @@
 ﻿import { ArrayEnumerable, Enumerable } from '../../src/Enumerables';
-import { getDefaultLogger } from '../../src/Logging/defaultLogger';
 
-/*
-setDefaultLogger(new ConsoleLogger(console, {
-    loggingVerbosity: LogLevel.Trace,
-    useTraceMethodForTraceLogLevel: false
-}));
-*/
+
+// import ConsoleLogger from '../Logging/ConsoleLogger';
+// import { LogLevel } from '../Logging/_types';
+// import { getDefaultLogger, setDefaultLogger } from '../Logging/utils/defaultLogger';
+// setDefaultLogger(new ConsoleLogger(console, {
+//     loggingVerbosity: LogLevel.Trace,
+//     useTraceMethodForTraceLogLevel: false
+// }));
+
+import { getDefaultLogger } from '../Logging/utils/defaultLogger';
 const logger = getDefaultLogger();
 
 describe("Enumerable", () =>

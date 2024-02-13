@@ -4,6 +4,10 @@ import SR from '../i18n/en/generic.strings.json';
 
 export default class ScopedLogger implements ILogger, IDisposable
 {
+    static openScope = '[';
+    static closeScope = ']';
+
+    private readonly _scope: string[];
     readonly #name: string;
     readonly #logger: ILogger;
 
@@ -13,76 +17,79 @@ export default class ScopedLogger implements ILogger, IDisposable
     {
         this.#logger = logger;
         this.#name = name;
+
+        if (ScopedLogger.isScopedLogger(logger))
+        {
+            this._scope = [...logger._scope, name];
+        } else
+        {
+            this._scope = [name];
+        }
+    }
+    
+    static isScopedLogger<T>(subject: T | ScopedLogger): subject is ScopedLogger
+    {
+        return subject["_scope"] !== undefined;
     }
 
-    debug(msg: string): void
+    debug(msg: string, ...args: unknown[]): void
     {
         this.#ensureNotDisposed();
-        this.#logger.debug(this.#prepareMessage(msg));
+        this.#logger.debug(this.#prepareMessage(msg), ...args);
     }
 
-    debugError(err: Error): void;
-    debugError(err: Error, msg: string): void;
-    debugError(err: Error, msg?: string): void
+    debugError(err: Error, msg?: string, ...args: unknown[]): void
     {
         this.#ensureNotDisposed();
-        this.#logger.debugError(err, this.#prepareMessage(msg));
+        this.#logger.debugError(err, this.#prepareMessage(msg), ...args);
     }
 
-    error(msg: string): void
+    error(msg: string, ...args: unknown[]): void
     {
         this.#ensureNotDisposed();
-        this.#logger.error(this.#prepareMessage(msg));
+        this.#logger.error(this.#prepareMessage(msg), ...args);
     }
 
-    errorError(err: Error): void;
-    errorError(err: Error, msg: string): void;
-    errorError(err: Error, msg?: string): void
+    errorError(err: Error, msg?: string, ...args: unknown[]): void
     {
         this.#ensureNotDisposed();
-        this.#logger.errorError(err, this.#prepareMessage(msg));
+        this.#logger.errorError(err, this.#prepareMessage(msg), ...args);
     }
 
-    info(msg: string): void
+    info(msg: string, ...args: unknown[]): void
     {
         this.#ensureNotDisposed();
-        this.#logger.info(this.#prepareMessage(msg));
+        this.#logger.info(this.#prepareMessage(msg), ...args);
     }
 
-    infoError(err: Error): void;
-    infoError(err: Error, msg: string): void
-    infoError(err: Error, msg?: string): void
+    infoError(err: Error, msg?: string, ...args: unknown[]): void
     {
         this.#ensureNotDisposed();
-        this.#logger.infoError(err, this.#prepareMessage(msg));
+        this.#logger.infoError(err, this.#prepareMessage(msg), ...args);
     }
 
-    trace(msg: string): void
+    trace(msg: string, ...args: unknown[]): void
     {
         this.#ensureNotDisposed();
-        this.#logger.trace(this.#prepareMessage(msg));
+        this.#logger.trace(this.#prepareMessage(msg), ...args);
     }
 
-    traceError(err: Error): void;
-    traceError(err: Error, msg: string): void
-    traceError(err: Error, msg?: string): void
+    traceError(err: Error, msg?: string, ...args: unknown[]): void
     {
         this.#ensureNotDisposed();
-        this.#logger.traceError(err, this.#prepareMessage(msg));
+        this.#logger.traceError(err, this.#prepareMessage(msg), ...args);
     }
 
-    warn(msg: string): void
+    warn(msg: string, ...args: unknown[]): void
     {
         this.#ensureNotDisposed();
-        this.#logger.warn(this.#prepareMessage(msg));
+        this.#logger.warn(this.#prepareMessage(msg), ...args);
     }
 
-    warnError(err: Error): void;
-    warnError(err: Error, msg: string): void
-    warnError(err: Error, msg?: string): void
+    warnError(err: Error, msg?: string, ...args: unknown[]): void
     {
         this.#ensureNotDisposed();
-        this.#logger.warnError(err, this.#prepareMessage(msg));
+        this.#logger.warnError(err, this.#prepareMessage(msg), ...args);
     }
 
     scope(name: string): ILogger & IDisposable
@@ -90,7 +97,7 @@ export default class ScopedLogger implements ILogger, IDisposable
         this.#ensureNotDisposed();
         return new ScopedLogger(this, name);
     }
-    
+
     dispose(): void
     {
         this.#ensureNotDisposed();
@@ -99,10 +106,10 @@ export default class ScopedLogger implements ILogger, IDisposable
 
     #prepareMessage(msg?: string): string
     {
-        return `[${this.#name}]${msg !== undefined ? ' ' : ''}${msg || null}`;
+        return `${ScopedLogger.openScope}${this.#name}${ScopedLogger.closeScope}${msg !== undefined ? ' ' : ''}${msg || null}`;
     }
-   
-    #ensureNotDisposed():void
+
+    #ensureNotDisposed(): void
     {
         if (this.#disposed)
         {

@@ -27,7 +27,7 @@
         "clean": "npm-run-all -p clean:lib clean:dist clean:docs",
         "prepack": "npm-run-all -s clean test:prepack build:lib -p build:dist build:docs",
         "start:jekyll": "cd docs && bundle exec jekyll serve docs/",
-        "test:coverage": "jest --coverage --coverageDirectory coverage --coverageReporters html",
+        "test:coverage": "jest --coverage",
         "test:jest": "jest",
         "test:madge": "madge --extensions ts --circular .",
         "test:prepack": "npm-run-all -s test:coverage test:madge",
