@@ -53,3 +53,4 @@ export { default as errorToLogMessage } from './errorToLogMessage';
 export { default as serializeError } from './serializeError';
 export { default as using } from './using';
 export { default as usingAsync } from './usingAsync';
+export { default as loggerScope } from './loggerScope';

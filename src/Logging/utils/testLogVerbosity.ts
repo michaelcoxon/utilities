@@ -1,4 +1,4 @@
-import { LogLevel } from './_types';
+import { LogLevel } from '../_types';
 
 /**
  * Returns true if the desired log level is valid for the currently configured logging verbosity
