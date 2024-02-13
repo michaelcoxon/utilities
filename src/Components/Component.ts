@@ -4,7 +4,7 @@ import { IEvent, Event } from '../Events';
 import { INotifyPropertyChanged, INotifyComponentPropertyChangedEventArgs, INotifyPropertyChangedEventArgs } from '../INotifyPropertyChanged';
 import { Collection, Enumerable } from '../Enumerables';
 
-type Props = Undefinable<{}>;
+type Props = Undefinable<unknown>;
 
 export interface IComponent<TProps extends Props = undefined> extends INotifyPropertyChanged, IDisposable
 {
@@ -57,7 +57,7 @@ export default abstract class Component<TProps extends Props> implements ICompon
             {                
                 component.propertyChanged.addHandler((s, e) =>
                 {
-                    this.#propertyChanged.invoke(this, {...e, instance: s });
+                    this.#propertyChanged.invoke(this, {...e, instance: s as INotifyPropertyChanged });
                 });
                 component.init();
             }

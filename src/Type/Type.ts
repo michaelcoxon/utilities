@@ -17,7 +17,7 @@ import ObjectType from './ObjectType';
 import StringType from './StringType';
 import UndefinedType from './UndefinedType';
 
-const typeResolvers: ((subject: any) => { success: boolean; type?: IType; })[] = [];
+const typeResolvers: ((subject: unknown) => { success: boolean; type?: IType; })[] = [];
 
 export default class Type
 {
@@ -26,7 +26,7 @@ export default class Type
         return typeResolvers;
     }
 
-    public static getType(subject: any): IType
+    public static getType(subject: unknown): IType
     {
         return Object.seal((() =>
         {

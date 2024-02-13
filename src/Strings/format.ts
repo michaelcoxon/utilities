@@ -4,7 +4,7 @@ import convertToString from '../Utilities/convertToString';
 import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty';
 
 
-export default function format(format: string, ...args: any[]): string
+export default function format(format: string, ...args: unknown[]): string
 {
     return format.replace(FORMAT_REGEX, (match: string, index: string, format: string) =>
     {

@@ -14,6 +14,7 @@ export type Undefinable<T> = T | undefined;
 export type Awaitable<T> = T | PromiseLike<T>;
 
 /** Helper type for representing constructors */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ConstructorFor<T> = { new(...args: any[]): T; };
 
 /** Shortcut for () => T */
@@ -47,7 +48,7 @@ export type Selector<T, TReturn> = (item: T) => TReturn;
 export type Comparison<T> = (a: T, y: T) => number;
 
 /** Represents any function*/
-export type AnyFunction = (...args: any[]) => any;
+export type AnyFunction = (...args: unknown[]) => unknown;
 
 
 

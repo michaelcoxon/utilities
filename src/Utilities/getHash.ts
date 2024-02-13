@@ -1,4 +1,4 @@
-import { empty, KEY_VALUE_SEPARATOR } from '../Strings/_consts';
+import { empty } from '../Strings/_consts';
 import hashString from "./hashString";
 
 /**
@@ -6,22 +6,9 @@ import hashString from "./hashString";
  * @param o
  */
 
-export default function getHash(o: any): string
+export default function getHash(o: unknown): string
 {
     let hash: string = empty;
-
-    if (!!JSON && !!JSON.stringify)
-    {
-        for (const key in Object.getOwnPropertyNames(o))
-        {
-            hash += `${key}${KEY_VALUE_SEPARATOR}${o[key]}`;
-        }
-    }
-
-    else
-    {
-        hash = JSON.stringify(o);
-    }
-
+    hash = JSON.stringify(o);
     return hashString(hash).toString();
 }

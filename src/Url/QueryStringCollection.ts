@@ -20,7 +20,7 @@ export default class QueryStringCollection
         return this.#items;
     }
 
-    public item(name: string): any
+    public item(name: string): unknown
     {
         const items = this.items.filter(i => i.name === name);
         if (items.length > 1)
@@ -33,7 +33,7 @@ export default class QueryStringCollection
         }
     }
 
-    public toObject(): Record<string, any>
+    public toObject(): Record<string, unknown>
     {
         return convertQueryStringItemToObject(this.#items);
     }
@@ -53,7 +53,7 @@ export default class QueryStringCollection
         return new QueryStringCollection(deserializeQS(queryString));
     }
 
-    public static createFromObject(queryStringObject: Record<string, any>)
+    public static createFromObject(queryStringObject: Record<string, unknown>)
     {
         return new QueryStringCollection(convertObjectToQueryStringItem(queryStringObject));
     }

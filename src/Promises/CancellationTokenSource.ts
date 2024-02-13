@@ -4,7 +4,7 @@ import SingleInvokeEvent from '../Events/SingleInvokeEvent';
 
 export default class CancellationTokenSource
 {
-    readonly #timeoutables: any[] = [];
+    readonly #timeoutables: NodeJS.Timeout[] = [];
     readonly #cancelledEvent: SingleInvokeEvent<undefined> = new SingleInvokeEvent();
     #cancelled = false;
 
@@ -31,7 +31,7 @@ export default class CancellationTokenSource
         if (!this.#cancelled)
         {
             this.#cancelled = true;
-            this.#timeoutables.forEach(t => clearTimeout(t as any));
+            this.#timeoutables.forEach(timeoutHandle => clearTimeout(timeoutHandle));
             this.#cancelledEvent.invoke(this, undefined);
         }
     }

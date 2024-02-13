@@ -5,7 +5,7 @@ import { Undefinable } from "../Types";
 import { IModelState } from "./IModelState";
 
 
-export default abstract class BaseModelState<T extends any> implements IModelState<T>
+export default abstract class BaseModelState<T> implements IModelState<T>
 {
     readonly #postHandlers: Record<string, EventHandler<Undefinable<T>>>;
     readonly #preHandlers: Record<string, EventHandler<Undefinable<T>>>;

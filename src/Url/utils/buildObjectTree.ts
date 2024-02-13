@@ -3,9 +3,10 @@ import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull';
 
 
 
-export default function buildObjectTree(result: Record<string, any>, name: string, value: any): void
+export default function buildObjectTree(result: Record<string, unknown>, name: string, value: unknown): void
 {
     const keys = name.split('.');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let current: any = result;
 
     for (let i = 0; i < keys.length; i++)
@@ -16,7 +17,7 @@ export default function buildObjectTree(result: Record<string, any>, name: strin
         {
             // array
             const actualKey = currentKey.substring(0, currentKey.indexOf('['));
-            const array: any[] = isUndefinedOrNull(current[actualKey]) ? [] : current[actualKey] as any[];
+            const array: unknown[] = isUndefinedOrNull(current[actualKey]) ? [] : current[actualKey] as unknown[];
             current[actualKey] = array;
 
             let index = parseInt(currentKey.split('[', 2)[1]);
@@ -37,7 +38,7 @@ export default function buildObjectTree(result: Record<string, any>, name: strin
                 ? (i < keys.length - 1 ? {} : value)
                 : current[currentKey];
 
-            current = current[currentKey] as Record<string, any>;
+            current = current[currentKey] as Record<string, unknown>;
         }
     }
 }

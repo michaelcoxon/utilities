@@ -1,13 +1,10 @@
 import { Awaitable } from '../Types';
 import { IAsyncCacheItem, IExpiryPolicyDelegate } from './_types';
-import CacheExpiredException from './CacheExpiredException';
 import isFunction from '../TypeHelpers/isFunction';
-import { cat } from 'shelljs';
 import { Promises } from '..';
-import { error } from 'console';
 
 
-export default class AsyncCacheItem<T> implements IAsyncCacheItem<T>
+export default class AsyncCacheItem<T> implements IAsyncCacheItem
 {
     readonly #promiseOrValue: Awaitable<T>;
     readonly #expiryPolicy: IExpiryPolicyDelegate<T>;
@@ -25,26 +22,29 @@ export default class AsyncCacheItem<T> implements IAsyncCacheItem<T>
         this.#expiryPolicy = expiryPolicy;
     }
 
-    public getValueAsync(): Promise<T>
-    {
-        return new Promise<T>(async (resolve, reject) =>
+    public getValueAsync<T1 = T>(): Promise<T1>
+    {        
+        return new Promise<T1>((resolve, reject) =>
         {
-            try
+            (async () =>
             {
-                const value = await Promises.ensurePromise(this.#promiseOrValue);
-                if (this.#expiryPolicy(value))
+                try
                 {
-                    reject();
+                    const value = await Promises.ensurePromise(this.#promiseOrValue);
+                    if (this.#expiryPolicy(value))
+                    {
+                        reject();
+                    }
+                    else
+                    {
+                        resolve(value as T1);
+                    }
                 }
-                else
+                catch (error)
                 {
-                    resolve(value);
+                    reject(error);
                 }
-            } 
-            catch (error)
-            {
-                reject(error);
-            }
+            })();
         });
     }
 }

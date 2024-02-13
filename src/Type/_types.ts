@@ -6,5 +6,5 @@ export interface IType
     readonly namespace: string;
     readonly baseType: IType;
     readonly isArray: boolean;
-    factory(...args: any[]): any;
+    factory(...args: unknown[]): unknown;
 }

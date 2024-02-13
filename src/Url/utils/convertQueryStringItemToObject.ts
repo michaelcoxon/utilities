@@ -5,7 +5,7 @@ import  buildObjectTree  from "./buildObjectTree";
  * Converts a collection of {@link QueryStringItem}'s to an object
  * @param queryStringItems
  */
- export default function convertQueryStringItemToObject(queryStringItems: QueryStringItem[]): Record<string, any>
+ export default function convertQueryStringItemToObject(queryStringItems: QueryStringItem[]): Record<string, unknown>
 {
     const result = {};
 

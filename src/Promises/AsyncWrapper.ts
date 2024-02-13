@@ -16,10 +16,10 @@ export default class AsyncWrapper<T>
     #promise?: Promise<T>;
     #complete: boolean;
     #success: boolean;
-    #error: any;
+    #error: unknown;
     #value: Undefinable<T>;
     #promiseOrValueOrFactory: Awaitable<T> | (() => Awaitable<T>) | undefined;
-    #awaitable: Promise<any>;
+    #awaitable: Promise<unknown>;
 
     /**
     * Creates a new unresolved AsyncWrapper
@@ -81,46 +81,49 @@ export default class AsyncWrapper<T>
                 this.#promise = Promise.resolve(this.#promiseOrValueOrFactory);
             }
 
-            this.#awaitable = new Promise<T>(async (resolve, reject) =>
+            this.#awaitable = new Promise<T>((resolve, reject) =>
             {
-                let cancelled = false;
-                const promise = this.#promise;
-                try
+                (async () =>
                 {
-                    const value = await promise;
-                    if (this.#promise !== promise)
+                    let cancelled = false;
+                    const promise = this.#promise;
+                    try
                     {
-                        cancelled = true;
-                        return;
-                    }
-                    this.#value = value;
-                    resolve(value as Awaitable<T>);
-                    this.#success = true;
-                }
-                catch (error)
-                {
-                    if (this.#promise !== promise)
-                    {
-                        cancelled = true;
-                        return;
-                    }
-                    this.#error = error;
-                    reject(error);
-                    this.#success = false;
-                }
-                finally
-                {
-                    if (!cancelled)
-                    {
-                        this.#complete = true;
-                        this.#completeEvent.invoke(this, this.#value);
-
-                        if (!isUndefinedOrNull(this.#callback))
+                        const value = await promise;
+                        if (this.#promise !== promise)
                         {
-                            this.#callback(this);
+                            cancelled = true;
+                            return;
+                        }
+                        this.#value = value;
+                        resolve(value as Awaitable<T>);
+                        this.#success = true;
+                    }
+                    catch (error)
+                    {
+                        if (this.#promise !== promise)
+                        {
+                            cancelled = true;
+                            return;
+                        }
+                        this.#error = error;
+                        reject(error);
+                        this.#success = false;
+                    }
+                    finally
+                    {
+                        if (!cancelled)
+                        {
+                            this.#complete = true;
+                            this.#completeEvent.invoke(this, this.#value);
+
+                            if (!isUndefinedOrNull(this.#callback))
+                            {
+                                this.#callback(this);
+                            }
                         }
                     }
-                }
+                })();
             });
         }
     }
@@ -156,7 +159,7 @@ export default class AsyncWrapper<T>
     }
 
     /** returns the error if the promise failed */
-    public get error(): any
+    public get error(): unknown
     {
         return this.#error;
     }

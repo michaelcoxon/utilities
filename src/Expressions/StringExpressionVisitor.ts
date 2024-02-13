@@ -1,7 +1,6 @@
 import { StringBuilder } from '../IO';
 import { BinaryExpression } from './BinaryExpression';
 import { ConstantExpression } from './ConstantExpression';
-import { Expression } from './Expression';
 import { UnaryExpression } from './UnaryExpression';
 import ExpressionVisitor from './ExpressionVisitor';
 
@@ -183,7 +182,7 @@ export default class StringExpressionVisitor extends ExpressionVisitor
         this.visit(node.right);
         this.#sb.append(")");
     }
-    public visitCallExpression(node: Expression): void
+    public visitCallExpression(/*node: Expression*/): void
     {
         throw new Error('Method not implemented.');
     }

@@ -8,7 +8,7 @@ describe("Dictionary.constructor", () =>
             { key: 'name', value: 'michael' },
             { key: 'age', value: 35 }
         ];
-        const result = new Dictionary<string, any>(kvps);
+        const result = new Dictionary<string, unknown>(kvps);
 
         expect(kvps.length).toEqual(result.length);
 
@@ -24,7 +24,7 @@ describe("Dictionary.constructor", () =>
             { key: 'name', value: 'michael' },
             { key: 'age', value: 35 }
         ];
-        const result = new Dictionary<string, any>(kvps);
+        const result = new Dictionary<string, unknown>(kvps);
 
         expect(kvps.length).toEqual(result.length);
 

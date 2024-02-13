@@ -7,9 +7,9 @@
 export type IExpiryPolicyDelegate<T> = (value?: T) => boolean;
 
 
-export interface IAsyncCacheItem<T>
+export interface IAsyncCacheItem
 {
-    getValueAsync(): Promise<T>;
+    getValueAsync<T>(): Promise<T>;
 }
 
 export interface ICache<TKey>

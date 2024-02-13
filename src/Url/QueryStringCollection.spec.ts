@@ -70,15 +70,15 @@ describe('QueryStringCollection.createFromQueryString', () =>
 
         expect(str).toEqual('?' + queryString);
 
-        expect(obj[name][0]).toEqual(value + 1);
-        expect(obj[name][1]).toEqual(value + 2);
-        expect(obj[name][2]).toEqual(value + 3);
+        expect(obj[name]![0]).toEqual(value + 1);
+        expect(obj[name]![1]).toEqual(value + 2);
+        expect(obj[name]![2]).toEqual(value + 3);
         expect(items[0].name).toEqual(name + '[]');
         expect(items[0].value).toEqual(value + 1);
         expect(query.item(name)).toEqual(undefined);
-        expect(query.item(name + '[]')[0]).toEqual(value + 1);
-        expect(query.item(name + '[]')[1]).toEqual(value + 2);
-        expect(query.item(name + '[]')[2]).toEqual(value + 3);
+        expect(query.item(name + '[]')![0]).toEqual(value + 1);
+        expect(query.item(name + '[]')![1]).toEqual(value + 2);
+        expect(query.item(name + '[]')![2]).toEqual(value + 3);
     });
 
     it('object', () =>
@@ -95,7 +95,7 @@ describe('QueryStringCollection.createFromQueryString', () =>
 
         expect(str).toEqual('?' + queryString);
 
-        expect(obj[name][name]).toEqual(value);
+        expect(obj[name]![name]).toEqual(value);
         expect(items[0].name).toEqual(`${name}.${name}`);
         expect(items[0].value).toEqual(value);
         expect(query.item(`${name}.${name}`)).toEqual(value);
@@ -139,9 +139,9 @@ describe('QueryStringCollection.createFromObject', () =>
 
         expect(str).toEqual('?' + queryString);
 
-        expect(obj[name][0]).toEqual(value + 1);
-        expect(obj[name][1]).toEqual(value + 2);
-        expect(obj[name][2]).toEqual(value + 3);
+        expect(obj[name]![0]).toEqual(value + 1);
+        expect(obj[name]![1]).toEqual(value + 2);
+        expect(obj[name]![2]).toEqual(value + 3);
         expect(items[0].name).toEqual(name + '[0]');
         expect(items[0].value).toEqual(value + 1);
         expect(query.item(name)).toEqual(undefined);
@@ -164,7 +164,7 @@ describe('QueryStringCollection.createFromObject', () =>
 
         expect(str).toEqual('?' + queryString);
 
-        expect(obj[name][name]).toEqual(value);
+        expect(obj[name]![name]).toEqual(value);
         expect(items[0].name).toEqual(`${name}.${name}`);
         expect(items[0].value).toEqual(value);
         expect(query.item(`${name}.${name}`)).toEqual(value);
@@ -186,12 +186,12 @@ describe('QueryStringCollection.createFromObject', () =>
 
         expect(str).toEqual('?' + queryString);
 
-        expect(obj[name][name]).toEqual(value);
+        expect(obj[name]![name]).toEqual(value);
         expect(items[0].name).toEqual(`${name}.${name}`);
         expect(items[0].value).toEqual(value);
         expect(query.item(`${name}.${name}`)).toEqual(value);
 
-        expect(obj[name][prop2name]).toEqual(prop2value);
+        expect(obj[name]![prop2name]).toEqual(prop2value);
         expect(items[1].name).toEqual(`${name}.${prop2name}`);
         expect(items[1].value).toEqual(prop2value);
         expect(query.item(`${name}.${prop2name}`)).toEqual(prop2value);

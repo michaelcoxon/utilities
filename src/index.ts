@@ -43,12 +43,12 @@ export * from "./IConsole";
 export * from "./INotifyPropertyChanged";
 export { default as Lazy } from "./Lazy";
 export { default as Mutex } from "./Mutex";
-//export * from "./Timer";
+export { default as Timer } from "./Timer";
 
 
 
 // utility functions
-export { ensure } from "./ensure";
+export * from "./ensure";
 export { default as errorToLogMessage } from './errorToLogMessage';
 export { default as serializeError } from './serializeError';
 export { default as using } from './using';

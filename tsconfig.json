@@ -4,7 +4,7 @@
     "noImplicitAny": false,
     "module": "ESNext",
     "target": "ES2019",
-    "moduleResolution": "node",
+    "moduleResolution": "node",    
     "noEmitOnError": true,
     "noEmitHelpers": true,
     "importHelpers": true,
@@ -32,8 +32,5 @@
   "compileOnSave": true,
   "include": [
     "./src/**/*"
-  ],
-  "exclude": [
-    "./src/**/*.spec.*"
   ],
 }

@@ -13,7 +13,7 @@ export default class TimeSpan extends Number
 
     //#milliseconds = 0;
 
-    constructor(milliseconds: Number)
+    constructor(milliseconds: number)
     {
         super(milliseconds);
     }

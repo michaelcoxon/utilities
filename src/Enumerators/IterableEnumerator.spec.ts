@@ -1,7 +1,6 @@
 ﻿import { throws } from 'assert';
 import { Collection } from '../../src/Enumerables';
 import IterableEnumerator from '../../src/Enumerators/IterableEnumerator';
-import { NotImplementedException, NotSupportedException } from '../Exceptions';
 
 describe("IterableEnumerator.constructor", () =>
 {

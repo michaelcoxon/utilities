@@ -2,7 +2,7 @@ import isUndefinedOrNull from '../../TypeHelpers/isUndefinedOrNull';
 import { empty } from '../../Utilities';
 import { QueryStringItem } from '../_types';
 
-export default function convert(name: string, value: any): QueryStringItem[]
+export default function convert(name: string, value: unknown): QueryStringItem[]
 {
     const result: QueryStringItem[] = [];
 
@@ -14,7 +14,7 @@ export default function convert(name: string, value: any): QueryStringItem[]
         }
         else if (typeof value === 'object')
         {
-            result.push(...convertObjectToQueryStringItem(value as Record<string, any>, `${name}.`));
+            result.push(...convertObjectToQueryStringItem(value as Record<string, unknown>, `${name}.`));
         }
         else
         {
@@ -31,7 +31,7 @@ export default function convert(name: string, value: any): QueryStringItem[]
 /**
  * Converts a `name=items[]` to a `name[index]=item` for a url query string.
  */
-export function convertArray(name: string, arr: any[]): QueryStringItem[]
+export function convertArray(name: string, arr: unknown[]): QueryStringItem[]
 {
     const result: QueryStringItem[] = [];
 
@@ -48,13 +48,13 @@ export function convertArray(name: string, arr: any[]): QueryStringItem[]
  * Converts and {@link Object} to a collection of {@link QueryStringItem}'s.
  * @param obj
  */
-export function convertObjectToQueryStringItem(obj: Record<string, any>): QueryStringItem[];
+export function convertObjectToQueryStringItem(obj: Record<string, unknown>): QueryStringItem[];
 /**
  * Converts and {@link Object} to a collection of {@link QueryStringItem}'s with the specified {@param prefix} for the key.
  * @param obj
  */
-export function convertObjectToQueryStringItem(obj: Record<string, any>, prefix: string): QueryStringItem[];
-export function convertObjectToQueryStringItem(obj: Record<string, any>, prefix: string = empty): QueryStringItem[]
+export function convertObjectToQueryStringItem(obj: Record<string, unknown>, prefix: string): QueryStringItem[];
+export function convertObjectToQueryStringItem(obj: Record<string, unknown>, prefix: string = empty): QueryStringItem[]
 {
     const result: QueryStringItem[] = [];
 

@@ -1,6 +1,5 @@
 import { BinaryExpression } from './BinaryExpression';
 import { ConstantExpression, ConstantExpressionType } from './ConstantExpression';
-import { Expression } from './Expression';
 import { ExpressionType } from './ExpressionType';
 import StringExpressionVisitor from './StringExpressionVisitor';
 

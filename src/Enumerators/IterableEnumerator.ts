@@ -1,5 +1,4 @@
 import { NotSupportedException, OutOfBoundsException } from '../Exceptions';
-import InvalidOperationException from '../Exceptions/InvalidOperationException';
 import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
 import { Undefinable } from '../Types';
 import EnumeratorBase from './EnumeratorBase';

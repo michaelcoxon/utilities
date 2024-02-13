@@ -14,19 +14,51 @@ export default class Pipeline implements IPipelineTaskQueue
         this.#queue = [];
     }
 
-    public start(task: IPipelineTask | ((context: IContext) => Promise<void>)): this
+    public start<T>(task: IPipelineTask | ((context: IContext<T>) => Promise<void>)): this
     {
-        this.#queue.push(isFunction(task) ? { name: task.toString(), executeAsync: task } : task);
+        if (isFunction(task))
+        {
+            const pTask: IPipelineTask = {
+                name: task.toString(),
+                async executeAsync<T1 = T>(context: IContext<T1>)
+                {
+                    await task(context);
+                }
+            };
+
+            this.#queue.push(pTask);
+        }
+        else
+        {
+            this.#queue.push(task as IPipelineTask);
+        }
+
         return this;
     }
 
-    public then(task: IPipelineTask | ((context: IContext) => Promise<void>)): this
+    public then<T>(task: IPipelineTask | ((context: IContext<T>) => Promise<void>)): this
     {
-        this.#queue.push(isFunction(task) ? { name: task.toString(), executeAsync: task } : task);
+        if (isFunction(task))
+        {
+            const pTask: IPipelineTask = {
+                name: task.toString(),
+                async executeAsync<T1 = T>(context: IContext<T1>)
+                {
+                    await task(context);
+                }
+            };
+
+            this.#queue.push(pTask);
+        }
+        else
+        {
+            this.#queue.push(task as IPipelineTask);
+        }
+
         return this;
     }
 
-    public async executeAsync(context: IContext): Promise<void>
+    public async executeAsync<T>(context: IContext<T>): Promise<void>
     {
         const queue = [...this.#queue];
         const logger = this.#logger.scope('Execute');

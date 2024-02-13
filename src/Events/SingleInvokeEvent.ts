@@ -1,8 +1,4 @@
 ﻿import Event from "./Event";
-import NullReferenceException from '../Exceptions/NullReferenceException';
-import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException';
-import ArgumentNullException from '../Exceptions/ArgumentNullException';
-import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
 import { EventHandler, IEvent } from './_types';
 
 /**
@@ -15,7 +11,7 @@ export default class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> imp
     /** event has been fired */
     #fired: boolean;
     /** the firing sender */
-    #sender?: any;
+    #sender?: unknown;
     /** the firing args */
     #args?: TEventArgs;
 
@@ -42,7 +38,7 @@ export default class SingleInvokeEvent<TEventArgs> extends Event<TEventArgs> imp
     }
 
     // invoke the event
-    public invoke(sender: any, args: TEventArgs)
+    public invoke(sender: unknown, args: TEventArgs)
     {
         /// <signature>
         /// <summary>Invoke the event handlers</summary>

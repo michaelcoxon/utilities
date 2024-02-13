@@ -11,7 +11,7 @@ export default class Url
      * @param baseUrl The Url to base this instance off of
      * @param queryStringObject Query string items as a plain object to add/update on the base Url. Set an item to undefined | null to remove it.
      */
-    constructor(baseUrl: string|Url, queryStringObject?: Record<string, any>)
+    constructor(baseUrl: string|Url, queryStringObject?: Record<string, unknown>)
     {
         const [url, query] = baseUrl.toString().split('?', 2);
 

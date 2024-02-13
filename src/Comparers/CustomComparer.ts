@@ -26,7 +26,7 @@ export default class CustomComparer<T> implements IComparer<T>, IEqualityCompare
         }
         else
         {
-            throw new ArgumentUndefinedException("The comparer");
+            throw new ArgumentUndefinedException("you must specify the comparer in the constructor to use compare.");
         }
     }
 
@@ -38,7 +38,7 @@ export default class CustomComparer<T> implements IComparer<T>, IEqualityCompare
         }
         else
         {
-            throw new ArgumentUndefinedException("The equality comparer");
+            throw new ArgumentUndefinedException("you must specify The equality comparer in the constructor to use equals.");
         }
     }
 

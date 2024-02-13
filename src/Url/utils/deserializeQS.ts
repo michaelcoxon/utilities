@@ -1,4 +1,4 @@
-import { InvalidOperationException, NotSupportedException } from '../../Exceptions';
+import { NotSupportedException } from '../../Exceptions';
 import trimStart from '../../Strings/trimStart';
 import { QueryStringItem } from '../_types';
 import parseQSIValue from "./parseQSIValue";
@@ -23,7 +23,7 @@ export default function deserializeQS(queryString: string): QueryStringItem[]
         .map(deserializeQSParameter);
 }
 
-function deserializeQSParameter(segment: string, index: number, array: string[]): { name: string; value: string | number | boolean; }
+function deserializeQSParameter(segment: string/*, index: number, array: string[]*/): { name: string; value: string | number | boolean; }
 {
     const components = segment.match(/([^=]+)(?:=(.*))/i);
     if (components?.length === 3)

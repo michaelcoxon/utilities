@@ -1,6 +1,6 @@
 
 /** The event handler type */
-export type EventHandler<TEventArgs> = (sender: any, args: TEventArgs) => void;
+export type EventHandler<TEventArgs> = (sender: unknown, args: TEventArgs) => void;
 
 /** An interface to expose an event publicly */
 export interface IEvent<TEventArgs>

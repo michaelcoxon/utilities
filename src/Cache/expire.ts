@@ -1,5 +1,4 @@
-import { any } from '../Arrays';
-import { ArgumentNullException, NullReferenceException } from '../Exceptions';
+import { ArgumentNullException } from '../Exceptions';
 import { IExpiryPolicyDelegate } from './_types';
 
 
@@ -37,58 +36,58 @@ expire.inYears = expireInYears;
 function expireAt(date: Date) 
 {
     return expire(() => date <= new Date());
-};
+}
 
 function expireIn(time: number)
 {
     const expires = new Date();
     expires.setTime(expires.getTime() + time);
     return expireAt(expires);
-};
+}
 
 function expireTomorrow()
 {
     return expireInDays(1);
-};
+}
 
 function expireInSeconds(seconds: number)
 {
     const expires = new Date();
     expires.setSeconds(expires.getSeconds() + seconds);
     return expireAt(expires);
-};
+}
 
 function expireInMinutes(minutes: number)
 {
     const expires = new Date();
     expires.setMinutes(expires.getMinutes() + minutes);
     return expireAt(expires);
-};
+}
 
 function expireInHours(hours: number)
 {
     const expires = new Date();
     expires.setHours(expires.getHours() + hours);
     return expireAt(expires);
-};
+}
 
 function expireInDays(days: number)
 {
     const expires = new Date();
     expires.setDate(expires.getDate() + days);
     return expireAt(expires);
-};
+}
 
 function expireInMonths(months: number)
 {
     const expires = new Date();
     expires.setMonth(expires.getMonth() + months);
     return expireAt(expires);
-};
+}
 
 function expireInYears(years: number)
 {
     const expires = new Date();
     expires.setFullYear(expires.getFullYear() + years);
     return expireAt(expires);
-};
+}

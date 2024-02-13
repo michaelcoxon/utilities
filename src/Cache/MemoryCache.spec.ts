@@ -40,7 +40,7 @@ describe("MemoryCache + expire", () =>
         }
         catch (err)
         {
-            ;
+            //
         }
     });
 

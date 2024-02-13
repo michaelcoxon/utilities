@@ -18,7 +18,7 @@ describe("Pipeline", () =>
 
         subject.start({
             name: "Task 1",
-            executeAsync: async (ctx) =>
+            executeAsync: async () =>
             {
                 fail();
             }
@@ -31,7 +31,7 @@ describe("Pipeline", () =>
     {
         const subject = new Pipeline(new ConsoleLogger(console));
         let outsideValue = "not changed";
-        subject.start(async (ctx) =>
+        subject.start<string>(async (ctx) =>
         {
             outsideValue = ctx.data;
         });

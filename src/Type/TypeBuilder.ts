@@ -8,7 +8,7 @@ export default class TypeBuilder
     #namespace = '';
     #baseType: IType = Type.getType(undefined);
     #isArray = false;
-    #factory: (...args: any[]) => any = () => undefined;
+    #factory: (...args: unknown[]) => unknown = () => undefined;
 
     public build(): IType
     {
