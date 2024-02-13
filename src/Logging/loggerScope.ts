@@ -1,4 +1,4 @@
-import { ILogger } from './Logging/_types';
+import { ILogger } from './_types';
 
 /**
  * Decorator for setting the logger scope of an ILogger instance
