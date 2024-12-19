@@ -2,7 +2,7 @@ import FormatException from '../Exceptions/FormatException';
 import { IFormatter } from './_types';
 import NumberFormatterDelegates from "./NumberFormatterDelegates";
 import isNullOrEmpty from '../TypeHelpers/isNullOrEmpty';
-import * as DefaultConfiguration from '../i18n/en/NumberFormatterConfiguration.strings.json';
+import DefaultConfiguration from '../i18n/en/NumberFormatterConfiguration.strings';
 
 /** Formats numbers */
 

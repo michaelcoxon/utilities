@@ -1,45 +1,44 @@
-﻿import FactoryModelState from './FactoryModelState';
-import ModelState from './ModelState';
+﻿import ModelState from './ModelState';
 import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
 
-describe("FactoryModelState.construct", () =>
-{
-    it("should return a new FactoryModelState(valueFactory)", (done) =>
-    {
-        const myString = "myString";
-        const actual = new FactoryModelState<string>(() => myString);
+// describe("FactoryModelState.construct", () =>
+// {
+//     it("should return a new FactoryModelState(valueFactory)", (done) =>
+//     {
+//         const myString = "myString";
+//         const actual = new FactoryModelState<string>(() => myString);
 
-        let firstTime = true;
+//         let firstTime = true;
 
-        actual.subscribe((value) =>
-        {
-            if (!firstTime && !isUndefinedOrNull(value))
-            {
-                expect(value).toEqual(myString);
-                done();
-            }
-            firstTime = false;
-        });
-    }, 6000);
+//         actual.subscribe((value) =>
+//         {
+//             if (!firstTime && !isUndefinedOrNull(value))
+//             {
+//                 expect(value).toEqual(myString);
+//                 done();
+//             }
+//             firstTime = false;
+//         });
+//     }, 6000);
 
-    it("should return a new FactoryModelState(promiseFactory)", (done) =>
-    {
-        const myString = "myString";
-        const actual = new FactoryModelState<string>(() => new Promise<string>(resolve => resolve(myString)));
+//     it("should return a new FactoryModelState(promiseFactory)", (done) =>
+//     {
+//         const myString = "myString";
+//         const actual = new FactoryModelState<string>(() => new Promise<string>(resolve => resolve(myString)));
 
-        let firstTime = true;
+//         let firstTime = true;
 
-        actual.subscribe((value) =>
-        {
-            if (!firstTime && !isUndefinedOrNull(value))
-            {
-                expect(value).toEqual(myString);
-                done();
-            }
-            firstTime = false;
-        });
-    }, 6000);
-});
+//         actual.subscribe((value) =>
+//         {
+//             if (!firstTime && !isUndefinedOrNull(value))
+//             {
+//                 expect(value).toEqual(myString);
+//                 done();
+//             }
+//             firstTime = false;
+//         });
+//     }, 6000);
+// });
 
 describe("ModelState.construct", () =>
 {

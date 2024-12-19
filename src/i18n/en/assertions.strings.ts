@@ -1,4 +1,4 @@
-{
+export default {
   "isTypeOfExceptionMessage": "The argument at '{0}' must be of type '{1}'",
   "isOneOfExceptionMessage": "Argument '{0}' must be one of ('{1}')",
   "isGreaterThanOrEqualToExceptionMessage": "The argument '{0}' is not greater than or equal to '{1}'",

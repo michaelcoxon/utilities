@@ -1,7 +1,7 @@
 import format from '../Strings/format';
 import { empty } from '../Strings/_consts';
 import Exception from './Exception';
-import SR from '../i18n/en/exceptions.strings.json';
+import SR from '../i18n/en/exceptions.strings';
 
 
 export default class InvalidTypeException extends Exception

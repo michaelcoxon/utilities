@@ -1,7 +1,7 @@
-import CancellablePromise from '../Promises/CancellablePromise';
+import BaseModelState from '../ModelState/BaseModelState';
 import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
 import { Awaitable, Undefinable } from "../Types";
-import BaseModelState from './BaseModelState';
+import CancellablePromise from './_CancellablePromise';
 
 
 export default class FactoryModelState<T> extends BaseModelState<T>

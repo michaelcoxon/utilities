@@ -1,7 +1,7 @@
 ﻿import ArgumentAssertionBuilder from './ArgumentAssertionBuilder';
 import ArgumentException from '../Exceptions/ArgumentException';
 import Guid from '../Guid';
-import SR from '../i18n/en/assertions.strings.json';
+import SR from '../i18n/en/assertions.strings';
 import { format } from '../Strings';
 
 

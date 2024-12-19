@@ -1,4 +1,4 @@
-{
+export default {
   "ArgumentUndefinedException_message": "'{0}' is undefined",
   "ArgumentNullException_message": "'{0}' is null",
   "InvalidTypeException_message": "Type of '{0}' is not supported. Expected: '{1}'. {2}",

@@ -1,5 +1,5 @@
-﻿import CancellationToken from './CancellationToken';
-import CancellationTokenSource from './CancellationTokenSource';
+﻿import CancellationToken from '../Promises/CancellationToken';
+import CancellationTokenSource from '../Promises/CancellationTokenSource';
 import SingleInvokeEvent from '../Events/SingleInvokeEvent';
 import noop from '../Utilities/noop';
 

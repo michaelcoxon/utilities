@@ -3,7 +3,7 @@ import ArgumentNullException from '../Exceptions/ArgumentNullException';
 import ArgumentUndefinedException from '../Exceptions/ArgumentUndefinedException';
 import Exception from '../Exceptions/Exception';
 import { ConstructorFor, Func1, Undefinable } from '../Types';
-import SR from '../i18n/en/assertions.strings.json';
+import SR from '../i18n/en/assertions.strings';
 import { format } from '../Strings';
 
 /**
