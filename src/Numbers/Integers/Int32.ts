@@ -1,6 +1,6 @@
 import Exception from '../../Exceptions/Exception';
 import { INumberValue } from './Integers.types';
-import { ensureInt } from "./ensureInt";
+import { ensureInt } from "../utils/ensureInt";
 import Result from '../../Result/Result';
 import { IResult } from '../../Result/_types';
 
@@ -29,8 +29,9 @@ export default class Int32 extends Number implements INumberValue
 
     public valueOf(): number
     {
-        return this.#value.valueOf() & 0xFFFFFFFF;
-    }
+        const value = this.#value & 0xFFFFFFFF;
+        return value > 0x7FFFFFFF ? value - 0x100000000 : value;
+  }
 
     public static parse(value: string): Int32
     {

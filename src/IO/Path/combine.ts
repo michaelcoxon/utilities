@@ -6,9 +6,6 @@ import trimEnd from '../../Strings/trimEnd';
  * Combines path segments into a path. Auto-senses 'slash' direction.
  * @param args
  */
-
-
-
 export default function combine(...args: string[]): string
 {
     if (args.length == 0)
@@ -22,7 +19,6 @@ export default function combine(...args: string[]): string
         {
             return trimEnd(arg, '/\\');
         }
-
         else
         {
             return trim(arg, '/\\');

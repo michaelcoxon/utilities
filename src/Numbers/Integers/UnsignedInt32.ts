@@ -1,11 +1,11 @@
 import Exception from '../../Exceptions/Exception';
 import { INumberValue } from './Integers.types';
-import { ensureInt } from "./ensureInt";
+import { ensureInt } from "../utils/ensureInt";
 import { IResult } from '../../Result/_types';
 import Result from '../../Result/Result';
 
 
-export default class UnsignedInt32 extends Number  implements INumberValue
+export default class UnsignedInt32 extends Number implements INumberValue
 {
     /** The largest number that can be represented. Equal to 4,294,967,295. */
     public static readonly maxValue: number = 4294967295;
@@ -21,7 +21,7 @@ export default class UnsignedInt32 extends Number  implements INumberValue
         ensureInt(value, UnsignedInt32.minValue, UnsignedInt32.maxValue);
         this.#value = value;
     }
-        
+
     [Symbol.toPrimitive](): number
     {
         return this.valueOf();
@@ -29,7 +29,8 @@ export default class UnsignedInt32 extends Number  implements INumberValue
 
     public valueOf(): number
     {
-        return this.#value.valueOf() & 0xFFFFFFFF;
+        const value = this.#value.valueOf() & 0xFFFFFFFF;
+        return value < 0 ? value + 0x100000000 : value;
     }
 
     public toString(): string

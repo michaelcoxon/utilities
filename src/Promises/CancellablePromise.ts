@@ -21,10 +21,19 @@ export default class CancellablePromise<T> implements PromiseLike<T>
                 {
                     if (this.#cancellationTokenSource.isCancellationRequested)
                     {
+                        reject("cancelled");
                         return;
                     }
 
-                    resolve(await promise);
+                    const value = await promise;
+
+                    if (this.#cancellationTokenSource.isCancellationRequested)
+                    {
+                        reject("cancelled");
+                        return;
+                    }
+
+                    resolve(value);
                 }
                 catch (error)
                 {

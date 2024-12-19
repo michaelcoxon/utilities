@@ -34,7 +34,7 @@ export default class Mutex
     #onRelease?: SingleInvokeEvent<unknown>;
 
     /** Acquires a lock on this mutex. Only one lock can be kept at a time; calling multiple times will create dependent locks */
-    public async acquireAsync(cancellationToken: CancellationToken = CancellationToken.default)
+    public async acquireAsync(cancellationToken: CancellationToken = CancellationToken.default): Promise<Lock>
     {
         if (!isUndefined(this.#onRelease))
         {
@@ -43,13 +43,13 @@ export default class Mutex
 
         this.#onRelease = new SingleInvokeEvent();
 
-        return new Lock(() =>
+        return new Lock(/*release:*/() =>
         {
             return new Promise<void>((resolve, reject) =>
             {
                 try
                 {
-                    this.#onRelease && this.#onRelease.invoke(this, {});
+                    this.#onRelease?.invoke(this, {});
                     this.#onRelease = undefined;
                     resolve();
                 }

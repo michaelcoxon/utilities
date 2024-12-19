@@ -1,6 +1,6 @@
 import Exception from '../../Exceptions/Exception';
 import { INumberValue } from './Integers.types';
-import { ensureInt } from "./ensureInt";
+import { ensureInt } from "../utils/ensureInt";
 import Result from '../../Result/Result';
 import { IResult } from '../../Result/_types';
 

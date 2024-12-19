@@ -1,13 +1,13 @@
 import Exception from '../../Exceptions/Exception';
 import { INumberValue } from './Integers.types';
-import { ensureInt } from "./ensureInt";
+import { ensureInt } from "../utils/ensureInt";
 import Result from '../../Result/Result';
 import { IResult } from '../../Result/_types';
 
 /**
  * Represents an unsigned 8-bit integer. 
  */
-export default class Byte extends Number  implements INumberValue
+export default class Byte extends Number implements INumberValue
 {
     /** The largest number that can be represented. Equal to 255. */
     public static readonly maxValue: number = 255;
@@ -23,7 +23,7 @@ export default class Byte extends Number  implements INumberValue
         ensureInt(value, Byte.minValue, Byte.maxValue);
         this.#value = value;
     }
-        
+
     [Symbol.toPrimitive](): number
     {
         return this.valueOf();

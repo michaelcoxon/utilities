@@ -155,12 +155,9 @@ describe("Iterator.distinct", () =>
     it("should return only unique items in the collection", () =>
     {
         const array = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4];
-        const query = array;
         const expected = [1, 2, 3, 4];
 
-        expect(count(query)).toEqual(array.length);
-
-        const result = distinct(query, (n) => n);
+        const result = distinct(array, (n) => n);
 
         expect(count(result)).toEqual(expected.length);
 

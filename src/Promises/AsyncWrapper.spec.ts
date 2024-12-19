@@ -1,5 +1,5 @@
-﻿import AsyncWrapper from '../../src/Promises/AsyncWrapper';
-import delay from '../../src/Promises/delay';
+﻿import AsyncWrapper from './AsyncWrapper';
+import delay from './delay';
 
 describe("AsyncWrapper.construct", () =>
 {

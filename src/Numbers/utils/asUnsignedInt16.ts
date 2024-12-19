@@ -1,4 +1,4 @@
-import UnsignedInt16 from './Integers/UnsignedInt16';
+import UnsignedInt16 from '../Integers/UnsignedInt16';
 
 
 export default function asUnsignedInt16(value: number): UnsignedInt16

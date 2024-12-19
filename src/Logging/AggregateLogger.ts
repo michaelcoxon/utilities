@@ -14,11 +14,11 @@ export default class AggregateLogger implements ILogger
 
     debug(msg: string, ...args: unknown[]): void
     {
-        for (const logger of this.#loggers) logger.debug(msg, ...args);
+        this.#callAllLoggers(logger => logger.debug(msg, ...args));
     }
     debugError(err: Error, msg?: string, ...args: unknown[])
     {
-        for (const logger of this.#loggers)
+        this.#callAllLoggers(logger =>
         {
             if (msg)
             {
@@ -28,15 +28,15 @@ export default class AggregateLogger implements ILogger
             {
                 logger.debugError(err, ...args);
             }
-        }
+        });
     }
     error(msg: string, ...args: unknown[]): void
     {
-        for (const logger of this.#loggers) logger.error(msg, ...args);
+        this.#callAllLoggers(logger => logger.error(msg, ...args));
     }
     errorError(err: Error, msg?: string, ...args: unknown[])
     {
-        for (const logger of this.#loggers)
+        this.#callAllLoggers(logger =>
         {
             if (msg)
             {
@@ -46,15 +46,15 @@ export default class AggregateLogger implements ILogger
             {
                 logger.errorError(err, ...args);
             }
-        }
+        });
     }
     info(msg: string, ...args: unknown[]): void
     {
-        for (const logger of this.#loggers) logger.info(msg, ...args);
+        this.#callAllLoggers(logger => logger.info(msg, ...args));
     }
     infoError(err: Error, msg?: string, ...args: unknown[])
     {
-        for (const logger of this.#loggers)
+        this.#callAllLoggers(logger =>
         {
             if (msg)
             {
@@ -64,15 +64,15 @@ export default class AggregateLogger implements ILogger
             {
                 logger.infoError(err, ...args);
             }
-        }
+        });
     }
     trace(msg: string, ...args: unknown[]): void
     {
-        for (const logger of this.#loggers) logger.trace(msg, ...args);
+        this.#callAllLoggers(logger => logger.trace(msg, ...args));
     }
     traceError(err: Error, msg?: string, ...args: unknown[])
     {
-        for (const logger of this.#loggers)
+        this.#callAllLoggers(logger =>
         {
             if (msg)
             {
@@ -82,15 +82,15 @@ export default class AggregateLogger implements ILogger
             {
                 logger.traceError(err, ...args);
             }
-        }
+        });
     }
     warn(msg: string, ...args: unknown[]): void
     {
-        for (const logger of this.#loggers) logger.warn(msg, ...args);
+        this.#callAllLoggers(logger => logger.warn(msg, ...args));
     }
     warnError(err: Error, msg?: string, ...args: unknown[])
     {
-        for (const logger of this.#loggers)
+        this.#callAllLoggers(logger =>
         {
             if (msg)
             {
@@ -100,7 +100,7 @@ export default class AggregateLogger implements ILogger
             {
                 logger.warnError(err, ...args);
             }
-        }
+        });
     }
     scope(name: string): ILogger & IDisposable
     {
@@ -109,5 +109,10 @@ export default class AggregateLogger implements ILogger
         const aggLogger = new AggregateLogger(...scopedLoggers);
 
         return Object.assign(aggLogger, disposable);
+    }
+
+    #callAllLoggers(loggerCallback: (logger: ILogger) => void): void
+    {
+        for (const logger of this.#loggers) loggerCallback(logger);
     }
 }
