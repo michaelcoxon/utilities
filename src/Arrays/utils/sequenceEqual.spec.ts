@@ -31,7 +31,7 @@ describe("sequenceEqual", () =>
     {
         const subject_1 = [1, 2, 3];
         const subject_2 = [1, 2];
-        const actual = sequenceEqual(subject_1, subject_2, true);
+        const actual = sequenceEqual(subject_1, subject_2);
 
         expect(!actual);
     });
@@ -40,25 +40,25 @@ describe("sequenceEqual", () =>
     {
         const subject_1 = [1, 2, 3];
         const subject_2 = undefined as unknown;
-        const actual = sequenceEqual(subject_1, subject_2 as [], true);
+        const actual = sequenceEqual(subject_1, subject_2 as []);
 
         expect(!actual);
     });
 
-    it("should return true because the sequence in any order is the same", () =>
+    it("should return true because the sequence is the same", () =>
     {
         const subject_1 = [1, 2, 3];
         const subject_2 = [1, 2, 3];
-        const actual = sequenceEqual(subject_1, subject_2, true);
+        const actual = sequenceEqual(subject_1, subject_2);
 
         expect(actual);
     });
 
-    it("should return false because the sequence any order is not the same", () =>
+    it("should return false because the sequence is not the same", () =>
     {
         const subject_1 = [1, 2, 3];
         const subject_2 = [1, 1, 3];
-        const actual = sequenceEqual(subject_1, subject_2, true);
+        const actual = sequenceEqual(subject_1, subject_2);
 
         expect(!actual);
     });

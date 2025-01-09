@@ -1,13 +1,12 @@
 import { NotSupportedException, OutOfBoundsException } from '../Exceptions';
 import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
 import { Undefinable } from '../Types';
+import createIterableItemGenerator from '../Iterable/utils/createIterableItemGenerator';
 import EnumeratorBase from './EnumeratorBase';
 import { IEnumerator } from './_types';
 
 export default class IterableEnumerator<T> extends EnumeratorBase<T> implements IEnumerator<T>
 {
-    // the internal array
-    readonly #iterable: Iterable<T>;
     #items: Generator<T, void, unknown>;
     #current?: IteratorResult<T, void>;
     #peak?: IteratorResult<T, void>;
@@ -16,8 +15,7 @@ export default class IterableEnumerator<T> extends EnumeratorBase<T> implements 
     constructor(iterable: Iterable<T>)
     {
         super();
-        this.#iterable = iterable;
-        this.#items = IterableEnumerator.items<T>(this.#iterable);
+        this.#items = createIterableItemGenerator<T>(iterable);
     }
 
     public get current(): T
@@ -67,11 +65,4 @@ export default class IterableEnumerator<T> extends EnumeratorBase<T> implements 
         throw new NotSupportedException("Iterables cannot be reset. Consider using BufferedIterableEnumerator.");
     }
 
-    private static *items<T>(iterable: Iterable<T>)
-    {
-        for (const item of iterable)
-        {
-            yield item;
-        }
-    }
 }

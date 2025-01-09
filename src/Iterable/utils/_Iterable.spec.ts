@@ -7,12 +7,14 @@ import first from './first';
 import firstOrDefault from './firstOrDefault';
 import groupBy from './groupBy';
 import item from './item';
+import join from './join';
 import last from './last';
 import lastOrDefault from './lastOrDefault';
 import max from './max';
 import min from './min';
 import ofType from './ofType';
 import select from './select';
+import sequenceEqual from './sequenceEqual';
 import sum from './sum';
 import take from './take';
 import where from './where';
@@ -292,6 +294,49 @@ describe("Iterator.groupBy", () =>
     });
 });
 
+describe("Iterator.join", () =>
+{
+    interface Person
+    {
+        name: string;
+    }
+
+    interface Pet
+    {
+        name: string;
+        owner: Person;
+    }
+
+
+
+    it("should return the two sets joined by a common key", () =>
+    {
+        const magnus: Person = { name: "Hedlund, Magnus" };
+        const terry: Person = { name: "Adams, Terry" };
+        const charlotte: Person = { name: "Weiss, Charlotte" };
+
+        const barley: Pet = { name: "Barley", owner: terry };
+        const boots: Pet = { name: "Boots", owner: terry };
+        const whiskers: Pet = { name: "Whiskers", owner: charlotte };
+        const daisy: Pet = { name: "Daisy", owner: magnus };
+
+        const people = [magnus, terry, charlotte];
+        const pets = [barley, boots, whiskers, daisy];
+
+        const result = Array.from(join(people, pets,
+            person => person,
+            pet => pet.owner,
+            (person, pet) => ({ ownerName: person.name, pet: pet.name })));
+
+        expect(result).toEqual([
+            { ownerName: "Hedlund, Magnus", pet: "Daisy" },
+            { ownerName: "Adams, Terry", pet: "Barley" },
+            { ownerName: "Adams, Terry", pet: "Boots" },
+            { ownerName: "Weiss, Charlotte", pet: "Whiskers" },
+        ]);
+    });
+});
+
 describe("Iterator.last", () =>
 {
     it("should return the last item in the Iterator", () =>
@@ -416,6 +461,42 @@ describe("Iterator.ofType", () =>
         expect(result[1].property).toEqual("derived 2 value");
         expect(result[2].property).toEqual("derived value");
     });
+});
+
+describe("Iterator.sequenceEqual", () =>
+{
+    it("should fail when one is empty", () =>
+    {
+        const array = [1, 4, 2, 3];
+
+        expect(sequenceEqual(array, [])).toBe(false);
+        expect(sequenceEqual([], array)).toBe(false);
+    });
+
+    it("should fail when same length different values", () =>
+    {
+        const array = [1, 4, 2, 3];
+        const array2 = [1, 2, 3, 4];
+
+        expect(sequenceEqual(array, array2)).toBe(false);
+    });
+
+    it("should fail when different length", () =>
+    {
+        const array = [1, 4, 2, 3];
+        const array2 = [1, 4, 2];
+
+        expect(sequenceEqual(array, array2)).toBe(false);
+    });
+
+    it("should pass when same values", () =>
+    {
+        const array = [1, 2, 3, 4];
+        const array2 = [1, 2, 3, 4];
+
+        expect(sequenceEqual(array, array2)).toBe(true);
+    });
+
 });
 
 // describe("Iterator.orderBy", () =>

@@ -1,14 +1,12 @@
-import { isUndefinedOrNull } from '../../TypeHelpers';
+import { ensure } from '../../ensure';
 import { Selector } from '../../Types';
 
-export default function* select<T, TOut>(iterable: Iterable<T>, selector?: Selector<T, TOut>): Iterable<TOut>
+export default function* select<T, TOut>(iterable: Iterable<T>, selector: Selector<T, TOut>): Iterable<TOut>
 {
-    if(isUndefinedOrNull(selector))
+    ensure(selector, "selector").isNotNullOrUndefined();
+    
+    for (const item of iterable)
     {
-        return iterable;
-    }
-    for (const input of iterable)
-    {
-        yield selector(input);
+        yield selector(item);
     }
 }

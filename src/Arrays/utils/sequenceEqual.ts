@@ -6,7 +6,7 @@ import { isUndefinedOrNull } from '../../TypeHelpers';
  * @param b array 2
  * @param anyOrder set to true if you do not care about the order of the arrays
  */
-export default function sequenceEqual<T>(a: T[], b: T[], anyOrder = false): boolean
+export default function sequenceEqual<T>(a: T[], b: T[]): boolean
 {
     // ref check
     if (a === b)
@@ -22,14 +22,7 @@ export default function sequenceEqual<T>(a: T[], b: T[], anyOrder = false): bool
     if (a.length != b.length)
     {
         return false;
-    }
-    // sort items if order is no care
-    if (anyOrder)
-    {
-        // sort the arrays before testing them.
-        a = [...a].sort();
-        b = [...b].sort();
-    }
+    }    
     // item check
     for (let i = 0; i < a.length; ++i)
     {

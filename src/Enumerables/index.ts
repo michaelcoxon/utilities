@@ -51,13 +51,14 @@ import { InvalidOperationException, NotImplementedException } from '../Exception
 import { where } from '../Arrays';
 import sum from './utils/IEnumerable/sum';
 import toArray from './utils/IEnumerable/toArray';
+import join from './utils/IEnumerable/join';
 
 export class Enumerable
 {
     public static range(start: number, count: number): IEnumerable<number>
     {
         //return new EnumeratorEnumerable(new RangeEnumerator(start, count));
-        return new RangeEnumerable(start,count);
+        return new RangeEnumerable(start, count);
     }
 
     public static empty<TElement>(): IEnumerable<TElement>
@@ -100,12 +101,12 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public concat(next: IEnumerable<T>): IEnumerable<T>
     {
-        return new EnumeratorEnumerable(new AppendEnumerator(this.getEnumerator(), next.getEnumerator()));
+        return concat(this, next);
     }
 
     public prepend(item: T): IEnumerable<T>
     {
-        return new EnumeratorEnumerable(new AppendEnumerator(new ArrayEnumerator([item]), this.getEnumerator()));
+        return prepend(this, item);
     }
 
     public contains(item: T): boolean
@@ -165,29 +166,14 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
         return keySet.select((key) => new EnumerableGroup(this, key, selector, comparer));
     }
 
-    // public join<TInner, TKey, TResult>(
-    //     inner: IEnumerable<TInner>,
-    //     outerKeySelector: (outer: T) => TKey,
-    //     innerKeySelector: (inner: TInner) => TKey,
-    //     resultSelector: (outer: T, inner: TInner) => TResult): IEnumerable<TResult>
-    // {
-    //     return this
-    //         .select(o => ({
-    //             value: o,
-    //             key: outerKeySelector(o)
-    //         }))
-    //         .selectMany(o =>
-    //             inner
-    //                 .select(i => ({
-    //                     inner: i,
-    //                     outer: o.value,
-    //                     key: innerKeySelector(i)
-    //                 }))
-    //                 .where(i => i.key == o.key)
-    //         )
-    //         .select(j => resultSelector(j.outer, j.inner))
-    //         ;
-    // }
+    public join<TInner, TKey, TResult>(
+        inner: IEnumerable<TInner>,
+        outerKeySelector: (outer: T) => TKey,
+        innerKeySelector: (inner: TInner) => TKey,
+        resultSelector: (outer: T, inner: TInner) => TResult): IEnumerable<TResult>
+    {
+        return join(this, inner, outerKeySelector, innerKeySelector, resultSelector);
+    }
 
     public last(predicate?: Predicate<T>): T
     {
@@ -216,22 +202,22 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public orderBy<R>(selector: (a: T) => R, comparer?: IComparer<R>): IEnumerable<T>
     {
-        return this.internalOrderBy(selector, comparer || DefaultComparers.DefaultComparer);
+        return orderBy(this, selector, comparer || DefaultComparers.DefaultComparer);
     }
 
     public orderByDescending<R>(selector: (a: T) => R, comparer?: IComparer<R>): IEnumerable<T>
     {
-        return this.internalOrderBy(selector, new ReverseComparer(comparer || DefaultComparers.DefaultComparer));
+        return orderBy(this, selector, new ReverseComparer(comparer || DefaultComparers.DefaultComparer));
     }
 
     public select<TOut>(selector: Selector<T, TOut>): IEnumerable<TOut>
     {
-        return new EnumeratorEnumerable(new SelectEnumerator(this.getEnumerator(), selector));
+        return select(this, selector);
     }
 
     public selectMany<TOut>(selector: Selector<T, IEnumerable<TOut>>): IEnumerable<TOut>
     {
-        return new EnumeratorEnumerable(new SelectManyEnumerator(this.getEnumerator(), selector));
+        return selectMany(this, selector);
     }
 
     public single(predicate?: Predicate<T>): T
@@ -246,15 +232,12 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public skip(count: number): IEnumerable<T>
     {
-        return new EnumeratorEnumerable(new SkipEnumerator<T>(this.getEnumerator(), count));
+        return skip(this, count);
     }
 
     public split(predicate: Predicate<T>): { pTrue: IEnumerable<T>, pFalse: IEnumerable<T>; }
     {
-        return {
-            pTrue: this.where(i => predicate(i)),
-            pFalse: this.where(i => !predicate(i))
-        };
+        return split(this, predicate);
     }
 
     public sum(selector: Selector<T, number>): number
@@ -264,12 +247,12 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public take(count: number): IEnumerable<T>
     {
-        return new EnumeratorEnumerable(new TakeEnumerator<T>(this.getEnumerator(), count));
+        return take(this, count);
     }
 
     public where(predicate: Predicate<T>): IEnumerable<T>
     {
-        return new EnumeratorEnumerable(new WhereEnumerator(this.getEnumerator(), predicate));
+        return whereEnumerable(this, predicate);
     }
 
     public toArray(): T[]
@@ -289,19 +272,66 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public toList(): IList<T>
     {
-        return new List<T>(this);
-    }
-
-    private internalOrderBy<R>(selector: (a: T) => R, comparer: IComparer<R>): IEnumerable<T>
-    {
-        // HACK: this could be better...
-        const list = this.toList();
-        const mapComparer = new MapComparer(selector, comparer);
-        list.sort(mapComparer);
-        return list;
+        return toList(this);
     }
 }
 
+function concat<T>(enumerable: IEnumerable<T>, next: IEnumerable<T>): IEnumerable<T>
+{
+    return new EnumeratorEnumerable(new AppendEnumerator(enumerable.getEnumerator(), next.getEnumerator()));
+}
+
+function prepend<T>(enumerable: IEnumerable<T>, item: T): IEnumerable<T>
+{
+    return new EnumeratorEnumerable(new AppendEnumerator(new ArrayEnumerator([item]), enumerable.getEnumerator()));
+}
+
+function toList<T>(enumerable: IEnumerable<T>): IList<T>
+{
+    return new List<T>(enumerable);
+}
+
+function orderBy<T, R>(enumerable: IEnumerable<T>, selector: (a: T) => R, comparer: IComparer<R>): IEnumerable<T>
+{
+    // HACK: this could be better...
+    const list = toList(enumerable);
+    const mapComparer = new MapComparer(selector, comparer);
+    list.sort(mapComparer);
+    return list;
+}
+
+function select<T, TOut>(enumerable: IEnumerable<T>, selector: Selector<T, TOut>): IEnumerable<TOut>
+{
+    return new EnumeratorEnumerable(new SelectEnumerator(enumerable.getEnumerator(), selector));
+}
+
+function selectMany<T, TOut>(enumerable: IEnumerable<T>, selector: Selector<T, IEnumerable<TOut>>): IEnumerable<TOut>
+{
+    return new EnumeratorEnumerable(new SelectManyEnumerator(enumerable.getEnumerator(), selector));
+}
+
+function skip<T>(enumerable: IEnumerable<T>, count: number): IEnumerable<T>
+{
+    return new EnumeratorEnumerable(new SkipEnumerator<T>(enumerable.getEnumerator(), count));
+}
+
+function split<T>(enumerable: IEnumerable<T>, predicate: Predicate<T>): { pTrue: IEnumerable<T>, pFalse: IEnumerable<T>; }
+{
+    return {
+        pTrue: enumerable.where(i => predicate(i)),
+        pFalse: enumerable.where(i => !predicate(i))
+    };
+}
+
+function take<T>(enumerable: IEnumerable<T>, count: number): IEnumerable<T>
+{
+    return new EnumeratorEnumerable(new TakeEnumerator<T>(enumerable.getEnumerator(), count));
+}
+
+function whereEnumerable<T>(enumerable: IEnumerable<T>, predicate: Predicate<T>): IEnumerable<T>
+{
+    return new EnumeratorEnumerable(new WhereEnumerator(enumerable.getEnumerator(), predicate));
+}
 
 export class ArrayEnumerable<T> implements IEnumerable<T>
 {
@@ -325,7 +355,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     /**@inheritDoc */
     append(item: T): IEnumerable<T>
     {
-        return new ArrayEnumerable([...this, item]);
+        return new ArrayEnumerable([...this._array, item]);
     }
     /**@inheritDoc */
     any(predicate?: Predicate<T> | undefined): boolean

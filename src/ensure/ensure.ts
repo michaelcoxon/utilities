@@ -3,7 +3,6 @@ import ArrayLikeArgumentAssertionBuilder from '../Assertions/ArrayLikeArgumentAs
 import CompareAssertionBuilder from '../Assertions/CompareAssertionBuilder';
 import GuidArgumentAssertionBuilder from '../Assertions/GuidArgumentAssertionBuilder';
 import StringArgumentAssertionBuilder from '../Assertions/StringArgumentAssertionBuilder';
-import NotSupportedException from '../Exceptions/NotSupportedException';
 import Guid from '../Guid';
 import isComparable from '../TypeHelpers/isComparable';
 
@@ -30,16 +29,13 @@ export default function ensure(argument: AssertionType<unknown>, argumentName: s
     {
         return new StringArgumentAssertionBuilder(argument, argumentName);
     }
-    else if (typeof (argument) === "object")
-    {
-        return new ArgumentAssertionBuilder(argument, argumentName);
-    }
     else if (isComparable(argument))
     {
         return new CompareAssertionBuilder(argument, argumentName);
     }
     else
     {
-        throw new NotSupportedException("the argument type is not supported");
+        return new ArgumentAssertionBuilder(argument, argumentName);
+        //throw new NotSupportedException("the argument type is not supported");
     }
 }
