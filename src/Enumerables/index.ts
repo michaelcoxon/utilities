@@ -18,7 +18,6 @@ import WhereEnumerator from "../Enumerators/WhereEnumerator";
 import LinkedListEnumerator from "../Enumerators/LinkedListEnumerator";
 import getHash from '../Utilities/getHash';
 import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
-import ArgumentException from '../Exceptions/ArgumentException';
 import KeyAlreadyDefinedException from '../Exceptions/KeyAlreadyDefinedException';
 import KeyNotFoundException from '../Exceptions/KeyNotFoundException';
 import equivilentToByJSON from '../Utilities/equivilentToByJSON';
@@ -48,22 +47,21 @@ import asArray from './utils/asArray';
 import remove from './utils/Collection/remove';
 import copyTo from './utils/Collection/copyTo';
 import { InvalidOperationException, NotImplementedException } from '../Exceptions';
-import { where } from '../Arrays';
+import whereArray from '../Arrays/utils/where';
 import sum from './utils/IEnumerable/sum';
 import toArray from './utils/IEnumerable/toArray';
-import join from './utils/IEnumerable/join';
 
 export class Enumerable
 {
     public static range(start: number, count: number): IEnumerable<number>
     {
         //return new EnumeratorEnumerable(new RangeEnumerator(start, count));
-        return new RangeEnumerable(start, count);
+        return range(start, count);
     }
 
     public static empty<TElement>(): IEnumerable<TElement>
     {
-        return Enumerable.asEnumerable([]);
+        return empty();
     }
 
     public static asArray<T>(enumerableOrArray: IEnumerableOrArray<T>): T[]
@@ -73,17 +71,9 @@ export class Enumerable
 
     public static asEnumerable<T>(enumerableOrArray: IEnumerableOrArray<T>): IEnumerable<T>
     {
-        if (Array.isArray(enumerableOrArray))
-        {
-            return new ArrayEnumerable([...enumerableOrArray]);
-        }
-        else
-        {
-            return enumerableOrArray;
-        }
+        return asEnumerable(enumerableOrArray);
     }
 }
-
 
 export abstract class EnumerableBase<T> implements IEnumerable<T>
 {
@@ -96,7 +86,7 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public append(item: T): IEnumerable<T>
     {
-        return this.concat(Enumerable.asEnumerable([item]));
+        return concat(this, asEnumerable([item]));
     }
 
     public concat(next: IEnumerable<T>): IEnumerable<T>
@@ -144,7 +134,6 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
         return count(this);
     }
 
-    // USAGE: obj.Distinct(); or obj.Distinct(['key1'],['key2']);
     public distinct<R>(selector: (a: T) => R): IEnumerable<T>
     {
         return distinct(this, selector);
@@ -162,8 +151,7 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public groupBy<TKey>(selector: Selector<T, TKey>, comparer: IComparer<TKey> = DefaultComparers.DefaultComparer): IEnumerable<IEnumerableGroup<T, TKey>>
     {
-        const keySet = this.select(selector).distinct((k) => k).orderBy(k => k);
-        return keySet.select((key) => new EnumerableGroup(this, key, selector, comparer));
+        return groupBy(this, selector, comparer);
     }
 
     public join<TInner, TKey, TResult>(
@@ -262,12 +250,7 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public toDictionary<TKey, TValue>(keySelector: (a: T) => TKey, valueSelector: (a: T) => TValue): IDictionary<TKey, TValue>
     {
-        const dictionary = new Dictionary<TKey, TValue>();
-        this.forEach(i =>
-        {
-            dictionary.addKeyValue(keySelector(i), valueSelector(i));
-        });
-        return dictionary;
+        return toDictionary(this, keySelector, valueSelector);
     }
 
     public toList(): IList<T>
@@ -276,19 +259,82 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
     }
 }
 
+function asEnumerable<T>(enumerableOrArray: IEnumerableOrArray<T>): IEnumerable<T>
+{
+    if (Array.isArray(enumerableOrArray))
+    {
+        return new ArrayEnumerable([...enumerableOrArray]);
+    }
+    else
+    {
+        return enumerableOrArray;
+    }
+}
+
+function join<TOuter, TInner, TKey, TResult>(
+    outer: IEnumerable<TOuter>,
+    inner: IEnumerable<TInner>,
+    outerKeySelector: Selector<TOuter, TKey>,
+    innerKeySelector: Selector<TInner, TKey>,
+    resultSelector: (outer: TOuter, inner: TInner) => TResult): IEnumerable<TResult>
+{
+    function getResults(matches: IEnumerableGroup<TInner, TKey>, resultSelector: (outer: TOuter, inner: TInner) => TResult, o: TOuter): IEnumerable<TResult>
+    {
+        return matches.select((item) => resultSelector(o, item));
+    }
+
+    // TODO: might be able to drop the toDictionary as the refs should all be the same in memory
+    const innerGrouped = inner.groupBy(innerKeySelector).toDictionary(i => i.key, i => i);
+
+    let result: IEnumerable<TResult> = empty();
+
+    for (const o of outer)
+    {
+        const oKey = outerKeySelector(o);
+        const matches = innerGrouped.itemByKey(oKey);
+        const temp = getResults(matches, resultSelector, o);
+        result = result.concat(temp);
+    }
+
+    return result;
+}
+
+
+function toDictionary<T, TKey, TValue>(enumerable: IEnumerable<T>, keySelector: (a: T) => TKey, valueSelector: (a: T) => TValue): IDictionary<TKey, TValue>
+{
+    const dictionary = new Dictionary<TKey, TValue>();
+    enumerable.forEach(i =>
+    {
+        dictionary.addKeyValue(keySelector(i), valueSelector(i));
+    });
+    return dictionary;
+}
+
 function concat<T>(enumerable: IEnumerable<T>, next: IEnumerable<T>): IEnumerable<T>
 {
-    return new EnumeratorEnumerable(new AppendEnumerator(enumerable.getEnumerator(), next.getEnumerator()));
+    return combine(enumerable, next);
 }
 
 function prepend<T>(enumerable: IEnumerable<T>, item: T): IEnumerable<T>
 {
-    return new EnumeratorEnumerable(new AppendEnumerator(new ArrayEnumerator([item]), enumerable.getEnumerator()));
+    return combine(Enumerable.asEnumerable([item]), enumerable);
 }
 
-function toList<T>(enumerable: IEnumerable<T>): IList<T>
+function combine<T>(first: IEnumerable<T>, ...more: IEnumerable<T>[]): IEnumerable<T>
 {
-    return new List<T>(enumerable);
+    if (isUndefinedOrNull(more) || more.length == 0)
+    {
+        return first;
+    }
+    else if (more.length == 1)
+    {
+        return new EnumeratorEnumerable(new AppendEnumerator(first.getEnumerator(), more[0].getEnumerator()));
+    }
+    else
+    {
+        const firstItem = more.shift() as IEnumerable<T>; // we know it is not empty cause the above checks passed
+        return combine(new EnumeratorEnumerable(new AppendEnumerator(first.getEnumerator(), firstItem.getEnumerator())), ...more);
+    }
 }
 
 function orderBy<T, R>(enumerable: IEnumerable<T>, selector: (a: T) => R, comparer: IComparer<R>): IEnumerable<T>
@@ -318,8 +364,8 @@ function skip<T>(enumerable: IEnumerable<T>, count: number): IEnumerable<T>
 function split<T>(enumerable: IEnumerable<T>, predicate: Predicate<T>): { pTrue: IEnumerable<T>, pFalse: IEnumerable<T>; }
 {
     return {
-        pTrue: enumerable.where(i => predicate(i)),
-        pFalse: enumerable.where(i => !predicate(i))
+        pTrue: whereEnumerable(enumerable, i => predicate(i)),
+        pFalse: whereEnumerable(enumerable, i => !predicate(i))
     };
 }
 
@@ -602,12 +648,9 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     /**@inheritDoc */
     where(predicate: Predicate<T>): IEnumerable<T>
     {
-        return new ArrayEnumerable(where(this._array, predicate));
+        return new ArrayEnumerable(whereArray(this._array, predicate));
     }
 }
-
-
-
 
 export class Collection<T> extends ArrayEnumerable<T> implements ICollection<T>, IEnumerable<T>
 {
@@ -998,96 +1041,6 @@ export class LinkedList<T> extends EnumerableBase<T> implements ICollection<T>, 
     }
 }
 
-export class List<T> extends Collection<T> implements IList<T>, ICollection<T>, IEnumerable<T>
-{
-    public addRange(enumerableOrArray: IEnumerableOrArray<T>): void
-    {
-        const array = Enumerable.asArray<T>(enumerableOrArray);
-        this._array = this._array.concat(array);
-    }
-
-    public find(obj: T, isEquivilent = false): T | undefined
-    {
-        if (isEquivilent)
-        {
-            for (const item of this._array)
-            {
-                if (equivilentToByJSON(item, obj))
-                {
-                    return item;
-                }
-            }
-        }
-        else
-        {
-            const index = this.indexOf(obj);
-            if (index !== undefined)
-            {
-                return this.item(index);
-            }
-            else
-            {
-                return undefined;
-            }
-        }
-    }
-
-    public indexOf(value: T, isEquivilent = false): number | undefined
-    {
-        if (isEquivilent)
-        {
-            let index: number | undefined;
-
-            this.forEach((item, i) =>
-            {
-                if (equivilentToByJSON(item, value))
-                {
-                    index = i;
-                    return false;
-                }
-            });
-
-            return index;
-        }
-        else
-        {
-            const index = this._array.indexOf(value);
-            if (index == -1)
-            {
-                return undefined;
-            }
-            return index;
-        }
-    }
-
-    public insert(obj: T, index: number): void
-    {
-        this._array.splice(index, 0, obj);
-    }
-
-    public prepend(obj: T): IEnumerable<T>
-    {
-        this.insert(obj, 0);
-        return this;
-    }
-
-    public prependRange(enumerableOrArray: IEnumerableOrArray<T>): void
-    {
-        const array = Enumerable.asArray<T>(enumerableOrArray);
-        this._array.splice(0, 0, ...array);
-    }
-
-    public removeAt(index: number): void
-    {
-        this._array.splice(index, 1);
-    }
-
-    public sort(comparer: IComparer<T> = DefaultComparers.DefaultComparer): void
-    {
-        this._array.sort((a, b) => comparer.compare(a, b));
-    }
-}
-
 export default class Set<T> extends Collection<T> implements ISet<T>, ICollection<T>, IEnumerable<T>
 {
     constructor(enumerable?: IEnumerable<T>)
@@ -1103,22 +1056,7 @@ export default class Set<T> extends Collection<T> implements ISet<T>, ICollectio
     public get isReadOnly(): boolean
     {
         return super.isReadOnly;
-    }
-
-    append(item: T): IEnumerable<T>
-    {
-        return this.concat(Enumerable.asEnumerable([item]));
-    }
-
-    concat(next: IEnumerable<T>): IEnumerable<T>
-    {
-        return new EnumeratorEnumerable(new AppendEnumerator(this.getEnumerator(), next.getEnumerator()));
-    }
-
-    prepend(item: T): IEnumerable<T>
-    {
-        return Enumerable.asEnumerable([item]).concat(this);
-    }
+    }   
 
     exceptWith(enumerable: IEnumerable<T>): void
     {
@@ -1193,79 +1131,102 @@ export default class Set<T> extends Collection<T> implements ISet<T>, ICollectio
                 this.add(item);
             }
         }
+    }  
+}
+
+export class List<T> extends Collection<T> implements IList<T>, ICollection<T>, IEnumerable<T>
+{
+    public addRange(enumerableOrArray: IEnumerableOrArray<T>): void
+    {
+        const array = asArray(enumerableOrArray);
+        this._array = this._array.concat(array);
     }
 
-    /**
-     * Adds an item to the ICollection<T>.
-     * @param item The object to add to the ICollection<T>.
-     * @throws {ArgumentException} When the item is already in the collection.
-     */
-    add(item: T): void
+    public find(obj: T, isEquivilent = false): T | undefined
     {
-        if (!this.contains(item))
+        if (isEquivilent)
         {
-            this.add(item);
+            for (const item of this._array)
+            {
+                if (equivilentToByJSON(item, obj))
+                {
+                    return item;
+                }
+            }
         }
         else
         {
-            throw new ArgumentException('item', 'item already in set');
+            const index = this.indexOf(obj);
+            if (index !== undefined)
+            {
+                return this.item(index);
+            }
+            else
+            {
+                return undefined;
+            }
         }
     }
 
-    clear(): void
+    public indexOf(value: T, isEquivilent = false): number | undefined
     {
-        this.clear();
+        if (isEquivilent)
+        {
+            let index: number | undefined;
+
+            this.forEach((item, i) =>
+            {
+                if (equivilentToByJSON(item, value))
+                {
+                    index = i;
+                    return false;
+                }
+            });
+
+            return index;
+        }
+        else
+        {
+            const index = this._array.indexOf(value);
+            if (index == -1)
+            {
+                return undefined;
+            }
+            return index;
+        }
     }
 
-    contains(item: T): boolean
+    public insert(obj: T, index: number): void
     {
-        return this.contains(item);
+        this._array.splice(index, 0, obj);
     }
 
-    copyTo(array: T[], arrayIndex: number): void
+    public prepend(obj: T): IEnumerable<T>
     {
-        this.copyTo(array, arrayIndex);
+        this.insert(obj, 0);
+        return this;
     }
 
-    remove(item: T): boolean
+    public prependRange(enumerableOrArray: IEnumerableOrArray<T>): void
     {
-        return this.remove(item);
+        const array = asArray(enumerableOrArray);
+        this._array.splice(0, 0, ...array);
     }
 
-    forEach(callback: (value: T, index: number) => boolean | void): void
+    public removeAt(index: number): void
     {
-        this.forEach(callback);
+        this._array.splice(index, 1);
     }
 
-    getEnumerator(): IEnumerator<T>
+    public sort(comparer: IComparer<T> = DefaultComparers.DefaultComparer): void
     {
-        return this.getEnumerator();
+        this._array.sort((a, b) => comparer.compare(a, b));
     }
+}
 
-    item(index: number): Undefinable<T>
-    {
-        return this.item(index);
-    }
-
-    ofType<N extends T>(ctor: new (...args: unknown[]) => N): IEnumerable<N>
-    {
-        return this.ofType(ctor);
-    }
-
-    toArray(): T[]
-    {
-        return this.toArray();
-    }
-
-    toDictionary<TKey, TValue>(keySelector: (a: T) => TKey, valueSelector: (a: T) => TValue): IDictionary<TKey, TValue>
-    {
-        return this.toDictionary(keySelector, valueSelector);
-    }
-
-    toList(): IList<T>
-    {
-        return this.toList();
-    }
+function toList<T>(enumerable: IEnumerable<T>): IList<T>
+{
+    return new List<T>(enumerable);
 }
 
 class EnumerableGroup<T, TKey> extends EnumerableBase<T> implements IEnumerableGroup<T, TKey>
@@ -1291,6 +1252,14 @@ class EnumerableGroup<T, TKey> extends EnumerableBase<T> implements IEnumerableG
     }
 }
 
+function groupBy<T, TKey>(enumerable: IEnumerable<T>, selector: Selector<T, TKey>, comparer: IComparer<TKey> = DefaultComparers.DefaultComparer): IEnumerable<IEnumerableGroup<T, TKey>>
+{
+
+
+    const keySet = enumerable.select(selector).distinct((k) => k).orderBy(k => k);
+    return keySet.select((key) => new EnumerableGroup(enumerable, key, selector, comparer));
+}
+
 class RangeEnumerable extends EnumerableBase<number>
 {
     readonly #start: number;
@@ -1307,4 +1276,37 @@ class RangeEnumerable extends EnumerableBase<number>
     {
         return new RangeEnumerator(this.#start, this.#count);
     }
+}
+
+function range(start: number, count: number): IEnumerable<number>
+{
+
+    //return new EnumeratorEnumerable(new RangeEnumerator(start, count));
+    return new RangeEnumerable(start, count);
+}
+
+class EmptyEnumerable<T> extends EnumerableBase<T>
+{
+    private static _inner = new ArrayEnumerator([], true);
+    private static _empty?: IEnumerable<unknown>;
+
+    public static get instance(): IEnumerable<unknown>
+    {
+
+        if (isUndefinedOrNull(EmptyEnumerable._empty))
+        {
+            EmptyEnumerable._empty = new EmptyEnumerable();
+        }
+        return EmptyEnumerable._empty;
+    }
+
+    public getEnumerator(): IEnumerator<T>
+    {
+        return EmptyEnumerable._inner;
+    }
+}
+
+function empty<TElement>(): IEnumerable<TElement>
+{
+    return EmptyEnumerable.instance as IEnumerable<TElement>;// doesnt matter
 }

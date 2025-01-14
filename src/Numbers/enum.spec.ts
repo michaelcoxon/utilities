@@ -19,7 +19,7 @@ describe("enum", () =>
     it("easy", () =>
     {
         const value = Status.Active;
-        console.trace(value);
+        console.log(value);
 
     });
 });
