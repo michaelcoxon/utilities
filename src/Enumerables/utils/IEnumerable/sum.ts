@@ -1,6 +1,6 @@
 import type { Selector } from '../../../Types';
 import type { IEnumerable } from '../../_types';
-import toArray from './toArray';
+import asArray from '../asArray';
 
 
 /**
@@ -9,5 +9,6 @@ import toArray from './toArray';
  */
 export default function sum<T>(enumerable: IEnumerable<T>, selector: Selector<T, number>): number
 {
-    return toArray(enumerable.select<number>((item) => selector(item))).reduce((a, c) => a + c, 0);
+    const en = enumerable.select<number>((item) => selector(item));
+    return asArray(en).reduce((a, c) => a + c, 0);
 }

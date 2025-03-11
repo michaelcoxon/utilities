@@ -5,9 +5,15 @@ import MapComparer from "../Comparers/MapComparer";
 import ReverseComparer from "../Comparers/ReverseComparer";
 import { ConstructorFor, KeyValuePair, Predicate, Selector, Undefinable } from "../Types";
 
+import getHash from '../Utilities/getHash';
+import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
+import KeyAlreadyDefinedException from '../Exceptions/KeyAlreadyDefinedException';
+import KeyNotFoundException from '../Exceptions/KeyNotFoundException';
+import equivilentToByJSON from '../Utilities/equivilentToByJSON';
+
+import { IEnumerator } from '../Enumerators/_types';
 import AppendEnumerator from "../Enumerators/AppendEnumerator";
 import ArrayEnumerator from "../Enumerators/ArrayEnumerator";
-
 import DictionaryEnumerator from "../Enumerators/DictionaryEnumerator";
 import RangeEnumerator from "../Enumerators/RangeEnumerator";
 import SelectEnumerator from "../Enumerators/SelectEnumerator";
@@ -16,40 +22,50 @@ import SkipEnumerator from "../Enumerators/SkipEnumerator";
 import TakeEnumerator from "../Enumerators/TakeEnumerator";
 import WhereEnumerator from "../Enumerators/WhereEnumerator";
 import LinkedListEnumerator from "../Enumerators/LinkedListEnumerator";
-import getHash from '../Utilities/getHash';
-import isUndefinedOrNull from '../TypeHelpers/isUndefinedOrNull';
-import KeyAlreadyDefinedException from '../Exceptions/KeyAlreadyDefinedException';
-import KeyNotFoundException from '../Exceptions/KeyNotFoundException';
-import equivilentToByJSON from '../Utilities/equivilentToByJSON';
+
+
+import { InvalidOperationException } from '../Exceptions';
 
 import { IComparer } from '../Comparers/_types';
 import { IEnumerable, IEnumerableGroup, IDictionary, IList, ICollection, ISet, LinkedListItem, IEnumerableOrArray } from './_types';
-import { IEnumerator } from '../Enumerators/_types';
 
-import contains from './utils/IEnumerable/contains';
-import forEach from './utils/IEnumerable/forEach';
-import item from './utils/IEnumerable/item';
-import all from './utils/IEnumerable/all';
-import any from './utils/IEnumerable/any';
-import distinct from './utils/IEnumerable/distinct';
-import count from './utils/IEnumerable/count';
-import average from './utils/IEnumerable/average';
-import first from './utils/IEnumerable/first';
-import firstOrDefault from './utils/IEnumerable/firstOrDefault';
-import last from './utils/IEnumerable/last';
-import lastOrDefault from './utils/IEnumerable/lastOrDefault';
-import single from './utils/IEnumerable/single';
-import singleOrDefault from './utils/IEnumerable/singleOrDefault';
-import max from './utils/IEnumerable/max';
-import min from './utils/IEnumerable/min';
-import ofType from './utils/IEnumerable/ofType';
 import asArray from './utils/asArray';
-import remove from './utils/Collection/remove';
-import copyTo from './utils/Collection/copyTo';
-import { InvalidOperationException, NotImplementedException } from '../Exceptions';
+
+import containsEnumerable from './utils/IEnumerable/contains';
+import forEachEnumerable from './utils/IEnumerable/forEach';
+import itemEnumerable from './utils/IEnumerable/item';
+import allEnumerable from './utils/IEnumerable/all';
+import anyEnumerable from './utils/IEnumerable/any';
+import distinctEnumerable from './utils/IEnumerable/distinct';
+import countEnumerable from './utils/IEnumerable/count';
+import averageEnumerable from './utils/IEnumerable/average';
+import firstEnumerable from './utils/IEnumerable/first';
+import firstOrDefaultEnumerable from './utils/IEnumerable/firstOrDefault';
+import lastEnumerable from './utils/IEnumerable/last';
+import lastOrDefaultEnumerable from './utils/IEnumerable/lastOrDefault';
+import singleEnumerable from './utils/IEnumerable/single';
+import singleOrDefaultEnumerable from './utils/IEnumerable/singleOrDefault';
+import maxEnumerable from './utils/IEnumerable/max';
+import minEnumerable from './utils/IEnumerable/min';
+import ofTypeEnumerable from './utils/IEnumerable/ofType';
+import sumEnumerable from './utils/IEnumerable/sum';
+
+import removeCollection from './utils/Collection/remove';
+import copyToCollection from './utils/Collection/copyTo';
+
+import allArray from '../Arrays/utils/all';
+import anyArray from '../Arrays/utils/any';
+import averageArray from '../Arrays/utils/average';
 import whereArray from '../Arrays/utils/where';
-import sum from './utils/IEnumerable/sum';
-import toArray from './utils/IEnumerable/toArray';
+import containsArray from '../Arrays/utils/contains';
+import firstArray from '../Arrays/utils/first';
+import firstOrDefaultArray from '../Arrays/utils/firstOrDefault';
+import forEachArray from '../Arrays/utils/forEach';
+import lastArray from '../Arrays/utils/last';
+import lastOrDefault from '../Arrays/utils/lastOrDefault';
+import maxArray from '../Arrays/utils/max';
+import minArray from '../Arrays/utils/min';
+
 
 export class Enumerable
 {
@@ -101,52 +117,52 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public contains(item: T): boolean
     {
-        return contains(this, item);
+        return containsEnumerable(this, item);
     }
 
     public forEach(callback: (value: T, index: number) => boolean | void): void
     {
-        return forEach(this, callback);
+        return forEachEnumerable(this, callback);
     }
 
     public item(index: number): Undefinable<T>
     {
-        return item(this, index);
+        return itemEnumerable(this, index);
     }
 
     public all(predicate: Predicate<T>): boolean
     {
-        return all(this, predicate);
+        return allEnumerable(this, predicate);
     }
 
     public any(predicate?: Predicate<T>): boolean
     {
-        return any(this, predicate);
+        return anyEnumerable(this, predicate);
     }
 
     public average(selector: Selector<T, number>): number
     {
-        return average(this, selector);
+        return averageEnumerable(this, selector);
     }
 
     public count(): number
     {
-        return count(this);
+        return countEnumerable(this);
     }
 
     public distinct<R>(selector: (a: T) => R): IEnumerable<T>
     {
-        return distinct(this, selector);
+        return distinctEnumerable(this, selector);
     }
 
     public first(predicate?: Predicate<T>): T
     {
-        return first(this, predicate);
+        return firstEnumerable(this, predicate);
     }
 
     public firstOrDefault(predicate?: Predicate<T>): T | null
     {
-        return firstOrDefault(this, predicate);
+        return firstOrDefaultEnumerable(this, predicate);
     }
 
     public groupBy<TKey>(selector: Selector<T, TKey>, comparer: IComparer<TKey> = DefaultComparers.DefaultComparer): IEnumerable<IEnumerableGroup<T, TKey>>
@@ -165,27 +181,27 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public last(predicate?: Predicate<T>): T
     {
-        return last(this, predicate);
+        return lastEnumerable(this, predicate);
     }
 
     public lastOrDefault(predicate?: Predicate<T>): T | null
     {
-        return lastOrDefault(this, predicate);
+        return lastOrDefaultEnumerable(this, predicate);
     }
 
     public max(selector: Selector<T, number>): number
     {
-        return max(this, selector);
+        return maxEnumerable(this, selector);
     }
 
     public min(selector: Selector<T, number>): number
     {
-        return min(this, selector);
+        return minEnumerable(this, selector);
     }
 
     public ofType<N extends T>(ctor: ConstructorFor<N>): IEnumerable<N>
     {
-        return ofType(this, ctor);
+        return ofTypeEnumerable(this, ctor);
     }
 
     public orderBy<R>(selector: (a: T) => R, comparer?: IComparer<R>): IEnumerable<T>
@@ -210,12 +226,12 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public single(predicate?: Predicate<T>): T
     {
-        return single(this, predicate);
+        return singleEnumerable(this, predicate);
     }
 
     public singleOrDefault(predicate?: Predicate<T>): T | null
     {
-        return singleOrDefault(this, predicate);
+        return singleOrDefaultEnumerable(this, predicate);
     }
 
     public skip(count: number): IEnumerable<T>
@@ -230,7 +246,7 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public sum(selector: Selector<T, number>): number
     {
-        return sum(this, selector);
+        return sumEnumerable(this, selector);
     }
 
     public take(count: number): IEnumerable<T>
@@ -245,12 +261,12 @@ export abstract class EnumerableBase<T> implements IEnumerable<T>
 
     public toArray(): T[]
     {
-        return toArray(this);
+        return asArray(this);
     }
 
     public toDictionary<TKey, TValue>(keySelector: (a: T) => TKey, valueSelector: (a: T) => TValue): IDictionary<TKey, TValue>
     {
-        return toDictionary(this, keySelector, valueSelector);
+        return Dictionary.createDictionary(this, keySelector, valueSelector);
     }
 
     public toList(): IList<T>
@@ -299,16 +315,6 @@ function join<TOuter, TInner, TKey, TResult>(
     return result;
 }
 
-
-function toDictionary<T, TKey, TValue>(enumerable: IEnumerable<T>, keySelector: (a: T) => TKey, valueSelector: (a: T) => TValue): IDictionary<TKey, TValue>
-{
-    const dictionary = new Dictionary<TKey, TValue>();
-    enumerable.forEach(i =>
-    {
-        dictionary.addKeyValue(keySelector(i), valueSelector(i));
-    });
-    return dictionary;
-}
 
 function concat<T>(enumerable: IEnumerable<T>, next: IEnumerable<T>): IEnumerable<T>
 {
@@ -396,7 +402,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     /**@inheritDoc */
     all(predicate: Predicate<T>): boolean
     {
-        return all(this._array, predicate);
+        return allArray(this._array, predicate);
     }
     /**@inheritDoc */
     append(item: T): IEnumerable<T>
@@ -406,12 +412,12 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     /**@inheritDoc */
     any(predicate?: Predicate<T> | undefined): boolean
     {
-        return any(this._array, predicate);
+        return anyArray(this._array, predicate);
     }
     /**@inheritDoc */
     average(selector: Selector<T, number>): number
     {
-        return average(new ArrayEnumerable(this._array), selector);
+        return averageArray(this._array, selector);
     }
     /**@inheritDoc */
     concat(next: IEnumerable<T>): IEnumerable<T>
@@ -421,45 +427,33 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     /**@inheritDoc */
     contains(item: T): boolean
     {
-        return contains(this._array, item);
+        return containsArray(this._array, item);
     }
     /**@inheritDoc */
     count(): number
     {
-        return count(this._array);
+        return this._array.length;
     }
     /**@inheritDoc */
     distinct<R>(selector: Selector<T, R>): IEnumerable<T>
     {
-        return distinct(new ArrayEnumerable(this._array), selector);
+        return distinctEnumerable(new ArrayEnumerable(this._array), selector);
     }
     /**@inheritDoc */
     first(predicate?: Predicate<T>): T
     {
-        const result = this.firstOrDefault(predicate);
-        if (isUndefinedOrNull(result))
-        {
-            throw new InvalidOperationException('There are no results');
-        }
-        return result;
+        return firstArray(this._array, predicate);
     }
 
     /**@inheritDoc */
     firstOrDefault(predicate?: Predicate<T>): T | null
     {
-        const result = isUndefinedOrNull(predicate)
-            ? this._array[0]
-            : this._array.find(predicate)
-            ;
-
-        return isUndefinedOrNull(result)
-            ? null
-            : result;
+        return firstOrDefaultArray(this._array, predicate);
     }
     /**@inheritDoc */
     forEach(callback: (value: T, index: number) => boolean | void): void
     {
-        return forEach(this._array, callback);
+        return forEachArray(this._array, callback);
     }
     /**@inheritDoc */
     getEnumerator(): IEnumerator<T>
@@ -471,13 +465,13 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     {
         const keySet = this.select(keySelector).distinct((k) => k).orderBy(k => k).toArray();
         const result = keySet.reduce(
-            (group, key) =>
+            (groupings, key) =>
             {
                 const en = this.where(item => comparer.equals(keySelector(item), key));
                 en['key'] = key;
-                group.push(en as IEnumerableGroup<T, TKey>);
+                groupings.push(en as IEnumerableGroup<T, TKey>);
 
-                return group;
+                return groupings;
             },
             new Array<IEnumerableGroup<T, TKey>>()
         );
@@ -492,41 +486,27 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     /**@inheritDoc */
     last(predicate?: Predicate<T>): T
     {
-        const result = this.lastOrDefault(predicate);
-        if (isUndefinedOrNull(result))
-        {
-            throw new InvalidOperationException('There are no results');
-        }
-        return result;
+        return lastArray(this._array, predicate);
     }
     /**@inheritDoc */
     lastOrDefault(predicate?: Predicate<T>): T | null
     {
-        if (isUndefinedOrNull(predicate))
-        {
-            return this._array[this._array.length - 1] || null;
-        }
-        const set = this._array.filter(predicate);
-        const result = set[set.length - 1];
-
-        return isUndefinedOrNull(result)
-            ? null
-            : result;
+        return lastOrDefault(this._array, predicate);
     }
     /**@inheritDoc */
     max(selector: Selector<T, number>): number
     {
-        return Math.max(...this._array.map(selector));
+        return maxArray(this._array, selector);
     }
     /**@inheritDoc */
     min(selector: Selector<T, number>): number
     {
-        return Math.min(...this._array.map(selector));
+        return minArray(this._array, selector);
     }
     /**@inheritDoc */
     ofType<N extends T>(ctor: ConstructorFor<N>): IEnumerable<N>
     {
-        return ofType(new ArrayEnumerable(this._array), ctor);
+        return ofTypeEnumerable(new ArrayEnumerable(this._array), ctor);
     }
     /**@inheritDoc */
     orderBy<R>(selector: Selector<T, R>, comparer?: IComparer<R> | undefined): IEnumerable<T>
@@ -643,7 +623,7 @@ export class ArrayEnumerable<T> implements IEnumerable<T>
     /**@inheritDoc */
     toList(): IList<T>
     {
-        throw new NotImplementedException();
+        return toList(this);
     }
     /**@inheritDoc */
     where(predicate: Predicate<T>): IEnumerable<T>
@@ -662,7 +642,7 @@ export class Collection<T> extends ArrayEnumerable<T> implements ICollection<T>,
         }
         else
         {
-            super(Enumerable.asArray<T>(enumerableOrArray));
+            super(asArray(enumerableOrArray));
         }
     }
 
@@ -688,12 +668,12 @@ export class Collection<T> extends ArrayEnumerable<T> implements ICollection<T>,
 
     public copyTo(array: T[], arrayIndex: number): void
     {
-        return copyTo(this._array, array, arrayIndex);
+        return copyToCollection(this._array, array, arrayIndex);
     }
 
     public remove(item: T): boolean
     {
-        return remove(this._array, item);
+        return removeCollection(this._array, item);
     }
 }
 
@@ -832,6 +812,16 @@ export class Dictionary<TKey, TValue> extends EnumerableBase<KeyValuePair<TKey, 
     public getEnumerator(): IEnumerator<KeyValuePair<TKey, TValue>>
     {
         return new DictionaryEnumerator(this);
+    }
+
+    public static createDictionary<T, TKey, TValue>(enumerable: IEnumerable<T>, keySelector: (a: T) => TKey, valueSelector: (a: T) => TValue): IDictionary<TKey, TValue>
+    {
+        const dictionary = new Dictionary<TKey, TValue>();
+        enumerable.forEach(i =>
+        {
+            dictionary.addKeyValue(keySelector(i), valueSelector(i));
+        });
+        return dictionary;
     }
 }
 
@@ -1056,7 +1046,7 @@ export default class Set<T> extends Collection<T> implements ISet<T>, ICollectio
     public get isReadOnly(): boolean
     {
         return super.isReadOnly;
-    }   
+    }
 
     exceptWith(enumerable: IEnumerable<T>): void
     {
@@ -1131,7 +1121,7 @@ export default class Set<T> extends Collection<T> implements ISet<T>, ICollectio
                 this.add(item);
             }
         }
-    }  
+    }
 }
 
 export class List<T> extends Collection<T> implements IList<T>, ICollection<T>, IEnumerable<T>
